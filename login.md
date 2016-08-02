@@ -2,7 +2,7 @@
 layout: base/bar-sidebar-none
 title: "Login"
 title_bar: "Login"
-title_secondary: "Please Login Using a Local Account"
+title_secondary: ""
 
 angular_includes:
   - "{{ site.baseurl }}/app/serverconfigapp.js"
@@ -11,7 +11,7 @@ angular_includes:
 <div ng-app="">
     <div class = "container">
         <div class="wrapper">
-		        <form action="" method="post" name="Login_Form" class="form-signin">       
+		        <form action="" method = "post" name="Login_Form" class="form-signin">       
 		            <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
 			        <hr class="colorgraph"><br>
 			        <input type="text" class="form-control" name="Username" placeholder="Username" required="" autofocus="" />
