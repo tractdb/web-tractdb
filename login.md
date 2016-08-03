@@ -21,7 +21,7 @@ angular_includes:
 		        </form>	
 	    </div>
 	</div>
-	<style>
+	<style> 
 	    .wrapper {    
                 margin-top: 80px;
                 margin-bottom: 20px;
@@ -35,5 +35,9 @@ angular_includes:
             display: inline !important;
         }
 	</style>
+	<script>
+	    var cancelBtn = document.getElementByName("Cancel");
+	    cancelBtn.addEventListener("click", false); 
+	</script>
 </div>
 
