@@ -35,9 +35,5 @@ angular_includes:
             display: inline !important;
         }
 	</style>
-	<script>
-	    var cancelBtn = document.getElementByName("Cancel");
-	    cancelBtn.addEventListener("click", false); 
-	</script>
 </div>
 
