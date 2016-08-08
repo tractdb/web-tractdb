@@ -5,11 +5,11 @@ import unittest
 
 def setup():
     docker_base.compose_ensure_up(
-        'tests/test-compose.yml',
+        'tests/test-compose.localized.yml',
         'test_pyramid'
     )
     docker_base.compose_ensure_up(
-        'tests/test-compose.yml',
+        'tests/test-compose.localized.yml',
         'test_couchdb'
     )
 

@@ -24,9 +24,16 @@ config:
       compose_version: 1.8.0-rc1
       compose_up_delay: 15
 
-jinja2:
+compile_config:
   entries:
     - in:  requirements3.in.in
       out: requirements3.in
     - in:  .travis.yml.in
       out: .travis.yml
+
+compile_docker_localize:
+  entries:
+    - in:  tests/test-compose.yml
+      out: tests/test-compose.localized.yml
+    - in:  _config-test.yml
+      out: _config-test.localized.yml
