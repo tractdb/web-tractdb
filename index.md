@@ -10,5 +10,7 @@ angular_includes:
 ---
 
 <div ng-app="serverConfigApp" ng-controller="serverConfigController" ng-strict-di>
-Server Config: {{ 'serverConfig' | angular }}<br>
+Server Config: {{ 'serverConfig' | angular }}<br/><br/>
+<p><a href = "/login">Login</a></p>
+<p><a href = "/register">Register</a></p>
 </div>

@@ -13,20 +13,21 @@ angular_includes:
 <div ng-app="serverConfigApp" ng-controller = "loginController">
     <div class = "container">
         <div class="wrapper">
-		        <form action="" method="post" name="Login_Form" class="form-signin">       
+		        <form action="" method="post" name="loginForm" class="form-signin">       
 		            <h3 class="form-signin-heading">Please Sign In</h3>
 			        <hr class="colorgraph"><br>
 			        <input type="text" class="form-control" name="Email" placeholder="Email" autofocus="" /><br/>
 			        <input type="password" class="form-control" name="Password" placeholder="Password"/><br/>  
                     <button class="btn btn-small" name="Cancel" value="Cancel">Cancel</button> 
-                    <button class="btn btn-small btn-primary" name="Login" value="Login" type="Submit">Login</button>
-                    <button ng-click="changePath('/register')" class="btn btn-small" name="Register" value="Register">Register</button>
+                    <button class="btn btn-small btn-primary" name="Login" value="Login" type="Submit">Login</button><br/><br/>
+                    <p><a href = "/register">If you're a new user, register now!</a></p>
+                    <p><a href = "/forgotPassword">Forgot Password?</a></p>
 		        </form>	
 	    </div>
 	</div>
 	<style> 
 	    .wrapper {    
-                margin-top: 80px;
+                margin-top: 20px;
                 margin-bottom: 20px;
             }
             form {
@@ -38,9 +39,4 @@ angular_includes:
             display: inline !important;
         }
 	</style>
-	<script>
-	    $scope.changePath = function(path) {
-	        $location.path(path);       
-	    };
-	</script>
 </div>
