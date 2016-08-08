@@ -5,19 +5,22 @@ title_bar: "Login"
 title_secondary: ""
 
 angular_includes:
-  - "{{ site.baseurl }}/app/serverconfigapp.js"
+  - "{{ site.baseurl }}/app/serverConfigApp.js"
+  - "{{ site.baseurl }}/app/controllers/controllers.js"
+  - "{{ site.baseurl }}/app/controllers/loginController.js"
 ---
 
-<div ng-app="">
+<div ng-app="serverConfigApp" ng-controller = "loginController">
     <div class = "container">
         <div class="wrapper">
-		        <form action="" method = "post" name="Login_Form" class="form-signin">       
+		        <form action="" method="post" name="Login_Form" class="form-signin">       
 		            <h3 class="form-signin-heading">Please Sign In</h3>
 			        <hr class="colorgraph"><br>
-			        <input type="text" class="form-control" name="Email" placeholder="Email" required="" autofocus="" /><br/>
-			        <input type="password" class="form-control" name="Password" placeholder="Password" required=""/><br/>  
+			        <input type="text" class="form-control" name="Email" placeholder="Email" autofocus="" /><br/>
+			        <input type="password" class="form-control" name="Password" placeholder="Password"/><br/>  
                     <button class="btn btn-small" name="Cancel" value="Cancel">Cancel</button> 
-                    <button class="btn btn-small btn-primary" name="Submit" value="Login" type="Submit">Login</button> 
+                    <button class="btn btn-small btn-primary" name="Login" value="Login" type="Submit">Login</button>
+                    <button ng-click="changePath('/register')" class="btn btn-small" name="Register" value="Register">Register</button>
 		        </form>	
 	    </div>
 	</div>
@@ -35,5 +38,9 @@ angular_includes:
             display: inline !important;
         }
 	</style>
+	<script>
+	    $scope.changePath = function(path) {
+	        $location.path(path);       
+	    };
+	</script>
 </div>
-
