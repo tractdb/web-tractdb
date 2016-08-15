@@ -13,11 +13,11 @@ angular_includes:
 <div ng-app="serverConfigApp" ng-controller = "loginController">
     <div class = "container">
         <div class="wrapper">
-		        <form action="" method="post" name="loginForm" class="form-signin">       
+		        <form onsubmit="return login()" id="loginForm" name="loginForm" class="form-signin">       
 		            <h3 class="form-signin-heading">Please Sign In</h3>
 			        <hr class="colorgraph"><br>
-			        <input type="text" class="form-control" name="Email" placeholder="Email" autofocus="" /><br/>
-			        <input type="password" class="form-control" name="Password" placeholder="Password"/><br/>  
+			        <input type="text" class="form-control" name="account" placeholder="Email" autofocus="" /><br/>
+			        <input type="password" class="form-control" name="password" placeholder="Password"/><br/>  
                     <button class="btn btn-small" name="Cancel" value="Cancel">Cancel</button> 
                     <button class="btn btn-small btn-primary" name="Login" value="Login" type="Submit">Login</button><br/><br/>
                     <p><a href = "/register">If you're a new user, register now!</a></p>
@@ -39,4 +39,12 @@ angular_includes:
             display: inline !important;
         }
 	</style>
+	<script>
+	    function login() {
+            alert("Login Called");
+            var formData = JSON.stringify($("form").serializeToJSON());
+            alert(formData); 
+            return false;
+	    }
+	</script>
 </div>
