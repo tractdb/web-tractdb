@@ -1,5 +1,5 @@
 ---
-layout: base/bar-sidebar-none
+layout: base/bar/bar-sidebar-none
 title: "Login"
 title_bar: "Login"
 title_secondary: ""

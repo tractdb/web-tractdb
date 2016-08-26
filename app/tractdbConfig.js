@@ -7,6 +7,6 @@ module_tractdbConfig.constant(
     '{{ site.tractdb.baseurl_pyramid }}'
 );
 
-module_tractdbConfig.config(['$httpProvider', function($httpProvider) {
+module_tractdbConfig.config(['$httpProvider', function ($httpProvider) {
   $httpProvider.defaults.withCredentials = true;
 }]);

@@ -8,17 +8,17 @@
 	</head>
 	<body class="layout-sidebar-none" id="{{ page.url | slugify: 'pretty' }}">
     <!-- NavHeader -->
-    {% include base/navheader.html %}
+    {% include base/bar/navheader.html %}
 
-		<!-- Main -->
+    <!-- Main -->
     <div class="container" id="base-main" >
       <!-- Bar -->
-      {% include base/barheader.html %}
+      {% include base/bar/barheader.html %}
 
       <!-- Content -->
       {{ content }}
     </div>
-		<!-- Main End -->
+    <!-- Main End -->
 
     <!-- EndOfBody -->
     {% include base/endofbody.html %}
