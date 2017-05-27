@@ -16,7 +16,7 @@ config:
     bundler_version: 1.13.6
 
   docker:
-    required: false
+    required: true
 
     toolbox:
       # Docker Toolbox is currently pinned by this bug:
