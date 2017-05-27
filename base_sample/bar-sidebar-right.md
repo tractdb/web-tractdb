@@ -1,12 +1,14 @@
 ---
 layout: base/bar/bar-sidebar-right
 title: "bar-sidebar-right"
+title_bar: "title_bar"
+title_bar_secondary: "title_bar_secondary"
 ---
 
 <div class="sidebar_start"></div>
 Sidebar content.
 
-<ul id="getting-involved-tabs" class="nav nav-pills nav-stacked" data-tabs="tabs">
+<ul id="base-sample-tabs" class="nav nav-pills nav-stacked" data-tabs="tabs">
   <li class="active"><a href="#amet" data-toggle="tab">Amet</a></li>
   <li><a href="#nullam" data-toggle="tab">Nullam</a></li>
   <li><a href="#consequat" data-toggle="tab">Consequat</a></li>
