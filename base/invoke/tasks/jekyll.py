@@ -1,3 +1,4 @@
+import base.invoke.tasks.docker
 import base.invoke.tasks.update
 import invoke
 import sys
@@ -11,7 +12,10 @@ def build_production():
     )
 
 
-@invoke.task(pre=[base.invoke.tasks.update.update_dependencies])
+@invoke.task(pre=[
+    base.invoke.tasks.docker.docker_localize,
+    base.invoke.tasks.update.update_dependencies
+])
 def build_test():
     invoke.run(
         'bundle exec jekyll build -t --config _config.yml,_config-test.localized.yml',
@@ -27,7 +31,10 @@ def serve_production():
     )
 
 
-@invoke.task(pre=[base.invoke.tasks.update.update_dependencies])
+@invoke.task(pre=[
+    base.invoke.tasks.docker.docker_localize,
+    base.invoke.tasks.update.update_dependencies
+])
 def serve_test():
     invoke.run(
         'bundle exec jekyll serve -t --config _config.yml,_config-test.localized.yml --watch --force_polling',
