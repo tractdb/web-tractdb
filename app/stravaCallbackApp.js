@@ -10,9 +10,10 @@ app.controller(
             $scope.submitCode = function () {
                 console.log($location.search());
                 if('code' in $location.search()) {
+                    $scope.viewModel['code'] = $location.search()['code'];
                     $http({
-                        method: 'POST',
-                        url: BASEURL_PYRAMID + '/storytelling/strava/access_token/' + $location.search()['code'],
+                        method: 'PUT',
+                        url: BASEURL_PYRAMID + '/storytelling/strava/access_token',
                         headers: {'Content-Type': 'application/json'},
                         data: $scope.viewModel // pass in data as JSON
                     }).then(
@@ -22,7 +23,8 @@ app.controller(
                             $window.location = "/configure/strava/complete";
                         },
                         function (response) {
-                            console.log('access token error response: ' + response);
+                            console.log('access token error response: ');
+                            console.log(response);
                             $window.alert('Something went wrong with the key exchange. Please contact the research team.');
                         }
                     );
