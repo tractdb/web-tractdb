@@ -4,7 +4,7 @@ title: "Configure Strava"
 
 angular_includes:
   - "{{ site.baseurl }}/app/tractdbConfig.js"
-  - "{{ site.baseurl }}/app/loginForstravaApp.js"
+  - "{{ site.baseurl }}/app/loginForStravaApp.js"
 ---
 
 <header>
