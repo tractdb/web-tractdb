@@ -10,3 +10,10 @@ module_tractdbConfig.constant(
 module_tractdbConfig.config(['$httpProvider', function ($httpProvider) {
   $httpProvider.defaults.withCredentials = true;
 }]);
+
+module_tractdbConfig.config(['$locationProvider', function($locationProvider) {
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: false
+	});
+}]);
