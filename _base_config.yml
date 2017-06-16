@@ -91,7 +91,7 @@ compile_config:
 
 compile_docker_localize:
   entries:
-    - in:  _config-test.yml
-      out: _config-test.localized.yml
     - in:  tests/full/docker/test_compose.yml
       out: tests/full/docker/test_compose.localized.yml
+    - in:  _config-test.yml
+      out: _config-test.localized.yml
