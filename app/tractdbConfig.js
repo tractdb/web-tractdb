@@ -8,7 +8,7 @@ module_tractdbConfig.constant(
 );
 
 module_tractdbConfig.config(['$httpProvider', function ($httpProvider) {
-  $httpProvider.defaults.withCredentials = true;
+	$httpProvider.defaults.withCredentials = true;
 }]);
 
 module_tractdbConfig.config(['$locationProvider', function($locationProvider) {

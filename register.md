@@ -31,7 +31,7 @@ angular_includes:
                 <button class="btn btn-small btn-primary" name="Register" value="Register" type="submit">Register</button>
                 <button class="btn btn-small" name="Cancel" value="Cancel">Cancel</button>
                 <br/><br/>
-                <p>Already have an account? <a href = "/login">Sign in.</a></p>
+                <p>Already have an account? <a href="/login" target='_self'>Sign in.</a></p>
             </form>
         </div>
     </div>

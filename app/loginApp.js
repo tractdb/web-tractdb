@@ -3,8 +3,8 @@ var app = angular.module('loginApp', ['tractdb.config']);
 app.controller(
     'loginController',
     [
-        '$scope', '$http', 'BASEURL_PYRAMID',
-        function ($scope, $http, BASEURL_PYRAMID) {
+        '$scope', '$http', '$location', '$window', 'BASEURL_PYRAMID',
+        function ($scope, $http, $location, $window, BASEURL_PYRAMID) {
             // TODO: stylistically, this 'bag of parameters' seems bad
             $scope.viewModel = {};
             $scope.submitLoginForm = function () {
@@ -14,14 +14,13 @@ app.controller(
                     headers: {'Content-Type': 'application/json'},
                     data: $scope.viewModel // pass in data as JSON
                 }).then(
+                    // successful response
                     function (response) {
-                        console.log('login success response: ' + response);
-                        // TODO: on successful response, redirect user to dashboard
+                        $window.location = $location.url('/profile').url()
                     },
+                    // error response
                     function (response) {
-                        console.log('login error response: ' + response);
-                        // TODO: on error response, popup error message and keep user on the same page
-                        window.alert('Invalid username or password.');
+                        window.alert('Invalid account or password.');
                     }
                 );
             }

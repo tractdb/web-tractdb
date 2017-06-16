@@ -30,8 +30,8 @@ angular_includes:
                 <button class="btn btn-small" name="Cancel" value="Cancel">Cancel</button>
                 <br/>
                 <br/>
-                <p>Don't have an account? <a href = "/register">Sign up.</a></p>
-                <p>Forgot password? <a href = "/forgotPassword">Request reset.</a></p>
+                <p>Don't have an account? <a href="/register" target='_self'>Sign up.</a></p>
+                <p>Forgot password? <a href="/forgotPassword" target='_self'>Request reset.</a></p>
             </form>
         </div>
     </div>
