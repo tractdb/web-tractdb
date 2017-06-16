@@ -21,6 +21,8 @@ angular_includes:
         <div class="col-lg-12">
             <h3>Profile</h3>
             <div>{{ 'viewModel.account' | angular }}</div>
+            <h3>Fitbit</h3>
+            <div><a href='/configure/fitbit' target='_self'>Configure Fitbit Access</a></div>
         </div>
     </div>
 </div>
