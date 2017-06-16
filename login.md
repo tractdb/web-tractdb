@@ -20,14 +20,18 @@ angular_includes:
     <div class="row">
         <div class="col-lg-12">
             <form ng-submit="submitLoginForm()" id="loginForm" name="loginForm" class="form-signin">
-                <h3 class="form-signin-heading">Please Sign In</h3>
+                <h3 class="form-signin-heading">Sign In</h3>
                 <hr class="colorgraph"><br>
-                <input class="form-control" name="account" placeholder="Account" autofocus="" required="" maxlength="20" ng-model="viewModel.account" /><br/>
-                <input type="password" class="form-control" name="password" placeholder="Password" required="" maxlength="24" ng-model="viewModel.password" /><br/>
+                <input class="form-control" name="account" placeholder="Account" autofocus="" required="" maxlength="20" ng-model="viewModel.account" />
+                <br/>
+                <input type="password" class="form-control" name="password" placeholder="Password" required="" maxlength="24" ng-model="viewModel.password" />
+                <br/>
+                <button class="btn btn-small btn-primary" name="Login" value="Login" type="submit">Sign In</button>
                 <button class="btn btn-small" name="Cancel" value="Cancel">Cancel</button>
-                <button class="btn btn-small btn-primary" name="Login" value="Login" type="submit">Login</button><br/><br/>
-                <p><a href = "/register">If you're a new user, register now!</a></p>
-                <p><a href = "/forgotPassword">Forgot Password?</a></p>
+                <br/>
+                <br/>
+                <p>Don't have an account? <a href = "/register">Sign up.</a></p>
+                <p>Forgot password? <a href = "/forgotPassword">Request reset.</a></p>
             </form>
         </div>
     </div>
