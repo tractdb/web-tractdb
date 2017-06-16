@@ -5,14 +5,18 @@ app.controller(
     [
         '$scope', '$http', '$location', '$window', 'BASEURL_PYRAMID',
         function ($scope, $http, $location, $window, BASEURL_PYRAMID) {
-            // TODO: stylistically, this 'bag of parameters' seems bad
             $scope.viewModel = {};
+            $scope.viewModel.account = '';
+            $scope.viewModel.password = '';
+
             $scope.submitLoginForm = function () {
                 $http({
                     method: 'POST',
                     url: BASEURL_PYRAMID + '/login',
-                    headers: {'Content-Type': 'application/json'},
-                    data: $scope.viewModel // pass in data as JSON
+                    data: {
+                        'account': $scope.viewModel.account,
+                        'password': $scope.viewModel.password
+                    }
                 }).then(
                     // successful response
                     function (response) {
