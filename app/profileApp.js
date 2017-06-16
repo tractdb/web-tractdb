@@ -5,8 +5,8 @@ app.controller(
     [
         '$scope', '$http', 'BASEURL_PYRAMID',
         function ($scope, $http, BASEURL_PYRAMID) {
-            $scope.viewModel = {}
-            $scope.viewModel.account = ''
+            $scope.viewModel = {};
+            $scope.viewModel.account = '';
 
             $http({
                 method: 'GET',

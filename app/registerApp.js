@@ -5,20 +5,39 @@ app.controller(
     [
         '$scope', '$http', '$location', '$window', 'BASEURL_PYRAMID',
         function ($scope, $http, $location, $window, BASEURL_PYRAMID) {
-            // TODO: stylistically, this 'bag of parameters' seems bad
             $scope.viewModel = {};
+            $scope.viewModel.account = '';
+            $scope.viewModel.password = '';
+            $scope.viewModel.confirmPassword = '';
+
             $scope.submitRegisterForm = function () {
                 $http({
                     method: 'POST',
                     url: BASEURL_PYRAMID + '/accounts',
                     headers: {'Content-Type': 'application/json'},
-                    data: $scope.viewModel // pass in data as JSON
+                    data: {
+                        'account': $scope.viewModel.account,
+                        'password': $scope.viewModel.password,
+                        'confirmPassword': $scope.viewModel.confirmPassword
+                    }
                 }).then(
-                    // successful response
+                    function () {
+                        return $http({
+                            method: 'POST',
+                            url: BASEURL_PYRAMID + '/login',
+                            data: {
+                                'account': $scope.viewModel.account,
+                                'password': $scope.viewModel.password
+                            }
+                        })
+                    }
+                ).then(
+                    // Success
                     function (response) {
                         $window.location = $location.url('/profile').url()
-                    },
-                    // error response
+                    }
+                ).catch(
+                    // Failure
                     function (response) {
                         window.alert('Invalid account or password.');
                     }
