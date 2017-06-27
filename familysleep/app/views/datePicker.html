@@ -1,0 +1,15 @@
+<!-- <div ng-controller="DatepickercontrollerCtrl as ctrl"  ng-cloak="" id="fdv-datepicker-placement"> -->
+<div class='date-picker' id="datepicker-placement">
+    <div flex-gt-xs="">
+      <!-- <h4>Opening the calendar when the input is focused</h4> -->
+      <md-button id="yesterday" class="md-primary md-raised" ng-click="yesterday()">Yesterday</md-button>
+      <md-datepicker ng-model="myDate" md-open-on-focus="" ng-change='pickNewDate()'>
+      </md-datepicker>
+
+      <!-- <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-is-open="ctrl.isOpen"></md-datepicker> -->
+      <md-button id="today" class="md-primary md-raised" ng-click="today()">Today</md-button>
+      <md-button id="tomorrow" class="md-primary md-raised" ng-click="tomorrow()">Tomorrow</md-button>
+
+
+    </div>
+</div>
