@@ -1,0 +1,84 @@
+<div class="familydailyview-container" ng-controller="FamilydailyviewCtrl"> 
+<!--do I need this controller here? test to get this to work with out-->    
+<!--need 1x2 | 1  for moon| 1x2-->
+
+<div ng-repeat="member in family">
+<!--Notes for Sang-Wha: if you want to see the index you can do
+<p>{{$index}}</p>
+There might be other things you can do with
+-->
+<div ng-if="$even" class="fdv-even-column col-xs-4">
+<!--even object -->
+        <div>
+            <img ng-src={{member.avatar}} class="profile-pics">
+            <p class="fdv-names">{{member.name}}</p>
+        </div>
+        <div class="target-hours">
+            <p>Target hours: 8</p>
+        </div>
+        <div ng-controller="ModalCrtl as $ctrl">
+            <div ng-if=$ctrl.states[member.name].state>
+                <div ng-controller="DoughnutCtrl" class="chart-placement">
+                    <canvas id="doughnut" class="chart-doughnut" chart-data="member.sleep" chart-labels="labels" chart-colors ="colors" chart-options="options">
+                    </canvas>
+                </div>
+                <img ng-src={{$ctrl.states[member.name].image}} class="mood-pics">
+                <div class="single-view-button">
+                    <a ng-href="#!/sdview/{{member.name}}" class="btn btn-primary"> Single Daily View</a><!--want an ng-if here to show only after daily sleep and self-report is available -->
+                </div>
+                <div>
+                    <p class="hours-slept">Hours slept: <br>5</p>
+                </div>
+                <p class="mood-report">Mood reported to be {{$ctrl.states[member.name].mood | uppercase}}</p>
+            </div>
+            <div ng-if=!$ctrl.states[member.name].state>
+                <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
+                    <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+                    </canvas>
+                </div>
+                <!--inserts code for the modal popup window-->
+                <button type="button" class="how-sleep-button btn btn-default" ng-click="$ctrl.open(member.name)">How did you sleep?</button>
+            </div>
+        </div>
+</div>
+<div ng-if="$odd" class="fdv-odd-column col-xs-4">
+<!--odd object -->
+        <div>
+            <img ng-src={{member.avatar}} class="profile-pics">
+            <p class="fdv-names">{{member.name}}</p>
+        </div>
+        <div class="target-hours">
+            <p>Target hours: 8</p>
+        </div>
+        <div ng-controller="ModalCrtl as $ctrl">
+            <div ng-if=$ctrl.states[member.name].state>
+                <div ng-controller="DoughnutCtrl" class="chart-placement">
+                    <canvas id="doughnut" class="chart-doughnut" chart-data="member.sleep" chart-labels="labels" chart-colors ="colors" chart-options="options">
+                    </canvas>
+                </div>
+                <img ng-src={{$ctrl.states[member.name].image}} class="mood-pics">
+                <div class="single-view-button">
+                    <a ng-href="#!/sdview/{{member.name}}" class="btn btn-primary"> Single Daily View</a><!--want an ng-if here to show only after daily sleep and self-report is available -->
+                </div>
+                <div>
+                    <p class="hours-slept">Hours slept: <br>5</p>
+                </div>
+                <p class="mood-report"> Mood reported to be {{$ctrl.states[member.name].mood | uppercase}}</p>
+            </div>
+            <div ng-if=!$ctrl.states[member.name].state>
+                <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
+                    <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+                    </canvas>
+                </div>
+                <!--inserts code for the modal popup window-->
+                <button type="button" class="how-sleep-button btn btn-default" ng-click="$ctrl.open(member.name)">How did you sleep?</button>
+            </div>
+        </div>
+</div>
+
+</div>
+
+<div ng-controller="MoonCtrl" class="col-xs-4"> 
+    <img ng-src="{{moonImage}}" alt="moon" id="family_moon">
+</div>
+</div>

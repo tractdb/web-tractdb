@@ -1,0 +1,32 @@
+/*=======================================================================
+** Single Daily View
+=========================================================================
+*/
+
+#sdv-profile-pic {
+	position: relative; 
+	top: 0px; 
+	width: 70px; 
+	height: 70px;
+}
+
+#sdv-mood-pics {
+	width: 60px;
+  	height: 60px;
+  	display: block;
+  	margin: auto;
+}
+
+#sdv-mood-report {
+	margin-top: 50px;
+    margin-bottom: 50px;
+    top: 200px;
+    margin-left: 350px;
+    width: 200px;
+}
+
+#sdv-name {
+	text-align: center;
+    width: 70px;
+    margin: 0;
+}

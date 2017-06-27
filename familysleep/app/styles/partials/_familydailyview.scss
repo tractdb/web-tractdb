@@ -1,0 +1,154 @@
+/*=======================================================================
+** FAMILY VIEW CSS START
+=========================================================================
+*/
+/**
+.modal-demo .btn btn-default
+**/
+/***
+.ng-modal-overlay {
+  /* A dark translucent div that covers the whole screen
+  position:absolute;
+  z-index:9999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#000000;
+  opacity: 0.8;
+}
+
+.ng-modal-dialog {
+  /* A centered div above the overlay with a box shadow. 
+  z-index:10000;
+  position: absolute;
+  width: 50%; /* Default 
+
+  /* Center the dialog
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+
+  background-color: #fff;
+  box-shadow: 4px 4px 80px #000;
+}
+
+.ng-modal-dialog-content {
+  padding:10px;
+  text-align: left;
+}
+.ng-modal-close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  font-weight: bold;
+  font-family: 'arial', 'sans-serif';
+}
+/*-------------------------------------------------------------------*/
+
+/* chart area styles */
+.chart-placement {
+  height:150px;
+  width:150px; 
+  margin-left: 80px;
+}
+
+.how-sleep-button {
+  position: absolute; 
+  top: 125px; 
+  left: 120px; 
+  z-index: 1; 
+  white-space: normal; 
+  max-width: 100px; 
+  color: #555555; 
+  background-color: transparent; 
+  border:0px solid transparent; 
+  font-weight: bold;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
+    color: white;
+    background-color: #D6C3DB;
+    border-color: #D6C3DB;
+}
+
+.profile-pics {
+  position: relative; 
+  top: 0px; 
+  width: 60px; 
+  height: 60px;
+}
+
+.profile-area {
+  display: inline-block;
+}
+
+.single-view-button {
+    margin-top: -220px;
+    margin-left: 90px;
+}
+
+.single-view-button .btn {
+  background-color: #d6c3db;
+  border-color: #d6c3db;
+  color: black;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.target-hours {
+  margin-left: 110px;
+  margin-top: -35px;
+  margin-bottom: 15px;
+}
+
+.mood-pics {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 105px;
+  left: 120px;
+  z-index: 1;
+}
+
+#family_moon {
+  position: fixed;
+  height: 150px;
+  top: 50%;
+  left: 50%;
+  margin-top: 0; /* Negative half of height. */
+  margin-left: -71px; /* Negative half of width. */
+}
+
+.fdv-names {
+    text-align: center;
+    width: 60px;
+    margin: 0;
+}
+
+.fdv-even-column {
+  margin-right: 125px;
+  margin-bottom: 20px;
+  height: 260px;
+}
+
+.fdv-odd-column {
+  margin-left: 160px;
+  margin-bottom: 20px;
+  height: 260px;
+}
+
+.hours-slept {
+  margin-top: 70px;
+  font-size: small;
+}
+
+.mood-report {
+  margin-top: 85px;
+  font-size: small;
+}
