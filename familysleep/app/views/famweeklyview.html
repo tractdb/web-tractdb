@@ -1,0 +1,464 @@
+<div class="familyweeklyview-container" ng-controller="FamweeklyviewCtrl">
+    <!-- person row -->
+    <div class="fwv-columns" id="blank-date">blank</div>
+    <div ng-repeat="date in dateWeekStr" class="fwv-columns">
+        <p class="fwv-date">{{date}}</p>
+    </div>
+    <div ng-repeat="member in famWeekData">
+	   <div class="fwv-person row">
+        <!-- week col for particular person -->
+        <div class="fwv-columns">
+            <p> profile picture </p>
+            <p> name </p>
+        </div>
+          <div ng-repeat="day in member" class="fwv-columns">
+            <div ng-show="day.duration !=-1" class="fwv-chart-placement">
+                <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
+                    <canvas id="doughnut" class="chart chart-doughnut" chart-data="day.sleep" chart-labels="labels" chart-colors ="colors" chart-options="options">
+                    </canvas>
+                    <img ng-src="images/faces/happy.png" class="fwv-mood-pics">
+                    <p class="fwv-mood-text">mood</p>
+                <!--</div>-->
+            </div>
+            <div ng-show="day.duration==-1" ng-controller="PiechartcontrollerCtrl" class="fwv-chart-placement">
+                  <canvas id="doughnut" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+                  </canvas>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="person row">
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-3">
+        <!-- <p> profile picture </p>
+        <img ng-src="images/avatars/momcircle.png" alt="momcircle" class="fwv-profile-pics">
+        <p class="fwv-names"> name </p>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- other family member
+<div class="person row">
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-3">
+        <!-- <p> profile picture </p>
+        <img ng-src="images/avatars/dadcircle.png" alt="dadcircle" class="fwv-profile-pics">
+        <p class="fwv-names"> name </p>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- other family member
+<div class="person row">
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-3">
+        <!-- <p> profile picture </p>
+        <img ng-src="images/avatars/girlcircle.png" alt="girlcircle" class="fwv-profile-pics">
+        <p class="fwv-names"> name </p>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- fourth family member
+<div class="person row">
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-3">
+        <!-- <p> profile picture </p>
+        <img ng-src="images/avatars/soncircle.png" alt="soncircle" class="fwv-profile-pics">
+        <p class="fwv-names"> name </p>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div ng-controller="PiechartcontrollerCtrl">
+          <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+-->
+    <!--
+	<div class="col-xs-1">
+	<p> profile picture </p>
+	<p> name </p>
+	</div>
+	<div class="col-xs-1">
+	<div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>		
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+	</div>
+	</div>
+	<!-- other family member
+	<div class="person row">
+	<div class="col-xs-1">
+	<p> profile picture </p>
+	<p> name </p>
+	</div>
+	<div class="col-xs-1">
+	<div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>		
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+	</div>
+	</div>
+	<!-- other family member
+	<div class="person row">
+	<div class="col-xs-1">
+	<p> profile picture </p>
+	<p> name </p>
+	</div>
+	<div class="col-xs-1">
+	<div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>		
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+	</div>
+	</div>
+	<!-- fourth family member
+	<div class="person row">
+	<div class="col-xs-1">
+	<p> profile picture </p>
+	<p> name </p>
+	</div>
+	<div class="col-xs-1">
+	<div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>		
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+    </div>
+    <div class="col-xs-1">
+    <div ng-controller="PiechartcontrollerCtrl">
+            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+            </canvas>
+            </div>
+	</div>
+	</div>-->

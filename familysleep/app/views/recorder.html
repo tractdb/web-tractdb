@@ -1,0 +1,119 @@
+
+<div class="sound-recorder">
+    <!-- only want to show microphone when nothing has been recorded -->
+    <md-button class="md-fab" ng-if="recordStoppedClear" ng-click="onRecord()" aria-label="start-clean-button">
+      <img class="recorder-logo" src="../images/recorder/sound_recorder.png">
+    </md-button>
+
+    <div class="recorder-info" ng-if="recordStoppedClear">
+      {{instruction}}
+    </div>
+
+     <!-- only show play when record is paused -->
+  <div class="record-button" ng-if="recordPausing">
+    <md-button class="md-fab"  ng-click="onResume()" aria-label="start-button">
+      <img class="recorder-logo" src="../images/recorder/start.png">
+    </md-button>
+    <div class="record-descrip">
+      Resume
+    </div>
+  </div>
+
+     <!-- only show pause when record is recording -->
+  <div class="record-button" ng-if="recordRecording">
+    <md-button class="md-fab" ng-click="onPause()" aria-label="pause-button">
+      <img class="recorder-logo" src="../images/recorder/pause.png">
+    </md-button>
+    <div class="record-descrip">
+      Pause
+    </div>
+  </div>
+
+  <div class="recorder-bar" ng-if="recordRecording">
+    <md-progress-linear class="recorder-bar-progress" md-mode="indeterminate"></md-progress-linear>
+    <div class="record-descrip">
+      Recording
+    </div>
+  </div>
+
+  <div class="recorder-bar" ng-if="recordPausing">
+    <div class="vertical-line">
+    </div>
+    <div class="record-descrip">
+      Recording Paused
+    </div>
+  </div>
+
+  <div class="recorder-player" ng-show="recordReplay">
+    <audio autoplay src={{url}} controls=""></audio>
+  </div>
+
+  <div class="record-button" ng-if="recordStopped">
+    <md-button class="md-fab" ng-click="onReplayRecord()" aria-label="pause-button">
+      <img class="recorder-logo" src="../images/recorder/replay.png">
+    </md-button>
+    <div class="record-descrip">
+      Replay
+    </div>
+  </div>
+
+  <!-- only show stop when record is recording or paused -->
+  <div class="record-button" ng-if="!recordStopped && !recordStoppedClear">
+    <md-button class="md-fab" ng-click="onStopRecord()" aria-label="pause-button">
+      <img class="recorder-logo" src="../images/recorder/stop.png">
+    </md-button>
+    <div class="record-descrip">
+      Stop
+    </div>
+  </div>
+
+
+    <!-- only show replay when record is paused -->
+   <!-- <md-button class="md-fab" ng-if="recordStopped" ng-click="onReplay()" aria-label="replay-button">
+     <img class="recorder-logo" src="../images/replay.png">
+   </md-button> -->
+
+   <!-- only show upload and delete when record is paused -->
+   <div class="record-button" ng-if="recordPausing || recordStopped">
+     <md-button class="md-fab"  ng-click="onDelete()" aria-label="delete-button">
+       <img class="recorder-logo" src="../images/recorder/delete.png">
+     </md-button>
+     <div class="record-descrip">
+       Delete
+     </div>
+   </div>
+
+   <div class="record-button" ng-if="recordStopped">
+     <md-button class="md-fab" ng-click="onSendRecord()" aria-label="upload-button">
+       <img class="recorder-logo" src="../images/recorder/upload.png">
+     </md-button>
+     <div class="record-descrip">
+       Send
+     </div>
+   </div>
+<!--
+    <button class="recorder-start" ng-click="onRecord()" type="button">
+      <img id="recorder-logo" src="../images/sound_recorder.png">
+      {{instruction}}
+    </button>
+    <button class="recorder-button" ng-show="recordStoppedClear" ng-click="onStopRecord()" type="button">
+        Stop
+    </button>
+    <button class="recorder-button" ng-show="recordStoppedClear" ng-click="onPause()" type="button">
+        Pause
+    </button>
+    <button class="recorder-button" ng-click="onPause()" type="button">
+        Resume
+    </button>
+    <button class="recorder-button" ng-click="onSendRecord()" type="button">
+        Send
+    </button>
+    <button class="recorder-button" ng-click="onDeleteRecord()" type="button">
+        Delete
+    </button> -->
+
+</div>
+
+
+
+  <!-- Images (and assets) are parsed and loaded from within the public directory -->

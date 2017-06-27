@@ -1,0 +1,47 @@
+.date-picker {
+	display: inline-block;
+}
+
+/* changes color of date: black when in calendar view, white otherwise */
+input[aria-expanded=true] {
+	color: black;
+}
+
+input[aria-expanded=false] {
+	color: white;
+}
+
+
+.md-button.md-icon-button {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.md-datepicker-input {
+  color: white;
+}
+
+md-icon {
+  svg {
+    path {
+      fill: #ffffff;
+    }
+  }
+}
+
+.md-datepicker-triangle-button .md-datepicker-expand-triangle {
+  border-top-color: white;
+}
+
+#datepicker-placement {
+  margin-top: 10px;
+  margin-left: 40px;
+}
+
+._md-datepicker-has-triangle-icon {
+    padding-right: 18px;
+    margin-right: 0px;
+}
+
+#yesterday, #today, #tomorrow {
+	background-color: #778ec4;/*#6e85b6;*/
+}

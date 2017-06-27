@@ -1,0 +1,35 @@
+.signup-container{
+    //margin-top: 5em;
+}
+
+.signup-header{
+    text-align: center;
+    color: $gray-light;
+    margin-bottom: 1em;
+}
+
+.add-member {
+	height:100%; 
+	width: 100%;
+}
+
+.signup-avatars {
+	height:90px; 
+	width:90px;
+	margin: 0 10px 10px 10px;
+}
+
+.avatar-area {
+    width: 650px;
+     margin-left: 300px;
+}
+
+.signup-buttons {
+	width: 333px;
+    margin-left: -5px;
+    margin-top: 15px;
+}
+
+#last-button {
+    margin-bottom: 50px;
+}

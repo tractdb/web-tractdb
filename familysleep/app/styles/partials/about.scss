@@ -1,0 +1,29 @@
+/*=======================================================================
+** About Page
+=========================================================================
+*/
+
+.singleview-container {
+	background: url("../images/paper.png");
+  	background-repeat: no-repeat;
+  	background-size: contain;
+  	color: black;
+  	width: 500px;
+  	height: 500px;
+  	display:block;
+  	margin:auto;
+}
+
+.singleview-container p {
+	font-size: 115%;
+}
+
+#aboutus-contents {
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 130px;
+}
+
+#aboutus-contents a {
+	text-decoration: underline;
+}
