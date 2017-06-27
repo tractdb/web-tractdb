@@ -1,0 +1,28 @@
+{
+	"data": [{
+		"name": "Rob",
+		"targetedHours": 9,
+		"profilePic": "images/avatars/momcircle.png",
+		"relation": "parent1",
+		"id": "mom"
+	}, {
+		"name": "Pat",
+		"targetedHours": 8,
+		"profilePic": "images/avatars/dadcircle.png",
+		"relation": "parent2",
+		"id": "dad"
+	}, {
+		"name": "JR",
+		"targetedHours": 10,
+		"profilePic": "images/avatars/girlcircle.png",
+		"relation": "child1",
+		"id": "child1"
+
+	}, {
+		"name": "AJ",
+		"targetedHours": 10,
+		"profilePic": "images/avatars/boycircle.png",
+		"relation": "child2",
+		"id": "child2"
+	}]
+}

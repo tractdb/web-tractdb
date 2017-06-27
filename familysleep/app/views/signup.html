@@ -1,0 +1,143 @@
+<div class="signup-container" ng-controller="SignupCtrl">
+	
+<!-- Signup as a new family -->
+	<div class="col-md-12" ng-show='!isAddMemberForm'>
+		<h3 >Signup as a New Family!</h3>
+		<hr>
+		<br>
+	
+		<div class="signup-form" >
+		
+		<form class="form-horizontal">
+		<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="famId">Family ID</label>  
+				<div class="col-md-5">
+				<input id="famId" name="famId" ng-model="signup.user.famId" type="text" placeholder="0000" class="form-control input-md">
+					
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="lastname">Family Last Name</label>  
+				<div class="col-md-5">
+				<input id="lastname" name="lastname" ng-model="signup.user.lastname" type="text" placeholder="Morrison" class="form-control input-md">
+					
+				</div>
+			</div>
+
+			<!-- Password input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="password1">Password</label>
+				<div class="col-md-5">
+					<input id="password1" name="password1" ng-model="signup.user.password1" type="password" placeholder="" class="form-control input-md">
+				</div>
+			</div>
+
+			<!-- Password input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="password2">Retype Password</label>
+				<div class="col-md-5">
+					<input id="password2" name="password2" ng-model="signup.user.password2" type="password" placeholder="" class="form-control input-md">
+				</div>
+			</div>
+		</form>
+
+		<label class="col-md-4 control-label" for="signup"></label>
+		<div class="col-md-5">
+			<button ng-click="signup.addMembers()" id="addMembers" name="addMembers" class="signup-buttons btn btn-success btn-block">Add Members!</button>
+		</div>
+
+		<label class="col-md-4 control-label" for="signup"></label>
+		<div class="col-md-5">
+			<button ng-click="signup.cancel()" id="cancel" name="cancel" class="signup-buttons btn btn-success btn-block">Cancel</button>
+		</div>
+	</div>
+	</div>
+
+
+<!-- Add A New Family Member -->
+	<div class="col-md-12" ng-show='isAddMemberForm' >
+		<h3 >Add A New Family Member</h3>
+		<hr>
+		<br>
+		<div class="add-member">
+				<form class="form-horizontal">
+
+				<div class="add-member">
+					<form class="form-horizontal">
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="name">Name</label>  
+						<div class="col-md-5">
+						<input id="name" name="name" ng-model="member.name" type="text" placeholder="Jack" class="form-control input-md">	
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="type">Type of Family Member</label>  
+						<div class="col-md-5">
+						<input id="type" name="type" ng-model="member.type" type="text" placeholder="Dad" class="form-control input-md">			
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="profilePic">Profile Picture</label>
+						<ul class="avatar-area list-inline"> <!--IMPROVE LIST STYLE IN CSS-->
+				      <li ng-repeat="item in profilePicItems">
+				        <div>
+				          <img class="signup-avatars" ng-src="{{item.path}}" alt="{{item.name}}" ng-click="$event.preventDefault(); member.profilePic = item.path;">
+				        </div>
+				       <!--  <div class="mood-name">
+				          <a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item; $ctrl.buttonState=$ctrl.buttonState+1">{{item.name}}</a>
+				        </div> -->
+				      </li>
+			      </ul>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="fitbitId">Fitbit ID</label>
+						<div class="col-md-5">
+							<input id="fitbitId" name="fitbitId" ng-model="member.fitbitId" placeholder="" class="form-control input-md">
+							
+						</div>
+					</div>
+				</form>
+
+				<label class="col-md-4 control-label" for="signup"></label>
+				<div class="col-md-5">
+					<button ng-click="signup.addNewMember()" id="addMember" name="addMember" class="signup-buttons btn btn-success btn-block">Add New Member!</button>
+				</div>
+
+				<label class="col-md-4 control-label" for="signup"></label>
+				<div class="col-md-5">
+					<button ng-click="signup.cancel()" id="addMember" name="addMember" class="signup-buttons btn btn-success btn-block">Cancel</button>
+				</div>
+
+				<label class="col-md-4 control-label" for="signup"></label>
+				<div class="col-md-5" id="last-button">
+					<button ng-click="signup.submit()" id="submit" name="submit" class="signup-buttons btn btn-success btn-block">Done!</button>
+				</div>
+
+			</div>	
+		</div>
+	</div>
+
+	<div>
+		
+	</div>
+
+		<!-- Button -->
+<!-- 	<div class="col-md-12">
+			<h3 class="signup-header">Done!</h3>
+		<hr>
+		<br>
+		<label class="col-md-4 control-label" for="signup"></label>
+		<div class="col-md-5">
+			<button ng-click="signup.submit()" id="signup" name="signup" class="btn btn-success btn-block">Signup!</button>
+		</div>
+	</div>
+ -->
