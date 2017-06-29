@@ -9,7 +9,7 @@
 angular.module('FamilySleep')
   .directive('datePicker', ['$rootScope', function ($rootScope) {
     return {
-      templateUrl: '../../views/datePicker.html',
+      templateUrl: 'app/views/datePicker.html',
       //restrict: 'E',
       // link: function postLink(scope, element, attrs) {
       //   element.text('this is the datePicker directive');

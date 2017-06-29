@@ -35,35 +35,35 @@ angular
 
     $routeProvider
       .when('/', {
-        templateUrl: 'views/familydailyview.html',
+        templateUrl: 'app/views/familydailyview.html',
         controller: 'MainCtrl'
       })
       .when('/about', {
-        templateUrl: 'views/about.html',
+        templateUrl: 'app/views/about.html',
         controller: 'AboutCtrl'
       })
       .when('/signup', {
-        templateUrl: 'views/signup.html',
+        templateUrl: 'app/views/signup.html',
         controller: 'SignupCtrl'
       })
       .when('/familydailyview', {
-        templateUrl: 'views/familydailyview.html',
+        templateUrl: 'app/views/familydailyview.html',
         controller: 'FamilydailyviewCtrl'
       })
       .when('/sdview/:id', {
-        templateUrl: 'views/sdview.html',
+        templateUrl: 'app/views/sdview.html',
         controller: 'SdviewCtrl'
       })
       .when('/singleweeklyview/:id', {
-        templateUrl: 'views/singleweeklyview.html',
+        templateUrl: 'app/views/singleweeklyview.html',
         controller: 'SingleweeklyviewCtrl'
       })
       .when('/famweeklyview', {
-        templateUrl: 'views/famweeklyview.html',
+        templateUrl: 'app/views/famweeklyview.html',
         controller: 'FamweeklyviewCtrl'
       })
       .when('/fambarview', {
-        templateUrl: 'views/fambarview.html',
+        templateUrl: 'app/views/fambarview.html',
         controller: 'FambarviewCtrl'
       })
       .otherwise({ //I want to add an error page when we don't get to the right page

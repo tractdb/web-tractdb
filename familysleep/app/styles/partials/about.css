@@ -1,0 +1,32 @@
+/*=======================================================================
+** About Page
+=========================================================================
+*/
+/* line 6, about.scss */
+.singleview-container {
+  background: url("../images/paper.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: black;
+  width: 500px;
+  height: 500px;
+  display: block;
+  margin: auto;
+}
+
+/* line 17, about.scss */
+.singleview-container p {
+  font-size: 115%;
+}
+
+/* line 21, about.scss */
+#aboutus-contents {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 130px;
+}
+
+/* line 27, about.scss */
+#aboutus-contents a {
+  text-decoration: underline;
+}

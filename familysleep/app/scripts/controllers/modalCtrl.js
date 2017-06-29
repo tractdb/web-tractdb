@@ -8,25 +8,25 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
 
 	var moodImages = [
 		{	name:'Happy',
-			image:'images/faces/happy.png'
+			image:'app/images/faces/happy.png'
 		},
 		{	name:'Sleepy',
-			image: 'images/faces/sleepy.png'
+			image: 'app/images/faces/sleepy.png'
 		},
 		{	name:'Tired',
-		 	image:'images/faces/tired.png'
+		 	image:'app/images/faces/tired.png'
 		},
 		{	name:'Rested',
-		 	image:'images/faces/rested.png'
+		 	image:'app/images/faces/rested.png'
 		},
 		{	name:'In Pain',
-		 	image:'images/faces/pain.png'
+		 	image:'app/images/faces/pain.png'
 		},
     { name:'OK',
-      image:'images/faces/ok.png'
+      image:'app/images/faces/ok.png'
     },
     { name:'Had a nightmare',
-      image: 'images/faces/nightmare.png'
+      image: 'app/images/faces/nightmare.png'
     }];
   $ctrl.items = moodImages;
 	
