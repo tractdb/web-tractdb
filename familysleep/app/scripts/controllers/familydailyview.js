@@ -27,7 +27,7 @@
           image: selfReportState.mom.image,
           name: "mom",
           pid: "f1m1",
-          avatar: "images/avatars/momcircle.png"
+          avatar: "app/images/avatars/momcircle.png"
         },
         dad: {
           type: "family",
@@ -36,7 +36,7 @@
           image: selfReportState.dad.image,
           name: "dad",
           pid: "f1m2",
-          avatar: "images/avatars/dadcircle.png"
+          avatar: "app/images/avatars/dadcircle.png"
         },
         girl: {
           type: "family",
@@ -45,7 +45,7 @@
           image: selfReportState.child1.image,
           name: "child1",
           pid: "f1m3",
-          avatar: "images/avatars/girlcircle.png"
+          avatar: "app/images/avatars/girlcircle.png"
         },
         boy: {
           type: "family",
@@ -54,7 +54,7 @@
           mood: selfReportState.child2.mood,
           image: selfReportState.child2.image,
           name: "child2",
-          avatar: "images/avatars/boycircle.png"
+          avatar: "app/images/avatars/boycircle.png"
         }
       };
       /***old member of familyInfo

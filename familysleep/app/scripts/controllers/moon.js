@@ -12,7 +12,7 @@ angular.module('FamilySleep')
   	function ($scope, $rootScope, famDailySleep, dateFactory) {
 
 
-    $scope.moonImage = 'images/moons/moon7a.png';
+    $scope.moonImage = 'app/images/moons/moon7a.png';
 
     $rootScope.$on('familydailyview:updated', function() {
       updateMoon();
@@ -30,17 +30,17 @@ angular.module('FamilySleep')
 		var percentage = avgSleep/24; // would be their total targetsleephours divided by i
 		console.log(percentage);
 		if(percentage < (1/6)) {
-			$scope.moonImage = 'images/moons/moon7a.png';
+			$scope.moonImage = 'app/images/moons/moon7a.png';
 		} else if (percentage < (2/6)) {
-			$scope.moonImage = 'images/moons/moon6.png';
+			$scope.moonImage = 'app/images/moons/moon6.png';
 		} else if (percentage < (3/6)) {
-			$scope.moonImage = 'images/moons/moon5.png';
+			$scope.moonImage = 'app/images/moons/moon5.png';
 		} else if (percentage < (4/6)) {
-			$scope.moonImage = 'images/moons/moon4.png';
+			$scope.moonImage = 'app/images/moons/moon4.png';
 		} else if (percentage < (5/6)) {
-			$scope.moonImage = 'images/moons/moon3.png';
+			$scope.moonImage = 'app/images/moons/moon3.png';
 		} else {
-			$scope.moonImage = 'images/moons/moon2.png';
+			$scope.moonImage = 'app/images/moons/moon2.png';
 		}
 
 

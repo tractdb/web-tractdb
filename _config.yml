@@ -48,3 +48,6 @@ exclude:
   - secrets
   # Tests
   - tests
+
+  # FAMILYSLEEPTEMP
+  - familysleep/node_modules

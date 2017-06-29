@@ -14,7 +14,7 @@ angular.module('FamilySleep')
       //     //@ reads the attribute value, = provides two-way binding, & works with functions
       //     title: '@'         },
 
-      templateUrl: '../../views/recorder.html',
+      templateUrl: 'app/views/recorder.html',
       //Embed a custom controller in the directive
       controller: function($scope, $window, $http) {
         $scope.instruction = "Tap to record";

@@ -2,7 +2,7 @@
 <div class="sound-recorder">
     <!-- only want to show microphone when nothing has been recorded -->
     <md-button class="md-fab" ng-if="recordStoppedClear" ng-click="onRecord()" aria-label="start-clean-button">
-      <img class="recorder-logo" src="../images/recorder/sound_recorder.png">
+      <img class="recorder-logo" src="app/images/recorder/sound_recorder.png">
     </md-button>
 
     <div class="recorder-info" ng-if="recordStoppedClear">
@@ -12,7 +12,7 @@
      <!-- only show play when record is paused -->
   <div class="record-button" ng-if="recordPausing">
     <md-button class="md-fab"  ng-click="onResume()" aria-label="start-button">
-      <img class="recorder-logo" src="../images/recorder/start.png">
+      <img class="recorder-logo" src="app/images/recorder/start.png">
     </md-button>
     <div class="record-descrip">
       Resume
@@ -22,7 +22,7 @@
      <!-- only show pause when record is recording -->
   <div class="record-button" ng-if="recordRecording">
     <md-button class="md-fab" ng-click="onPause()" aria-label="pause-button">
-      <img class="recorder-logo" src="../images/recorder/pause.png">
+      <img class="recorder-logo" src="app/images/recorder/pause.png">
     </md-button>
     <div class="record-descrip">
       Pause
@@ -50,7 +50,7 @@
 
   <div class="record-button" ng-if="recordStopped">
     <md-button class="md-fab" ng-click="onReplayRecord()" aria-label="pause-button">
-      <img class="recorder-logo" src="../images/recorder/replay.png">
+      <img class="recorder-logo" src="app/images/recorder/replay.png">
     </md-button>
     <div class="record-descrip">
       Replay
@@ -60,7 +60,7 @@
   <!-- only show stop when record is recording or paused -->
   <div class="record-button" ng-if="!recordStopped && !recordStoppedClear">
     <md-button class="md-fab" ng-click="onStopRecord()" aria-label="pause-button">
-      <img class="recorder-logo" src="../images/recorder/stop.png">
+      <img class="recorder-logo" src="app/images/recorder/stop.png">
     </md-button>
     <div class="record-descrip">
       Stop
@@ -76,7 +76,7 @@
    <!-- only show upload and delete when record is paused -->
    <div class="record-button" ng-if="recordPausing || recordStopped">
      <md-button class="md-fab"  ng-click="onDelete()" aria-label="delete-button">
-       <img class="recorder-logo" src="../images/recorder/delete.png">
+       <img class="recorder-logo" src="app/images/recorder/delete.png">
      </md-button>
      <div class="record-descrip">
        Delete
@@ -85,7 +85,7 @@
 
    <div class="record-button" ng-if="recordStopped">
      <md-button class="md-fab" ng-click="onSendRecord()" aria-label="upload-button">
-       <img class="recorder-logo" src="../images/recorder/upload.png">
+       <img class="recorder-logo" src="app/images/recorder/upload.png">
      </md-button>
      <div class="record-descrip">
        Send
