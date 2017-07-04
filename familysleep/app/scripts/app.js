@@ -24,6 +24,7 @@ angular
     'ngMaterial',
     'LocalStorageModule',
     'ngSanitize',
+    'tractdb.config'
   ])
   .config(function ($routeProvider, $locationProvider, localStorageServiceProvider) {
     //can't get the removing hash to work
