@@ -39,7 +39,7 @@
 
  */
 angular.module('FamilySleep')
-  .factory('personaFactory', ['$http', 'localStorageService', function ($http, localStorageService) {
+  .factory('personaFactory', ['$http', 'localStorageService', 'BASEURL_PYRAMID', function ($http, localStorageService, BASEURL_PYRAMID) {
     // Service logic
     // ...
     //array holding all the profiles, structure is set above
@@ -50,7 +50,12 @@ angular.module('FamilySleep')
     var retrieveProfiles = function() {
       //get file for profiles and update them 
       //console.log("at persona Factory");
-        return $http({method:'GET', url: 'data/persona.json' })
+        return $http(
+            {
+                method: 'GET',
+                url: BASEURL_PYRAMID + '/document/familysleep_personas'
+            }
+        )
         .then(function (response) {
           // this callback will be called asynchronously
           // when the response is available
@@ -84,7 +89,7 @@ angular.module('FamilySleep')
     }
 
     var populate = function(temp_data) {
-      profiles = temp_data.data;
+      profiles = temp_data.personas;
       /*console.log("in populate part of the personaFactory");
       console.log(profiles);*/  
     }
