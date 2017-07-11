@@ -55,7 +55,7 @@ module.factory(
             //
             // Retrieve our personas data, schedule our next retrieve
             //
-            factory._retrievePersonas = function () {
+            factory.retrieveData = function () {
                 $http(
                     {
                         method: 'GET',
@@ -78,10 +78,10 @@ module.factory(
             factory._nextRetrievePromise = null;
 
             factory.observe = function (scope, callback) {
-                var deregister = $rootScope.$on('personaFactory-personas', callback);
+                var deregister = $rootScope.$on('personaFactory-data', callback);
 
                 factory._numberObservers += 1;
-                factory._retrievePersonas();
+                factory.retrieveData();
 
                 scope.$on('$destroy', function () {
                     deregister();
@@ -95,7 +95,7 @@ module.factory(
             }
 
             factory._notify = function () {
-                $rootScope.$emit('personaFactory-personas');
+                $rootScope.$emit('personaFactory-data');
             }
 
             //
@@ -104,14 +104,14 @@ module.factory(
             factory._scheduleNextRetrieve = function () {
                 $timeout.cancel(factory._nextRetrievePromise);
                 if (factory._numberObservers > 0) {
-                    factory._nextRetrievePromise = $timeout(factory._retrievePersonas, 30 * 1000);
+                    factory._nextRetrievePromise = $timeout(factory.retrieveData, 3 * 1000);
                 }
             };
 
             //
             // Initial retrieval
             //
-            factory._retrievePersonas();
+            factory.retrieveData();
 
             return factory;
         }

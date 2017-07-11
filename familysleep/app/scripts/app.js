@@ -35,7 +35,8 @@ angular
             })
             .when('/familydailyview', {
                 templateUrl: 'app/views/familydailyview.html',
-                controller: 'FamilydailyviewCtrl'
+                controller: 'FamilyDailyViewCtrl',
+                controllerAs: 'viewModel'
             })
             .when('/sdview/:id', {
                 templateUrl: 'app/views/sdview.html',
