@@ -100,7 +100,7 @@ class TestFamilySleepData:
                 'm1': {
                     'name': 'Rob',
                     'targetedHours': 9,
-                    'profilePic': 'images/avatars/momcircle.png',
+                    'profilePic': 'app/images/avatars/momcircle.png',
                     'relation': 'parent',
                     'pid': 'm1',
                     'fitbit': '4KBZLY'
@@ -108,7 +108,7 @@ class TestFamilySleepData:
                 'm2': {
                     'name': 'Pat',
                     'targetedHours': 8,
-                    'profilePic': 'images/avatars/dadcircle.png',
+                    'profilePic': 'app/images/avatars/dadcircle.png',
                     'relation': 'parent',
                     'pid': 'm2',
                     'fitbit': '4KB123'
@@ -116,7 +116,7 @@ class TestFamilySleepData:
                 'm3': {
                     'name': 'JR',
                     'targetedHours': 10,
-                    'profilePic': 'images/avatars/girlcircle.png',
+                    'profilePic': 'app/images/avatars/girlcircle.png',
                     'relation': 'child',
                     'pid': 'm3',
                     'fitbit': '4KATL6'
@@ -125,7 +125,7 @@ class TestFamilySleepData:
                 'm4': {
                     'name': 'AJ',
                     'targetedHours': 10,
-                    'profilePic': 'images/avatars/boycircle.png',
+                    'profilePic': 'app/images/avatars/boycircle.png',
                     'relation': 'child',
                     'pid': 'm4',
                     'fitbit': '22TL6D'
