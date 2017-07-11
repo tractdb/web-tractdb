@@ -10,7 +10,10 @@
  angular.module('FamilySleep')
   .controller('FamilydailyviewCtrl', ['$scope', '$rootScope', 'tractdbdata', 'sleepFamDailyDataFactory', 'dateFactory', 'selfReportState', 'personaFactory',
     function($scope, $rootScope, dbdata, famDailySleep, dateFactory, selfReportState, personaFactory){
-      
+      var temp_notify = function () {
+          console.log('notify')
+      }
+        personaFactory.observe($scope, temp_notify);
       //personaFactory.retrieveProfiles();
       //console.log(personaFactory.profiles);
       /*
