@@ -127,6 +127,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
               console.log('writing to local storage family Infoworked!-------------------------');
             }*/
 			$scope.isAddMemberForm = true;
+			personaFactory.getProfilesfromDB();
 		}
 
 		signup.cancel = function() {
@@ -167,17 +168,15 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			console.log("testing all personas were added");
 			var profiles = personaFactory.getAllProfiles();
 			console.log(profiles);
-
+			//personaFactory.writeToDB();
+			//personaFactory.getProfilesfromDB();
+			personaFactory.putProfilesToDB();
+			changeView();
+			//personaFactory.postProfilesToDB();
 			/*DON'T NEED this anymore
-			var result = localStorageService.set('FamilyProfiles', profiles);
-            if(result) {
-              console.log('wrote profiles to localStorageService!-------------------------');
-            }
-            */
-
 			//personaFactory.setProfiles(members);
 			//signup.cancel();
-			changeView();
+			
 			//WRITING TO SERVER
 			/*
 			// Make the request to the server ... which doesn't exist just yet
