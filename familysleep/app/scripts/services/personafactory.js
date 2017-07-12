@@ -92,7 +92,12 @@ module.factory(
                         factory._nextRetrievePromise = null;
                     }
                 });
-              }
+            }
+            
+            factory._notify = function () {		
+                $rootScope.$emit('personaFactory-data');		
+            }
+            
             //
             // Schedule another retrieve, if anybody is listening
             //
