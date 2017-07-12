@@ -93,11 +93,11 @@ module.factory(
                     }
                 });
             }
-            
-            factory._notify = function () {		
-                $rootScope.$emit('personaFactory-data');		
+
+            factory._notify = function () {
+                $rootScope.$emit('personaFactory-data');
             }
-            
+
             //
             // Schedule another retrieve, if anybody is listening
             //
