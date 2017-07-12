@@ -14,7 +14,34 @@
  /***TODO: need to figure out how to make the object as know how many families OR to have an object with four fields? **/
 angular.module('FamilySleep')
   .factory('selfReportState', ['dateFactory', 'personaFactory', function (dateFactory, personaFactory) {
-    var states =  {
+    var states = {};
+
+    //NEED TO UPDATE THIS
+    /*var states =  {
+        date: "2016-05-3",
+        m1: {
+            state: false,
+            mood: null,
+            image: null
+        },
+        m2: {
+            state: false,
+            mood: null,
+            image: null
+        },
+        m3: {
+            state:false,
+            mood: null,
+            image: null
+        },
+        m3: {
+            state: false,
+            mood: null,
+            image: null
+        }
+    };*/
+
+    /*var states =  {
         mom: {
             state: false,
             mood: null,
@@ -35,23 +62,53 @@ angular.module('FamilySleep')
             mood: null,
             image: null
         }
-    };  
+    };*/
 
-    return states;
-/*
-    var states = {};
-    this.intialize = function(){
-        var d = personaFactory.getDateString();
-        var 
+    var intializeAll = function (pids){
+        for (var i = pids.length - 1; i >= 0; i--) {
+            var id = pids[i];
+            states[id].state = false;
+            states[id].mood = null;
+            states[id].image = null;
+        }
+        console.log("in initializeAll selfReportState");
+        console.log(states);
     }
 
-    var getStates = function(){
+    var initializeSingle = function(id){
+        states[id] = {};
+        states[id]['state'] = false;
+        states[id]['mood'] = null;
+        states[id]['image'] = null;
+        /*console.log("in initializeSingle selfReportState");
+        console.log(states);*/
+    }
+
+    var getAllMoods = function(){
         return states;
     }
 
-    this.intialize();
+    var setMood = function(id, mood, image){
+        if(states.hasOwnProperty(id)){
+            states[id].mood = mood;
+            states[id].image = image;
+            states[id].state = true;
+        }
+    }
+
+    var clearAll = function(){
+        for (var prop in states) {
+            if (obj.hasOwnProperty(prop)) {
+                delete obj[prop];
+            }
+        }   
+    }
+
     return {
-        getStates: getStates
-    };
-    */
+        intializeAll: intializeAll,
+        initializeSingle: initializeSingle,
+        getAllMoods: getAllMoods,
+        setMood: setMood,
+        clearAll: clearAll
+    }
 }]);

@@ -37,7 +37,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
   $ctrl.famIDs = personaFactory.getAllIDs();
 	$ctrl.animationsEnabled = true;
   /**asigning selfReportState factory to states to have access in the viewer*/
-  $ctrl.states = selfReportState;
+  $ctrl.states = selfReportState.getAllMoods();
   $ctrl.famID;
 
   /*var profiles = personaFactory.getAllProfiles();
@@ -87,8 +87,10 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       $ctrl.states[famID].state = selfReportState[famID].state = true;
       console.log("printing on family member sleep object");
       console.log(sleepFamDailyDataFactory.famID);
-      $ctrl.states[famID].mood = selfReportState[famID].mood = selectedItems.selected.name;
-      $ctrl.states[famID].image = selfReportState[famID].image = selectedItems.selected.image;
+      $ctrl.states[famID].state = true;
+      $ctrl.states[famID].mood = selectedItems.selected.name;
+      $ctrl.states[famID].image = selectedItems.selected.image;
+      selfReportState.setMood(famID, selectedItems.selected.name, selectedItems.selected.image);
 
       $log.info("******in modalsIntance result");
       //$log.info(selectedItems.selected);
