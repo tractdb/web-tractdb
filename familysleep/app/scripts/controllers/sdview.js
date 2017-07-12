@@ -24,17 +24,17 @@
     $rootScope.menu = [
       {
           title: 'Back',
-          url: '#!/familydailyview',
+          url: 'familydailyview',
           tag: 'family-daily-view'
       },
       {
           title: 'Individual Daily View',
-          url: '#!/sdview/' + $scope.id,
+          url: 'sdview/' + $scope.id,
           tag: 'individual-daily-view'
       },
       {
           title: 'Individual Weekly View',
-          url: '#!/singleweeklyview/' + $scope.id,
+          url: 'singleweeklyview/' + $scope.id,
           tag: 'individual-weekly-view'
       }
     ];
