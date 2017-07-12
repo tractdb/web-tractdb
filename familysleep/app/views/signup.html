@@ -78,10 +78,16 @@
 
 					<!-- Text input-->
 					<div class="form-group">
-						<label class="col-md-4 control-label" for="type">Type of Family Member</label>  
-						<div class="col-md-5">
-						<input id="type" name="type" ng-model="member.type" type="text" placeholder="Dad" class="form-control input-md">			
+						<label class="col-md-4 control-label" for="type">Type of Family Member</label>
+						<div class="col-md-5" ng-repeat="famType in famTypes">
+							<input type="radio" ng-model="member.type" ng-value="famType" name="famType" id="{{famType}}">
+							<label >{{famType || 'Other'}}</label>
+							<input type="text" ng-model="member.type" ng-show="famType ==''"placeholder="Aunt" style="color: black;">
 						</div>
+						<!--<input type="radio" ng-model="famType" ng-value="famType" id="{{famType}}" name="famType" >-->
+						<!--<div class="col-md-5">
+						<input id="type" name="type" ng-model="member.type" type="text" placeholder="Dad" class="form-control input-md">			
+						</div>-->
 					</div>
 
 					<div class="form-group">
@@ -114,7 +120,7 @@
 
 				<label class="col-md-4 control-label" for="signup"></label>
 				<div class="col-md-5">
-					<button ng-click="signup.cancel()" id="addMember" name="addMember" class="signup-buttons btn btn-success btn-block">Cancel</button>
+					<button ng-click="signup.cancelFromMember()" id="addMember" name="addMember" class="signup-buttons btn btn-success btn-block">Cancel</button>
 				</div>
 
 				<label class="col-md-4 control-label" for="signup"></label>

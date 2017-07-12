@@ -8065,7 +8065,7 @@ md-icon svg path {
 #swv-legend>li:nth-child(even){
     margin-right:10px; 
     font-size: 12px;
-}ΓÇï
+}​
 */
 /* line 31, partials/singleweeklyview.scss */
 #swv-legend li:nth-child(2),
@@ -8186,7 +8186,7 @@ md-icon svg path {
 =========================================================================
 */
 /* line 6, partials/about.scss */
-.singleview-container {
+.aboutus-container {
   background: url("../images/paper.png");
   background-repeat: no-repeat;
   background-size: contain;
