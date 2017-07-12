@@ -130,12 +130,12 @@ module.controller(
             $rootScope.menu = [
                 {
                     title: 'Family Daily View',
-                    url: '#!/familydailyview',
+                    url: 'familydailyview',
                     tag: 'family-daily-view',
                 },
                 {
                     title: 'Family Weekly View',
-                    url: '#!/famweeklyview',
+                    url: 'famweeklyview',
                     tag: 'family-weekly-view',
                 }
             ];
