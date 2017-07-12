@@ -22,7 +22,8 @@ angular
         $routeProvider
             .when('/', {
                 templateUrl: 'app/views/familydailyview.html',
-                controller: 'MainCtrl'
+                controller: 'FamilyDailyViewCtrl',
+                controllerAs: 'viewModel'
             })
             .when('/about', {
                 templateUrl: 'app/views/about.html',
