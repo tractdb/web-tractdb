@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('FamilySleep') // make sure this is set to whatever it is in your client/scripts/app.js
-	.controller('SignupCtrl', ['localStorageService', '$scope', '$http', '$sanitize', '$location', 'personaFactory', 'selfReportState',
-	function (localStorageService, $scope, $http, $sanitize, $location, personaFactory, selfReportState) { // note the added $http depedency
+	.controller('SignupCtrl', ['$scope', '$http', '$sanitize', '$location', 'personaFactory', 'selfReportState',
+	function ($scope, $http, $sanitize, $location, personaFactory, selfReportState) { // note the added $http depedency
 		
 		// Here we're creating some local references
 		// so that we don't have to type $scope every
