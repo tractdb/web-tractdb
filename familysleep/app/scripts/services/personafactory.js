@@ -1,5 +1,6 @@
 'use strict';
 
+<<<<<<< HEAD
 // "personas": {
 //     "m1": {
 //         "name": "Rob",
@@ -92,10 +93,6 @@ module.factory(
                         factory._nextRetrievePromise = null;
                     }
                 });
-            }
-
-            factory._notify = function () {
-                $rootScope.$emit('personaFactory-data');
             }
 
             //
