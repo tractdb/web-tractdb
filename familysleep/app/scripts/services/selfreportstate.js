@@ -14,7 +14,8 @@
  /***TODO: need to figure out how to make the object as know how many families OR to have an object with four fields? **/
 angular.module('FamilySleep')
   .factory('selfReportState', ['dateFactory', 'personaFactory', function (dateFactory, personaFactory) {
-    var states = {};
+    var factory = {};
+    factory.states = {};
 
     //NEED TO UPDATE THIS
     /*var states =  {
