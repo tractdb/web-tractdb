@@ -47,6 +47,8 @@ module.factory(
         function ($rootScope, $http, $timeout, BASEURL_PYRAMID) {
             var factory = {};
 
+            var doc_id = null;
+            var doc_rev = null;
             //
             // Our personas data from the server
             //
@@ -63,12 +65,64 @@ module.factory(
                     }
                 ).then(function (response) {
                     factory.personas = response.data.personas;
+                    doc_id = response.data._id;
+                    doc_rev = response.data._rev;
                     factory._notify();
                 }).catch(function () {
+                  //error message
 
                 }).finally(function () {
+                    //
                     factory._scheduleNextRetrieve();
                 });
+            };
+
+            /*
+              setting the personas data.
+            */
+            factory.setData = function(new_personas) {
+                $http(
+                    {
+                      method: 'GET',
+                      url: BASEURL_PYRAMID + '/document/familysleep_personas'
+                    }
+                ).then(function success(response){
+                    var old_personas = response.data.personas;
+                    doc_id = response.data._id;
+                    doc_rev = response.data._rev;
+                    //console.log("doc_rev at GET from setData");
+                    //console.log(doc_rev);
+                    factory.personas = new_personas;
+                    var new_doc = {
+                        "_id": doc_id,
+                        "_rev": doc_rev,
+                        "personas": new_personas
+                    };
+                    console.log("printing obj for PUT");
+                    console.log(new_doc);
+                    //now doing the PUT
+                    //embedding PUT in GET this doesn't seem the right logic
+                    $http(
+                        {
+                            method: 'PUT',
+                            url: BASEURL_PYRAMID + '/document/familysleep_personas',
+                            data: new_doc
+                        }
+                    ).then(function success(response){
+                        doc_id = response.data._id;
+                        doc_rev = response.data._rev;
+                        //console.log("rev of the PUT");
+                        //console.log(doc_rev);
+                    }, function erroCallback(response){
+                        console.log("error in the PUT");
+                        console.log(response.code);
+                    });
+
+              }, function erroCallback(response){
+                    console.log("error" + response.code);
+                    console.log("error text" + response.statusText);
+              });
+
             };
 
             //
@@ -104,14 +158,16 @@ module.factory(
             factory._scheduleNextRetrieve = function () {
                 $timeout.cancel(factory._nextRetrievePromise);
                 if (factory._numberObservers > 0) {
-                    factory._nextRetrievePromise = $timeout(factory.retrieveData, 3 * 1000);
+                    //factory._nextRetrievePromise = $timeout(factory.retrieveData, 3 * 1000);
                 }
             };
 
             //
             // Initial retrieval
             //
+            //TBD if I need this
             factory.retrieveData();
+            //factory.setData(factory.personas);
 
             return factory;
         }

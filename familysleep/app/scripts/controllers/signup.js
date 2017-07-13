@@ -18,7 +18,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 		$scope.member = member;
 		$scope.signup = signup = {};
 		$scope.signup.user = user = {};
-		$scope.signup.user.members = members = []; //might want to make this an object
+		//$scope.signup.user.members = members = []; //might want to make this an object
 		//$scope.members = [];
 		$scope.isAddMemberForm = false; //change it back to false
 		$scope.profilePicItems = [
@@ -88,11 +88,16 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			//console.log("inadd New Member")
 			//console.log(member);
 			var newMember = angular.copy(member);
-			members.push(newMember);
-			personaFactory.setProfile(newMember);
-			selfReportState.initializeSingle(newMember.pid);
-			//console.log("inadd New Member == members")
-			//console.log(members);
+			if(Object.keys(personaFactory.personas).length == 0){
+				personaFactory.personas = newMember;	
+			} else {
+				members.push(newMember);
+				personaFactory.personas.push(newMember);	
+			}
+			
+			//selfReportState.initializeSingle(newMember.pid);
+			console.log("inadd New Member == members")
+			console.log(personaFactory.personas);
 			//console.log("user family");
 			//console.log(user);
 			member.name = "";
@@ -102,7 +107,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			member.pid = "";
 		}
 
-		signup.addMembers = function() {
+		signup.addFamily = function() {
 			if (
 				!user.famId ||
 				!user.lastname ||
@@ -127,7 +132,8 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
               console.log('writing to local storage family Infoworked!-------------------------');
             }*/
 			$scope.isAddMemberForm = true;
-			personaFactory.getProfilesfromDB();
+			personaFactory.personas = {};
+			//personaFactory.retrieveData();
 		}
 
 		signup.cancel = function() {
@@ -146,9 +152,9 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			user.password2 = '';
 			$scope.isAddMemberForm = false;
 			$scope.members = [];
-			//need to clear things.
-			selfReportState.clearAll();
-			personaFactory.clearAll();
+			//need to clear factory fields
+			personaFactory.personas = {};
+			selfReportState.states = {};
 		}
 
 		// This is our method that will post to our server.
@@ -158,6 +164,14 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			// aren't you glad you're not typing out
 			// $scope.signup.user.firstname everytime now??
 			signup.addNewMember();
+			console.log("testing all personas were added before PUT");
+			var profiles = personaFactory.personas;
+			console.log(profiles);
+
+			console.log("after the PUT");
+			personaFactory.setData(profiles);
+			var profiles = personaFactory.personas;
+			console.log(profiles);
 			//console.log("in SignupCtrl where $scope.signup");
 			//console.log($scope.signup);
 			//var json = JSON.stringify($scope.signup);
@@ -165,12 +179,10 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			//console.log(json);
 			//console.log("members in submit function");
 			//console.log(members);
-			console.log("testing all personas were added");
-			var profiles = personaFactory.getAllProfiles();
-			console.log(profiles);
+			
 			//personaFactory.writeToDB();
 			//personaFactory.getProfilesfromDB();
-			personaFactory.putProfilesToDB();
+			
 			changeView();
 			//personaFactory.postProfilesToDB();
 			/*DON'T NEED this anymore
