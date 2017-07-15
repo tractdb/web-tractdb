@@ -1,44 +1,51 @@
 'use strict';
 /*** TODO need to add mood selected to the sleep object **/
-angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibModal', '$log', '$document', 'tractdbdata', 'personaFactory', 'sleepFamDailyDataFactory', 'dateFactory',
-  function(selfReportState, $uibModal, $log, $document, tractdbdata, personaFactory, sleepFamDailyDataFactory, dateFactory){
-  var templateDir = 'views/templates/';
-	var $ctrl = this;
-  $ctrl.buttonState = 0;
+angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibModal', '$log', '$document', 'tractdbFactory', 'personaFactory', 'sleepFamDailyDataFactory', 'dateFactory',
+    function(selfReportState, $uibModal, $log, $document, tractdbdata, personaFactory, sleepFamDailyDataFactory, dateFactory){
+    var templateDir = 'app/views/templates/';
+    var $ctrl = this;
+    $ctrl.buttonState = 0;
 
-	var moodImages = [
-		{	name:'Happy',
-			image:'app/images/faces/happy.png'
-		},
-		{	name:'Sleepy',
-			image: 'app/images/faces/sleepy.png'
-		},
-		{	name:'Tired',
-		 	image:'app/images/faces/tired.png'
-		},
-		{	name:'Rested',
-		 	image:'app/images/faces/rested.png'
-		},
-		{	name:'In Pain',
-		 	image:'app/images/faces/pain.png'
-		},
-    { name:'OK',
-      image:'app/images/faces/ok.png'
-    },
-    { name:'Had a nightmare',
-      image: 'app/images/faces/nightmare.png'
-    }];
-  $ctrl.items = moodImages;
-	
-  
-  //$ctrl.famMems = ['mom', 'dad', 'child1', 'child2'];
-  $ctrl.famMems = personaFactory.getAllNames();
-  //console.log($ctrl.famMems);
-  $ctrl.famIDs = personaFactory.getAllIDs();
-	$ctrl.animationsEnabled = true;
-  /**asigning selfReportState factory to states to have access in the viewer*/
-  $ctrl.states = selfReportState.getAllMoods();
-  $ctrl.famID;
+    var moodImages = [
+    	{	name:'Happy',
+    		image:'app/images/faces/happy.png'
+    	},
+    	{	name:'Sleepy',
+    		image: 'app/images/faces/sleepy.png'
+    	},
+    	{	name:'Tired',
+    	 	image:'app/images/faces/tired.png'
+    	},
+    	{	name:'Rested',
+    	 	image:'app/images/faces/rested.png'
+    	},
+    	{	name:'In Pain',
+    	 	image:'app/images/faces/pain.png'
+    	},
+      { name:'OK',
+        image:'app/images/faces/ok.png'
+      },
+      { name:'Had a nightmare',
+        image: 'app/images/faces/nightmare.png'
+      }];
+    $ctrl.items = moodImages;
+
+      /***TODO: this need to be initialized when the personas are created. However, the way
+    personas is created right now it creates a circual dependenc (which is not possible in angular)
+    so have to initialize selfreportstate here*/
+    var pids = personaFactory.getAllIDs();
+    console.log("in ModalCrtl initialize, need pids");
+    console.log(pids);
+    selfReportState.intializeAll(pids);
+    $ctrl.famMems = personaFactory.getAllNames();
+    //console.log($ctrl.famMems);
+    $ctrl.famIDs = personaFactory.getAllIDs();
+  	$ctrl.animationsEnabled = true;
+    /**asigning selfReportState factory to states to have access in the viewer*/
+    $ctrl.states = selfReportState.states;
+    console.log("printing selfReportState object from ModalCrtl");
+    console.log($ctrl.states);
+    $ctrl.famID;
 
   /*var profiles = personaFactory.getAllProfiles();
   console.log("profiles");
@@ -61,7 +68,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       animation: $ctrl.animationsEnabled,
       ariaLabelledBy: 'modal-title',
       ariaDescribedBy: 'modal-body',
-      templateUrl: templateDir+'myModalContent.html',
+      templateUrl: templateDir+'mymodalcontent.html',
       controller: 'ModalInstanceCtrl',
       controllerAs: '$ctrl',
       windowClass:'app-modal-window',
