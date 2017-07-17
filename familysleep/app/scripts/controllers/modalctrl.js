@@ -34,16 +34,17 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
     personas is created right now it creates a circual dependenc (which is not possible in angular)
     so have to initialize selfreportstate here*/
     var pids = personaFactory.getAllIDs();
-    console.log("in ModalCrtl initialize, need pids");
-    console.log(pids);
+    //console.log("in ModalCrtl initialize, need pids");
+    //console.log(pids);
+    //TODO: this initialization should be part of the login pipeline
     selfReportState.intializeAll(pids);
     $ctrl.famMems = personaFactory.getAllNames();
     //console.log($ctrl.famMems);
     $ctrl.famIDs = personaFactory.getAllIDs();
   	$ctrl.animationsEnabled = true;
     /**asigning selfReportState factory to states to have access in the viewer*/
-    $ctrl.states = selfReportState.states;
-    console.log("printing selfReportState object from ModalCrtl");
+    $ctrl.states = selfReportState.getAllMoods();
+    console.log("printing $ctrl.states object from ModalCrtl");
     console.log($ctrl.states);
     $ctrl.famID;
 
@@ -51,12 +52,11 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
   console.log("profiles");
   console.log(profiles);*/
 
-  //this could be that now we can use 
+   
 	$ctrl.open = function (famID) {
 		$log.info("in open of ModalCrtl"); //added this might need to pass log
     console.log(famID);
-    var fam = famID;
-    $ctrl.famID = fam;
+    $ctrl.famID = famID;
     $ctrl.buttonState = 0;
     for (var i = 0; i < $ctrl.famIDs.length; i++) {
       if ($ctrl.famIDs[i] == $ctrl.famID) {
@@ -78,7 +78,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
         items: function () {
           return $ctrl.items;
         },
-        famMems: function(){ //I don't understand what this does
+        famMems: function(){
           return $ctrl.famMems;
         },
         famID: function(){
@@ -87,27 +87,31 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       }
     });
     modalInstance.result.then(function (selectedItems) {
+      //capturing the selected responses: the mood and the reporter
+      //mood
       $ctrl.selected = selectedItems.selected;
+      //source of report
       $ctrl.selectedFam = selectedItems.selectedFam;
-      var dateStr = dateFactory.getDateString();
-      //selfReportState.dateStr = {}
-      $ctrl.states[famID].state = selfReportState[famID].state = true;
-      console.log("printing on family member sleep object");
-      console.log(sleepFamDailyDataFactory.famID);
+      
+      //console.log("printing on family member sleep object");
+      //console.log(sleepFamDailyDataFactory.famID);
+      console.log("printing $ctrl.FamID");
+      console.log($ctrl.famID);
       $ctrl.states[famID].state = true;
       $ctrl.states[famID].mood = selectedItems.selected.name;
       $ctrl.states[famID].image = selectedItems.selected.image;
-      selfReportState.setMood(famID, selectedItems.selected.name, selectedItems.selected.image);
 
       $log.info("******in modalsIntance result");
+      selfReportState.setMood($ctrl.famID, selectedItems.selected.name, selectedItems.selected.image, selectedItems.selectedFam);
+      //console.log()
       //$log.info(selectedItems.selected);
       //$log.info(selectedItems.selectedFam);
-      $log.info(selectedItems.selected.name);
-      $log.info(selectedItems.selected.image);
-      $log.info("from $ctrl states");
+      //$log.info(selectedItems.selected.name);
+      //$log.info(selectedItems.selected.image);
+      /*$log.info("from $ctrl states");
       $log.info($ctrl.states[famID].state);
       $log.info($ctrl.states[famID].mood);
-      $log.info($ctrl.states[famID].image);
+      $log.info($ctrl.states[famID].image);*/
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });
@@ -120,7 +124,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
 angular.module('FamilySleep').controller('ModalInstanceCtrl', function ($uibModalInstance, items, famMems, $log, famID) {
   var $ctrl = this;
   $ctrl.items = items;
-  $ctrl.famID = famID;
+  //$ctrl.famID = famID; //not sure if we need this
   //creating an object
   /*$ctrl.selected = {
     item: $ctrl.items[0]

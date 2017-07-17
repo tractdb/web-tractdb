@@ -15,22 +15,26 @@
             m1: {
                 state: false,
                 mood: null,
-                image: null
+                image: null.
+                reporter: null
             },
             m2: {
                 state: false,
                 mood: null,
-                image: null
+                image: null,
+                reporter: null
             },
             m3: {
                 state:false,
                 mood: null,
-                image: null
+                image: null,
+                reporter: null
             },
             m4: {
                 state: false,
                 mood: null,
-                image: null
+                image: null,
+                reporter: null
             }
         }
     };
@@ -43,6 +47,10 @@ Description of each property:
     mood -> String -- describing the mood reported (null/String)
     image -> png of reported mood (null/png)
 might get rid of state and directly use mood (String) to identify if it has been set.
+    reporter -> who self-reported mood
+ */
+ /*
+    TODO: 
  */
 angular.module('FamilySleep')
   .factory('selfReportState', ['dateFactory', 'personaFactory', function (dateFactory, personaFactory) {
@@ -78,12 +86,18 @@ angular.module('FamilySleep')
             temp[id]['state'] = false;
             temp[id]['mood'] = null;
             temp[id]['image'] = null;
+            temp[id]['reporter'] = null;
         }
         factory.states[d] = temp;
-        console.log("in initializeAll selfReportState");
-        console.log(factory.states);
+        //console.log("in initializeAll selfReportState");
+        //console.log(factory.states);
     }
 
+    factory.getDate = function(){
+        //returning the root key that represents date of self-report
+        var d = Object.keys(factory.states)[0]; 
+        return d;
+    }
     //todo: this is incorrect
     /*
     factory.initializeSingle = function(id){
@@ -96,26 +110,38 @@ angular.module('FamilySleep')
     }*/
 
     factory.getAllMoods = function(){
-        return factory.states;
+        var d = factory.getDate();
+        //console.log("printing moods based on date");
+        //console.log (factory.states[d]);
+        return factory.states[d];
     }
 
-    factory.setMood = function(id, mood, image){
-        if(factory.states.hasOwnProperty(id)){
-            factory.states[id].mood = mood;
-            factory.states[id].image = image;
-            factory.states[id].state = true;
+
+    factory.setMood = function(id, mood, image, reporter){
+        var moods = factory.getAllMoods();
+        if(moods.hasOwnProperty(id)){
+            moods[id].mood = mood;
+            moods[id].image = image;
+            moods[id].state = true;
+            moods[id].reporter = reporter;
+            factory.states[id] = moods[id];
+            console.log("mood of " + id + " has been updated");
+            console.log(factory.states[id]);
         }
     }
 
+    /*TODO: THIS IS INCORRECT
+    */
+    /*
     factory.clearAll = function(){
         for (var prop in factory.states) {
             if (obj.hasOwnProperty(prop)) {
                 delete obj[prop];
             }
         }   
-    }
+    }*/
 
-  
+
     /*return {
         intializeAll: intializeAll,
         initializeSingle: initializeSingle,
