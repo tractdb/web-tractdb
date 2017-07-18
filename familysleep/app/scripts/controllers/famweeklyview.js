@@ -32,9 +32,14 @@ angular.module('FamilySleep')
     $scope.$on('date:updated', function() {
       updateData();
     });
+
+    var viewModel = this;
+    viewModel.personas = null;
+
+    viewModel.personas = personaFactory.personas;
     $scope.famWeekData;
     $scope.dateWeekStr;
-    var updateData = function () {
+    var updateData = function () {/*
       $scope.dateWeekStr = dateFactory.getWeekDateString();
       console.log("dateWeekStr");
       console.log($scope.dateWeekStr);
@@ -67,7 +72,7 @@ angular.module('FamilySleep')
           }
           //console.log($scope.famWeekData);
           $scope.labels = ['hours slept','hours awake'];
-         /*define colors here*/
+         //define colors here
          $scope.colors = ['#0000FF', '#E0E0E0'];
          $scope.options = {
               cutoutPercentage: 70
@@ -77,7 +82,7 @@ angular.module('FamilySleep')
       } else {
         alert('date factory get week didnt populate');
       }
-    }
+    */}
     updateData();
     //$scope.famWeekData = famWeeklySleep.sleep_data;
 }]);

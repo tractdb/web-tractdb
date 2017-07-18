@@ -44,8 +44,8 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
   	$ctrl.animationsEnabled = true;
     /**asigning selfReportState factory to states to have access in the viewer*/
     $ctrl.states = selfReportState.getAllMoods();
-    console.log("printing $ctrl.states object from ModalCrtl");
-    console.log($ctrl.states);
+    /*console.log("printing $ctrl.states object from ModalCrtl");
+    console.log($ctrl.states);*/
     $ctrl.famID;
 
   /*var profiles = personaFactory.getAllProfiles();

@@ -15,9 +15,9 @@
                 
                 <div ng-if=$ctrl.states[pidCurrent].state>
                 
-                    <div ng-controller="DoughnutCtrl" class="chart-placement">
-                        <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="labels"
-                                chart-colors="colors" chart-options="options">
+                    <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
+                    <div class="chart-placement">
+                        <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
                         </canvas>
                     </div>
                     <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics">
@@ -27,7 +27,7 @@
                         <!--want an ng-if here to show only after daily sleep and self-report is available -->
                     </div>
                     <div>
-                        <p class="hours-slept">Hours slept: <br>5</p>
+                        <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
                     </div>
                     <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p>
                 </div>
@@ -55,9 +55,9 @@
             </div>
             <div ng-controller="ModalCrtl as $ctrl">
                 <div ng-if=$ctrl.states[pidCurrent].state>
-                    <div ng-controller="DoughnutCtrl" class="chart-placement">
-                        <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="labels"
-                                chart-colors="colors" chart-options="options">
+                    <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
+                    <div class="chart-placement">
+                        <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
                         </canvas>
                     </div>
                     <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics">
@@ -66,7 +66,7 @@
                         <!--want an ng-if here to show only after daily sleep and self-report is available -->
                     </div>
                     <div>
-                        <p class="hours-slept">Hours slept: <br>5</p>
+                        <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
                     </div>
                     <p class="mood-report"> Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p>
                 </div>

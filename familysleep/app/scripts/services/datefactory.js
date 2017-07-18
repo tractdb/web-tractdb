@@ -14,11 +14,16 @@ angular.module('FamilySleep')
     //I think we might want get/sets here
 
     // contains moment object
-    var date = moment();
+    var date = moment(); //I think this needs to be initialized in update date
     var date_week = [];
 
     var updateDate = function(newDate) {
       date = moment(newDate);
+      console.log("printing up updateDate in dateFactory");
+      console.log(date);
+      /****hard coding date
+      var tempDate = "2017-07-01";
+      date = moment(tempDate).format('YYYY-MM-DD');*/
       // updating week array
       date_week = [];
 
@@ -28,23 +33,23 @@ angular.module('FamilySleep')
         date_week.push(newDate);  
       }
       
-      console.log(date_week);
+      /*console.log(date_week);
       console.log('in dateFactory');
-      console.log(date.format());
+      console.log(date.format());*/
       $rootScope.$broadcast('date:updated');
     };
 
-    updateDate(date);
+    
 
     var getDate = function() {
       return date;
     };
 
     var getDateString = function() {
-      //var tempDate = "2016-07-29";
-      /*date = moment(tempDate).format('YYYY-MM-DD');
+      /*var tempDate = "2017-07-01";
+      date = moment(tempDate).format('YYYY-MM-DD');
       return date;*/
-      //to return today uncomment below
+      
       return date.format('YYYY-MM-DD');
     };
 
@@ -65,6 +70,8 @@ angular.module('FamilySleep')
       return
     };
 
+    //TODO: need to figure out where to initialize these things together
+    updateDate(date);
     return{
       updateDate : updateDate,
       getDate : getDate,

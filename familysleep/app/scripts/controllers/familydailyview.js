@@ -61,19 +61,53 @@ module.controller(
 
             viewModel.updateFamilyInfo = function () {
                 var date = dateFactory.getDateString();
-
+                console.log("date from FDV");
+                console.log(date);
                 var personas = personaFactory.personas;
 
                  
 
                 tractdbFactory.setQuery('familydaily', null, date);
                 var tractdbData = tractdbFactory.tractdbData;
+                //console.log("queried data");
+                //console.log(tractdbData);
 
                 if(personas && tractdbData) {
                     // start with the personas data
                     viewModel.familyInfo = personas;
-
+                    //console.log()
                     // join in data from tractdb
+                    //console.log("in forEach");
+                    angular.forEach(tractdbData, function(value, key){
+                        var famID = key;
+                        var d = Object.keys(value)[0];
+                        var sleep_data = value[d];
+                        var hours = sleep_data.duration / 1000 / 60 / 60;
+                        //console.log("using duration hours sleept   = " + hours);
+                        console.log(viewModel.familyInfo[famID]);
+                        viewModel.familyInfo[famID].sleep = [1, 10, 0]; //[extra hours, hours_slept, remainder]
+                        viewModel.familyInfo[famID].hours = hours;
+                        console.log("printting sleep array for " + famID);
+                        //console.log(viewModel.familyInfo[famID].sleep);
+                        //console.log(viewModel.familyInfo[famID].hours);
+                        viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
+                        //define colors here
+                        viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
+                        // viewModel.options = {
+                        //     borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                        //     cutoutPercentage: 70
+                        // };
+                        viewModel.options = {
+                            elements: {
+                                arc: {
+                                    //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                                    borderWidth: 0
+                                    
+                                }
+                            },
+                            cutoutPercentage: 65
+                        };
+                    });
                 }
 
                 // var newDate = dateFactory.getDateString();
