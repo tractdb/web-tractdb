@@ -71,8 +71,10 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 		// In our signup.html, we'll be using the ng-model
 		// attribute to populate this object.
 
-		//I think this goes here:
+		//todo: I think this goes here:
 		//personaFactory.observe($scope, viewModel.updateFamilyInfo);
+
+		//changing Views
 		function changeView(){
 			var view = '/familydailyview';
 			$location.path(view);

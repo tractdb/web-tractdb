@@ -11,18 +11,16 @@
 
 angular.module('FamilySleep')
   .controller('SingleweeklyviewCtrl', [
-	'$scope', 'sleepWeeklyDataFactory', 'tractdbdata',  '$rootScope', 'dateFactory', '$routeParams', 'personaFactory', function (
-		$scope, singleWeeklySleep, dbdata, $rootScope, dateFactory, $routeParams, personaFactory) {
+	'$scope', 'sleepWeeklyDataFactory', 'tractdbFactory',  '$rootScope', 'dateFactory', '$routeParams', 'personaFactory', 'selfReportState', 
+	function ($scope, singleWeeklySleep, dbdata, $rootScope, dateFactory, $routeParams, personaFactory, selfReportState) {
 
 	
-	if($routeParams.id=='child1'){
-      $scope.id = 'boy';
-    } else if ($routeParams.id=='child2')
-    {
-      $scope.id = 'girl';
-    } else {
-    	$scope.id = $routeParams.id;
-    }
+	$scope.id = $routeParams.id;
+
+    $scope.mood = selfReportState.getMood($routeParams.id);
+
+    $scope.persona = personaFactory.personas[$routeParams.id];
+
 	$rootScope.menu = [
 	  {
 		  title: 'Back',
@@ -51,7 +49,7 @@ angular.module('FamilySleep')
     updateData();
   });
 
-	var updateData = function () {
+	var updateData = function () {/*
 		if(dateFactory.getWeekDateString() != []) {
 			var promise = dbdata.get_single_weekly_sleep_data($scope.id, dateFactory.getWeekDateString());
 			
@@ -234,6 +232,6 @@ angular.module('FamilySleep')
 		} else {
 	    alert('date factory get week didnt populate');
 	  }
-	}
+	*/}
 	updateData();
 }]);

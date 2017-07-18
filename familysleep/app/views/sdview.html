@@ -6,9 +6,16 @@ this is where I show the personal view
 <!-- <p>{{id}}</p> -->
 <div class="row">
 	<div class="col-xs-4">
-		<!--hard coding this for now-->
-		<img ng-src="app/images/avatars/momcircle.PNG" alt="momcircle" id="sdv-profile-pic">
-		<p id="sdv-name">{{id}}</p>
+		
+		<div>
+                <img ng-src={{persona.profilePic}} class="profile-pics">
+                <p class="fdv-names">{{persona.name}}</p>
+            </div>
+            <div class="target-hours">
+                <p>Target hours: {{ persona.targetedHours }}</p>
+            </div>
+		<!--<img ng-src="{{persona." alt="momcircle" id="sdv-profile-pic">
+		<p id="sdv-name">{{id}}</p>-->
 	</div>
 	<!--<div class="col-xs-4" ng-controller="DoughnutCtrl">
 		<!--need to pass data to here

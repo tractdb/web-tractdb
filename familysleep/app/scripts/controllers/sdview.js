@@ -8,17 +8,17 @@
  * Controller of the FamilySleep
  */
  angular.module('FamilySleep')
- 	.controller('SdviewCtrl', ['$rootScope', '$scope', 'sleepDailyDataFactory', '$routeParams', 'tractdbdata', 'dateFactory', 'personaFactory',
-    function($rootScope, $scope, sleepDataFactory, $routeParams, dbdata, dateFactory, personaFactory) {
-    //$scope.id = $routeParams.id;
-    if($routeParams.id=='child1'){
+ 	.controller('SdviewCtrl', ['$rootScope', '$scope', 'sleepDailyDataFactory', '$routeParams', 'tractdbFactory', 'dateFactory', 'personaFactory', 'selfReportState',
+    function($rootScope, $scope, sleepDataFactory, $routeParams, dbdata, dateFactory, personaFactory, selfReportState) {
+    $scope.id = $routeParams.id;
+    /*if($routeParams.id=='child1'){
       $scope.id = 'boy';
     } else if ($routeParams.id=='child2')
     {
       $scope.id = 'girl';
     } else{
       $scope.id = $routeParams.id;
-    };
+    };*/
     console.log("in SdviewCtrl");
 
     $rootScope.menu = [
@@ -47,8 +47,12 @@
       updateData();
     });
 
+    $scope.mood = selfReportState.getMood($routeParams.id);
+
+    $scope.persona = personaFactory.personas[$routeParams.id];
+    console.log($scope.persona);
     var updateData = function() {
-      var newDate = dateFactory.getDateString();
+      /*var newDate = dateFactory.getDateString();
       if(dateFactory.getWeekDateString() != []) {
       var promise = dbdata.get_single_daily_sleep($scope.id, newDate);
       //have to wait for dbdate to populate 
@@ -140,6 +144,6 @@
     }else {
         alert('date factory get week didnt populate');
       }
-    }
+    */}
     updateData();
   }]);

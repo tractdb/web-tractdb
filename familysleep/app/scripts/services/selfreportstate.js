@@ -116,6 +116,10 @@ angular.module('FamilySleep')
         return factory.states[d];
     }
 
+    factory.getMood = function(id){
+        var d = factory.getDate();
+        return factory.states[d][id];
+    }
 
     factory.setMood = function(id, mood, image, reporter){
         var moods = factory.getAllMoods();
