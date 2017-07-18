@@ -1,6 +1,19 @@
 <div class="singleweeklyview-container" ng-controller="SingleweeklyviewCtrl">
 
-<p> {{id}}</p>
+<!--<p> {{id}}</p>-->
+
+<div class="col-xs-4">
+		
+		<div>
+            <img ng-src={{persona.profilePic}} class="profile-pics">
+            <p class="fdv-names">{{persona.name}}</p>
+        </div>
+        <div class="target-hours">
+            <p>Target hours: {{ persona.targetedHours }}</p>
+        </div>
+		<!--<img ng-src="{{persona." alt="momcircle" id="sdv-profile-pic">
+		<p id="sdv-name">{{id}}</p>-->
+	</div>
 
 <!-- Legend -->
 <ul id="swv-legend">

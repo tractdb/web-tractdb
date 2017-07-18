@@ -53,8 +53,8 @@ var module = angular.module(
 module.controller(
     'FamilyDailyViewCtrl',
     [
-        '$scope', '$rootScope', 'tractdbFactory', 'sleepFamDailyDataFactory', 'dateFactory', 'selfReportState', 'personaFactory',
-        function ($scope, $rootScope, tractdbFactory, sleepFamDailyDataFactory, dateFactory, selfReportState, personaFactory) {
+        '$scope', '$rootScope', 'tractdbFactory', 'sleepFamDailyDataFactory', 'dateFactory', 'selfReportState', 'personaFactory', '$location',
+        function ($scope, $rootScope, tractdbFactory, sleepFamDailyDataFactory, dateFactory, selfReportState, personaFactory, $location) {
             var viewModel = this;
 
             viewModel.familyInfo = null;
@@ -123,6 +123,7 @@ module.controller(
                 // }
             }
 
+            //should it be $scope or viewModel? we should use them consistently
             personaFactory.observe($scope, viewModel.updateFamilyInfo);
             tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
 
@@ -150,6 +151,10 @@ module.controller(
             $scope.$on('date:updated', function () {
                 viewModel.updateFamilyInfo();
             });
-
-
+            
+            $scope.changeView = function(id){
+                //var view = '/familydailyview';
+                console.log("in changeview FDV " + id);
+                $location.path('/sdview/' + id);
+            };
         }]);

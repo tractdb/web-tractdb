@@ -22,7 +22,8 @@
                     </div>
                     <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics">
                     <div class="single-view-button">
-                        <a ng-href="#!/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>
+                        <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
+                        <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
                         <!--want an ng-if here to show only after daily sleep and self-report is available -->
                     </div>
                     <div>
@@ -61,7 +62,7 @@
                     </div>
                     <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics">
                     <div class="single-view-button">
-                        <a ng-href="#!/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>
+                        <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
                         <!--want an ng-if here to show only after daily sleep and self-report is available -->
                     </div>
                     <div>
