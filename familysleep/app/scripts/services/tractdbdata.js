@@ -105,7 +105,7 @@ module.factory(
             factory._scheduleNextRetrieve = function () {
                 $timeout.cancel(factory._nextRetrievePromise);
                 if (factory._numberObservers > 0) {
-                    //factory._nextRetrievePromise = $timeout(factory.retrieveData, 3 * 1000);
+                    factory._nextRetrievePromise = $timeout(factory.retrieveData, 3 * 1000);
                 }
             };
 

@@ -64,6 +64,8 @@ module.controller(
 
                 var personas = personaFactory.personas;
 
+                 
+
                 tractdbFactory.setQuery('familydaily', null, date);
                 var tractdbData = tractdbFactory.tractdbData;
 

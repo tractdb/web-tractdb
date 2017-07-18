@@ -52,7 +52,7 @@ module.factory(
             //
             // Our personas data from the server
             //
-            factory.personas = null;
+            factory.personas = {}; //null;
 
             //
             // Retrieve our personas data, schedule our next retrieve
@@ -113,16 +113,17 @@ module.factory(
                         doc_rev = response.data._rev;
                         //console.log("rev of the PUT");
                         //console.log(doc_rev);
-                    }, function erroCallback(response){
+                        factory._notify();
+                    }).catch (function erroCallback(response){
                         console.log("error in the PUT");
                         console.log(response.code);
+                    }).finally(function (){
+                        factory._scheduleNextRetrieve();
                     });
-
-              }, function erroCallback(response){
+                }).catch (function erroCallback(response){
                     console.log("error" + response.code);
                     console.log("error text" + response.statusText);
-              });
-
+                });
             };
 
             //
@@ -162,12 +163,31 @@ module.factory(
                 }
             };
 
+            factory.getAllNames = function(){
+                var names = [];
+                for (var prop in factory.personas){
+                    //console.log(prop);
+                    var name = factory.personas[prop].name;
+                    //console.log(name);
+                    //console.log(obj.name);
+                    names.push(name);
+                }
+                //console.log("in getAllNames");
+                //console.log(name);
+                return names;
+            }
+
+            //returns an Array of key values
+            factory.getAllIDs = function(){
+                return Object.keys(factory.personas);
+            }
+
+            /***TODO: the  thing below is temporary, needs to fit into the signup pipeline****/
             //
             // Initial retrieval
             //
-            //TBD if I need this
             factory.retrieveData();
-            //factory.setData(factory.personas);
+            
 
             return factory;
         }

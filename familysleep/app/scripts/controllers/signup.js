@@ -11,6 +11,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 				signup,
 				members;
 		var member = {};
+		var singleSelfReportMood = {};
 		var count = 1;
 
 		// Here we're creating a scope for our Signup page.
@@ -18,8 +19,8 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 		$scope.member = member;
 		$scope.signup = signup = {};
 		$scope.signup.user = user = {};
-		//$scope.signup.user.members = members = []; //might want to make this an object
-		//$scope.members = [];
+		$scope.signup.user.members = members = []; //might want to make this an object
+		$scope.members = [];
 		$scope.isAddMemberForm = false; //change it back to false
 		$scope.profilePicItems = [
 			{name:'p1',
@@ -69,6 +70,9 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 
 		// In our signup.html, we'll be using the ng-model
 		// attribute to populate this object.
+
+		//I think this goes here:
+		//personaFactory.observe($scope, viewModel.updateFamilyInfo);
 		function changeView(){
 			var view = '/familydailyview';
 			$location.path(view);
@@ -87,17 +91,30 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			count++;
 			//console.log("inadd New Member")
 			//console.log(member);
+
+			//adding new family members to the personas in personaFactory
 			var newMember = angular.copy(member);
+			members.push(newMember);
 			if(Object.keys(personaFactory.personas).length == 0){
-				personaFactory.personas = newMember;	
+				personaFactory.personas[newMember.pid] = newMember;
+				console.log("add new members to personas");
+				console.log(personaFactory.personas);
 			} else {
-				members.push(newMember);
-				personaFactory.personas.push(newMember);	
+				personaFactory.personas[newMember.pid] = newMember;	
 			}
+
+			//initializing new family member's mood state
+			selfReportState.initializeSingle (newMember.pid);
+
+			/*if(Object.keys(selfReportState.states).length == 0){
+
+			} else {
+
+			}*/
 			
 			//selfReportState.initializeSingle(newMember.pid);
-			console.log("inadd New Member == members")
-			console.log(personaFactory.personas);
+			console.log("inadd New Member == mood state")
+			console.log(selfReportState.states	);
 			//console.log("user family");
 			//console.log(user);
 			member.name = "";
