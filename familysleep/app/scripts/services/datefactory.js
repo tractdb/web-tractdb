@@ -19,8 +19,8 @@ angular.module('FamilySleep')
 
     var updateDate = function(newDate) {
       date = moment(newDate);
-      console.log("printing up updateDate in dateFactory");
-      console.log(date);
+      // console.log("printing up updateDate in dateFactory");
+      // console.log(date);
       /****hard coding date
       var tempDate = "2017-07-01";
       date = moment(tempDate).format('YYYY-MM-DD');*/
@@ -32,10 +32,10 @@ angular.module('FamilySleep')
         var newDate = moment(date).subtract(i, 'days');
         date_week.push(newDate);  
       }
-      
-      /*console.log(date_week);
-      console.log('in dateFactory');
-      console.log(date.format());*/
+      // console.log("set date_week");
+      // console.log(date_week);
+      // console.log('in dateFactory');
+      // console.log(date.format());
       $rootScope.$broadcast('date:updated');
     };
 
@@ -58,6 +58,8 @@ angular.module('FamilySleep')
       for (var i = 0; i < date_week.length; i++) {
         result.push(date_week[i].format('YYYY-MM-DD'));
       }
+      console.log('in getWeekDateString');
+      console.log(result);
       return result;
     };
 

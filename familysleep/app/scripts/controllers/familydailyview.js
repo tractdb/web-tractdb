@@ -52,109 +52,66 @@ var module = angular.module(
 
 module.controller(
     'FamilyDailyViewCtrl',
-    [
-        '$scope', '$rootScope', 'tractdbFactory', 'sleepFamDailyDataFactory', 'dateFactory', 'selfReportState', 'personaFactory', '$location',
-        function ($scope, $rootScope, tractdbFactory, sleepFamDailyDataFactory, dateFactory, selfReportState, personaFactory, $location) {
-            var viewModel = this;
+    
+        ['$scope', '$rootScope', 'tractdbFactory', 'sleepFamDailyDataFactory', 'dateFactory', 'selfReportState', 'personaFactory', '$location',
+            function ($scope, $rootScope, tractdbFactory, sleepFamDailyDataFactory, dateFactory, selfReportState, personaFactory, $location) {
+                var viewModel = this;
 
-            viewModel.familyInfo = null;
+                viewModel.familyInfo = null;
 
-            viewModel.updateFamilyInfo = function () {
-                var date = dateFactory.getDateString();
-                console.log("date from FDV");
-                console.log(date);
-                var personas = personaFactory.personas;
+                viewModel.updateFamilyInfo = function () {
+                    var date = dateFactory.getDateString();
+                    console.log("date from FDV");
+                    console.log(date);
+                    var personas = personaFactory.personas;
 
-                 
+                     
 
-                tractdbFactory.setQuery('familydaily', null, date);
-                var tractdbData = tractdbFactory.tractdbData;
-                //console.log("queried data");
-                //console.log(tractdbData);
+                    tractdbFactory.setQuery('familydaily', null, date);
+                    var tractdbData = tractdbFactory.tractdbData;
+                    //console.log("queried data");
+                    //console.log(tractdbData);
 
-                if(personas && tractdbData) {
-                    // start with the personas data
-                    viewModel.familyInfo = personas;
-                    //console.log()
-                    // join in data from tractdb
-                    //console.log("in forEach");
-                    angular.forEach(tractdbData, function(value, key){
-                        var famID = key;
-                        var d = Object.keys(value)[0];
-                        var sleep_data = value[d];
-                        var hours = sleep_data.duration / 1000 / 60 / 60;
-                        //console.log("using duration hours sleept   = " + hours);
-                        console.log(viewModel.familyInfo[famID]);
-                        viewModel.familyInfo[famID].sleep = [1, 10, 0]; //[extra hours, hours_slept, remainder]
-                        viewModel.familyInfo[famID].hours = hours;
-                        console.log("printting sleep array for " + famID);
-                        //console.log(viewModel.familyInfo[famID].sleep);
-                        //console.log(viewModel.familyInfo[famID].hours);
+                    if(personas && tractdbData) {
+                        // start with the personas data
+                        viewModel.familyInfo = personas;
+                        //console.log()
+                        // join in persona with tractdb
+                        //console.log("in forEach");
+                        angular.forEach(tractdbData, function(value, key){
+                            var famID = key;
+                            var d = Object.keys(value)[0];
+                            var sleep_data = value[d];
+                            var hours = sleep_data.duration / 1000 / 60 / 60;
+                            //console.log("using duration hours sleept   = " + hours);
+                            //console.log(viewModel.familyInfo[famID]);
+                            viewModel.familyInfo[famID].sleep = [1, 10, 0]; //[extra hours, hours_slept, remainder]
+                            viewModel.familyInfo[famID].hours = hours;
+                            //console.log("printting sleep array for " + famID);
+                            //console.log(viewModel.familyInfo[famID].sleep);
+                            //console.log(viewModel.familyInfo[famID].hours);
+                        });
+                        //could go here or might go out of outside of the if
+                        //or might go outside of updateFamilyInfo
                         viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
-                        //define colors here
-                        viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
-                        // viewModel.options = {
-                        //     borderColor: ['#000066', '#0000FF', '#E0E0E0'],
-                        //     cutoutPercentage: 70
-                        // };
-                        viewModel.options = {
-                            elements: {
-                                arc: {
-                                    //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
-                                    borderWidth: 0
-                                    
-                                }
-                            },
-                            cutoutPercentage: 65
-                        };
-                    });
-                }
+                            //define colors here
+                            viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
+                            // viewModel.options = {
+                            //     borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                            //     cutoutPercentage: 70
+                            // };
+                            viewModel.options = {
+                                elements: {
+                                    arc: {
+                                        //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                                        borderWidth: 0
+                                        
+                                    }
+                                },
+                                cutoutPercentage: 65
+                            };
+                    }
 
-                // var newDate = dateFactory.getDateString();
-                //
-                // console.log(newDate);
-                // if (dateFactory.getWeekDateString() != []) {
-                //     var promise = dbdata.get_fam_daily_sleep_data(['mom', 'dad', 'girl', 'boy'], newDate);
-                //
-                //     promise.then(function (response) {
-                //         /*$scope.data = [famDailySleep.sleep_data['mom'][newDate].duration/1000/60/60, (24-famDailySleep.sleep_data['mom'][newDate].duration/1000/60/60)];
-                //          /****this is a temporary fix this will need to figure out once I fix the view
-                //          $scope.id = famDailySleep.sleep_data['mom'][newDate].pid;
-                //          $scope.data_dad = [famDailySleep.sleep_data['dad'][newDate].duration/1000/60/60, (24-famDailySleep.sleep_data['dad'][newDate].duration/1000/60/60)];
-                //          $scope.data_girl = [famDailySleep.sleep_data['girl'][newDate].duration/1000/60/60, (24-famDailySleep.sleep_data['girl'][newDate].duration/1000/60/60)];
-                //          $scope.data_boy = [famDailySleep.sleep_data['boy'][newDate].duration/1000/60/60, (24-famDailySleep.sleep_data['boy'][newDate].duration/1000/60/60)];*/
-                //
-                //         // if there is no data, sleep will be undefined.
-                //
-                //         for (var fam in familyInfo) {
-                //             familyInfo[fam].sleep = [famDailySleep.sleep_data[fam][newDate].duration / 1000 / 60 / 60, (24 - famDailySleep.sleep_data[fam][newDate].duration / 1000 / 60 / 60)];
-                //             //console.log("fam member sleep");
-                //             //console.log(familyInfo[fam].sleep);
-                //         }
-                //         /*familyInfo.mom.sleep = [famDailySleep.sleep_data['mom'][newDate].duration/1000/60/60, (24-famDailySleep.sleep_data['mom'][newDate].duration/1000/60/60)];
-                //          familyInfo.dad.sleep = [famDailySleep.sleep_data['dad'][newDate].duration/1000/60/60, (24-famDailySleep.sleep_data['dad'][newDate].duration/1000/60/60)];
-                //          familyInfo.child1.sleep = [famDailySleep.sleep_data['girl'][newDate].duration/1000/60/60, (24-famDailySleep.sleep_data['girl'][newDate].duration/1000/60/60)];
-                //          familyInfo.child2.sleep = [famDailySleep.sleep_data['boy'][newDate].duration/1000/60/60, (24-famDailySleep.sleep_data['boy'][newDate].duration/1000/60/60)];*/
-                //         /****this is a temporary fix this will need to figure out once I fix the view
-                //          $scope.id = famDailySleep.sleep_data['mom'][newDate].pid;
-                //          $scope.data_dad = [famDailySleep.sleep_data['dad'][newDate].duration/1000/60/60, (24-famDailySleep.sleep_data['dad'][newDate].duration/1000/60/60)];
-                //          $scope.data_girl = [famDailySleep.sleep_data['girl'][newDate].duration/1000/60/60, (24-famDailySleep.sleep_data['girl'][newDate].duration/1000/60/60)];
-                //          $scope.data_boy = [famDailySleep.sleep_data['boy'][newDate].duration/1000/60/60, (24-famDailySleep.sleep_data['boy'][newDate].duration/1000/60/60)];*/
-                //
-                //         $scope.family = familyInfo;
-                //         console.log($scope.family);
-                //
-                //         $scope.labels = ['hours slept', 'hours awake'];
-                //         /*define colors here*/
-                //         $scope.colors = ['#0000FF', '#E0E0E0'];
-                //         $scope.options = {
-                //             cutoutPercentage: 70
-                //         };
-                //         $rootScope.$broadcast('familydailyview:updated');
-                //     });
-                // } else {
-                //     alert('date factory get week didnt populate');
-                // }
             }
 
             //should it be $scope or viewModel? we should use them consistently
@@ -182,10 +139,12 @@ module.controller(
                 $rootScope.active = item;
             };
 
+            //should replace to viewModel
             $scope.$on('date:updated', function () {
                 viewModel.updateFamilyInfo();
             });
-            
+
+            //should replace to viewModel
             $scope.changeView = function(id){
                 //var view = '/familydailyview';
                 console.log("in changeview FDV " + id);

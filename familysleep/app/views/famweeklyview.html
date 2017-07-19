@@ -1,20 +1,21 @@
-<div class="familyweeklyview-container" ng-controller="FamweeklyviewCtrl">
+<div class="familyweeklyview-container">
+
     <!-- person row -->
     <div class="fwv-columns" id="blank-date">blank</div>
-    <div ng-repeat="date in dateWeekStr" class="fwv-columns">
+    <div ng-repeat="date in viewModel.dateWeekStr" class="fwv-columns">
         <p class="fwv-date">{{date}}</p>
     </div>
-    <div ng-repeat="member in famWeekData">
+    <div ng-repeat="(pidCurrent, memberCurrent) in viewModel.familyInfo">
 	   <div class="fwv-person row">
         <!-- week col for particular person -->
         <div class="fwv-columns">
-            <p> profile picture </p>
-            <p> name </p>
+            <img ng-src={{memberCurrent.profilePic}} class="profile-pics">
+            <p class="fdv-names">{{memberCurrent.name}}</p>
         </div>
-          <div ng-repeat="day in member" class="fwv-columns">
+          <div ng-repeat="day in memberCurrent.days" class="fwv-columns">
             <div ng-show="day.duration !=-1" class="fwv-chart-placement">
                 <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
-                    <canvas id="doughnut" class="chart chart-doughnut" chart-data="day.sleep" chart-labels="labels" chart-colors ="colors" chart-options="options">
+                    <canvas id="doughnut" class="chart chart-doughnut" chart-data="day.sleep" chart-labels="viewModel.labels" chart-colors ="viewModel.colors" chart-options="viewModel.options">
                     </canvas>
                     <img ng-src="app/images/faces/happy.png" class="fwv-mood-pics">
                     <p class="fwv-mood-text">mood</p>
@@ -24,9 +25,9 @@
                   <canvas id="doughnut" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
                   </canvas>
             </div>
+          </div>
       </div>
     </div>
-  </div>
 </div>
 <!--
 <div class="person row">

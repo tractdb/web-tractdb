@@ -48,7 +48,8 @@ angular
             })
             .when('/famweeklyview', {
                 templateUrl: 'app/views/famweeklyview.html',
-                controller: 'FamweeklyviewCtrl'
+                controller: 'FamweeklyviewCtrl',
+                controllerAs: 'viewModel'
             })
             .when('/fambarview', {
                 templateUrl: 'app/views/fambarview.html',
