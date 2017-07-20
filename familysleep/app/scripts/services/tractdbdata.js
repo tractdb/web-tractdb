@@ -42,6 +42,8 @@ module.factory(
                     factory.tractdbData = null;
                     factory.retrieveData();
                 }
+                // console.log('printing query');
+                // console.log(factory._query);
             }
 
             //
@@ -54,6 +56,11 @@ module.factory(
                         method: 'GET',
                         url: BASEURL_PYRAMID + '/familysleep/familydaily/' + factory._queryDate
                     };
+                } else if (factory._query == 'familyweekly' && factory._queryDate){
+                    get = {
+                        method: 'GET',
+                        url: BASEURL_PYRAMID + '/familysleep/familyweekly/' + factory._queryDate
+                    };
                 } else {
                     console.log('tractdbFactory lacks valid query.');
                 }
@@ -65,9 +72,9 @@ module.factory(
                         factory.tractdbData = response.data;
                         factory._notify();
                     }).catch(function () {
-
+                        //can catch error hereb
                     }).finally(function () {
-                        factory._scheduleNextRetrieve();
+                        //factory._scheduleNextRetrieve();
                     });
                 }
             };
