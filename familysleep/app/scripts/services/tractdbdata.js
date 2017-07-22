@@ -61,7 +61,15 @@ module.factory(
                         method: 'GET',
                         url: BASEURL_PYRAMID + '/familysleep/familyweekly/' + factory._queryDate
                     };
-                } else {
+                } else if (factory._query == 'singledaily' && factory._queryDate && factory._queryPid){
+                    get = {
+                        method: 'GET',
+                        url: BASEURL_PYRAMID + '/familysleep/singledaily/' + factory._queryPid + '/' + factory._queryDate
+                    };
+                    console.log("in get");
+                    console.log(get);
+                }
+                else {
                     console.log('tractdbFactory lacks valid query.');
                 }
 

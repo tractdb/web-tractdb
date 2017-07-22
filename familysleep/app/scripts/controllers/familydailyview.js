@@ -65,8 +65,6 @@ module.controller(
                     console.log(date);
                     var personas = personaFactory.personas;
 
-                     
-
                     tractdbFactory.setQuery('familydaily', null, date);
                     var tractdbData = tractdbFactory.tractdbData;
                     //console.log("queried data");
@@ -141,7 +139,7 @@ module.controller(
 
             //should replace to viewModel
             $scope.$on('date:updated', function () {
-                viewModel.updateFamilyInfo();
+                viewModel.updateWeekFamilyInfo();
             });
 
             //should replace to viewModel
