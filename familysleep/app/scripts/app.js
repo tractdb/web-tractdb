@@ -40,11 +40,13 @@ angular
             })
             .when('/sdview/:id', {
                 templateUrl: 'app/views/sdview.html',
-                controller: 'SdviewCtrl'
+                controller: 'SdviewCtrl',
+                controllerAs: 'viewModel'
             })
             .when('/singleweeklyview/:id', {
                 templateUrl: 'app/views/singleweeklyview.html',
-                controller: 'SingleweeklyviewCtrl'
+                controller: 'SingleweeklyviewCtrl',
+                controllerAs: 'viewModel'
             })
             .when('/famweeklyview', {
                 templateUrl: 'app/views/famweeklyview.html',

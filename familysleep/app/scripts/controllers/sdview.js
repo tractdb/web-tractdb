@@ -7,50 +7,80 @@
  * # SdviewCtrl
  * Controller of the FamilySleep
  */
- angular.module('FamilySleep')
- 	.controller('SdviewCtrl', ['$rootScope', '$scope', 'sleepDailyDataFactory', '$routeParams', 'tractdbFactory', 'dateFactory', 'personaFactory', 'selfReportState',
-    function($rootScope, $scope, sleepDataFactory, $routeParams, dbdata, dateFactory, personaFactory, selfReportState) {
-    $scope.id = $routeParams.id;
-    /*if($routeParams.id=='child1'){
-      $scope.id = 'boy';
-    } else if ($routeParams.id=='child2')
-    {
-      $scope.id = 'girl';
-    } else{
-      $scope.id = $routeParams.id;
-    };*/
-    console.log("in SdviewCtrl");
+angular.module('FamilySleep')
+    .controller('SdviewCtrl', ['$rootScope', '$scope', '$routeParams', 'tractdbFactory', 'dateFactory', 'personaFactory', 'selfReportState',
+        function($rootScope, $scope, $routeParams, tractdbFactory, dateFactory, personaFactory, selfReportState) {
 
-    $rootScope.menu = [
-      {
-          title: 'Back',
-          url: 'familydailyview',
-          tag: 'family-daily-view'
-      },
-      {
-          title: 'Individual Daily View',
-          url: 'sdview/' + $scope.id,
-          tag: 'individual-daily-view'
-      },
-      {
-          title: 'Individual Weekly View',
-          url: 'singleweeklyview/' + $scope.id,
-          tag: 'individual-weekly-view'
-      }
-    ];
-    $rootScope.active = 'individual-daily-view';
-    $rootScope.updateActive = function (item) {
-      $rootScope.active = item;
-    };
+        var viewModel = this;
+        viewModel.familyInfo = null;
+        viewModel.id = $routeParams.id;
 
-    $scope.$on('date:updated', function() {
-      updateData();
-    });
+        console.log("in SdviewCtrl");
 
-    $scope.mood = selfReportState.getMood($routeParams.id);
+        viewModel.updateFamilyInfo = function () {
+            var date = dateFactory.getDateString();
+            viewModel.state = selfReportState.getMood($routeParams.id);
+            console.log("selfReportState");
+            console.log(selfReportState.states);
+            console.log("viewModel.state");
+            console.log(viewModel.state);
+            var persona = personaFactory.personas[$routeParams.id];
+            //console.log(persona);
 
-    $scope.persona = personaFactory.personas[$routeParams.id];
-    console.log($scope.persona);
+            tractdbFactory.setQuery('singledaily', viewModel.id, date);
+            var tractdbData = tractdbFactory.tractdbData;
+            if(persona && tractdbData) {
+                //console.log("after if");
+
+                // start with the personas data
+                viewModel.familyInfo = persona;
+                //console.log('viewModel.familyInfo');
+                console.log(viewModel.familyInfo);
+                //console.log('tractdbData');
+                console.log(tractdbData);
+                var d = Object.keys(tractdbData)[0];
+                var sleep_data = tractdbData[d];
+                //console.log(sleep_data);
+                var hours = sleep_data.duration / 1000 / 60 / 60;
+                // join in persona with tractdb
+                viewModel.familyInfo.sleep = [1, 10, 0]; //[extra hours, hours_slept, remainder]
+                viewModel.familyInfo.hours = hours;
+                viewModel.familyInfo.duration = sleep_data.duration;
+                console.log('sleep data duration');
+                console.log(viewModel.familyInfo.duration);
+            }
+
+
+        }
+        //should it be $scope or viewModel? we should use them consistently
+        personaFactory.observe($scope, viewModel.updateFamilyInfo);
+        tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
+        $rootScope.menu = [
+          {
+              title: 'Back',
+              url: 'familydailyview',
+              tag: 'family-daily-view'
+          },
+          {
+              title: 'Individual Daily View',
+              url: 'sdview/' + $scope.id,
+              tag: 'individual-daily-view'
+          },
+          {
+              title: 'Individual Weekly View',
+              url: 'singleweeklyview/' + $scope.id,
+              tag: 'individual-weekly-view'
+          }
+        ];
+        $rootScope.active = 'individual-daily-view';
+        $rootScope.updateActive = function (item) {
+          $rootScope.active = item;
+        };
+
+        //does this need to be viewModel?
+        $scope.$on('date:updated', function() {
+          viewModel.updateFamilyInfo();
+        });
     var updateData = function() {
       /*var newDate = dateFactory.getDateString();
       if(dateFactory.getWeekDateString() != []) {
@@ -145,5 +175,5 @@
         alert('date factory get week didnt populate');
       }
     */}
-    updateData();
+    //updateData();
   }]);

@@ -1,51 +1,25 @@
-<!-- I don't know if I need this top definition because it is part of the router configuration-->
-<div class="singleview-container" ng-controller="SdviewCtrl">
-<!--
-this is where I show the personal view
--->
-<!-- <p>{{id}}</p> -->
-<div class="row">
-	<div class="col-xs-4">
-		
-		<div>
-                <img ng-src={{persona.profilePic}} class="profile-pics">
-                <p class="fdv-names">{{persona.name}}</p>
-            </div>
-            <div class="target-hours">
-                <p>Target hours: {{ persona.targetedHours }}</p>
-            </div>
-		<!--<img ng-src="{{persona." alt="momcircle" id="sdv-profile-pic">
-		<p id="sdv-name">{{id}}</p>-->
-	</div>
-	<!--<div class="col-xs-4" ng-controller="DoughnutCtrl">
-		<!--need to pass data to here
-		<canvas id="doughnut" class="chart-doughnut" chart-data="data" chart-labels="labels" chart-options="options">
-    	</canvas>
-	</div>
-	<div class="col-xs-4">
-	<p> stats about sleep </p>
-		<!--**this stuff should come as vars and not all this access to vars here probably**-
-		<p> hours slept (need to convert to hours): {{sleep_data.sleep[0].minutesAsleep}}</p>
-		<p> wakeup time: {{sleep_data.sleep[0].minuteData[sleep_data.sleep[0].minuteData.length-1].dateTime}}
-		<p> Awake count: {{sleep_data.sleep[0].awakeCount}}</p>
-	</div>-->
-	<div ng-if="labels.length==0">
-		<p>No data</p>
-		<div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
-                    <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
-                    </canvas>
-                </div>
-	</div>
+<div class="singleview-container">
 
-	<div ng-if="labels.length>0" class="row" ng-controller="StackedbarCtrl">
-		<div id="sdv-mood-report">
-			<img ng-src="app/images/faces/happy.png" id="sdv-mood-pics">
-			<p> insert here descriptive of mood </p>
+	<div class="row">
+		<div class="col-xs-4">
+			
+			<div>
+	            <img ng-src={{viewModel.familyInfo.profilePic}} class="profile-pics">
+	            <p class="fdv-names">{{viewModel.familyInfo.name}}</p>
+	        </div>
+	        <div class="target-hours">
+	            <p>Target hours: {{viewModel.familyInfo.targetedHours }}</p>
+	        </div>
+			<!--<img ng-src="{{persona." alt="momcircle" id="sdv-profile-pic">
+			<p id="sdv-name">{{id}}</p>-->
+
+			<div ng-if="viewModel.familyInfo.duration == -1">
+				<p>no sleep data</p>
+			</div>
+			<div ng-if="viewModel.familyInfo.duration > -1">
+				<p>sleep data</p>
+			</div>
 		</div>
-		<!-- div for text information: hours slept, when person fell asleep and woke up, total awake time, etc. -->
-		<canvas class="chart chart-bar" chart-data="data" chart-labels="labels"
-		        chart-options="options" chart-series="series" chart-colors="colors" width="50" height="10"></canvas>
-		<!-- <img ng-src="images/faces/happy.png" class="swv-mood-pics">
-		<p> insert here descriptive of mood </p> -->
+
 	</div>
 </div>
