@@ -61,14 +61,14 @@ module.controller(
 
                 viewModel.updateFamilyInfo = function () {
                     var date = dateFactory.getDateString();
-                    console.log("date from FDV");
-                    console.log(date);
+                    //console.log("date from FDV");
+                    //console.log(date);
                     var personas = personaFactory.personas;
 
                     tractdbFactory.setQuery('familydaily', null, date);
                     var tractdbData = tractdbFactory.tractdbData;
-                    //console.log("queried data");
-                    //console.log(tractdbData);
+                    ////console.log("queried data");
+                    ////console.log(tractdbData);
 
                     if(personas && tractdbData) {
                         // start with the personas data
@@ -78,12 +78,31 @@ module.controller(
                         //console.log("in forEach");
                         angular.forEach(tractdbData, function(value, key){
                             var famID = key;
+                            //console.log("famID = " + famID);
                             var d = Object.keys(value)[0];
                             var sleep_data = value[d];
                             var hours = sleep_data.duration / 1000 / 60 / 60;
+                            var targetedHours = viewModel.familyInfo[famID].targetedHours;
+                            console.log("hours needed to sleep = " + targetedHours);
                             //console.log("using duration hours sleept   = " + hours);
-                            //console.log(viewModel.familyInfo[famID]);
-                            viewModel.familyInfo[famID].sleep = [1, 10, 0]; //[extra hours, hours_slept, remainder]
+
+                            ////console.log(viewModel.familyInfo[famID]);
+                            var delta = targetedHours - hours;
+                            //console.log("delta hours = " + delta);
+                            if(delta > 0){
+                                //console.log('in delta > 0');
+                                viewModel.familyInfo[famID].sleep = [0 , hours, delta]; //[extra hours, hours_slept, remainder]    
+                            } else if(delta < 0){
+                                //console.log('in delta < 0');
+                                delta = Math.abs(delta);
+                                // var t = hours-delta;
+                                // console.log('t = ' + t);
+                                viewModel.familyInfo[famID].sleep = [delta, hours, 0]; //[extra hours, hours_slept, remainder]
+                            } else {
+                                //console.log('in delta == 0');
+                                viewModel.familyInfo[famID].sleep = [0, hours, 0]; //[extra hours, hours_slept, remainder]
+                            }
+                            //viewModel.familyInfo[famID].sleep = [1, 10, 0]; //[extra hours, hours_slept, remainder]
                             viewModel.familyInfo[famID].hours = hours;
                             //console.log("printting sleep array for " + famID);
                             //console.log(viewModel.familyInfo[famID].sleep);
@@ -145,7 +164,7 @@ module.controller(
             //should replace to viewModel
             $scope.changeView = function(id){
                 //var view = '/familydailyview';
-                console.log("in changeview FDV " + id);
+                //console.log("in changeview FDV " + id);
                 $location.path('/sdview/' + id);
             };
         }]);
