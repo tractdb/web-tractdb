@@ -63,12 +63,12 @@ angular.module('FamilySleep')
           },
           {
               title: 'Individual Daily View',
-              url: 'sdview/' + $scope.id,
+              url: 'sdview/' + viewModel.id,
               tag: 'individual-daily-view'
           },
           {
               title: 'Individual Weekly View',
-              url: 'singleweeklyview/' + $scope.id,
+              url: 'singleweeklyview/' + viewModel.id,
               tag: 'individual-weekly-view'
           }
         ];

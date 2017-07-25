@@ -66,6 +66,11 @@ module.factory(
                         method: 'GET',
                         url: BASEURL_PYRAMID + '/familysleep/singledaily/' + factory._queryPid + '/' + factory._queryDate
                     };
+                } else if (factory._query == 'singleweekly' && factory._queryDate && factory._queryPid){
+                    get = {
+                        method: 'GET',
+                        url: BASEURL_PYRAMID + '/familysleep/singleweekly/' + factory._queryPid + '/' + factory._queryDate
+                    };
                     console.log("in get");
                     console.log(get);
                 }

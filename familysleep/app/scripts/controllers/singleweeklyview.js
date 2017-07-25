@@ -12,14 +12,36 @@
 angular.module('FamilySleep')
   .controller('SingleweeklyviewCtrl', [
 	'$scope', 'sleepWeeklyDataFactory', 'tractdbFactory',  '$rootScope', 'dateFactory', '$routeParams', 'personaFactory', 'selfReportState', 
-	function ($scope, singleWeeklySleep, dbdata, $rootScope, dateFactory, $routeParams, personaFactory, selfReportState) {
+	function ($scope, singleWeeklySleep, tractdbFactory, $rootScope, dateFactory, $routeParams, personaFactory, selfReportState) {
 
-	
-	$scope.id = $routeParams.id;
+	var viewModel = this;
+	viewModel.familyInfo = null;
+	viewModel.id = $routeParams.id;
 
-    $scope.mood = selfReportState.getMood($routeParams.id);
 
-    $scope.persona = personaFactory.personas[$routeParams.id];
+    viewModel.updateFamilyInfo = function(){
+    	var date = dateFactory.getDateString();
+    	viewModel.state = selfReportState.getMood(viewModel.id);
+    	var persona = personaFactory.personas[viewModel.id];
+    	console.log('persona');
+    	console.log(persona);
+    	tractdbFactory.setQuery('singleweekly', viewModel.id, date);
+    	var tractdbData = tractdbFactory.tractdbData;
+    	console.log('tractdbData');
+    	console.log(tractdbData);
+    	if (persona && tractdbData){
+    		viewModel.familyInfo = persona;
+    		console.log("tractdbData");
+    		console.log(tractdbData);
+    	}
+
+
+
+    }
+
+    //should it be $scope or viewModel? we should use them consistently
+    personaFactory.observe($scope, viewModel.updateFamilyInfo);
+    tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
 
 	$rootScope.menu = [
 	  {
@@ -46,8 +68,10 @@ angular.module('FamilySleep')
 	console.log("in SingleweeklyviewCtrl");
 
 	$scope.$on('date:updated', function() {
-    updateData();
-  });
+		//updateData();
+		viewModel.updateFamilyInfo();
+  	});
+
 
 	var updateData = function () {/*
 		if(dateFactory.getWeekDateString() != []) {
