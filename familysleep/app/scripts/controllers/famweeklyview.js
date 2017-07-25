@@ -16,10 +16,10 @@ angular.module('FamilySleep')
             //viewModel.personas = null;
             
             viewModel.dateWeekStr = dateFactory.getWeekDateString();
-            console.log('week dates');
+            //console.log('week dates');
             console.log(viewModel.dateWeekStr);
             viewModel.updateWeekFamilyInfo = function(){
-                console.log('familyweekly');
+                //console.log('familyweekly');
                 //selected date and the query returns a week of data from the data
                 viewModel.date = dateFactory.getDateString();
                 // console.log("dateWeekStr with just calling one date");
@@ -33,8 +33,8 @@ angular.module('FamilySleep')
                 // console.log(tractdbData);
                 if(personas && tractdbData){
                     viewModel.familyInfo = personas;
-                    console.log("familyInfo object before adding sleep");
-                    console.log(viewModel.familyInfo);
+                    //console.log("familyInfo object before adding sleep");
+                    //console.log(viewModel.familyInfo);
                     //join persona and tractdbdata
                     angular.forEach(tractdbData, function(value, key){
                         var famID = key;
@@ -69,8 +69,8 @@ angular.module('FamilySleep')
                             viewModel.familyInfo[famID].days[d].hours = hours;
                           //console.log(viewModel.familyInfo[famID][d]);
                         }
-                        console.log('familyInfo after forEach');
-                        console.log(viewModel.familyInfo[famID]);
+                        //console.log('familyInfo after forEach');
+                        //console.log(viewModel.familyInfo[famID]);
                     });
                     // console.log("printing familyInfo with sleep data");
                     // console.log(viewModel.familyInfo);
