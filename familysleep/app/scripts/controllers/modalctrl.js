@@ -102,7 +102,8 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       $ctrl.states[famID].image = selectedItems.selected.image;
 
       $log.info("******in modalsIntance result");
-      selfReportState.setMood($ctrl.famID, selectedItems.selected.name, selectedItems.selected.image, selectedItems.selectedFam);
+      var date = dateFactory.getDateString();
+      selfReportState.setMood($ctrl.famID, selectedItems.selected.name, selectedItems.selected.image, selectedItems.selectedFam, date);
       //console.log()
       //$log.info(selectedItems.selected);
       //$log.info(selectedItems.selectedFam);

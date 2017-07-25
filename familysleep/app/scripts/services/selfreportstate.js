@@ -121,17 +121,30 @@ angular.module('FamilySleep')
         return factory.states[d][id];
     }
 
-    factory.setMood = function(id, mood, image, reporter){
-        var moods = factory.getAllMoods();
-        if(moods.hasOwnProperty(id)){
-            moods[id].mood = mood;
-            moods[id].image = image;
-            moods[id].state = true;
-            moods[id].reporter = reporter;
-            factory.states[id] = moods[id];
-            console.log("mood of " + id + " has been updated");
-            console.log(factory.states[id]);
+    factory.setMood = function(id, mood, image, reporter, date){
+        var d = factory.getDate();
+        console.log('in set mood');
+        console.log('d = ' + d);
+        console.log('date = ' + date);
+        console.log('hasOwnProperty = ' + factory.states.hasOwnProperty(date));
+        if(d == date){
+            console.log('dates are the same');
+            var moods = factory.getAllMoods();
+            if(moods.hasOwnProperty(id)){
+                moods[id].mood = mood;
+                moods[id].image = image;
+                moods[id].state = true;
+                moods[id].reporter = reporter;
+                //factory.states[id] = moods[id];
+                console.log("mood of " + id + " has been updated");
+                console.log(factory.states[d][id]);
+                console.log('entire state');
+                console.log(factory.states);
+            }
+        } else {
+            console.log('dates are different');
         }
+
     }
 
     /*TODO: THIS IS INCORRECT
