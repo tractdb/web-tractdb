@@ -19,7 +19,7 @@ angular.module('FamilySleep')
 
         viewModel.updateFamilyInfo = function () {
             viewModel.id = $routeParams.id;
-            var date = dateFactory.getDateString();
+
             viewModel.state = selfReportState.getMood(viewModel.id);
             console.log("selfReportState");
             console.log(selfReportState.states);
@@ -28,7 +28,6 @@ angular.module('FamilySleep')
             var persona = personaFactory.personas[viewModel.id];
             //console.log(persona);
 
-            tractdbFactory.setQuery('singledaily', viewModel.id, date);
             var tractdbData = tractdbFactory.tractdbData;
             if(persona && tractdbData) {
                 //console.log("after if");
@@ -70,6 +69,10 @@ angular.module('FamilySleep')
 
 
         }
+
+        var date = dateFactory.getDateString();
+        tractdbFactory.setQuery('singledaily', viewModel.id, date);
+
         //should it be $scope or viewModel? we should use them consistently
         personaFactory.observe($scope, viewModel.updateFamilyInfo);
         tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
@@ -97,6 +100,9 @@ angular.module('FamilySleep')
 
         //does this need to be viewModel?
         $scope.$on('date:updated', function() {
+          var date = dateFactory.getDateString();
+          tractdbFactory.setQuery('singledaily', viewModel.id, date);
+
           viewModel.updateFamilyInfo();
         });
     var updateData = function() {
