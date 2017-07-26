@@ -60,12 +60,10 @@ module.controller(
                 viewModel.familyInfo = null;
 
                 viewModel.updateFamilyInfo = function () {
-                    var date = dateFactory.getDateString();
                     //console.log("date from FDV");
                     //console.log(date);
                     var personas = personaFactory.personas;
 
-                    tractdbFactory.setQuery('familydaily', null, date);
                     var tractdbData = tractdbFactory.tractdbData;
                     ////console.log("queried data");
                     ////console.log(tractdbData);
@@ -131,6 +129,9 @@ module.controller(
 
             }
 
+            var date = dateFactory.getDateString();
+            tractdbFactory.setQuery('familydaily', null, date);
+
             //should it be $scope or viewModel? we should use them consistently
             personaFactory.observe($scope, viewModel.updateFamilyInfo);
             tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
@@ -158,6 +159,9 @@ module.controller(
 
             //should replace to viewModel
             $scope.$on('date:updated', function () {
+              var date = dateFactory.getDateString();
+              tractdbFactory.setQuery('familydaily', null, date);
+
                 viewModel.updateWeekFamilyInfo();
             });
 

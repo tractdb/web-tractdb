@@ -19,7 +19,7 @@ module.factory(
             //
             // What data we want from the server
             //
-            factory._query = null;       // 'familydaily'
+            factory._query = null;       // 'familydaily', 'familyweekly', 'singledaily', 'singleweekly'
             factory._queryPid = null;
             factory._queryDate = null;
 
@@ -85,7 +85,7 @@ module.factory(
                         factory.tractdbData = response.data;
                         factory._notify();
                     }).catch(function () {
-                        //can catch error hereb
+                        //can catch error here
                     }).finally(function () {
                         //factory._scheduleNextRetrieve();
                     });
