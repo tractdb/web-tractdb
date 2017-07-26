@@ -16,9 +16,10 @@ angular.module('FamilySleep')
             //viewModel.personas = null;
             
             viewModel.dateWeekStr = dateFactory.getWeekDateString();
-            console.log('week dates');
+            //console.log('week dates');
             console.log(viewModel.dateWeekStr);
             viewModel.updateWeekFamilyInfo = function(){
+                //console.log('familyweekly');
                 //selected date and the query returns a week of data from the data
                 viewModel.date = dateFactory.getDateString();
                 // console.log("dateWeekStr with just calling one date");
@@ -32,8 +33,8 @@ angular.module('FamilySleep')
                 // console.log(tractdbData);
                 if(personas && tractdbData){
                     viewModel.familyInfo = personas;
-                    console.log("familyInfo object");
-                    console.log(viewModel.familyInfo);
+                    //console.log("familyInfo object before adding sleep");
+                    //console.log(viewModel.familyInfo);
                     //join persona and tractdbdata
                     angular.forEach(tractdbData, function(value, key){
                         var famID = key;
@@ -44,15 +45,32 @@ angular.module('FamilySleep')
                         // console.log("familyInfo by ID days");
                         // console.log(viewModel.familyInfo[famID].days);
                         for (var i = dates.length - 1; i >= 0; i--) {
-                          var d = dates[i];
-                          var sleep_data = tractdbData[famID][d];
-                          //console.log(sleep_data);
-                          var hours = sleep_data.duration / 1000 / 60 / 60;
-                          viewModel.familyInfo[famID].days[d] = {};
-                          viewModel.familyInfo[famID].days[d].sleep = [0, hours, 0];
-                          viewModel.familyInfo[famID].days[d].hours = hours;
+                            var d = dates[i];
+                            var sleep_data = tractdbData[famID][d];
+                            //console.log(sleep_data);
+                            var hours = sleep_data.duration / 1000 / 60 / 60;
+                            var targetedHours = viewModel.familyInfo[famID].targetedHours;
+                            var delta = targetedHours - hours;
+                            viewModel.familyInfo[famID].days[d] = {};
+                            if (delta > 0){
+                                //console.log('in delta > 0');
+                                viewModel.familyInfo[famID].days[d].sleep = [0 , hours, delta]; //[extra hours, hours_slept, remainder]    
+                            } else if (delta < 0){
+                                //console.log('in delta < 0');
+                                delta = Math.abs(delta);
+                                // var t = hours-delta;
+                                // console.log('t = ' + t);
+                                viewModel.familyInfo[famID].days[d].sleep = [delta, hours, 0]; //[extra hours, hours_slept, remainder]
+                            } else {
+                                //console.log('in delta == 0');
+                                viewModel.familyInfo[famID].days[d].sleep = [0, hours, 0]; //[extra hours, hours_slept, remainder]
+                            }
+                            //viewModel.familyInfo[famID].days[d].sleep = [0, hours, 0];
+                            viewModel.familyInfo[famID].days[d].hours = hours;
                           //console.log(viewModel.familyInfo[famID][d]);
                         }
+                        //console.log('familyInfo after forEach');
+                        //console.log(viewModel.familyInfo[famID]);
                     });
                     // console.log("printing familyInfo with sleep data");
                     // console.log(viewModel.familyInfo);
