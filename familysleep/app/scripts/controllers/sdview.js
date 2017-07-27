@@ -76,9 +76,100 @@ angular.module('FamilySleep')
                 console.log(viewModel.familyInfo);
                 //console.log('sleep data duration');
                 //console.log(viewModel.familyInfo[d].duration);
+                viewModel.dailydata = [
+                    sleep_data.minuteData.one, 
+                    sleep_data.minuteData.two,
+                    sleep_data.minuteData.three
+                ];
+                viewModel.barlabels = sleep_data.minuteData.labels;
             }
 
+            //bar setup
 
+            viewModel.baroptions = {
+                scales: {
+                  xAxes: [{
+                    stacked: true,
+                    categoryPercentage: 1,
+                    barPercentage: 1,
+                    barThickness : 1,
+                    type: 'time',
+                    gridLines: {
+                      display: false, // Set to false here => xAxis labels displayed out of canvas
+                      offsetGridLines: true,
+                    },
+                    ticks: {
+                      display: true,
+                      fontColor: "white",
+                      fontSize: 10,
+                      fontFamily: 'HelveticaNeue, HelveticaNeue, Roboto, ArialRounded',
+                      autoSkip: true,
+                      maxTicksLimit: 20
+                    },
+                    time: {
+                      displayFormats: {
+                        minute: 'HH:mm a'
+                      },
+                      tooltipFormat: 'HH:mm a',
+                      unit: "minute",
+                      unitStepSize: 1,
+                    },
+                    showXLabel: 60
+                  }],
+                  yAxes: [{
+                    // stacked: true, //scaleLabel: "<%=value%>",
+                    // ticks: {
+                    //   fontSize: 12,
+                    //   fontFamily: 'HelveticaNeue, HelveticaNeue, Roboto, ArialRounded'
+                    // },
+                    // gridLines: {
+                    //   display: false, // Set to false here => xAxis labels displayed out of canvas
+                    // },
+                    display: false
+                  }]
+                },
+                legend: {
+                  display: true,
+                  labels: {
+                    fontColor: "white"
+                  }
+                }
+            };
+
+            viewModel.barseries = ["Sleep", "Movement", "Restless"];
+            viewModel.barcolors = [
+                {
+                    backgroundColor: "#44d2d1",
+                    borderColor: "#44d2d1",
+                    pointBackgroundColor: "#44d2d1",
+                    pointBorderColor: "#44d2d1"
+                }, 
+                {
+                    backgroundColor: "#551A8B",
+                    borderColor: "#551A8B",
+                    pointBackgroundColor: "#551A8B",
+                    pointBorderColor: "#551A8B"
+                },
+                {
+                    backgroundColor: "#FC3F73",
+                    borderColor: "#FC3F73",
+                    pointBackgroundColor: "#FC3F73",
+                    pointBorderColor: "#FC3F73"
+                }];
+
+            //ring setup
+            viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
+            viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
+            viewModel.options = {
+                elements: {
+                    arc: {
+                        //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                        borderWidth: 0
+                        
+                    }
+                },
+                cutoutPercentage: 65
+            };
         }
 
         var date = dateFactory.getDateString();
@@ -176,12 +267,12 @@ angular.module('FamilySleep')
         };
 
         $scope.data = [
-            sleepDataFactory.sleep_data[$scope.id][newDate].minuteData.one, 
-            sleepDataFactory.sleep_data[$scope.id][newDate].minuteData.two,
-            sleepDataFactory.sleep_data[$scope.id][newDate].minuteData.three
+            sleep_data.minuteData.one, 
+            sleep_data.minuteData.two,
+            sleep_data.minuteData.three
         ];
 
-        $scope.labels = sleepDataFactory.sleep_data[$scope.id][newDate].labels;
+        $scope.labels = sleep_data.labels;
 
         $scope.colors = [{
             backgroundColor: "#44d2d1",

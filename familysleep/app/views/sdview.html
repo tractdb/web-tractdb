@@ -14,12 +14,25 @@
 			<p id="sdv-name">{{id}}</p>-->
 
 			<div ng-if="viewModel.familyInfo.duration == -1">
-				<p>no sleep data</p>
+            	<div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
+                    <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color"
+                            chart-options="options">
+                    </canvas>
+                </div>
+
 			</div>
 			<div ng-if="viewModel.familyInfo.duration > -1">
-				<p>sleep data</p>
+				<div class="chart-placement">
+                    <canvas id="doughnut" class="chart-doughnut" chart-data="viewModel.familyInfo.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                    </canvas>
+                </div>
+
+                
 			</div>
 		</div>
+
+		<canvas class="chart chart-bar" chart-data="viewModel.dailydata" chart-labels="viewModel.barlabels" chart-options="viewModel.baroptions" chart-series="viewModel.barseries" chart-colors="viewModel.barcolors" width="50" height="10">
+		        </canvas>
 
 	</div>
 </div>
