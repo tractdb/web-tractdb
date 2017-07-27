@@ -60,6 +60,8 @@ module.controller(
                 viewModel.familyInfo = null;
 
                 viewModel.updateFamilyInfo = function () {
+                    //TODO: date needs to change if calendar date changes
+                    //var date = dateFactory.getDateString();
                     //console.log("date from FDV");
                     //console.log(date);
                     var personas = personaFactory.personas;
@@ -71,7 +73,9 @@ module.controller(
                     if(personas && tractdbData) {
                         // start with the personas data
                         viewModel.familyInfo = personas;
-                        //console.log()
+                        console.log('in family-daily-view');
+                        console.log('viewModel.familyInfo');
+                        console.log(viewModel.familyInfo);
                         // join in persona with tractdb
                         //console.log("in forEach");
                         angular.forEach(tractdbData, function(value, key){
@@ -81,7 +85,7 @@ module.controller(
                             var sleep_data = value[d];
                             var hours = sleep_data.duration / 1000 / 60 / 60;
                             var targetedHours = viewModel.familyInfo[famID].targetedHours;
-                            console.log("hours needed to sleep = " + targetedHours);
+                             //console.log("hours needed to sleep = " + targetedHours);
                             //console.log("using duration hours sleept   = " + hours);
 
                             ////console.log(viewModel.familyInfo[famID]);
@@ -106,6 +110,8 @@ module.controller(
                             //console.log(viewModel.familyInfo[famID].sleep);
                             //console.log(viewModel.familyInfo[famID].hours);
                         });
+                        console.log('printing personas after forEach');
+                        console.log(personaFactory.personas);
                         //could go here or might go out of outside of the if
                         //or might go outside of updateFamilyInfo
                         viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
@@ -159,6 +165,7 @@ module.controller(
 
             //should replace to viewModel
             $scope.$on('date:updated', function () {
+                //TODO: date needs to change if calendar date changes
               var date = dateFactory.getDateString();
               tractdbFactory.setQuery('familydaily', null, date);
 
@@ -168,7 +175,9 @@ module.controller(
             //should replace to viewModel
             $scope.changeView = function(id){
                 //var view = '/familydailyview';
-                //console.log("in changeview FDV " + id);
+                console.log("in changeview FDV " + id);
+                console.log('personas');
+                console.log(personaFactory.personas);
                 $location.path('/sdview/' + id);
             };
         }]);

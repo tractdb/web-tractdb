@@ -15,52 +15,63 @@ angular.module('FamilySleep')
         viewModel.familyInfo = null;
         viewModel.id = $routeParams.id;
 
-        console.log("in SdviewCtrl");
+        
 
         viewModel.updateFamilyInfo = function () {
+          console.log("in SdviewCtrl");
             viewModel.id = $routeParams.id;
 
             viewModel.state = selfReportState.getMood(viewModel.id);
-            console.log("selfReportState");
-            console.log(selfReportState.states);
-            console.log("viewModel.state");
-            console.log(viewModel.state);
+            // console.log("selfReportState");
+            // console.log(selfReportState.states);
+            // console.log("viewModel.state for " + viewModel.id);
+            // console.log(viewModel.state);
+            console.log('personas');
+            console.log(personaFactory.personas);
             var persona = personaFactory.personas[viewModel.id];
-            //console.log(persona);
+            console.log('persona');
+            console.log(persona);
 
             var tractdbData = tractdbFactory.tractdbData;
             if(persona && tractdbData) {
                 //console.log("after if");
                 // start with the personas data
                 viewModel.familyInfo = persona;
-                //console.log('viewModel.familyInfo');
+                console.log('viewModel.familyInfo of single user');
                 console.log(viewModel.familyInfo);
-                //console.log('tractdbData');
+                console.log('tractdbData');
                 console.log(tractdbData);
-                var d = Object.keys(tractdbData)[0];
-                var sleep_data = tractdbData[d];
+                var m = Object.keys(tractdbData)[0];
+                var test = tractdbData[viewModel.id]; //should return object with date
+                var d = Object.keys(test)[0];
+                var sleep_data = test[d];
                 //console.log(sleep_data);
                 var hours = sleep_data.duration / 1000 / 60 / 60;
                 // join in persona with tractdb
                 var targetedHours = viewModel.familyInfo.targetedHours;
                 var delta = targetedHours - hours;
-                viewModel.familyInfo[d] = {};
+                //viewModel.familyInfo[d] = {};
                 if (delta > 0){
                     //console.log('in delta > 0');
-                    viewModel.familyInfo[d].sleep = [0 , hours, delta]; //[extra hours, hours_slept, remainder]    
+                    //viewModel.familyInfo[d].sleep = [0 , hours, delta]; //[extra hours, hours_slept, remainder]    
+                    viewModel.familyInfo.sleep = [0 , hours, delta]; //[extra hours, hours_slept, remainder]    
                 } else if (delta < 0){
                     //console.log('in delta < 0');
                     delta = Math.abs(delta);
                     // var t = hours-delta;
                     // console.log('t = ' + t);
-                    viewModel.familyInfo[d].sleep = [delta, hours, 0]; //[extra hours, hours_slept, remainder]
+                    // viewModel.familyInfo[d].sleep = [delta, hours, 0]; //[extra hours, hours_slept, remainder]
+                    viewModel.familyInfo.sleep = [delta, hours, 0]; //[extra hours, hours_slept, remainder]
                 } else {
                     //console.log('in delta == 0');
-                    viewModel.familyInfo[d].sleep = [0, hours, 0]; //[extra hours, hours_slept, remainder]
+                    // viewModel.familyInfo[d].sleep = [0, hours, 0]; //[extra hours, hours_slept, remainder]
+                    viewModel.familyInfo.sleep = [0, hours, 0]; //[extra hours, hours_slept, remainder]
                 }
                 //viewModel.familyInfo.sleep = [1, 10, 0]; //[extra hours, hours_slept, remainder]
-                viewModel.familyInfo[d].hours = hours;
-                viewModel.familyInfo[d].duration = sleep_data.duration;
+                // viewModel.familyInfo[d].hours = hours;
+                viewModel.familyInfo.hours = hours;
+                // viewModel.familyInfo[d].duration = sleep_data.duration;
+                viewModel.familyInfo.duration = sleep_data.duration;
                 console.log('familyInfo for = ' + viewModel.id);
                 console.log(viewModel.familyInfo);
                 //console.log('sleep data duration');

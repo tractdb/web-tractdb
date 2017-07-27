@@ -99,15 +99,18 @@ angular.module('FamilySleep')
         return d;
     }
     //todo: this is incorrect
-    /*
+    
     factory.initializeSingle = function(id){
-        factory.states[id] = {};
-        factory.states[id]['state'] = false;
-        factory.states[id]['mood'] = null;
-        factory.states[id]['image'] = null;
-        /*console.log("in initializeSingle selfReportState");
-        console.log(factory.states);
-    }*/
+        var d = dateFactory.getDateString();
+        var temp = {};
+        temp[id] = {};
+        temp[id]['state'] = false;
+        temp[id]['mood'] = null;
+        temp[id]['image'] = null;
+        factory.states[d] = temp;
+        // console.log("in initializeSingle selfReportState");
+        // console.log(factory.states);
+    }
 
     factory.getAllMoods = function(){
         var d = factory.getDate();
@@ -123,10 +126,10 @@ angular.module('FamilySleep')
 
     factory.setMood = function(id, mood, image, reporter, date){
         var d = factory.getDate();
-        console.log('in set mood');
-        console.log('d = ' + d);
-        console.log('date = ' + date);
-        console.log('hasOwnProperty = ' + factory.states.hasOwnProperty(date));
+        // console.log('in set mood');
+        // console.log('d = ' + d);
+        // console.log('date = ' + date);
+        // console.log('hasOwnProperty = ' + factory.states.hasOwnProperty(date));
         if(d == date){
             console.log('dates are the same');
             var moods = factory.getAllMoods();
@@ -136,10 +139,10 @@ angular.module('FamilySleep')
                 moods[id].state = true;
                 moods[id].reporter = reporter;
                 //factory.states[id] = moods[id];
-                console.log("mood of " + id + " has been updated");
-                console.log(factory.states[d][id]);
-                console.log('entire state');
-                console.log(factory.states);
+                // console.log("mood of " + id + " has been updated");
+                // console.log(factory.states[d][id]);
+                // console.log('entire state');
+                // console.log(factory.states);
             }
         } else {
             console.log('dates are different');
