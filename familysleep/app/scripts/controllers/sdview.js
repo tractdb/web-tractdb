@@ -41,7 +41,7 @@ angular.module('FamilySleep')
                 console.log(viewModel.familyInfo);
                 console.log('tractdbData');
                 console.log(tractdbData);
-                var m = Object.keys(tractdbData)[0];
+                //var m = Object.keys(tractdbData)[0];
                 var test = tractdbData[viewModel.id]; //should return object with date
                 var d = Object.keys(test)[0];
                 var sleep_data = test[d];
@@ -202,9 +202,9 @@ angular.module('FamilySleep')
 
         //does this need to be viewModel?
         $scope.$on('date:updated', function() {
+          //TODO: need to maintain date which will taken care of by dateFactory
           var date = dateFactory.getDateString();
           tractdbFactory.setQuery('singledaily', viewModel.id, date);
-
           viewModel.updateFamilyInfo();
         });
     var updateData = function() {
