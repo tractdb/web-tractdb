@@ -92,19 +92,24 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       $ctrl.selected = selectedItems.selected;
       //source of report
       $ctrl.selectedFam = selectedItems.selectedFam;
-      
+      //var reporterID = per
       //console.log("printing on family member sleep object");
       //console.log(sleepFamDailyDataFactory.famID);
-      console.log("printing $ctrl.FamID");
-      console.log($ctrl.famID);
+      // console.log("printing $ctrl.FamID");
+      // console.log($ctrl.famID);
       $ctrl.states[famID].state = true;
       $ctrl.states[famID].mood = selectedItems.selected.name;
       $ctrl.states[famID].image = selectedItems.selected.image;
 
-      $log.info("******in modalsIntance result");
+      // console.log('$ctrl.states');
+      // console.log($ctrl.states);
+      // console.log("******in modalsIntance result");
+      // console.log('personas');
+      // console.log(personaFactory.personas);
       var date = dateFactory.getDateString();
       selfReportState.setMood($ctrl.famID, selectedItems.selected.name, selectedItems.selected.image, selectedItems.selectedFam, date);
-      //console.log()
+      console.log('personaFactory personas');
+      console.log(personaFactory.personas);
       //$log.info(selectedItems.selected);
       //$log.info(selectedItems.selectedFam);
       //$log.info(selectedItems.selected.name);
@@ -139,9 +144,9 @@ angular.module('FamilySleep').controller('ModalInstanceCtrl', function ($uibModa
 
   $ctrl.ok = function () {
     $uibModalInstance.close({selected: $ctrl.selected.item, selectedFam: $ctrl.selectedFam.item});
-    $log.info("inside ModalInstanceCtrl OK");
-    $log.info($ctrl.selected.item);
-    $log.info($ctrl.selectedFam.item);
+    // $log.info("inside ModalInstanceCtrl OK");
+    // $log.info($ctrl.selected.item);
+    // $log.info($ctrl.selectedFam.item);
   };
 
   $ctrl.cancel = function () {

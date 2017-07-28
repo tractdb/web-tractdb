@@ -21,7 +21,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 		$scope.signup.user = user = {};
 		$scope.signup.user.members = members = []; //might want to make this an object
 		$scope.members = [];
-		$scope.isAddMemberForm = false; //change it back to false
+		$scope.isAddMemberForm = true; //change it back to false
 		$scope.profilePicItems = [
 			{name:'p1',
 			path:'app/images/avatars/momcircle.png'},
@@ -97,11 +97,18 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			//adding new family members to the personas in personaFactory
 			var newMember = angular.copy(member);
 			members.push(newMember);
-			if(Object.keys(personaFactory.personas).length == 0){
+			console.log('in addNewMember printing personas');
+			console.log(personaFactory.personas);
+			// if(Object.keys(personaFactory.personas).length == 0){
+				
+			// }
+			if(personaFactory.personas == null){
+				personaFactory.personas = {};
 				personaFactory.personas[newMember.pid] = newMember;
 				console.log("add new members to personas");
 				console.log(personaFactory.personas);
-			} else {
+			}
+			 else {
 				personaFactory.personas[newMember.pid] = newMember;	
 			}
 
@@ -115,8 +122,8 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			}*/
 			
 			//selfReportState.initializeSingle(newMember.pid);
-			console.log("inadd New Member == mood state")
-			console.log(selfReportState.states	);
+			// console.log("inadd New Member == mood state")
+			// console.log(selfReportState.states	);
 			//console.log("user family");
 			//console.log(user);
 			member.name = "";
@@ -184,13 +191,13 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			// $scope.signup.user.firstname everytime now??
 			signup.addNewMember();
 			console.log("testing all personas were added before PUT");
-			var profiles = personaFactory.personas;
-			console.log(profiles);
+			//var profiles = personaFactory.personas;
+			console.log(personaFactory.personas);
 
-			console.log("after the PUT");
 			personaFactory.setData(profiles);
-			var profiles = personaFactory.personas;
-			console.log(profiles);
+			console.log("after the PUT");
+			console.log(personaFactory.personas);
+			
 			//console.log("in SignupCtrl where $scope.signup");
 			//console.log($scope.signup);
 			//var json = JSON.stringify($scope.signup);
@@ -223,5 +230,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			});*/
 
 		};
+
+		//personaFactory.observe($scope, signup.submit);
 		
 	}]);

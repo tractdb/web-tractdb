@@ -64,9 +64,17 @@ module.factory(
                         url: BASEURL_PYRAMID + '/document/familysleep_personas'
                     }
                 ).then(function (response) {
+                    console.log('printing response');
+                    console.log(response);
                     factory.personas = response.data.personas;
                     doc_id = response.data._id;
                     doc_rev = response.data._rev;
+                    console.log('in personaFactory retrieveData');
+                    console.log(factory.personas);
+                    console.log('doc_id');
+                    console.log(doc_id);
+                    console.log('doc_rev');
+                    console.log(doc_rev);
                     factory._notify();
                 }).catch(function () {
                   //error message
@@ -75,6 +83,7 @@ module.factory(
                     //
                     factory._scheduleNextRetrieve();
                 });
+
             };
 
             /*
@@ -160,6 +169,7 @@ module.factory(
                 $timeout.cancel(factory._nextRetrievePromise);
                 if (factory._numberObservers > 0) {
                     //factory._nextRetrievePromise = $timeout(factory.retrieveData, 3 * 1000);
+                    factory._nextRetrievePromise = $timeout(factory.retrieveData, 3 * 10000);
                 }
             };
 

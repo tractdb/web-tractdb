@@ -71,8 +71,8 @@ module.factory(
                         method: 'GET',
                         url: BASEURL_PYRAMID + '/familysleep/singleweekly/' + factory._queryPid + '/' + factory._queryDate
                     };
-                    console.log("in get");
-                    console.log(get);
+                    // console.log("in get");
+                    // console.log(get);
                 }
                 else {
                     console.log('tractdbFactory lacks valid query.');
@@ -126,6 +126,7 @@ module.factory(
                 $timeout.cancel(factory._nextRetrievePromise);
                 if (factory._numberObservers > 0) {
                     //factory._nextRetrievePromise = $timeout(factory.retrieveData, 3 * 1000);
+                    factory._nextRetrievePromise = $timeout(factory.retrieveData, 3 * 10000);
                 }
             };
 
