@@ -1,6 +1,7 @@
 <div class="singleview-container">
 
 	<div class="row">
+	<!--
 		<div class="col-xs-4">
 			
 			<div>
@@ -10,8 +11,6 @@
 	        <div class="target-hours">
 	            <p>Target hours: {{viewModel.familyInfo.targetedHours }}</p>
 	        </div>
-			<!--<img ng-src="{{persona." alt="momcircle" id="sdv-profile-pic">
-			<p id="sdv-name">{{id}}</p>-->
 
 			<div ng-if="viewModel.familyInfo.duration == -1">
             	<div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
@@ -29,9 +28,9 @@
 
 			</div>
 		</div>
+-->
+		<canvas class="chart chart-bar" chart-data="viewModel.familyInfo.night" chart-labels="viewModel.barlabels" chart-options="viewModel.baroptions" chart-series="viewModel.barseries" chart-colors="viewModel.barcolors" width="50" height="10">
+		</canvas>
 	</div>
 
-	<canvas class="chart chart-bar" chart-data="viewModel.dailydata" chart-labels="viewModel.barlabels" chart-options="viewModel.baroptions" chart-series="viewModel.barseries" chart-colors="viewModel.barcolors" width="50" height="10">
-	</canvas>
-	{{viewModel.barlabels}}
 </div>

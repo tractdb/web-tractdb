@@ -20,7 +20,7 @@ angular.module('FamilySleep')
 
 
     viewModel.updateFamilyInfo = function(){
-    	var date = dateFactory.getDateString();
+    	//var date = dateFactory.getDateString();
     	viewModel.state = selfReportState.getMood(viewModel.id);
     	var persona = personaFactory.personas[viewModel.id];
     	console.log('persona');
@@ -240,7 +240,7 @@ angular.module('FamilySleep')
 	$rootScope.updateActive = function (item) {
 	  $rootScope.active = item;
 	};
-	console.log("in SingleweeklyviewCtrl");
+	//console.log("in SingleweeklyviewCtrl");
 
 	$scope.$on('date:updated', function() {
 		var date = dateFactory.getDateString();
@@ -433,5 +433,5 @@ angular.module('FamilySleep')
 	    alert('date factory get week didnt populate');
 	  }
 	*/}
-	updateData();
+	//updateData();
 }]);
