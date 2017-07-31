@@ -173,6 +173,7 @@ module.factory(
                 }
             };
 
+            //returns names
             factory.getAllNames = function(){
                 var names = [];
                 for (var prop in factory.personas){
@@ -190,6 +191,28 @@ module.factory(
             //returns an Array of key values
             factory.getAllIDs = function(){
                 return Object.keys(factory.personas);
+            }
+
+            factory.getAllNameIDs = function(){
+                var allMembers = {};
+                //var member = [];
+                angular.forEach(factory.personas, function (value, key){
+                    allMembers[key] = {name: value.name};
+                    // member = [key, value.name];
+                    // allMembers.push(member);
+                })
+                
+            }
+
+            factory.getID = function(name){
+                var id;
+                for(var fam in factory.personas){
+                    if (fam.name == name){
+                        id = fam.pid;
+                        return id;
+                    }
+                }
+                return null;
             }
 
             /***TODO: the  thing below is temporary, needs to fit into the signup pipeline****/
