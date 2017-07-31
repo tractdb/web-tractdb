@@ -79,11 +79,30 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			var view = '/familydailyview';
 			$location.path(view);
 		}
+
+		function setTargetHours(a){
+			//we got targeted hours from the following webpage:
+			//https://sleepfoundation.org/press-release/national-sleep-foundation-recommends-new-sleep-times
+			var age = parseInt(a, 10);
+			if(age >= 6 || age <= 13){
+				return 10;
+			} else if (age >= 14 || age <=17){
+				return 9;
+			} else if (age >= 18 || age <= 64){
+				return 8;
+			} else if (age >= 65){
+				return 8;
+			} else {
+				return 8;
+			}
+		}
+
 		signup.addNewMember = function() {
 			if (
 				!member.name ||
 				!member.type ||
-				!member.profilePic 
+				!member.profilePic ||
+				!member.age
 				//||!member.fitbitId
 			) {
 				alert('Please fill out all form fields.');
@@ -95,6 +114,8 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			//console.log(member);
 
 			//adding new family members to the personas in personaFactory
+			var targethours = setTargetHours(member.age);
+			member.targethours = targethours;
 			var newMember = angular.copy(member);
 			members.push(newMember);
 			console.log('in addNewMember printing personas');
@@ -131,6 +152,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			member.profilePic = "";
 			member.fitbitId = "";
 			member.pid = "";
+			member.age = "";
 		}
 
 		signup.addFamily = function() {
@@ -158,7 +180,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
               console.log('writing to local storage family Infoworked!-------------------------');
             }*/
 			$scope.isAddMemberForm = true;
-			personaFactory.personas = {};
+			//personaFactory.personas = {};
 			//personaFactory.retrieveData();
 		}
 
@@ -192,43 +214,15 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			signup.addNewMember();
 			console.log("testing all personas were added before PUT");
 			//var profiles = personaFactory.personas;
-			console.log(personaFactory.personas);
+			//console.log(personaFactory.personas);
 
-			personaFactory.setData(profiles);
-			console.log("after the PUT");
-			console.log(personaFactory.personas);
-			
-			//console.log("in SignupCtrl where $scope.signup");
-			//console.log($scope.signup);
-			//var json = JSON.stringify($scope.signup);
-			//console.log("turned json into stringify");
-			//console.log(json);
-			//console.log("members in submit function");
-			//console.log(members);
-			
-			//personaFactory.writeToDB();
-			//personaFactory.getProfilesfromDB();
-			
+			personaFactory.putData();
+			// console.log("after the PUT");
+			// console.log(personaFactory.personas);
+
+			console.log('testing selfReportState get');
+			selfReportState.putData();
 			changeView();
-			//personaFactory.postProfilesToDB();
-			/*DON'T NEED this anymore
-			//personaFactory.setProfiles(members);
-			//signup.cancel();
-			
-			//WRITING TO SERVER
-			/*
-			// Make the request to the server ... which doesn't exist just yet
-			var request = $http.post('/signup', user);
-
-			// we'll come back to here and fill in more when ready
-			request.success(function (data) {
-				 console.log(data.msg);
-			});
-
-			request.error(function (data) {
-				 console.log(data.msg);
-			});*/
-
 		};
 
 		//personaFactory.observe($scope, signup.submit);

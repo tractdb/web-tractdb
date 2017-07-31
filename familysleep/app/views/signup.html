@@ -78,6 +78,13 @@
 
 					<!-- Text input-->
 					<div class="form-group">
+						<label class="col-md-4 control-label" for="age">Age</label>  
+						<div class="col-md-5">
+						<input id="age" name="age" ng-model="member.age" type="text" placeholder="10" class="form-control input-md">
+						</div>
+					</div>
+					<!-- Text input-->
+					<div class="form-group">
 						<label class="col-md-4 control-label" for="type">Type of Family Member</label>
 						<div class="col-md-5" ng-repeat="famType in famTypes">
 							<input type="radio" ng-model="member.type" ng-value="famType" name="famType" id="{{famType}}">
