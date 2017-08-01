@@ -76,7 +76,7 @@ angular.module('FamilySleep')
                 console.log(viewModel.familyInfo);
                 //console.log('sleep data duration');
                 //console.log(viewModel.familyInfo[d].duration);
-                viewModel.dailydata = [
+                viewModel.familyInfo.night = [
                     sleep_data.minuteData.one, 
                     sleep_data.minuteData.two,
                     sleep_data.minuteData.three
@@ -86,55 +86,63 @@ angular.module('FamilySleep')
 
             //bar setup
 
-            viewModel.baroptions = {
-                scales: {
-                  xAxes: [{
-                    stacked: true,
-                    categoryPercentage: 1,
-                    barPercentage: 1,
-                    barThickness : 1,
-                    type: 'time',
-                    gridLines: {
-                      display: false, // Set to false here => xAxis labels displayed out of canvas
-                      offsetGridLines: true,
-                    },
-                    ticks: {
-                      display: true,
-                      fontColor: "white",
-                      fontSize: 10,
-                      fontFamily: 'HelveticaNeue, HelveticaNeue, Roboto, ArialRounded',
-                      autoSkip: true,
-                      maxTicksLimit: 20
-                    },
-                    time: {
-                      displayFormats: {
-                        minute: 'HH:mm a'
-                      },
-                      tooltipFormat: 'HH:mm a',
-                      unit: "minute",
-                      unitStepSize: 1,
-                    },
-                    showXLabel: 60
-                  }],
-                  yAxes: [{
-                    // stacked: true, //scaleLabel: "<%=value%>",
-                    // ticks: {
-                    //   fontSize: 12,
-                    //   fontFamily: 'HelveticaNeue, HelveticaNeue, Roboto, ArialRounded'
-                    // },
-                    // gridLines: {
-                    //   display: false, // Set to false here => xAxis labels displayed out of canvas
-                    // },
-                    display: false
-                  }]
-                },
-                legend: {
-                  display: true,
-                  labels: {
-                    fontColor: "white"
-                  }
-                }
-            };
+              
+            // viewModel.baroptions = {
+            //     layout: {
+            //         padding: {
+            //             left: 0,
+            //             right: 0,
+            //             top: 18,
+            //             bottom: 0
+            //         }
+            //     },
+            //     scales: {
+            //         xAxes: [{
+            //             stacked: true,
+            //             categoryPercentage: 1,
+            //             barPercentage: 1,
+            //             barThickness : 1,
+            //             type: 'time',
+            //             position: 'top',
+            //             gridLines: {
+            //               display: false, // Set to false here => xAxis labels displayed out of canvas
+            //               offsetGridLines: true,
+            //             },
+            //             ticks: {
+            //               display: true,
+            //               fontSize: 12,
+            //               fontColor: 'white',
+            //               fontFamily: 'HelveticaNeue, HelveticaNeue, Roboto, ArialRounded',
+            //               autoSkip: true,
+            //               maxTicksLimit: 20
+            //             },
+            //             time: {
+            //               displayFormats: {
+            //               minute: 'HH:mm a'
+            //               },
+            //               tooltipFormat: 'YYYY-MM-DD HH:mm a',
+            //               unit: "minute",
+            //               unitStepSize: 15,
+            //             },
+            //             showXLabel: 60
+            //             }],
+            //         yAxes: [{
+            //             display: false
+            //         }]
+            //     },
+            //     hover: { //to turn off hover
+            //         mode: null
+            //     },
+            //     tooltips:{ //to turn off hover
+            //         enabled: false
+            //     },
+            //     legend: {
+            //         display: false
+            //     },
+            //     responsive:false,
+            //     maintainAspectRatio: false
+            // };
+
 
             viewModel.barseries = ["Sleep", "Movement", "Restless"];
             viewModel.barcolors = [

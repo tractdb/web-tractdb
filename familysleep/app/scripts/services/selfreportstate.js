@@ -126,6 +126,7 @@ angular.module('FamilySleep')
 
     factory.setMood = function(id, mood, image, reporter, date){
         var d = factory.getDate();
+        //var reportId = personaFactory.getID(reporter);
         // console.log('in set mood');
         // console.log('d = ' + d);
         // console.log('date = ' + date);

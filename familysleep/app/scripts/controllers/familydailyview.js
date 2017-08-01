@@ -169,7 +169,7 @@ module.controller(
               var date = dateFactory.getDateString();
               tractdbFactory.setQuery('familydaily', null, date);
 
-                viewModel.updateWeekFamilyInfo();
+                viewModel.updateFamilyInfo();
             });
 
             //should replace to viewModel

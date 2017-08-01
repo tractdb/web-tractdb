@@ -38,6 +38,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
     //console.log(pids);
     //TODO: this initialization should be part of the login pipeline
     selfReportState.intializeAll(pids);
+    //$ctrl.famMems = personaFactory.getAllNameIDs();
     $ctrl.famMems = personaFactory.getAllNames();
     //console.log($ctrl.famMems);
     $ctrl.famIDs = personaFactory.getAllIDs();
@@ -58,11 +59,12 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
     console.log(famID);
     $ctrl.famID = famID;
     $ctrl.buttonState = 0;
+
     for (var i = 0; i < $ctrl.famIDs.length; i++) {
-      if ($ctrl.famIDs[i] == $ctrl.famID) {
-        $ctrl.famMems[i] = 'MYSELF';
-        break;
-      }
+        if ($ctrl.famIDs[i] == $ctrl.famID) {
+            $ctrl.famMems[i] = 'MYSELF';
+            break;
+        }
     }
     var modalInstance = $uibModal.open({
       animation: $ctrl.animationsEnabled,
