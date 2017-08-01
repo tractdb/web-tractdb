@@ -53,18 +53,29 @@ might get rid of state and directly use mood (String) to identify if it has been
     TODO: 
  */
 angular.module('FamilySleep')
-  .factory('selfReportState', ['dateFactory', 'personaFactory', function (dateFactory, personaFactory) {
+  .factory('selfReportState', ['dateFactory', 'personaFactory', 'BASEURL_PYRAMID', '$rootScope', '$http', '$timeout', function (dateFactory, personaFactory, BASEURL_PYRAMID, $rootScope, $http, $timeout ) {
     var factory = {};
     factory.states = {};
 
-    /*factory.retrieveData = function () {
+    var doc_rev = null;
+    var doc_id = null;
+
+    factory.retrieveData = function () {
+        var date = dateFactory.getDateString();
+        var url = BASEURL_PYRAMID + '/document/family_selfreport_' + date;
+        console.log('printing ulr string');
+        console.log(url);
         $http(
             {
                 method: 'GET',
-                url: BASEURL_PYRAMID + '/document/familysleep_personas'
+                url: url
             }
         ).then(function (response) {
-            factory.personas = response.data.personas;
+            var states = response.data.states;
+            console.log(states)
+            var date = dateFactory.getDateString;
+            factory.states = states;
+
             doc_id = response.data._id;
             doc_rev = response.data._rev;
             factory._notify();
@@ -75,7 +86,94 @@ angular.module('FamilySleep')
             //
             factory._scheduleNextRetrieve();
         });
-    };*/
+    };
+
+    factory.putData = function(){
+        var date = dateFactory.getDateString();
+        var url = BASEURL_PYRAMID + '/document/family_selfreport_' + date;
+        $http(
+            {
+            method: 'GET',
+            url: url
+            }
+        ).then(function success(response){
+            console.log('printing reonse in putData of selfReportState');
+            console.log(response);
+            doc_id = response.data._id;
+            doc_rev = response.data._rev;
+            var old_states = response.states;
+            //console.log("doc_rev at GET from setData");
+            //console.log(doc_rev);
+            //factory.personas = new_personas;
+            var new_doc = {
+            "_id": doc_id,
+            "_rev": doc_rev,
+            "states": factory.states
+            };
+            // console.log("printing obj for PUT");
+            // console.log(new_doc);
+            //now doing the PUT
+            //embedding PUT in GET this doesn't seem the right logic
+            url = BASEURL_PYRAMID + '/document/family_selfreport/' + date;
+            $http({
+                method: 'PUT',
+                url: url,
+                data: new_doc
+            }).then(function success(response){
+                doc_id = response.data._id;
+                doc_rev = response.data._rev;
+                //console.log("rev of the PUT");
+                //console.log(doc_rev);
+                factory._notify();
+            }).catch (function errorCallback(response){
+                console.log("error in the PUT");
+                console.log(response.code);
+            }).finally(function (){
+                factory._scheduleNextRetrieve();
+            });
+        }).catch (function errorCallback(response){
+            console.log("error " + response.code);
+            console.log("error text" + response.statusText);
+        });
+    }
+
+     //
+    // Track who is listening to us, start/stop retrieval
+    //
+    factory._numberObservers = 0;
+    factory._nextRetrievePromise = null;
+
+    factory.observe = function (scope, callback) {
+        var deregister = $rootScope.$on('personaFactory-data', callback);
+
+        factory._numberObservers += 1;
+        factory.retrieveData();
+
+        scope.$on('$destroy', function () {
+            deregister();
+
+            factory._numberObservers -= 1;
+            if (factory._numberObservers == 0) {
+                $timeout.cancel(factory._nextRetrievePromise);
+                factory._nextRetrievePromise = null;
+            }
+        });
+    }
+
+    factory._notify = function () {
+        $rootScope.$emit('selfReportState-data');
+    }
+
+    //
+    // Schedule another retrieve, if anybody is listening
+    //
+    factory._scheduleNextRetrieve = function () {
+        $timeout.cancel(factory._nextRetrievePromise);
+        if (factory._numberObservers > 0) {
+            //factory._nextRetrievePromise = $timeout(factory.retrieveData, 3 * 1000);
+            factory._nextRetrievePromise = $timeout(factory.retrieveData, 3 * 10000);
+        }
+    };
 
     factory.intializeAll = function (pids){
         var d = dateFactory.getDateString();

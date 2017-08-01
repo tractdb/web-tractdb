@@ -64,17 +64,17 @@ module.factory(
                         url: BASEURL_PYRAMID + '/document/familysleep_personas'
                     }
                 ).then(function (response) {
-                    console.log('printing response');
-                    console.log(response);
+                    // console.log('printing response');
+                    // console.log(response);
                     factory.personas = response.data.personas;
                     doc_id = response.data._id;
                     doc_rev = response.data._rev;
-                    console.log('in personaFactory retrieveData');
-                    console.log(factory.personas);
-                    console.log('doc_id');
-                    console.log(doc_id);
-                    console.log('doc_rev');
-                    console.log(doc_rev);
+                    // console.log('in personaFactory retrieveData');
+                    // console.log(factory.personas);
+                    // console.log('doc_id');
+                    // console.log(doc_id);
+                    // console.log('doc_rev');
+                    // console.log(doc_rev);
                     factory._notify();
                 }).catch(function () {
                   //error message
@@ -84,12 +84,12 @@ module.factory(
                     factory._scheduleNextRetrieve();
                 });
 
-            };
+            }
 
             /*
               setting the personas data.
             */
-            factory.setData = function(new_personas) {
+            factory.putData = function() {
                 $http(
                     {
                       method: 'GET',
@@ -101,14 +101,14 @@ module.factory(
                     doc_rev = response.data._rev;
                     //console.log("doc_rev at GET from setData");
                     //console.log(doc_rev);
-                    factory.personas = new_personas;
+                    //factory.personas = new_personas;
                     var new_doc = {
                         "_id": doc_id,
                         "_rev": doc_rev,
-                        "personas": new_personas
+                        "personas": factory.personas
                     };
-                    console.log("printing obj for PUT");
-                    console.log(new_doc);
+                    // console.log("printing obj for PUT");
+                    // console.log(new_doc);
                     //now doing the PUT
                     //embedding PUT in GET this doesn't seem the right logic
                     $http(
@@ -123,17 +123,17 @@ module.factory(
                         //console.log("rev of the PUT");
                         //console.log(doc_rev);
                         factory._notify();
-                    }).catch (function erroCallback(response){
+                    }).catch (function errorCallback(response){
                         console.log("error in the PUT");
                         console.log(response.code);
                     }).finally(function (){
                         factory._scheduleNextRetrieve();
                     });
-                }).catch (function erroCallback(response){
+                }).catch (function errorCallback(response){
                     console.log("error" + response.code);
                     console.log("error text" + response.statusText);
                 });
-            };
+            }
 
             //
             // Track who is listening to us, start/stop retrieval
@@ -219,7 +219,7 @@ module.factory(
             //
             // Initial retrieval
             //
-            factory.retrieveData();
+            //factory.retrieveData();
             
 
             return factory;
