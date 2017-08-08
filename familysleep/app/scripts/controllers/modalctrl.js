@@ -30,14 +30,6 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       }];
     $ctrl.items = moodImages;
 
-      /***TODO: this need to be initialized when the personas are created. However, the way
-    personas is created right now it creates a circual dependenc (which is not possible in angular)
-    so have to initialize selfreportstate here*/
-    var pids = personaFactory.getAllIDs();
-    //console.log("in ModalCrtl initialize, need pids");
-    //console.log(pids);
-    //TODO: this initialization should be part of the login pipeline
-    selfReportState.intializeAll(pids);
     //$ctrl.famMems = personaFactory.getAllNameIDs();
     $ctrl.famMems = personaFactory.getAllNames();
     //console.log($ctrl.famMems);
@@ -110,6 +102,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       // console.log(personaFactory.personas);
       var date = dateFactory.getDateString();
       selfReportState.setMood($ctrl.famID, selectedItems.selected.name, selectedItems.selected.image, selectedItems.selectedFam, date);
+      selfReportState.putData();
       console.log('personaFactory personas');
       console.log(personaFactory.personas);
       //$log.info(selectedItems.selected);

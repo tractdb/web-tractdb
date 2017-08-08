@@ -103,6 +103,7 @@ class TestFamilySleepData:
                     'profilePic': 'app/images/avatars/momcircle.png',
                     'relation': 'parent',
                     'pid': 'm1',
+                    'age': 10,
                     'fitbit': '4KBZLY'
                 },
                 'm2': {
@@ -111,6 +112,7 @@ class TestFamilySleepData:
                     'profilePic': 'app/images/avatars/dadcircle.png',
                     'relation': 'parent',
                     'pid': 'm2',
+                    'age': 40,
                     'fitbit': '4KB123'
                 },
                 'm3': {
@@ -119,6 +121,7 @@ class TestFamilySleepData:
                     'profilePic': 'app/images/avatars/girlcircle.png',
                     'relation': 'child',
                     'pid': 'm3',
+                    'age': 15,
                     'fitbit': '4KATL6'
 
                 },
@@ -128,6 +131,7 @@ class TestFamilySleepData:
                     'profilePic': 'app/images/avatars/boycircle.png',
                     'relation': 'child',
                     'pid': 'm4',
+                    'age': 15,
                     'fitbit': '22TL6D'
                 }
             }

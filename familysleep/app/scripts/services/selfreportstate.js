@@ -88,7 +88,7 @@ angular.module('FamilySleep')
         });
     };
 
-    factory.putData = function(){
+    factory.putNewData = function(){
         var date = dateFactory.getDateString();
         var url = BASEURL_PYRAMID + '/document/family_selfreport_' + date;
         $http(
@@ -97,7 +97,7 @@ angular.module('FamilySleep')
             url: url
             }
         ).then(function success(response){
-            console.log('printing reonse in putData of selfReportState');
+            console.log('printing reponse in putData of selfReportState');
             console.log(response);
             doc_id = response.data._id;
             doc_rev = response.data._rev;
@@ -114,7 +114,7 @@ angular.module('FamilySleep')
             // console.log(new_doc);
             //now doing the PUT
             //embedding PUT in GET this doesn't seem the right logic
-            url = BASEURL_PYRAMID + '/document/family_selfreport/' + date;
+            url = BASEURL_PYRAMID + '/document/family_selfreport_' + date;
             $http({
                 method: 'PUT',
                 url: url,
@@ -125,18 +125,68 @@ angular.module('FamilySleep')
                 //console.log("rev of the PUT");
                 //console.log(doc_rev);
                 factory._notify();
-            }).catch (function errorCallback(response){
+            }).catch (function errorCallback(response){ 
                 console.log("error in the PUT");
                 console.log(response.code);
             }).finally(function (){
                 factory._scheduleNextRetrieve();
             });
         }).catch (function errorCallback(response){
+            console.log(response);
             console.log("error " + response.code);
             console.log("error text" + response.statusText);
+            if(response.status == 404){
+                url = BASEURL_PYRAMID + '/document/family_selfreport_' + date;
+                var new_doc = {
+                    "states": factory.states,
+                    "_id": 'family_selfreport_' + date
+                }
+                $http({
+                    method: 'PUT',
+                    url: url,
+                    data: new_doc
+                }).then(function success(response){
+                    doc_id = response.data._id;
+                    doc_rev = response.data._rev;
+                    //console.log("rev of the PUT");
+                    //console.log(doc_rev);
+                    factory._notify();
+                }).catch (function errorCallback(response){
+                    console.log("error in the PUT");
+                    console.log(response);
+                    console.log(response.code);
+                }).finally(function (){
+                    factory._scheduleNextRetrieve();
+                });
+            }
         });
     }
 
+    factory.putData = function(){
+        var date = dateFactory.getDateString();
+        var url = BASEURL_PYRAMID + '/document/family_selfreport_' + date;
+        var new_doc = {
+            "_id": doc_id,
+            "_rev": doc_rev,
+            "states": factory.states
+        };
+        $http({
+            method: 'PUT',
+            url: url,
+            data: new_doc
+        }).then(function success(response){
+            //doc_id = response.data._id;
+            doc_rev = response.data._rev;
+            //console.log("rev of the PUT");
+            //console.log(doc_rev);
+            factory._notify();
+        }).catch (function errorCallback(response){ 
+            console.log("error in the PUT");
+            console.log(response.code);
+        }).finally(function (){
+            factory._scheduleNextRetrieve();
+        });
+    }
      //
     // Track who is listening to us, start/stop retrieval
     //
@@ -175,7 +225,7 @@ angular.module('FamilySleep')
         }
     };
 
-    factory.intializeAll = function (pids){
+    factory.initializeAll = function (pids){
         var d = dateFactory.getDateString();
         var temp = {};
         for (var i = pids.length - 1; i >= 0; i--) {
@@ -205,6 +255,7 @@ angular.module('FamilySleep')
         temp[id]['state'] = false;
         temp[id]['mood'] = null;
         temp[id]['image'] = null;
+        temp[id]['reporter'] = null;
         factory.states[d] = temp;
         // console.log("in initializeSingle selfReportState");
         // console.log(factory.states);

@@ -53,11 +53,22 @@ var module = angular.module(
 module.controller(
     'FamilyDailyViewCtrl',
     
-        ['$scope', '$rootScope', 'tractdbFactory', 'sleepFamDailyDataFactory', 'dateFactory', 'selfReportState', 'personaFactory', '$location',
-            function ($scope, $rootScope, tractdbFactory, sleepFamDailyDataFactory, dateFactory, selfReportState, personaFactory, $location) {
+        ['$scope', '$rootScope', 'tractdbFactory', 'dateFactory', 'selfReportState', 'personaFactory', '$location',
+            function ($scope, $rootScope, tractdbFactory, dateFactory, selfReportState, personaFactory, $location) {
                 var viewModel = this;
 
                 viewModel.familyInfo = null;
+                viewModel.today = dateFactory.getTodayString();
+                viewModel.calendarDate = dateFactory.getDateString();
+
+                // TODO: this need to be initialized when the personas are created. However, the way
+                // personas is created right now it creates a circual dependenc (which is not possible in angular)
+                // so have to initialize selfreportstate here
+                // var pids = personaFactory.getAllIDs();
+                // //console.log("in ModalCrtl initialize, need pids");
+                // //console.log(pids);
+                // //TODO: this initialization should be part of the login pipeline
+                // selfReportState.intializeAll(pids);
 
                 viewModel.updateFamilyInfo = function () {
                     //TODO: date needs to change if calendar date changes
@@ -67,8 +78,8 @@ module.controller(
                     var personas = personaFactory.personas;
 
                     var tractdbData = tractdbFactory.tractdbData;
-                    ////console.log("queried data");
-                    ////console.log(tractdbData);
+                    console.log("queried data");
+                    console.log(tractdbData);
 
                     if(personas && tractdbData) {
                         // start with the personas data
@@ -135,12 +146,15 @@ module.controller(
 
             }
 
-            var date = dateFactory.getDateString();
-            tractdbFactory.setQuery('familydaily', null, date);
+            //viewModel.calendarDate = dateFactory.getDateString();
+            //James
+            tractdbFactory.setQuery('familydaily', null, viewModel.calendarDate);
 
             //should it be $scope or viewModel? we should use them consistently
             personaFactory.observe($scope, viewModel.updateFamilyInfo);
             tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
+
+            
 
             //
             // Current approach to showing the menu for choosing views
@@ -163,12 +177,11 @@ module.controller(
                 $rootScope.active = item;
             };
 
-            //should replace to viewModel
             $scope.$on('date:updated', function () {
-                //TODO: date needs to change if calendar date changes
-              var date = dateFactory.getDateString();
-              tractdbFactory.setQuery('familydaily', null, date);
-
+                viewModel.today = dateFactory.getTodayString();
+                viewModel.calendarDate = dateFactory.getDateString();
+                tractdbFactory.setQuery('familydaily', null, viewModel.calendarDate);
+                //selfreportstate.initializeAll(pids);
                 viewModel.updateFamilyInfo();
             });
 

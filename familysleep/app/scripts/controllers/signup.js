@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('FamilySleep') // make sure this is set to whatever it is in your client/scripts/app.js
-	.controller('SignupCtrl', ['$scope', '$http', '$sanitize', '$location', 'personaFactory', 'selfReportState',
-	function ($scope, $http, $sanitize, $location, personaFactory, selfReportState) { // note the added $http depedency
+	.controller('SignupCtrl', ['$scope', '$http', '$sanitize', '$location', 'personaFactory', 'selfReportState', 'dateFactory', 'tractdbFactory',	
+	function ($scope, $http, $sanitize, $location, personaFactory, selfReportState, dateFactory, tractdbFactory) { 
 		
 		// Here we're creating some local references
 		// so that we don't have to type $scope every
@@ -115,11 +115,11 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 
 			//adding new family members to the personas in personaFactory
 			var targethours = setTargetHours(member.age);
-			member.targethours = targethours;
+			member.targetedHours = targethours;
 			var newMember = angular.copy(member);
 			members.push(newMember);
 			console.log('in addNewMember printing personas');
-			console.log(personaFactory.personas);
+			//console.log(personaFactory.personas);
 			// if(Object.keys(personaFactory.personas).length == 0){
 				
 			// }
@@ -131,6 +131,8 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			}
 			 else {
 				personaFactory.personas[newMember.pid] = newMember;	
+				console.log("add new members to personas");
+				console.log(personaFactory.personas);
 			}
 
 			//initializing new family member's mood state
@@ -150,7 +152,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			member.name = "";
 			member.type = "";
 			member.profilePic = "";
-			member.fitbitId = "";
+			member.fitbit = "";
 			member.pid = "";
 			member.age = "";
 		}
@@ -207,21 +209,19 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 
 		// This is our method that will post to our server.
 		signup.submit = function () {
-			
-			// make sure all fields are filled out...
-			// aren't you glad you're not typing out
-			// $scope.signup.user.firstname everytime now??
+	
 			signup.addNewMember();
-			console.log("testing all personas were added before PUT");
-			//var profiles = personaFactory.personas;
-			//console.log(personaFactory.personas);
+			//console.log("testing all personas were added before PUT");
 
 			personaFactory.putData();
+			
 			// console.log("after the PUT");
 			// console.log(personaFactory.personas);
 
-			console.log('testing selfReportState get');
-			selfReportState.putData();
+			//console.log('testing selfReportState get');
+			selfReportState.putNewData();
+            var date = dateFactory.getDateString();
+            tractdbFactory.setQuery('familydaily', null, date);
 			changeView();
 		};
 
