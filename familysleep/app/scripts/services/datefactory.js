@@ -16,6 +16,7 @@ angular.module('FamilySleep')
     // contains moment object
     var date = moment(); //I think this needs to be initialized in update date
     var date_week = [];
+    //var today
 
     var updateDate = function(newDate) {
       date = moment(newDate);
@@ -67,9 +68,11 @@ angular.module('FamilySleep')
       return date_week;
     };
 
-    var getToday = function(){
-      var today = moment.format('YYYY-MM-DD HH:mm:ss');
-      return
+    var getTodayString = function(){
+      var today = moment();
+
+      //var today = moment.format('YYYY-MM-DD');
+      return today.format('YYYY-MM-DD');
     };
 
     //TODO: need to figure out where to initialize these things together
@@ -81,7 +84,7 @@ angular.module('FamilySleep')
       getDateString: getDateString,
       getWeekDate : getWeekDate,
       getWeekDateString : getWeekDateString,
-      getToday: getToday
+      getTodayString: getTodayString
 
     };
   });

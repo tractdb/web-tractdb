@@ -12,35 +12,58 @@
                 <p>Target hours: {{ memberCurrent.targetedHours }}</p>
             </div>
             <div ng-controller="ModalCrtl as $ctrl">
+                <div ng-if= "viewModel.today == viewModel.calendarDate" >
+                    <div ng-if=$ctrl.states[pidCurrent].state>
                 
-                <div ng-if=$ctrl.states[pidCurrent].state>
-                
-                    <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
+                        <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
+                        <div class="chart-placement">
+                            <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                            </canvas>
+                        </div>
+                        <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics">
+                        <div class="single-view-button">
+                            <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
+                            <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
+                            <!--want an ng-if here to show only after daily sleep and self-report is available -->
+                        </div>
+                        <div>
+                            <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
+                        </div>
+                        <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p>
+                    </div>
+                    <div ng-if=!$ctrl.states[pidCurrent].state>
+                        <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
+                            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color"
+                                    chart-options="options">
+                            </canvas>
+                        </div>
+                        <!--inserts code for the modal popup window-->
+                        <button type="button" class="how-sleep-button btn btn-default" ng-click="$ctrl.open(pidCurrent)">
+                            How did you sleep?
+                        </button>
+                    </div>
+                </div>
+                <div ng-if= "viewModel.today != viewModel.calendarDate" >
+                    
                     <div class="chart-placement">
                         <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
                         </canvas>
                     </div>
-                    <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics">
+                    <div ng-if=$ctrl.states[pidCurrent].state>
+                        <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics">
+                        <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p>
+                    </div>
+                    <div ng-if=!$ctrl.states[pidCurrent].state>
+                        <p class="mood-report">No mood reported for this date</p>
+                    </div>
                     <div class="single-view-button">
-                        <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
+                        
                         <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
-                        <!--want an ng-if here to show only after daily sleep and self-report is available -->
+                        
                     </div>
                     <div>
                         <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
                     </div>
-                    <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p>
-                </div>
-                <div ng-if=!$ctrl.states[pidCurrent].state>
-                    <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
-                        <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color"
-                                chart-options="options">
-                        </canvas>
-                    </div>
-                    <!--inserts code for the modal popup window-->
-                    <button type="button" class="how-sleep-button btn btn-default" ng-click="$ctrl.open(pidCurrent)">
-                        How did you sleep?
-                    </button>
                 </div>
             </div>
         </div>
@@ -54,32 +77,58 @@
                 <p>Target hours: {{ memberCurrent.targetedHours }}</p>
             </div>
             <div ng-controller="ModalCrtl as $ctrl">
-                <div ng-if=$ctrl.states[pidCurrent].state>
-                    <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
+                <div ng-if= "viewModel.today == viewModel.calendarDate" >
+                    <div ng-if=$ctrl.states[pidCurrent].state>
+                
+                        <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
+                        <div class="chart-placement">
+                            <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                            </canvas>
+                        </div>
+                        <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics">
+                        <div class="single-view-button">
+                            <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
+                            <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
+                            <!--want an ng-if here to show only after daily sleep and self-report is available -->
+                        </div>
+                        <div>
+                            <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
+                        </div>
+                        <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p>
+                    </div>
+                    <div ng-if=!$ctrl.states[pidCurrent].state>
+                        <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
+                            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color"
+                                    chart-options="options">
+                            </canvas>
+                        </div>
+                        <!--inserts code for the modal popup window-->
+                        <button type="button" class="how-sleep-button btn btn-default" ng-click="$ctrl.open(pidCurrent)">
+                            How did you sleep?
+                        </button>
+                    </div>
+                </div>
+                <div ng-if= "viewModel.today != viewModel.calendarDate" >
+                    
                     <div class="chart-placement">
                         <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
                         </canvas>
                     </div>
-                    <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics">
+                    <div ng-if=$ctrl.states[pidCurrent].state>
+                        <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics">
+                        <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p>
+                    </div>
+                    <div ng-if=!$ctrl.states[pidCurrent].state>
+                        <p class="mood-report">No mood reported for this date</p>
+                    </div>
                     <div class="single-view-button">
+                        
                         <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
-                        <!--want an ng-if here to show only after daily sleep and self-report is available -->
+                        
                     </div>
                     <div>
                         <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
                     </div>
-                    <p class="mood-report"> Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p>
-                </div>
-                <div ng-if=!$ctrl.states[pidCurrent].state>
-                    <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
-                        <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color"
-                                chart-options="options">
-                        </canvas>
-                    </div>
-                    <!--inserts code for the modal popup window-->
-                    <button type="button" class="how-sleep-button btn btn-default" ng-click="$ctrl.open(pidCurrent)">
-                        How did you sleep?
-                    </button>
                 </div>
             </div>
         </div>

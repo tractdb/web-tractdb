@@ -9,7 +9,7 @@
  * 
  [{
 	name:
-	fitbitID:
+	fitbit:
 	s_data: //which is a json piece of 
 	date: //we need to keep track of date in case they want to view other dates
  }

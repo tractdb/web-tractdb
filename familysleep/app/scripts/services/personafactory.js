@@ -135,6 +135,49 @@ module.factory(
                 });
             }
 
+            // factory.putData = function() {
+            //     $http(
+            //         {
+            //           method: 'GET',
+            //           url: BASEURL_PYRAMID + '/document/familysleep_personas'
+            //         }
+            //     ).then(function success(response){
+            //         var old_personas = response.data.personas;
+            //         doc_id = response.data._id;
+            //         doc_rev = response.data._rev;
+            //         //console.log("doc_rev at GET from setData");
+            //         //console.log(doc_rev);
+            //         //factory.personas = new_personas;
+            //     }).then(function success(response){
+            //         var new_doc = {
+            //             "_id": doc_id,
+            //             "_rev": doc_rev,
+            //             "personas": factory.personas
+            //         };
+            //         $http(
+            //             {
+            //                 method: 'PUT',
+            //                 url: BASEURL_PYRAMID + '/document/familysleep_personas',
+            //                 data: new_doc
+            //             }
+            //         ).then(function success(response){
+            //             doc_id = response.data._id;
+            //             doc_rev = response.data._rev;
+            //             //console.log("rev of the PUT");
+            //             //console.log(doc_rev);
+            //             factory._notify();
+            //         }).catch (function errorCallback(response){
+            //             console.log("error in the PUT");
+            //             console.log(response.code);
+            //         }).finally(function (){
+            //             factory._scheduleNextRetrieve();
+            //         });
+            //     }).catch (function errorCallback(response){
+            //         console.log("error" + response.code);
+            //         console.log("error text" + response.statusText);
+            //     });
+            // }
+
             //
             // Track who is listening to us, start/stop retrieval
             //
