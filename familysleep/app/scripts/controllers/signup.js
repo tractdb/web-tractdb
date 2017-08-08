@@ -103,7 +103,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 				!member.type ||
 				!member.profilePic ||
 				!member.age
-				//||!member.fitbitId
+				//||!member.fitbit
 			) {
 				alert('Please fill out all form fields.');
 				return false;
