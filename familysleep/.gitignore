@@ -1,3 +1,4 @@
 node_modules
-familysleep/.sass-cache/
-../.ruby-version
+
+# SASS build files
+.sass-cache
