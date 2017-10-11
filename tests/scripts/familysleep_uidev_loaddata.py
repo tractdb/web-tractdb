@@ -60,8 +60,8 @@ if __name__ == '__main__':
 
     # Create the documents we expect
     for doc_id, doc in tests.data.test_familysleepdata.TestFamilySleepData(
-        date_start='2017-06-01',
-        date_end='2017-09-01'
+        date_start='2017-09-01',
+        date_end='2017-11-01'
     ).TEST_DATA:
         print('C: {}'.format(doc_id))
 
