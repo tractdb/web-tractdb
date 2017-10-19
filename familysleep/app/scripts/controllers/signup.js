@@ -193,6 +193,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			user.password2 = '';
 			$scope.isAddMemberForm = false;
 			$scope.members = [];
+			count = 0;
 		}
 
 		signup.cancelFromMember = function(){
@@ -202,9 +203,11 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			user.password2 = '';
 			$scope.isAddMemberForm = false;
 			$scope.members = [];
+
 			//need to clear factory fields
 			personaFactory.personas = {};
 			selfReportState.states = {};
+			count = 0;
 		}
 
 		// This is our method that will post to our server.

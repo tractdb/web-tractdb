@@ -91,9 +91,9 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       //console.log(sleepFamDailyDataFactory.famID);
       // console.log("printing $ctrl.FamID");
       // console.log($ctrl.famID);
-      $ctrl.states[famID].state = true;
-      $ctrl.states[famID].mood = selectedItems.selected.name;
-      $ctrl.states[famID].image = selectedItems.selected.image;
+      $ctrl.states[$ctrl.famID].state = true;
+      $ctrl.states[$ctrl.famID].mood = selectedItems.selected.name;
+      $ctrl.states[$ctrl.famID].image = selectedItems.selected.image;
 
       // console.log('$ctrl.states');
       // console.log($ctrl.states);
@@ -117,6 +117,10 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       $log.info('Modal dismissed at: ' + new Date());
     });
   };
+
+  //adding observations
+  // selfReportState.observe($ctrl, $ctrl.open);
+  // personaFactory.observe($ctrl, $ctrl.open);
 }]);
 
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
