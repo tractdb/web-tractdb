@@ -130,6 +130,7 @@ module.factory(
                         factory._scheduleNextRetrieve();
                     });
                 }).catch (function errorCallback(response){
+                    console.log("error in personaFactory in GET");
                     console.log("error" + response.code);
                     console.log("error text" + response.statusText);
                 });

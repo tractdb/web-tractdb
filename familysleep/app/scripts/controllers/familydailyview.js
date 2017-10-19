@@ -153,8 +153,7 @@ module.controller(
             //should it be $scope or viewModel? we should use them consistently
             personaFactory.observe($scope, viewModel.updateFamilyInfo);
             tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
-
-            
+            selfReportState.observe($scope, viewModel.updateFamilyInfo);
 
             //
             // Current approach to showing the menu for choosing views

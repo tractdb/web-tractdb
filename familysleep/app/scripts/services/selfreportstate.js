@@ -160,7 +160,7 @@ angular.module('FamilySleep')
                 });
             }
         });
-    }
+    };
 
     factory.putData = function(){
         var date = dateFactory.getDateString();
@@ -186,7 +186,7 @@ angular.module('FamilySleep')
         }).finally(function (){
             factory._scheduleNextRetrieve();
         });
-    }
+    };
      //
     // Track who is listening to us, start/stop retrieval
     //
@@ -208,11 +208,11 @@ angular.module('FamilySleep')
                 factory._nextRetrievePromise = null;
             }
         });
-    }
+    };
 
     factory._notify = function () {
         $rootScope.$emit('selfReportState-data');
-    }
+    };
 
     //
     // Schedule another retrieve, if anybody is listening
@@ -239,13 +239,13 @@ angular.module('FamilySleep')
         factory.states[d] = temp;
         //console.log("in initializeAll selfReportState");
         //console.log(factory.states);
-    }
+    };
 
     factory.getDate = function(){
         //returning the root key that represents date of self-report
         var d = Object.keys(factory.states)[0]; 
         return d;
-    }
+    };
     //todo: this is incorrect
     
     factory.initializeSingle = function(id){
@@ -256,22 +256,31 @@ angular.module('FamilySleep')
         temp[id]['mood'] = null;
         temp[id]['image'] = null;
         temp[id]['reporter'] = null;
-        factory.states[d] = temp;
+        console.log(temp);
+        console.log(temp[id]);
+        if(angular.equals(factory.states[d], {})){
+            factory.states[d] = temp;    
+        } else {
+            factory.states[d][id] = {};
+            factory.states[d][id] = temp[id];
+        }
+        
         // console.log("in initializeSingle selfReportState");
-        // console.log(factory.states);
-    }
+        console.log(factory.states);
+        console.log(factory.states[d]);
+    };
 
     factory.getAllMoods = function(){
         var d = factory.getDate();
         //console.log("printing moods based on date");
         //console.log (factory.states[d]);
         return factory.states[d];
-    }
+    };
 
     factory.getMood = function(id){
         var d = factory.getDate();
         return factory.states[d][id];
-    }
+    };
 
     factory.setMood = function(id, mood, image, reporter, date){
         var d = factory.getDate();
@@ -296,9 +305,15 @@ angular.module('FamilySleep')
             }
         } else {
             console.log('dates are different');
+            //need to create new object
         }
 
-    }
+    };
+
+    //TODO: need to add mood for a new day
+    factory.initializeNewDay = function(date){
+
+    };
 
     /*TODO: THIS IS INCORRECT
     */

@@ -84,8 +84,11 @@ module.factory(
                     ).then(function (response) {
                         factory.tractdbData = response.data;
                         factory._notify();
-                    }).catch(function () {
+                    }).catch(function (response) {
                         //can catch error here
+                        console.log("error from tractdbdata");
+                        console.log(response.code);
+                        console.log(response.statusText);
                     }).finally(function () {
                         //factory._scheduleNextRetrieve();
                     });
