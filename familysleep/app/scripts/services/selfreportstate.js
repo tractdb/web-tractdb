@@ -258,7 +258,9 @@ angular.module('FamilySleep')
         temp[id]['reporter'] = null;
         console.log(temp);
         console.log(temp[id]);
-        if(angular.equals(factory.states[d], {})){
+        //might want to check when
+        //factory.states[d] == null
+        if(angular.equals(factory.states, {})){ 
             factory.states[d] = temp;    
         } else {
             factory.states[d][id] = {};

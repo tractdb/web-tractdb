@@ -93,7 +93,6 @@ angular.module('FamilySleep')
 				categoryPercentage: 1,
 				barPercentage: 1,
 				barThickness : 1,
-				type: 'time',
 				position: 'top',
 				gridLines: {
 				  display: false, // Set to false here => xAxis labels displayed out of canvas
@@ -149,7 +148,6 @@ angular.module('FamilySleep')
 				categoryPercentage: 1,
 				barPercentage: 1,
 				barThickness : 1,
-				type: 'time',
 				gridLines: {
 				  display: false, // Set to false here => xAxis labels displayed out of canvas
 				  offsetGridLines: true,
@@ -217,6 +215,7 @@ angular.module('FamilySleep')
     //should it be $scope or viewModel? we should use them consistently
     personaFactory.observe($scope, viewModel.updateFamilyInfo);
     tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
+    selfReportState.observe($scope, viewModel.updateFamilyInfo);
 
 	$rootScope.menu = [
 	  {
