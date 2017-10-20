@@ -272,16 +272,108 @@ angular.module('FamilySleep')
         console.log(factory.states[d]);
     };
 
-    factory.getAllMoods = function(){
+    factory.getAllMoods = function(date){
+        console.log("in getAllMoods");
+        console.log("date = " + date);
         var d = factory.getDate();
         //console.log("printing moods based on date");
         //console.log (factory.states[d]);
         return factory.states[d];
     };
 
-    factory.getMood = function(id){
+    factory.getAllMoodsDay = function(date){
+        console.log("in getAllMoodsDay");
+        console.log("date = " + date);
+    };
+
+    factory.getAllMoodsWeek = function(date){
+        console.log("in getAllMoodsWeek");
+        console.log("date = " + date);
+        var week_date = dateFactory.getWeekDateString();
+        console.log(week_date);
+        //now I need to look for data for the entire data
+        for (var i = week_date.length - 1; i >= 0; i--) {
+            var d = week_date[i];
+            if(factory.states.hasOwnProperty(date)){
+                console.log("contains DATE = " + date);
+                //temp = factory.states[date][id];
+            } else {
+                console.log("NO selfReportState for date = " + date);
+                temp = null;
+            }
+        }
+        
+    };
+
+    factory.getMood = function(id, date){
+        console.log("in getMoods");
+        console.log("date = " + date);
         var d = factory.getDate();
-        return factory.states[d][id];
+        var temp;
+        // if(angular.equals(date, d)){
+        //     console.log("same dates");
+        // } else {
+        //     console.log("dates aren't the same");
+        // }
+        if(factory.states.hasOwnProperty(date)){
+            console.log("contains property");
+            temp = factory.states[date][id];
+        } else {
+            console.log("NO selfReportState for date = " + date);
+            temp = null;
+        }
+        // var keys = Object.keys(factory.states);
+        // console.log(keys);
+        //return factory.states[d][id];
+        return temp;
+    };
+
+    factory.getMoodDay = function(id, date){
+        console.log("in getAMoodDay");
+        console.log("date = " + date);
+
+        //check for date
+        //check to see if you we have data for the date
+        //return mood
+        //or return null
+    };
+
+    //returns an object
+    factory.getMoodWeekly = function(id, date){
+        console.log("in getMoodsWeekly");
+        console.log("date = " + date);
+        var week_mood = {};
+        //will have to see how to check date
+        //need to look for 7 days for here on
+        //return an entire object or some sort
+        var week_date = dateFactory.getWeekDateString();
+        console.log(week_date);
+        //now I need to look for data for the entire data
+        for (var i = week_date.length - 1; i >= 0; i--) {
+            var d = week_date[i];
+            week_mood[d] = {};
+            if(factory.states.hasOwnProperty(d)){
+                console.log("contains DATE = " + d);
+                //temp = factory.states[date][id];
+                
+                if(factory.states[d].hasOwnProperty(id) ) {
+                    week_mood[d] = factory.states[d][id];    
+                } else {
+                    week_mood[d]['state'] = false;
+                    week_mood[d]['mood'] = null;
+                    week_mood[d]['image'] = null;
+                    week_mood[d]['reporter'] = null;
+                }
+                
+            } else {
+                console.log("NO selfReportState for date = " + date);
+                week_mood[d]['state'] = false;
+                week_mood[d]['mood'] = null;
+                week_mood[d]['image'] = null;
+                week_mood[d]['reporter'] = null;
+            }
+        }
+        return week_mood;
     };
 
     factory.setMood = function(id, mood, image, reporter, date){

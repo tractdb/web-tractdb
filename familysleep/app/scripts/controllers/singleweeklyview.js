@@ -17,15 +17,17 @@ angular.module('FamilySleep')
 	var viewModel = this;
 	viewModel.familyInfo = null;
 	viewModel.id = $routeParams.id;
-
-
+	viewModel.date;
+	viewModel.date = dateFactory.getDateString();
     viewModel.updateFamilyInfo = function(){
+    	//MIGHT NEED THE DATE HERE AS WELL
     	//var date = dateFactory.getDateString();
-    	viewModel.state = selfReportState.getMood(viewModel.id);
+    	//THIS COULD RETURN AN OBJECT SO THAT IT CAN BE USED IN THE FOR EACH?
+    	viewModel.state = selfReportState.getMoodWeekly(viewModel.id, viewModel.date);
     	var persona = personaFactory.personas[viewModel.id];
     	console.log('persona');
     	console.log(persona);
-    	tractdbFactory.setQuery('singleweekly', viewModel.id, date);
+    	tractdbFactory.setQuery('singleweekly', viewModel.id, viewModel.date);
     	var tractdbData = tractdbFactory.tractdbData;
     	console.log('tractdbData');
     	console.log(tractdbData);
@@ -210,8 +212,8 @@ angular.module('FamilySleep')
 
     }
 
-    var date = dateFactory.getDateString();
-    tractdbFactory.setQuery('singleweekly', viewModel.id, date);
+    
+    tractdbFactory.setQuery('singleweekly', viewModel.id, viewModel.date);
     //should it be $scope or viewModel? we should use them consistently
     personaFactory.observe($scope, viewModel.updateFamilyInfo);
     tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
@@ -242,8 +244,8 @@ angular.module('FamilySleep')
 	//console.log("in SingleweeklyviewCtrl");
 
 	$scope.$on('date:updated', function() {
-		var date = dateFactory.getDateString();
-         tractdbFactory.setQuery('singleweekly', viewModel.id, date);
+		viewModel.date = dateFactory.getDateString();
+         tractdbFactory.setQuery('singleweekly', viewModel.id, viewModel.date);
         viewModel.updateFamilyInfo();
   	});
 

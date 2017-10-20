@@ -64,6 +64,17 @@ angular.module('FamilySleep')
       return result;
     };
 
+    //need to get week dates for a particular date
+    // var getWeekDateString = function(date) {
+    //   var result = [];
+    //   for (var i = 0; i < date_week.length; i++) {
+    //     result.push(date_week[i].format('YYYY-MM-DD'));
+    //   }
+    //   console.log('in getWeekDateString');
+    //   console.log(result);
+    //   return result;
+    // };
+
     var getWeekDate = function() {
       return date_week;
     };
