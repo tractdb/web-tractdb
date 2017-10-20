@@ -14,6 +14,9 @@
 # Node install packages
 /node_modules
 
+# Ruby version files
+.ruby-version
+
 # Docker testing files that have been localized
 /tests/full/docker/test_compose.localized.yml
 

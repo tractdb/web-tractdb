@@ -7597,11 +7597,12 @@ button.close {
 
 /* line 92, partials/_familydailyview.scss */
 .single-view-button {
-  margin-top: -220px;
+  margin-top: -75px;
   margin-left: 90px;
+  margin-bottom: 50px;
 }
 
-/* line 97, partials/_familydailyview.scss */
+/* line 98, partials/_familydailyview.scss */
 .single-view-button .btn {
   background-color: #d6c3db;
   border-color: #d6c3db;
@@ -7609,14 +7610,14 @@ button.close {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
-/* line 104, partials/_familydailyview.scss */
+/* line 105, partials/_familydailyview.scss */
 .target-hours {
   margin-left: 110px;
   margin-top: -35px;
   margin-bottom: 15px;
 }
 
-/* line 110, partials/_familydailyview.scss */
+/* line 111, partials/_familydailyview.scss */
 .mood-pics {
   position: absolute;
   width: 100px;
@@ -7626,7 +7627,7 @@ button.close {
   z-index: 1;
 }
 
-/* line 119, partials/_familydailyview.scss */
+/* line 120, partials/_familydailyview.scss */
 #family_moon {
   position: fixed;
   height: 150px;
@@ -7638,36 +7639,36 @@ button.close {
   /* Negative half of width. */
 }
 
-/* line 128, partials/_familydailyview.scss */
+/* line 129, partials/_familydailyview.scss */
 .fdv-names {
   text-align: center;
   width: 60px;
   margin: 0;
 }
 
-/* line 134, partials/_familydailyview.scss */
+/* line 135, partials/_familydailyview.scss */
 .fdv-even-column {
   margin-right: 125px;
   margin-bottom: 20px;
   height: 260px;
 }
 
-/* line 140, partials/_familydailyview.scss */
+/* line 141, partials/_familydailyview.scss */
 .fdv-odd-column {
   margin-left: 160px;
   margin-bottom: 20px;
   height: 260px;
 }
 
-/* line 146, partials/_familydailyview.scss */
+/* line 147, partials/_familydailyview.scss */
 .hours-slept {
-  margin-top: 70px;
+  margin-top: -150px;
   font-size: small;
 }
 
-/* line 151, partials/_familydailyview.scss */
+/* line 152, partials/_familydailyview.scss */
 .mood-report {
-  margin-top: 85px;
+  margin-top: 5px;
   font-size: small;
 }
 
@@ -8302,6 +8303,13 @@ body {
 }
 
 /* line 104, main.scss */
+.about-us-link {
+  text-align: center;
+  color: white;
+  display: block;
+}
+
+/* line 110, main.scss */
 .recorder {
   float: right;
   height: 9%;
@@ -8311,12 +8319,12 @@ body {
 }
 
 /* Custom page header */
-/* line 114, main.scss */
+/* line 120, main.scss */
 .header {
   margin-bottom: 10px;
   /* Make the masthead heading the same height as the navigation */
 }
-/* line 119, main.scss */
+/* line 125, main.scss */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -8325,54 +8333,55 @@ body {
 }
 
 /* Custom page footer */
-/* line 128, main.scss */
+/* line 134, main.scss */
 .footer {
-  padding-top: 19px;
+  padding-top: 10px;
+  margin-top: 19px;
   color: white;
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 134, main.scss */
+/* line 141, main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
-/* line 138, main.scss */
+/* line 145, main.scss */
 .container {
   color: white;
 }
 
 /* Main marketing message and sign up button */
-/* line 143, main.scss */
+/* line 150, main.scss */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
-/* line 147, main.scss */
+/* line 154, main.scss */
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
 }
 
 /* Supporting marketing content */
-/* line 154, main.scss */
+/* line 161, main.scss */
 .marketing {
   margin: 40px 0;
 }
-/* line 157, main.scss */
+/* line 164, main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* line 164, main.scss */
+  /* line 171, main.scss */
   .container {
     max-width: 900px;
   }
 
   /* Remove the padding we set earlier */
-  /* line 169, main.scss */
+  /* line 176, main.scss */
   .header,
   .marketing,
   .footer {
@@ -8381,13 +8390,13 @@ body {
   }
 
   /* Space out the masthead */
-  /* line 176, main.scss */
+  /* line 183, main.scss */
   .header {
     margin-bottom: 30px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 180, main.scss */
+  /* line 187, main.scss */
   .jumbotron {
     border-bottom: 0;
   }
