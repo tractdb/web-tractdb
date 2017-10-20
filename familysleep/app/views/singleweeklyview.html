@@ -29,9 +29,9 @@
 
 <!--no data when there is not data for that day -->
 <!--<p>No Data</p>-->
-<div class="swv-row row" ng-repeat="day in viewModel.data">
+<div class="swv-row row" ng-repeat="day in viewModel.data | orderBy:'day.date'">
 <p class="swv-date">{{day.date}}</p>
-	<div ng-if="day.duration==-1" ng-controller="EmptybarchartCtrl" id="no-data-chart">
+	<div ng-if="day.duration==-1" ng-controller="EmptybarchartCtrl" id="no-data-chart"> <!--no data -->
 	<!--<p>{{day.duration}}</p>
 			-<p>{{data}}</p>-->
 			<canvas class="swv-empty-chart-placement chart chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="color" height="40" width="800"></canvas>	
