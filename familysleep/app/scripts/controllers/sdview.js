@@ -14,12 +14,13 @@ angular.module('FamilySleep')
 			var viewModel = this;
 			viewModel.familyInfo = null;
 			viewModel.id = $routeParams.id;
-
+			viewModel.date;
+			viewModel.date = dateFactory.getDateString();
 			viewModel.updateFamilyInfo = function () {
 				console.log("in SdviewCtrl");
 				viewModel.id = $routeParams.id;
-
-				viewModel.state = selfReportState.getMood(viewModel.id);
+				
+				viewModel.state = selfReportState.getMood(viewModel.id, viewModel.date);
 				// console.log("selfReportState");
 				// console.log(selfReportState.states);
 				// console.log("viewModel.state for " + viewModel.id);
@@ -161,8 +162,8 @@ angular.module('FamilySleep')
 				};
 		}
 
-		var date = dateFactory.getDateString();
-		tractdbFactory.setQuery('singledaily', viewModel.id, date);
+		
+		tractdbFactory.setQuery('singledaily', viewModel.id, viewModel.date);
 
 		//should it be $scope or viewModel? we should use them consistently
 		personaFactory.observe($scope, viewModel.updateFamilyInfo);
@@ -193,8 +194,8 @@ angular.module('FamilySleep')
 			//does this need to be viewModel?
 			$scope.$on('date:updated', function() {
 				//TODO: need to maintain date which will taken care of by dateFactory
-				var date = dateFactory.getDateString();
-				tractdbFactory.setQuery('singledaily', viewModel.id, date);
+				viewModel.date = dateFactory.getDateString();
+				tractdbFactory.setQuery('singledaily', viewModel.id, viewModel.date);
 				viewModel.updateFamilyInfo();
 			});
 	var updateData = function() {
