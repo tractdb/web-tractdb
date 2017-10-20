@@ -356,7 +356,7 @@ angular.module('FamilySleep')
                 console.log("contains DATE = " + d);
                 //temp = factory.states[date][id];
                 
-                if(factory.states[d].hasOwnProperty[id]){
+                if(factory.states[d].hasOwnProperty(id) ) {
                     week_mood[d] = factory.states[d][id];    
                 } else {
                     week_mood[d]['state'] = false;
