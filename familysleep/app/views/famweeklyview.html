@@ -12,14 +12,26 @@
             <img ng-src={{memberCurrent.profilePic}} class="profile-pics">
             <p class="fdv-names">{{memberCurrent.name}}</p>
         </div>
-          <div ng-repeat="day in memberCurrent.days" class="fwv-columns">
+          <div ng-repeat="day in memberCurrent.days | toArray | orderBy:'-date'" class="fwv-columns">
+            
             <div ng-show="day.duration !=-1" class="fwv-chart-placement">
-                <p>{{day.duration}}</p>
+                <!-- <p>{{day.duration}}</p> -->
                 <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
-                    <canvas id="doughnut" class="chart chart-doughnut" chart-data="day.sleep" chart-labels="viewModel.labels" chart-colors ="viewModel.colors" chart-options="viewModel.options">
+                    <!-- <p>{{day.date}}</p> -->
+                     <canvas id="doughnut" class="chart chart-doughnut" chart-data="day.sleep" chart-labels="viewModel.labels" chart-colors ="viewModel.colors" chart-options="viewModel.options"> 
                     </canvas>
-                    <img ng-src="app/images/faces/happy.png" class="fwv-mood-pics">
-                    <p class="fwv-mood-text">mood</p>
+                    <div ng-show="viewModel.states[day.date][pidCurrent].state">
+                      <img ng-src="{{viewModel.states[day.date][pidCurrent].image}}" class="fwv-mood-pics">
+                      <p class="fwv-mood-text">{{viewModel.states[day.date][pidCurrent].mood | uppercase }}</p>
+                    </div>
+                    <div ng-hide="!viewModel.states[day.date][pidCurrent].state">
+                    </div>
+                    
+                    <!-- <img ng-src="app/images/faces/happy.png" class="fwv-mood-pics"> -->
+                    
+                    <!-- <p class="fwv-mood-text">{{date}}</p> -->
+                    <!-- <p>{{viewModel.states[day.date][pidCurrent].mood}}</p> -->
+                    
                 <!--</div>-->
             </div>
             <div ng-show="day.duration==-1" ng-controller="PiechartcontrollerCtrl" class="fwv-chart-placement">

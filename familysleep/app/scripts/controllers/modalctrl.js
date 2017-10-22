@@ -30,16 +30,6 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       }];
     $ctrl.items = moodImages;
 
-    //$ctrl.famMems = personaFactory.getAllNameIDs();
-    $ctrl.famMems = personaFactory.getAllNames();
-    //console.log($ctrl.famMems);
-    $ctrl.famIDs = personaFactory.getAllIDs();
-  	$ctrl.animationsEnabled = true;
-    /**asigning selfReportState factory to states to have access in the viewer*/
-    $ctrl.states = selfReportState.getAllMoods();
-    /*console.log("printing $ctrl.states object from ModalCrtl");
-    console.log($ctrl.states);*/
-    $ctrl.famID;
 
   /*var profiles = personaFactory.getAllProfiles();
   console.log("profiles");
@@ -48,6 +38,18 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
    
 	$ctrl.open = function (famID) {
 		$log.info("in open of ModalCrtl"); //added this might need to pass log
+
+     //$ctrl.famMems = personaFactory.getAllNameIDs();
+    $ctrl.famMems = personaFactory.getAllNames();
+    //console.log($ctrl.famMems);
+    $ctrl.famIDs = personaFactory.getAllIDs();
+    $ctrl.animationsEnabled = true;
+    /**asigning selfReportState factory to states to have access in the viewer*/
+    $ctrl.states = selfReportState.getAllMoods();
+    /*console.log("printing $ctrl.states object from ModalCrtl");
+    console.log($ctrl.states);*/
+    //$ctrl.famID;
+
     console.log(famID);
     $ctrl.famID = famID;
     $ctrl.buttonState = 0;
@@ -119,6 +121,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
   };
 
   //adding observations
+  //but creates an automatic popup based on timer
   // selfReportState.observe($ctrl, $ctrl.open);
   // personaFactory.observe($ctrl, $ctrl.open);
 }]);

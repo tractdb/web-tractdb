@@ -58,17 +58,11 @@ module.controller(
                 var viewModel = this;
 
                 viewModel.familyInfo = null;
+                viewModel.states = null;
+                //might want this in updateFamilyInfo?
                 viewModel.today = dateFactory.getTodayString();
                 viewModel.calendarDate = dateFactory.getDateString();
 
-                // TODO: this need to be initialized when the personas are created. However, the way
-                // personas is created right now it creates a circual dependenc (which is not possible in angular)
-                // so have to initialize selfreportstate here
-                // var pids = personaFactory.getAllIDs();
-                // //console.log("in ModalCrtl initialize, need pids");
-                // //console.log(pids);
-                // //TODO: this initialization should be part of the login pipeline
-                // selfReportState.intializeAll(pids);
 
                 viewModel.updateFamilyInfo = function () {
                     //TODO: date needs to change if calendar date changes
@@ -76,8 +70,8 @@ module.controller(
                     //console.log("date from FDV");
                     //console.log(date);
                     var personas = personaFactory.personas;
-
                     var tractdbData = tractdbFactory.tractdbData;
+                    viewModel.states = selfReportState.getAllMoodsDay(viewModel.calendarDate);
                     console.log("queried data");
                     console.log(tractdbData);
 
@@ -121,8 +115,8 @@ module.controller(
                             //console.log(viewModel.familyInfo[famID].sleep);
                             //console.log(viewModel.familyInfo[famID].hours);
                         });
-                        console.log('printing personas after forEach');
-                        console.log(personaFactory.personas);
+                        //console.log('printing personas after forEach');
+                        //console.log(personaFactory.personas);
                         //could go here or might go out of outside of the if
                         //or might go outside of updateFamilyInfo
                         viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
