@@ -16,19 +16,22 @@ angular.module('FamilySleep')
             //viewModel.personas = null;
             
             viewModel.dateWeekStr = dateFactory.getWeekDateString();
+            viewModel.today = dateFactory.getTodayString();
+            viewModel.calendarDate = dateFactory.getDateString();
             //console.log('week dates');
             console.log(viewModel.dateWeekStr);
             viewModel.updateWeekFamilyInfo = function(){
                 //console.log('familyweekly');
                 //selected date and the query returns a week of data from the data
-                viewModel.date = dateFactory.getDateString();
+                //viewModel.date = dateFactory.getDateString();
                 // console.log("dateWeekStr with just calling one date");
                 // console.log(viewModel.date);
                 var personas = personaFactory.personas;
                 // console.log('personas');
                 // console.log(personas);
-                tractdbFactory.setQuery('familyweekly', null, viewModel.date);
+                tractdbFactory.setQuery('familyweekly', null, viewModel.calendarDate);
                 var tractdbData = tractdbFactory.tractdbData;
+                viewModel.states = selfReportState.getAllMoodsWeek(viewModel.dateWeekStr);
                 // console.log("queried data");
                 // console.log(tractdbData);
                 if(personas && tractdbData){
@@ -47,27 +50,35 @@ angular.module('FamilySleep')
                         for (var i = dates.length - 1; i >= 0; i--) {
                             var d = dates[i];
                             var sleep_data = tractdbData[famID][d];
-                            //console.log(sleep_data);
-                            var hours = sleep_data.duration / 1000 / 60 / 60;
-                            var targetedHours = viewModel.familyInfo[famID].targetedHours;
-                            var delta = targetedHours - hours;
                             viewModel.familyInfo[famID].days[d] = {};
-                            if (delta > 0){
-                                //console.log('in delta > 0');
-                                viewModel.familyInfo[famID].days[d].sleep = [0 , hours, delta]; //[extra hours, hours_slept, remainder]    
-                            } else if (delta < 0){
-                                //console.log('in delta < 0');
-                                delta = Math.abs(delta);
-                                // var t = hours-delta;
-                                // console.log('t = ' + t);
-                                viewModel.familyInfo[famID].days[d].sleep = [delta, hours, 0]; //[extra hours, hours_slept, remainder]
+                            console.log(sleep_data);
+                            if(sleep_data.duration == -1){
+                                viewModel.familyInfo[famID].days[d].duration = -1;
                             } else {
-                                //console.log('in delta == 0');
-                                viewModel.familyInfo[famID].days[d].sleep = [0, hours, 0]; //[extra hours, hours_slept, remainder]
+                                var hours = sleep_data.duration / 1000 / 60 / 60;
+                                var targetedHours = viewModel.familyInfo[famID].targetedHours;
+                                var delta = targetedHours - hours;  
+
+                                if (delta > 0){
+                                    //console.log('in delta > 0');
+                                    viewModel.familyInfo[famID].days[d].sleep = [0 , hours, delta]; //[extra hours, hours_slept, remainder]    
+                                } else if (delta < 0){
+                                    //console.log('in delta < 0');
+                                    delta = Math.abs(delta);
+                                    // var t = hours-delta;
+                                    // console.log('t = ' + t);
+                                    viewModel.familyInfo[famID].days[d].sleep = [delta, hours, 0]; //[extra hours, hours_slept, remainder]
+                                } else {
+                                    //console.log('in delta == 0');
+                                    viewModel.familyInfo[famID].days[d].sleep = [0, hours, 0]; //[extra hours, hours_slept, remainder]
+                                }  
+                                //viewModel.familyInfo[famID].days[d].sleep = [0, hours, 0];
+                                viewModel.familyInfo[famID].days[d].hours = hours;
+                                viewModel.familyInfo[famID].days[d].duration = sleep_data.duration;
+                                viewModel.familyInfo[famID].days[d].date = d;
+                                //console.log(viewModel.familyInfo[famID][d]);
                             }
-                            //viewModel.familyInfo[famID].days[d].sleep = [0, hours, 0];
-                            viewModel.familyInfo[famID].days[d].hours = hours;
-                          //console.log(viewModel.familyInfo[famID][d]);
+                            
                         }
                         //console.log('familyInfo after forEach');
                         //console.log(viewModel.familyInfo[famID]);

@@ -51,7 +51,7 @@ angular.module('FamilySleep')
     				],
     				duration: value.duration,
     				labels: value.minuteData.labels,
-    				date: value.dateOfSleep
+    				date: value.dateOfSleep //might want to do line 43 date
     			}
     			viewModel.data.push(day);
     		});

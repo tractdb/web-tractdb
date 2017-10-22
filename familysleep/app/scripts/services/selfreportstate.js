@@ -284,25 +284,33 @@ angular.module('FamilySleep')
     factory.getAllMoodsDay = function(date){
         console.log("in getAllMoodsDay");
         console.log("date = " + date);
+        var temp;
+        if(factory.states.hasOwnProperty(date)){
+            temp = factory.states[date];
+        } else{ 
+            temp = null;
+        }
+        return temp;
     };
 
-    factory.getAllMoodsWeek = function(date){
+    factory.getAllMoodsWeek = function(week_date){
         console.log("in getAllMoodsWeek");
-        console.log("date = " + date);
-        var week_date = dateFactory.getWeekDateString();
+        //console.log("date = " + week_date);
+        //var week_date = dateFactory.getWeekDateString();
         console.log(week_date);
+        var temp = {};
         //now I need to look for data for the entire data
         for (var i = week_date.length - 1; i >= 0; i--) {
             var d = week_date[i];
-            if(factory.states.hasOwnProperty(date)){
-                console.log("contains DATE = " + date);
-                //temp = factory.states[date][id];
+            if(factory.states.hasOwnProperty(d)){
+                console.log("contains DATE = " + d);
+                temp[d] = factory.states[d];
             } else {
-                console.log("NO selfReportState for date = " + date);
-                temp = null;
+                console.log("NO selfReportState for date = " + d);
+                temp[d] = null;
             }
         }
-        
+        return temp;
     };
 
     factory.getMood = function(id, date){
