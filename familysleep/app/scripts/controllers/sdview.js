@@ -71,8 +71,11 @@ angular.module('FamilySleep')
 					viewModel.familyInfo.hours = hours;
 					// viewModel.familyInfo[d].duration = sleep_data.duration;
 					viewModel.familyInfo.duration = sleep_data.duration;
-					console.log('familyInfo for = ' + viewModel.id);
-					console.log(viewModel.familyInfo);
+					viewModel.familyInfo.startTime = sleep_data.startTime;
+					viewModel.familyInfo.endTime = sleep_data.endTime;
+					//viewModel.familyInfo.restless = sleep_data.minuteData.three.length-1;
+					//console.log('familyInfo for = ' + viewModel.id);
+					//console.log(viewModel.familyInfo);
 					//console.log('sleep data duration');
 					//console.log(viewModel.familyInfo[d].duration);
 					viewModel.familyInfo.night = [
