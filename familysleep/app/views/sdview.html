@@ -14,19 +14,26 @@
 			<div class="chart-placement">
 	            <canvas id="doughnut" class="chart-doughnut" chart-data="viewModel.familyInfo.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
 	            </canvas>
-	            <img ng-src={{viewModel.state.image}} class="mood-pics">
-	            <p>{{viewModel.state.mood | uppercase}}</p>
+	            <div ng-show="viewModel.state.state">
+	            	<img ng-src={{viewModel.state.image}} class="mood-pics">
+	            	<p>{{viewModel.state.mood | uppercase}}</p>
+	            </div ng-hide="!viewModel.state.state">
+	            <div>
+	            	
+	            </div>
 	        </div>
 		</div>
         </div>
         <div class="col-xs-4">
-	        <p>{{viewModel.familyInfo.duration}}</p>
+	        <!-- <p>{{viewModel.familyInfo.duration}}</p> -->
 	        <p>Hours Slept</p>
-	        <p>TODO</p>
+	        <p>{{viewModel.familyInfo.hours | number:2}}</p>
 	        <p>time went to sleep</p>
-	        <p>time went to sleep</p>
+	        <p>{{viewModel.familyInfo.startTime | date:'shortTime'}}</p>
 	        <p>time woke up</p>
-	        <p>time woke up</p>
+	        <p>{{viewModel.familyInfo.endTime | date:'shortTime'}}</p>
+	        <p>Minutes Restless</p>
+	        <p>{{viewModel.family.restless}}</p>
 	    </div>
 	</div>
 	<div class="row">

@@ -43,16 +43,30 @@ angular.module('FamilySleep')
     			var date = key;
     			//value is the content of the date object
     			//value <- week_date[date]
-    			var day = {
-    				data: [
-    					value.minuteData.one,
-    					value.minuteData.two,
-    					value.minuteData.three
-    				],
-    				duration: value.duration,
-    				labels: value.minuteData.labels,
-    				date: value.dateOfSleep //might want to do line 43 date
+    			if(value.duration == -1){
+    				var day = {
+	    				data: [
+	    					0,
+	    					0,
+	    					0
+	    				],
+	    				duration: value.duration,
+	    				//labels: value.minuteData.labels,
+	    				date: value.dateOfSleep //might want to do line 43 date
+    				}
+    			} else {
+    				var day = {
+	    				data: [
+	    					value.minuteData.one,
+	    					value.minuteData.two,
+	    					value.minuteData.three
+	    				],
+	    				duration: value.duration,
+	    				labels: value.minuteData.labels,
+	    				date: value.dateOfSleep //might want to do line 43 date
+    				}
     			}
+    			
     			viewModel.data.push(day);
     		});
     		 
