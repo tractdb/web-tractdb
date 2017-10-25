@@ -4,12 +4,18 @@
 		<div class="col-xs-4">
             <img ng-src={{viewModel.familyInfo.profilePic}} class="profile-pics">
             <p class="fdv-names">{{viewModel.familyInfo.name}}</p>
-            <!-- THIS IS FOR THE PIE -->
-            <div ng-if="viewModel.familyInfo.duration == -1">
-	    	<div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
-	            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color" chart-options="options">
-	            </canvas>
-	        </div>
+            <div ng-if="viewModel.familyInfo.duration == -1"> <!-- THIS IS FOR THE EMPTY PIE -->
+
+		    	<div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
+		            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color" chart-options="options">
+		            </canvas>
+		        </div>
+				<div ng-show="viewModel.state.state">
+					<img ng-src={{viewModel.state.image}} class="mood-pics">
+					<p>{{viewModel.state.mood | uppercase}}</p>
+				</div>
+				<div ng-hide="!viewModel.state.state">
+				</div>
 			</div>
 			<div ng-if="viewModel.familyInfo.duration > -1"> <!-- THIS IS FOR THE PIE -->
 				<div class="chart-placement">
@@ -18,9 +24,8 @@
 		            <div ng-show="viewModel.state.state">
 		            	<img ng-src={{viewModel.state.image}} class="mood-pics">
 		            	<p>{{viewModel.state.mood | uppercase}}</p>
-		            </div ng-hide="!viewModel.state.state">
-		            <div>
-		            	
+		            </div>
+		            <div ng-hide="!viewModel.state.state">
 		            </div>
 		        </div>
 			</div>
