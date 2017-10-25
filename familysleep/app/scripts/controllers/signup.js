@@ -103,52 +103,42 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 				!member.type ||
 				!member.profilePic ||
 				!member.age
-				//||!member.fitbit
+				||!member.fitbit
 			) {
 				alert('Please fill out all form fields.');
 				return false;
-			}
-			member.pid = 'm' + count;
-			count++;
-			//console.log("inadd New Member")
-			//console.log(member);
-
-			//adding new family members to the personas in personaFactory
-			var targethours = setTargetHours(member.age);
-			member.targetedHours = targethours;
-			var newMember = angular.copy(member);
-			members.push(newMember);
-			console.log('in addNewMember printing personas');
-			//console.log(personaFactory.personas);
-			// if(Object.keys(personaFactory.personas).length == 0){
-				
-			// }
-			if(personaFactory.personas == null){
-				personaFactory.personas = {};
-				personaFactory.personas[newMember.pid] = newMember;
-				console.log("add new members to personas");
-				console.log(personaFactory.personas);
-			}
-			 else {
-				personaFactory.personas[newMember.pid] = newMember;	
-				console.log("add new members to personas");
-				console.log(personaFactory.personas);
-			}
-
-			//initializing new family member's mood state
-			selfReportState.initializeSingle (newMember.pid);
-
-			/*if(Object.keys(selfReportState.states).length == 0){
-
 			} else {
+				member.pid = 'm' + count;
+				count++;
+				//console.log("inadd New Member")
+				//console.log(member);
 
-			}*/
+				//adding new family members to the personas in personaFactory
+				var targethours = setTargetHours(member.age);
+				member.targetedHours = targethours;
+				var newMember = angular.copy(member);
+				members.push(newMember);
+				console.log('in addNewMember printing personas');
+				//console.log(personaFactory.personas);
+				// if(Object.keys(personaFactory.personas).length == 0){
+					
+				// }
+				if(personaFactory.personas == null){
+					personaFactory.personas = {};
+					personaFactory.personas[newMember.pid] = newMember;
+					console.log("add new members to personas");
+					console.log(personaFactory.personas);
+				}
+				 else {
+					personaFactory.personas[newMember.pid] = newMember;	
+					console.log("add new members to personas");
+					console.log(personaFactory.personas);
+				}
+
+				//initializing new family member's mood state
+				selfReportState.initializeSingle (newMember.pid);
+			}
 			
-			//selfReportState.initializeSingle(newMember.pid);
-			// console.log("inadd New Member == mood state")
-			// console.log(selfReportState.states	);
-			//console.log("user family");
-			//console.log(user);
 			member.name = "";
 			member.type = "";
 			member.profilePic = "";
