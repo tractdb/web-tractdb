@@ -88,57 +88,66 @@ module.controller(
                             //console.log("famID = " + famID);
                             var d = Object.keys(value)[0];
                             var sleep_data = value[d];
-                            var hours = sleep_data.duration / 1000 / 60 / 60;
-                            var targetedHours = viewModel.familyInfo[famID].targetedHours;
-                             //console.log("hours needed to sleep = " + targetedHours);
-                            //console.log("using duration hours sleept   = " + hours);
-
-                            ////console.log(viewModel.familyInfo[famID]);
-                            var delta = targetedHours - hours;
-                            //console.log("delta hours = " + delta);
-                            if(delta > 0){
-                                //console.log('in delta > 0');
-                                viewModel.familyInfo[famID].sleep = [0 , hours, delta]; //[extra hours, hours_slept, remainder]    
-                            } else if(delta < 0){
-                                //console.log('in delta < 0');
-                                delta = Math.abs(delta);
-                                // var t = hours-delta;
-                                // console.log('t = ' + t);
-                                viewModel.familyInfo[famID].sleep = [delta, hours, 0]; //[extra hours, hours_slept, remainder]
+                            if(sleep_data.duration == -1){
+                                viewModel.familyInfo[famID].duration = sleep_data.duration;
+                                viewModel.familyInfo[famID].sleep = [0, 0, 0];
+                                viewModel.familyInfo[famID].hours = 0;
                             } else {
-                                //console.log('in delta == 0');
-                                viewModel.familyInfo[famID].sleep = [0, hours, 0]; //[extra hours, hours_slept, remainder]
-                            }
-                            //viewModel.familyInfo[famID].sleep = [1, 10, 0]; //[extra hours, hours_slept, remainder]
-                            viewModel.familyInfo[famID].hours = hours;
-                            //console.log("printting sleep array for " + famID);
-                            //console.log(viewModel.familyInfo[famID].sleep);
-                            //console.log(viewModel.familyInfo[famID].hours);
+                                var hours = sleep_data.duration / 1000 / 60 / 60;
+                                var targetedHours = viewModel.familyInfo[famID].targetedHours;
+                                 //console.log("hours needed to sleep = " + targetedHours);
+                                //console.log("using duration hours sleept   = " + hours);
+
+                                ////console.log(viewModel.familyInfo[famID]);
+                                var delta = targetedHours - hours;
+                                //console.log("delta hours = " + delta);
+                                if(delta > 0){
+                                    //console.log('in delta > 0');
+                                    viewModel.familyInfo[famID].sleep = [0 , hours, delta]; //[extra hours, hours_slept, remainder]    
+                                } else if(delta < 0){
+                                    //console.log('in delta < 0');
+                                    delta = Math.abs(delta);
+                                    // var t = hours-delta;
+                                    // console.log('t = ' + t);
+                                    viewModel.familyInfo[famID].sleep = [delta, hours, 0]; //[extra hours, hours_slept, remainder]
+                                } else {
+                                    //console.log('in delta == 0');
+                                    viewModel.familyInfo[famID].sleep = [0, hours, 0]; //[extra hours, hours_slept, remainder]
+                                }
+                                //viewModel.familyInfo[famID].sleep = [1, 10, 0]; //[extra hours, hours_slept, remainder]
+                                viewModel.familyInfo[famID].hours = hours;
+                                viewModel.familyInfo[famID].duration = sleep_data.duration;
+                                //console.log("printting sleep array for " + famID);
+                                //console.log(viewModel.familyInfo[famID].sleep);
+                                //console.log(viewModel.familyInfo[famID].hours);
+                                                                //console.log('printing personas after forEach');
+                                //console.log(personaFactory.personas);
+                                //could go here or might go out of outside of the if
+                                //or might go outside of updateFamilyInfo
+                                viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
+                                    //define colors here
+                                    viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
+                                    // viewModel.options = {
+                                    //     borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                                    //     cutoutPercentage: 70
+                                    // };
+                                    viewModel.options = {
+                                        elements: {
+                                            arc: {
+                                                //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                                                borderWidth: 0
+                                                
+                                            }
+                                        },
+                                        cutoutPercentage: 65
+                                    };
+                                }
+    
                         });
-                        //console.log('printing personas after forEach');
-                        //console.log(personaFactory.personas);
-                        //could go here or might go out of outside of the if
-                        //or might go outside of updateFamilyInfo
-                        viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
-                            //define colors here
-                            viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
-                            // viewModel.options = {
-                            //     borderColor: ['#000066', '#0000FF', '#E0E0E0'],
-                            //     cutoutPercentage: 70
-                            // };
-                            viewModel.options = {
-                                elements: {
-                                    arc: {
-                                        //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
-                                        borderWidth: 0
-                                        
-                                    }
-                                },
-                                cutoutPercentage: 65
-                            };
+
                     }
 
-            }
+                }
 
             //viewModel.calendarDate = dateFactory.getDateString();
             //James
