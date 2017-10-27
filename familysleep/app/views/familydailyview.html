@@ -11,6 +11,9 @@
             <div class="target-hours">
                 <p>Target hours: {{ memberCurrent.targetedHours }}</p>
             </div>
+            <div class="weekly-view-button">
+                <button class="btn btn-primary"> Weekly View</button>
+            </div>
             <div ng-controller="ModalCrtl as $ctrl">
                 <div ng-if= "viewModel.today == viewModel.calendarDate" >
                     <div ng-if=viewModel.states[pidCurrent].state>
@@ -19,7 +22,7 @@
                         <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
                         <div class="single-view-button">
                             <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
-                            <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
+                            <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Daily View</button>
                             <!--want an ng-if here to show only after daily sleep and self-report is available -->
                         </div>
                         <div class="chart-placement">
@@ -50,7 +53,7 @@
                 <div ng-if= "viewModel.today != viewModel.calendarDate" >
                     <div class="single-view-button">
                         
-                        <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
+                        <button ng-click="changeView(pidCurrent)" class="btn btn-primary">Daily View</button>
                         
                     </div>
                     <div class="chart-placement">
@@ -60,13 +63,13 @@
                     <div ng-if=viewModel.states[pidCurrent].state>
                         <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
                         <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->
+                        <div>
+                            <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
+                        </div>
                         <p class="mood-report">Mood reported to be {{viewModel.states[pidCurrent].mood | uppercase}}</p>
                     </div>
                     <div ng-if=!viewModel.states[pidCurrent].state>
                         <p class="mood-report">No mood reported for this date</p>
-                    </div>
-                    <div>
-                        <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
                     </div>
                 </div>
             </div>
@@ -80,12 +83,15 @@
             <div class="target-hours">
                 <p>Target hours: {{ memberCurrent.targetedHours }}</p>
             </div>
+            <div class="weekly-view-button">
+                <button class="btn btn-primary"> Weekly View</button>
+            </div>
             <div ng-controller="ModalCrtl as $ctrl">
                 <div ng-if= "viewModel.today == viewModel.calendarDate" >
                     <div ng-if=viewModel.states[pidCurrent].state>
                         <div class="single-view-button">
                             <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
-                            <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
+                            <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Daily View</button>
                             <!--want an ng-if here to show only after daily sleep and self-report is available -->
                         </div>
                         <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
@@ -115,7 +121,7 @@
                 <div ng-if= "viewModel.today != viewModel.calendarDate" >
                     <div class="single-view-button">
                         
-                        <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
+                        <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Daily View</button>
                         
                     </div>
                     <div class="chart-placement">
@@ -125,13 +131,13 @@
                     <div ng-if=viewModel.states[pidCurrent].state>
                         <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
                         <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->
+                        <div>
+                            <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
+                        </div>
                         <p class="mood-report">Mood reported to be {{viewModel.states[pidCurrent].mood | uppercase}}</p>
                     </div>
                     <div ng-if=!viewModel.states[pidCurrent].state>
                         <p class="mood-report">No mood reported for this date</p>
-                    </div>
-                    <div>
-                        <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
                     </div>
                 </div>
             </div>

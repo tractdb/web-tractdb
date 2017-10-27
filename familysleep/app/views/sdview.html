@@ -11,12 +11,12 @@
 	        </div>
 		</div>
 		<div ng-if="viewModel.familyInfo.duration > -1">
-			<div class="chart-placement">
+			<div class="sdv-chart-placement">
 	            <canvas id="doughnut" class="chart-doughnut" chart-data="viewModel.familyInfo.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
 	            </canvas>
 	            <div ng-show="viewModel.state.state">
-	            	<img ng-src={{viewModel.state.image}} class="mood-pics">
-	            	<p>{{viewModel.state.mood | uppercase}}</p>
+	            	<img ng-src={{viewModel.state.image}} class="sdv-mood-pics">
+	            	<p class="sdv-mood-text">{{viewModel.state.mood | uppercase}}</p>
 	            </div ng-hide="!viewModel.state.state">
 	            <div>
 	            	
@@ -24,22 +24,29 @@
 	        </div>
 		</div>
         </div>
-        <div class="col-xs-4">
+        <ul class="sdv-sleep-data">
 	        <!-- <p>{{viewModel.familyInfo.duration}}</p> -->
-	        <p>Hours Slept</p>
-	        <p>{{viewModel.familyInfo.hours | number:2}}</p>
-	        <p>time went to sleep</p>
-	        <p>{{viewModel.familyInfo.startTime | date:'shortTime'}}</p>
-	        <p>time woke up</p>
-	        <p>{{viewModel.familyInfo.endTime | date:'shortTime'}}</p>
-	        <p>Minutes Restless</p>
-	        <p>{{viewModel.family.restless}}</p>
+            
+           	<li>{{ viewModel.familyInfo.targetedHours }}</li>
+           	<li>Target hours</li>
+	        
+	        <li>{{viewModel.familyInfo.startTime | date:'shortTime'}}</li>
+	        <li>Fell asleep</li>
+	        
+	        <li>{{viewModel.family.restless}}</li>
+	        <li>Minutes Restless</li>
+	        
+	        <li>{{viewModel.familyInfo.hours | number:2}}</li>
+	        <li>Hours slept</li>
+	        
+	        <li>{{viewModel.familyInfo.endTime | date:'shortTime'}}</li>
+	        <li>Woke up</li>
 	    </div>
 	</div>
-	<div class="row">
+	<div class="row sdv-barchart-placement">
 		
 	
-		<div class="row" class="chart-placement">
+		<div class="row" >
 			<canvas class="chart chart-bar" chart-data="viewModel.familyInfo.night" chart-labels="viewModel.barlabels" chart-options="viewModel.baroptions" chart-series="viewModel.barseries" chart-colors="viewModel.barcolors" width="50" height="10">
 			</canvas>
 			<!-- 
@@ -51,7 +58,7 @@
 			
 		</div>
 		<!-- Legend -->
-		<ul id="swv-legend">
+		<ul id="sdv-legend">
 		  <li><div id="swv-legend-sleep"></div></li>
 		  <li>Sleep</li>
 		  <li><div id="swv-legend-movement"></div></li>

@@ -91,6 +91,11 @@ body {
   width: 100%;*/
 }
 
+html, body {
+  height: 100px;
+  margin: 0;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .recorder,
@@ -105,6 +110,7 @@ body {
   text-align: center;
   color: white;
   display:block;
+  margin-top: 10px;
 }
 
 .recorder {
@@ -132,10 +138,16 @@ body {
 
 /* Custom page footer */
 .footer {
-  padding-top: 10px;
-  margin-top: 19px;
+  /*padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 19px;*/
   color: white;
   border-top: 1px solid #e5e5e5;
+  /*position: absolute;
+  width: 100%;
+  bottom: 0%;*/
+  height: 40px;
+  margin-top: -40px;
 }
 
 .container-narrow > hr {
@@ -144,6 +156,8 @@ body {
 
 .container {
   color: white;
+  min-height: 100%;
+  padding-bottom: 40px;
 }
 
 /* Main marketing message and sign up button */

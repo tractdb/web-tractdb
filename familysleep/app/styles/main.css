@@ -7500,6 +7500,18 @@ button.close {
   margin-bottom: 50px;
 }
 
+/* line 37, partials/_signup.scss */
+.family-type-container {
+  float: left;
+  width: 550px;
+}
+
+/* line 42, partials/_signup.scss */
+.family-type {
+  margin-top: 5px;
+  margin-botton: 5px;
+}
+
 /*=======================================================================
 ** FAMILY VIEW CSS START
 =========================================================================
@@ -7557,15 +7569,17 @@ button.close {
 /* line 56, partials/_familydailyview.scss */
 .chart-placement {
   height: 150px;
+  position: absolute;
   width: 150px;
-  margin-left: 80px;
+  margin-left: 90px;
+  top: 80px;
 }
 
-/* line 62, partials/_familydailyview.scss */
+/* line 64, partials/_familydailyview.scss */
 .how-sleep-button {
   position: absolute;
   top: 125px;
-  left: 120px;
+  left: 130px;
   z-index: 1;
   white-space: normal;
   max-width: 100px;
@@ -7575,59 +7589,69 @@ button.close {
   font-weight: bold;
 }
 
-/* line 75, partials/_familydailyview.scss */
+/* line 77, partials/_familydailyview.scss */
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
   color: white;
   background-color: #D6C3DB;
   border-color: #D6C3DB;
 }
 
-/* line 81, partials/_familydailyview.scss */
+/* line 83, partials/_familydailyview.scss */
 .profile-pics {
-  position: relative;
+  position: absolute;
   top: 0px;
   width: 60px;
   height: 60px;
 }
 
-/* line 88, partials/_familydailyview.scss */
+/* line 90, partials/_familydailyview.scss */
 .profile-area {
   display: inline-block;
 }
 
-/* line 92, partials/_familydailyview.scss */
+/* line 94, partials/_familydailyview.scss */
 .single-view-button {
-  margin-top: -75px;
-  margin-left: 90px;
+  margin-left: 200px;
   margin-bottom: 50px;
+  position: absolute;
+  top: 5px;
 }
 
-/* line 98, partials/_familydailyview.scss */
-.single-view-button .btn {
+/* line 101, partials/_familydailyview.scss */
+.weekly-view-button {
+  margin-left: 80px;
+  margin-bottom: 50px;
+  position: absolute;
+  top: 5px;
+}
+
+/* line 108, partials/_familydailyview.scss */
+.single-view-button .btn, .weekly-view-button .btn {
   background-color: #d6c3db;
   border-color: #d6c3db;
   color: black;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
-/* line 105, partials/_familydailyview.scss */
+/* line 115, partials/_familydailyview.scss */
 .target-hours {
-  margin-left: 110px;
-  margin-top: -35px;
+  position: absolute;
+  top: 45px;
+  margin-left: 82px;
   margin-bottom: 15px;
 }
 
-/* line 111, partials/_familydailyview.scss */
+/* line 122, partials/_familydailyview.scss */
 .mood-pics {
   position: absolute;
   width: 100px;
   height: 100px;
   top: 105px;
-  left: 120px;
+  left: 130px;
   z-index: 1;
 }
 
-/* line 120, partials/_familydailyview.scss */
+/* line 131, partials/_familydailyview.scss */
 #family_moon {
   position: fixed;
   height: 150px;
@@ -7639,36 +7663,40 @@ button.close {
   /* Negative half of width. */
 }
 
-/* line 129, partials/_familydailyview.scss */
+/* line 140, partials/_familydailyview.scss */
 .fdv-names {
   text-align: center;
+  position: absolute;
+  top: 60px;
   width: 60px;
   margin: 0;
 }
 
-/* line 135, partials/_familydailyview.scss */
+/* line 148, partials/_familydailyview.scss */
 .fdv-even-column {
   margin-right: 125px;
   margin-bottom: 20px;
   height: 260px;
 }
 
-/* line 141, partials/_familydailyview.scss */
+/* line 154, partials/_familydailyview.scss */
 .fdv-odd-column {
   margin-left: 160px;
   margin-bottom: 20px;
   height: 260px;
 }
 
-/* line 147, partials/_familydailyview.scss */
+/* line 160, partials/_familydailyview.scss */
 .hours-slept {
-  margin-top: -150px;
   font-size: small;
+  position: absolute;
+  top: 110px;
 }
 
-/* line 152, partials/_familydailyview.scss */
+/* line 166, partials/_familydailyview.scss */
 .mood-report {
-  margin-top: 5px;
+  position: absolute;
+  top: 240px;
   font-size: small;
 }
 
@@ -8051,13 +8079,18 @@ md-icon svg path {
 }
 
 /* line 14, partials/singleweeklyview.scss */
-#swv-legend {
-  margin-bottom: 30px;
-  margin-top: -30px;
-  margin-left: 400px;
+.swv-date-first {
+  margin-top: -25px;
 }
 
-/* line 20, partials/singleweeklyview.scss */
+/* line 18, partials/singleweeklyview.scss */
+#swv-legend {
+  margin-bottom: 80px;
+  margin-left: 400px;
+  padding-top: 50px;
+}
+
+/* line 24, partials/singleweeklyview.scss */
 #swv-legend li {
   display: inline-block;
 }
@@ -8068,7 +8101,7 @@ md-icon svg path {
     font-size: 12px;
 }​
 */
-/* line 31, partials/singleweeklyview.scss */
+/* line 35, partials/singleweeklyview.scss */
 #swv-legend li:nth-child(2),
 #swv-legend li:nth-child(4),
 #swv-legend li:nth-child(6),
@@ -8077,60 +8110,60 @@ md-icon svg path {
   font-size: 12px;
 }
 
-/* line 39, partials/singleweeklyview.scss */
+/* line 43, partials/singleweeklyview.scss */
 #no-data-chart {
   height: 55px;
 }
 
 /* green */
-/* line 44, partials/singleweeklyview.scss */
+/* line 48, partials/singleweeklyview.scss */
 #swv-legend-sleep {
   background-color: #44d2d1;
 }
 
 /* purple */
-/* line 49, partials/singleweeklyview.scss */
+/* line 53, partials/singleweeklyview.scss */
 #swv-legend-movement {
   background-color: #551A8B;
 }
 
 /* pink */
-/* line 54, partials/singleweeklyview.scss */
+/* line 58, partials/singleweeklyview.scss */
 #swv-legend-restless {
   background-color: #FC3F73;
 }
 
-/* line 58, partials/singleweeklyview.scss */
+/* line 62, partials/singleweeklyview.scss */
 #swv-legend-no-data {
   background-color: #D6C3DB;
 }
 
-/* line 62, partials/singleweeklyview.scss */
+/* line 66, partials/singleweeklyview.scss */
 #swv-legend-sleep, #swv-legend-movement, #swv-legend-restless, #swv-legend-no-data {
   width: 40px;
   height: 15px;
   margin-bottom: -3px;
 }
 
-/* line 68, partials/singleweeklyview.scss */
+/* line 72, partials/singleweeklyview.scss */
 .swv-chart-placement {
   margin-left: 100px;
   margin-top: -40px;
 }
 
-/* line 73, partials/singleweeklyview.scss */
+/* line 77, partials/singleweeklyview.scss */
 .swv-empty-chart-placement {
   margin-left: 100px;
   margin-top: -30px;
 }
 
-/* line 78, partials/singleweeklyview.scss */
+/* line 82, partials/singleweeklyview.scss */
 .swv-chart-placement-last {
   margin-left: 100px;
   margin-top: -30px;
 }
 
-/* line 83, partials/singleweeklyview.scss */
+/* line 87, partials/singleweeklyview.scss */
 .swv-mood-pics {
   width: 40px;
   height: 40px;
@@ -8138,7 +8171,7 @@ md-icon svg path {
   margin-left: 920px;
 }
 
-/* line 90, partials/singleweeklyview.scss */
+/* line 94, partials/singleweeklyview.scss */
 .swv-mood-pics-last {
   width: 40px;
   height: 40px;
@@ -8159,14 +8192,16 @@ md-icon svg path {
 }
 
 /* line 13, partials/singledailyview.scss */
-#sdv-mood-pics {
-  width: 60px;
-  height: 60px;
-  display: block;
-  margin: auto;
+.sdv-mood-pics {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 25px;
+  left: 25px;
+  z-index: 1;
 }
 
-/* line 20, partials/singledailyview.scss */
+/* line 22, partials/singledailyview.scss */
 #sdv-mood-report {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -8175,11 +8210,79 @@ md-icon svg path {
   width: 200px;
 }
 
-/* line 28, partials/singledailyview.scss */
+/* line 30, partials/singledailyview.scss */
 #sdv-name {
   text-align: center;
   width: 70px;
   margin: 0;
+}
+
+/* line 36, partials/singledailyview.scss */
+#sdv-legend {
+  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-left: 400px;
+}
+
+/* line 42, partials/singledailyview.scss */
+#sdv-legend li {
+  display: inline-block;
+}
+
+/* line 46, partials/singledailyview.scss */
+#sdv-legend li:nth-child(2),
+#sdv-legend li:nth-child(4),
+#sdv-legend li:nth-child(6),
+#sdv-legend li:nth-child(8) {
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+/* line 54, partials/singledailyview.scss */
+.sdv-chart-placement {
+  height: 150px;
+  position: absolute;
+  width: 150px;
+  margin-left: 200px;
+  top: 50px;
+}
+
+/* line 62, partials/singledailyview.scss */
+.sdv-barchart-placement {
+  /*margin-top: 120px;*/
+}
+
+/* line 66, partials/singledailyview.scss */
+.sdv-mood-text {
+  text-align: center;
+}
+
+/* line 70, partials/singledailyview.scss */
+.sdv-sleep-data {
+  margin-left: 500px;
+  list-style-type: none;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  margin-top: 50px;
+}
+
+/* line 79, partials/singledailyview.scss */
+.sdv-sleep-data li {
+  text-align: center;
+}
+
+/* numbers */
+/* line 84, partials/singledailyview.scss */
+.sdv-sleep-data li:nth-child(odd) {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* line 89, partials/singledailyview.scss */
+.sdv-sleep-data li:nth-child(even) {
+  font-size: 12px;
+  margin-bottom: 30px;
 }
 
 /*=======================================================================
@@ -8291,8 +8394,14 @@ body {
   width: 100%;*/
 }
 
+/* line 94, main.scss */
+html, body {
+  height: 100px;
+  margin: 0;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
-/* line 95, main.scss */
+/* line 100, main.scss */
 .header,
 .recorder,
 .marketing,
@@ -8302,14 +8411,15 @@ body {
   color: white;
 }
 
-/* line 104, main.scss */
+/* line 109, main.scss */
 .about-us-link {
   text-align: center;
   color: white;
   display: block;
+  margin-top: 10px;
 }
 
-/* line 110, main.scss */
+/* line 116, main.scss */
 .recorder {
   float: right;
   height: 9%;
@@ -8319,12 +8429,12 @@ body {
 }
 
 /* Custom page header */
-/* line 120, main.scss */
+/* line 126, main.scss */
 .header {
   margin-bottom: 10px;
   /* Make the masthead heading the same height as the navigation */
 }
-/* line 125, main.scss */
+/* line 131, main.scss */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -8333,55 +8443,63 @@ body {
 }
 
 /* Custom page footer */
-/* line 134, main.scss */
+/* line 140, main.scss */
 .footer {
-  padding-top: 10px;
-  margin-top: 19px;
+  /*padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 19px;*/
   color: white;
   border-top: 1px solid #e5e5e5;
+  /*position: absolute;
+  width: 100%;
+  bottom: 0%;*/
+  height: 40px;
+  margin-top: -40px;
 }
 
-/* line 141, main.scss */
+/* line 153, main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
-/* line 145, main.scss */
+/* line 157, main.scss */
 .container {
   color: white;
+  min-height: 100%;
+  padding-bottom: 40px;
 }
 
 /* Main marketing message and sign up button */
-/* line 150, main.scss */
+/* line 164, main.scss */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
-/* line 154, main.scss */
+/* line 168, main.scss */
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
 }
 
 /* Supporting marketing content */
-/* line 161, main.scss */
+/* line 175, main.scss */
 .marketing {
   margin: 40px 0;
 }
-/* line 164, main.scss */
+/* line 178, main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* line 171, main.scss */
+  /* line 185, main.scss */
   .container {
     max-width: 900px;
   }
 
   /* Remove the padding we set earlier */
-  /* line 176, main.scss */
+  /* line 190, main.scss */
   .header,
   .marketing,
   .footer {
@@ -8390,13 +8508,13 @@ body {
   }
 
   /* Space out the masthead */
-  /* line 183, main.scss */
+  /* line 197, main.scss */
   .header {
     margin-bottom: 30px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 187, main.scss */
+  /* line 201, main.scss */
   .jumbotron {
     border-bottom: 0;
   }

@@ -14,13 +14,18 @@
 }
 
 /* line 14, singleweeklyview.scss */
-#swv-legend {
-  margin-bottom: 30px;
-  margin-top: -30px;
-  margin-left: 400px;
+.swv-date-first {
+  margin-top: -25px;
 }
 
-/* line 20, singleweeklyview.scss */
+/* line 18, singleweeklyview.scss */
+#swv-legend {
+  margin-bottom: 80px;
+  margin-left: 400px;
+  padding-top: 50px;
+}
+
+/* line 24, singleweeklyview.scss */
 #swv-legend li {
   display: inline-block;
 }
@@ -31,7 +36,7 @@
     font-size: 12px;
 }​
 */
-/* line 31, singleweeklyview.scss */
+/* line 35, singleweeklyview.scss */
 #swv-legend li:nth-child(2),
 #swv-legend li:nth-child(4),
 #swv-legend li:nth-child(6),
@@ -40,60 +45,60 @@
   font-size: 12px;
 }
 
-/* line 39, singleweeklyview.scss */
+/* line 43, singleweeklyview.scss */
 #no-data-chart {
   height: 55px;
 }
 
 /* green */
-/* line 44, singleweeklyview.scss */
+/* line 48, singleweeklyview.scss */
 #swv-legend-sleep {
   background-color: #44d2d1;
 }
 
 /* purple */
-/* line 49, singleweeklyview.scss */
+/* line 53, singleweeklyview.scss */
 #swv-legend-movement {
   background-color: #551A8B;
 }
 
 /* pink */
-/* line 54, singleweeklyview.scss */
+/* line 58, singleweeklyview.scss */
 #swv-legend-restless {
   background-color: #FC3F73;
 }
 
-/* line 58, singleweeklyview.scss */
+/* line 62, singleweeklyview.scss */
 #swv-legend-no-data {
   background-color: #D6C3DB;
 }
 
-/* line 62, singleweeklyview.scss */
+/* line 66, singleweeklyview.scss */
 #swv-legend-sleep, #swv-legend-movement, #swv-legend-restless, #swv-legend-no-data {
   width: 40px;
   height: 15px;
   margin-bottom: -3px;
 }
 
-/* line 68, singleweeklyview.scss */
+/* line 72, singleweeklyview.scss */
 .swv-chart-placement {
   margin-left: 100px;
   margin-top: -40px;
 }
 
-/* line 73, singleweeklyview.scss */
+/* line 77, singleweeklyview.scss */
 .swv-empty-chart-placement {
   margin-left: 100px;
   margin-top: -30px;
 }
 
-/* line 78, singleweeklyview.scss */
+/* line 82, singleweeklyview.scss */
 .swv-chart-placement-last {
   margin-left: 100px;
   margin-top: -30px;
 }
 
-/* line 83, singleweeklyview.scss */
+/* line 87, singleweeklyview.scss */
 .swv-mood-pics {
   width: 40px;
   height: 40px;
@@ -101,7 +106,7 @@
   margin-left: 920px;
 }
 
-/* line 90, singleweeklyview.scss */
+/* line 94, singleweeklyview.scss */
 .swv-mood-pics-last {
   width: 40px;
   height: 40px;
