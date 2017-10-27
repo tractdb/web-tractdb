@@ -4,52 +4,61 @@
 		<div class="col-xs-4">
             <img ng-src={{viewModel.familyInfo.profilePic}} class="profile-pics">
             <p class="fdv-names">{{viewModel.familyInfo.name}}</p>
-            <div ng-if="viewModel.familyInfo.duration == -1">
-	    	<div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
-	            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color" chart-options="options">
-	            </canvas>
-	        </div>
-		</div>
-		<div ng-if="viewModel.familyInfo.duration > -1">
-			<div class="chart-placement">
-	            <canvas id="doughnut" class="chart-doughnut" chart-data="viewModel.familyInfo.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
-	            </canvas>
-	            <div ng-show="viewModel.state.state">
-	            	<img ng-src={{viewModel.state.image}} class="mood-pics">
-	            	<p>{{viewModel.state.mood | uppercase}}</p>
-	            </div ng-hide="!viewModel.state.state">
-	            <div>
-	            	
-	            </div>
-	        </div>
-		</div>
+            <div ng-if="viewModel.familyInfo.duration == -1"> <!-- THIS IS FOR THE EMPTY PIE -->
+
+		    	<div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
+		            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color" chart-options="options">
+		            </canvas>
+		        </div>
+				<div ng-show="viewModel.state.state">
+					<img ng-src={{viewModel.state.image}} class="mood-pics">
+					<p>{{viewModel.state.mood | uppercase}}</p>
+				</div>
+				<div ng-hide="!viewModel.state.state">
+				</div>
+			</div>
+			<div ng-if="viewModel.familyInfo.duration > -1"> <!-- THIS IS FOR THE PIE -->
+				<div class="chart-placement">
+		            <canvas id="doughnut" class="chart-doughnut" chart-data="viewModel.familyInfo.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+		            </canvas>
+		            <div ng-show="viewModel.state.state">
+		            	<img ng-src={{viewModel.state.image}} class="mood-pics">
+		            	<p>{{viewModel.state.mood | uppercase}}</p>
+		            </div>
+		            <div ng-hide="!viewModel.state.state">
+		            </div>
+		        </div>
+			</div>
         </div>
         <div class="col-xs-4">
 	        <!-- <p>{{viewModel.familyInfo.duration}}</p> -->
-	        <p>Hours Slept</p>
-	        <p>{{viewModel.familyInfo.hours | number:2}}</p>
-	        <p>time went to sleep</p>
-	        <p>{{viewModel.familyInfo.startTime | date:'shortTime'}}</p>
-	        <p>time woke up</p>
-	        <p>{{viewModel.familyInfo.endTime | date:'shortTime'}}</p>
-	        <p>Minutes Restless</p>
-	        <p>{{viewModel.family.restless}}</p>
+	        <div ng-if="viewModel.familyInfo.duration > -1">
+		        <p>Hours Slept: {{viewModel.familyInfo.hours | number:2}}</p>
+		        <p>time went to sleep: {{viewModel.familyInfo.startTime | date:'shortTime'}}</p>
+		        <p>time woke up: {{viewModel.familyInfo.endTime | date:'shortTime'}}</p>
+		        <!-- <p>Minutes Restless: {{viewModel.family.restless}}</p> -->
+		    </div>
 	    </div>
 	</div>
-	<div class="row">
-		
-	
-		<div class="row" class="chart-placement">
-			<canvas class="chart chart-bar" chart-data="viewModel.familyInfo.night" chart-labels="viewModel.barlabels" chart-options="viewModel.baroptions" chart-series="viewModel.barseries" chart-colors="viewModel.barcolors" width="50" height="10">
-			</canvas>
-			<!-- 
-			add ring
-			add all the info
-			add legend -->
-			<!-- <img ng-src="app/images/faces/happy.png" class="swv-mood-pics"> -->
-			<!-- <p>{{viewModel.state}}</p> -->
+	<div class="row" class="chart-placement">
+		<!-- THIS IS FOR THE BAR -->
+		<!-- need duration > -1 -->
+			<div ng-if="viewModel.familyInfo.duration > -1">
+				<canvas class="chart chart-bar" chart-data="viewModel.familyInfo.night" chart-labels="viewModel.barlabels" chart-options="viewModel.baroptions" chart-series="viewModel.barseries" chart-colors="viewModel.barcolors" width="50" height="10">
+				</canvas>
+				<!-- 
+				add ring
+				add all the info
+				add legend -->
+				<!-- <img ng-src="app/images/faces/happy.png" class="swv-mood-pics"> -->
+				<!-- <p>{{viewModel.state}}</p> -->
 			
-		</div>
+			</div>
+
+			<!-- need duration == -1 -->
+			<div ng-if="viewModel.familyInfo.duration == -1" ng-controller="EmptybarchartCtrl">
+				<canvas class="chart chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="color" height="40" width="800"></canvas>	
+			</div>
 		<!-- Legend -->
 		<ul id="swv-legend">
 		  <li><div id="swv-legend-sleep"></div></li>

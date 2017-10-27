@@ -15,8 +15,6 @@
                 <div ng-if= "viewModel.today == viewModel.calendarDate" >
                     <div ng-if=viewModel.states[pidCurrent].state>
                     <!-- <div ng-if=$ctrl.states[pidCurrent].state> -->
-                
-                        <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
                         <div class="single-view-button">
                             <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
                             <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
@@ -88,7 +86,6 @@
                             <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Single Daily View</button>
                             <!--want an ng-if here to show only after daily sleep and self-report is available -->
                         </div>
-                        <!--<div ng-controller="DoughnutCtrl" class="chart-placement">-->
                         <div class="chart-placement">
                             <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
                             </canvas>
