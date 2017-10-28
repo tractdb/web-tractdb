@@ -86,10 +86,12 @@
 					<!-- Text input-->
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="type">Type of Family Member</label>
-						<div class="col-md-5" ng-repeat="famType in famTypes">
-							<input type="radio" ng-model="member.type" ng-value="famType" name="famType" id="{{famType}}">
-							<label >{{famType || 'Other'}}</label>
-							<input type="text" ng-model="member.type" ng-show="famType ==''"placeholder="Aunt" style="color: black;">
+						<div class="family-type-container">
+							<div class="col-md-5 family-type" ng-repeat="famType in famTypes">
+								<input type="radio" ng-model="member.type" ng-value="famType" name="famType" id="{{famType}}">
+								<label >{{famType || 'Other'}}</label>
+								<input type="text" ng-model="member.type" ng-show="famType ==''"placeholder="Aunt" style="color: black;">
+							</div>
 						</div>
 						<!--<input type="radio" ng-model="famType" ng-value="famType" id="{{famType}}" name="famType" >-->
 						<!--<div class="col-md-5">
