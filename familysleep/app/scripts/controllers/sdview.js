@@ -207,6 +207,7 @@ angular.module('FamilySleep')
 		//does this need to be viewModel?
 		$scope.$on('date:updated', function() {
 			//TODO: need to maintain date which will taken care of by dateFactory
+			viewModel.today = dateFactory.getTodayString();
 			viewModel.date = dateFactory.getDateString();
 			tractdbFactory.setQuery('singledaily', viewModel.id, viewModel.date);
 			viewModel.updateFamilyInfo();

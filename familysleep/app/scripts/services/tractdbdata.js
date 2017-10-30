@@ -44,7 +44,7 @@ module.factory(
                 }
                 // console.log('printing query');
                 // console.log(factory._query);
-            }
+            };
 
             //
             // Retrieve our data, schedule our next retrieve
@@ -116,11 +116,11 @@ module.factory(
                         factory._nextRetrievePromise = null;
                     }
                 });
-            }
+            };
 
             factory._notify = function () {
                 $rootScope.$emit('tractdbFactory-data');
-            }
+            };
 
             //
             // Schedule another retrieve, if anybody is listening

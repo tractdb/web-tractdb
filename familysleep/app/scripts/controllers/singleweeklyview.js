@@ -258,8 +258,9 @@ angular.module('FamilySleep')
 	//console.log("in SingleweeklyviewCtrl");
 
 	$scope.$on('date:updated', function() {
+		viewModel.today = dateFactory.getTodayString();
 		viewModel.date = dateFactory.getDateString();
-         tractdbFactory.setQuery('singleweekly', viewModel.id, viewModel.date);
+        tractdbFactory.setQuery('singleweekly', viewModel.id, viewModel.date);
         viewModel.updateFamilyInfo();
   	});
 

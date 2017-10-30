@@ -133,7 +133,11 @@ angular.module('FamilySleep')
 
                 //need to check I need to use viewModel
                 $scope.$on('date:updated', function() {
-                  viewModel.updateWeekFamilyInfo();
+                    viewModel.dateWeekStr = dateFactory.getWeekDateString();
+                    viewModel.today = dateFactory.getTodayString();
+                    viewModel.calendarDate = dateFactory.getDateString();
+                    //tractdbFactory.setQuery('familyweekly', null, viewModel.calendarDate);
+                    viewModel.updateWeekFamilyInfo();
                 });
 
 }]);
