@@ -136,7 +136,7 @@ angular.module('FamilySleep')
                     viewModel.dateWeekStr = dateFactory.getWeekDateString();
                     viewModel.today = dateFactory.getTodayString();
                     viewModel.calendarDate = dateFactory.getDateString();
-                    //tractdbFactory.setQuery('familyweekly', null, viewModel.calendarDate);
+                    //tractdbFactory.setQuery('familyweekly', null, viewModel.calendarDateview                    
                     viewModel.updateWeekFamilyInfo();
                 });
 
