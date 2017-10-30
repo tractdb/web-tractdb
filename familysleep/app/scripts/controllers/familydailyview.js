@@ -188,11 +188,15 @@ module.controller(
             });
 
             //should replace to viewModel
-            $scope.changeView = function(id){
+            $scope.changeToSingleDailyView = function(id){
                 //var view = '/familydailyview';
-                console.log("in changeview FDV " + id);
-                console.log('personas');
-                console.log(personaFactory.personas);
+                //console.log("in changeview FDV " + id);
+                //console.log('personas');
+                //console.log(personaFactory.personas);
                 $location.path('/sdview/' + id);
+            };
+
+            $scope.changeToSingleWeeklyView = function(id){
+                $location.path('/singleweeklyview/' + id);
             };
         }]);

@@ -12,7 +12,7 @@
                 <p>Target hours: {{ memberCurrent.targetedHours }}</p>
             </div>
             <div class="weekly-view-button">
-                <button class="btn btn-primary"> Weekly View</button>
+                <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary"> Weekly View</button>
             </div>
             <div ng-controller="ModalCrtl as $ctrl">
                 <div ng-if= "viewModel.today == viewModel.calendarDate" >
@@ -20,7 +20,7 @@
                     <!-- <div ng-if=$ctrl.states[pidCurrent].state> -->
                         <div class="single-view-button">
                             <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
-                            <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Daily View</button>
+                            <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary"> Daily View</button>
                             <!--want an ng-if here to show only after daily sleep and self-report is available -->
                         </div>
                         <div class="chart-placement">
@@ -51,7 +51,7 @@
                 <div ng-if= "viewModel.today != viewModel.calendarDate" >
                     <div class="single-view-button">
                         
-                        <button ng-click="changeView(pidCurrent)" class="btn btn-primary">Daily View</button>
+                        <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary">Daily View</button>
                         
                     </div>
                     <div class="chart-placement">
@@ -82,14 +82,14 @@
                 <p>Target hours: {{ memberCurrent.targetedHours }}</p>
             </div>
             <div class="weekly-view-button">
-                <button class="btn btn-primary"> Weekly View</button>
+                <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary"> Weekly View</button>
             </div>
             <div ng-controller="ModalCrtl as $ctrl">
                 <div ng-if= "viewModel.today == viewModel.calendarDate" >
                     <div ng-if=viewModel.states[pidCurrent].state>
                         <div class="single-view-button">
                             <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
-                            <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Daily View</button>
+                            <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary"> Daily View</button>
                             <!--want an ng-if here to show only after daily sleep and self-report is available -->
                         </div>
                         <div class="chart-placement">
@@ -118,7 +118,7 @@
                 <div ng-if= "viewModel.today != viewModel.calendarDate" >
                     <div class="single-view-button">
                         
-                        <button ng-click="changeView(pidCurrent)" class="btn btn-primary"> Daily View</button>
+                        <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary"> Daily View</button>
                         
                     </div>
                     <div class="chart-placement">
