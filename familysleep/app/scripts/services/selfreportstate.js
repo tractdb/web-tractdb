@@ -90,11 +90,11 @@ angular.module('FamilySleep')
 
     factory.putNewData = function(){
         var date = dateFactory.getDateString();
-        var url = BASEURL_PYRAMID + '/document/family_selfreport';
+        //var url = BASEURL_PYRAMID + '/document/family_selfreport';
         $http(
             {
             method: 'GET',
-            url: url
+            url: BASEURL_PYRAMID + '/document/family_selfreport'
             }
         ).then(function success(response){
             console.log('printing reponse in putData of selfReportState');
@@ -127,23 +127,23 @@ angular.module('FamilySleep')
                 factory._notify();
             }).catch (function errorCallback(response){ 
                 console.log("error in the PUT");
-                console.log(response.code);
+                console.log(response.status);
             }).finally(function (){
                 factory._scheduleNextRetrieve();
             });
         }).catch (function errorCallback(response){
             console.log(response);
-            console.log("error " + response.code);
+            console.log("error " + response.status);
             console.log("error text" + response.statusText);
             if(response.status == 404){
-                url = BASEURL_PYRAMID + '/document/family_selfreport';
+                //url = BASEURL_PYRAMID + '/document/family_selfreport';
                 var new_doc = {
                     "states": factory.states,
-                    "_id": 'family_selfreport'
-                }
+                    "_id": "family_selfreport"
+                };
                 $http({
                     method: 'PUT',
-                    url: url,
+                    url: BASEURL_PYRAMID + '/document/family_selfreport',
                     data: new_doc
                 }).then(function success(response){
                     factory.doc_id = response.data._id;
@@ -154,9 +154,10 @@ angular.module('FamilySleep')
                 }).catch (function errorCallback(response){
                     console.log("error in the PUT");
                     console.log(response);
-                    console.log(response.code);
+                    console.log(response.status);
                 }).finally(function (){
-                    factory._scheduleNextRetrieve();
+                    //factory._scheduleNextRetrieve();
+                    //schedule next PUT
                 });
             }
         });
@@ -164,25 +165,31 @@ angular.module('FamilySleep')
 
     factory.putData = function(){
         var date = dateFactory.getDateString();
-        var url = BASEURL_PYRAMID + '/document/family_selfreport';
+        //var url = BASEURL_PYRAMID + '/document/family_selfreport';
+        // var new_doc = {
+        //     "_id": factory.doc_id,
+        //     "_rev": factory.doc_rev,
+        //     "states": factory.states
+        // };
         var new_doc = {
-            "_id": factory.doc_id,
-            "_rev": factory.doc_rev,
+            "_id": "family_selfreport",
+            "_rev": "1",
             "states": factory.states
         };
         $http({
             method: 'PUT',
-            url: url,
+            url: BASEURL_PYRAMID + '/document/family_selfreport',
             data: new_doc
         }).then(function success(response){
             //doc_id = response.data._id;
             factory.doc_rev = response.data._rev;
+            factory.doc_id = response.data._id;
             //console.log("rev of the PUT");
             //console.log(doc_rev);
             factory._notify();
         }).catch (function errorCallback(response){ 
             console.log("error in the PUT");
-            console.log(response.code);
+            console.log(response.status);
         }).finally(function (){
             factory._scheduleNextRetrieve();
         });
