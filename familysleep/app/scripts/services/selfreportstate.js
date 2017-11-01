@@ -57,12 +57,12 @@ angular.module('FamilySleep')
     var factory = {};
     factory.states = {};
 
-    var doc_rev = null;
-    var doc_id = null;
+    factory.doc_rev = null;
+    factory.doc_id = null;
 
     factory.retrieveData = function () {
         var date = dateFactory.getDateString();
-        var url = BASEURL_PYRAMID + '/document/family_selfreport_' + date;
+        var url = BASEURL_PYRAMID + '/document/family_selfreport';
         console.log('printing ulr string');
         console.log(url);
         $http(
@@ -76,8 +76,8 @@ angular.module('FamilySleep')
             var date = dateFactory.getDateString;
             factory.states = states;
 
-            doc_id = response.data._id;
-            doc_rev = response.data._rev;
+            factory.doc_id = response.data._id;
+            factory.doc_rev = response.data._rev;
             factory._notify();
         }).catch(function () {
           //error message
@@ -90,7 +90,7 @@ angular.module('FamilySleep')
 
     factory.putNewData = function(){
         var date = dateFactory.getDateString();
-        var url = BASEURL_PYRAMID + '/document/family_selfreport_' + date;
+        var url = BASEURL_PYRAMID + '/document/family_selfreport';
         $http(
             {
             method: 'GET',
@@ -99,29 +99,29 @@ angular.module('FamilySleep')
         ).then(function success(response){
             console.log('printing reponse in putData of selfReportState');
             console.log(response);
-            doc_id = response.data._id;
-            doc_rev = response.data._rev;
+            factory.doc_id = response.data._id;
+            factory.doc_rev = response.data._rev;
             var old_states = response.states;
             //console.log("doc_rev at GET from setData");
             //console.log(doc_rev);
             //factory.personas = new_personas;
             var new_doc = {
-            "_id": doc_id,
-            "_rev": doc_rev,
+            "_id": factory.doc_id,
+            "_rev": factory.doc_rev,
             "states": factory.states
             };
             // console.log("printing obj for PUT");
             // console.log(new_doc);
             //now doing the PUT
             //embedding PUT in GET this doesn't seem the right logic
-            url = BASEURL_PYRAMID + '/document/family_selfreport_' + date;
+            url = BASEURL_PYRAMID + '/document/family_selfreport';
             $http({
                 method: 'PUT',
                 url: url,
                 data: new_doc
             }).then(function success(response){
-                doc_id = response.data._id;
-                doc_rev = response.data._rev;
+                factory.doc_id = response.data._id;
+                factory.doc_rev = response.data._rev;
                 //console.log("rev of the PUT");
                 //console.log(doc_rev);
                 factory._notify();
@@ -136,18 +136,18 @@ angular.module('FamilySleep')
             console.log("error " + response.code);
             console.log("error text" + response.statusText);
             if(response.status == 404){
-                url = BASEURL_PYRAMID + '/document/family_selfreport_' + date;
+                url = BASEURL_PYRAMID + '/document/family_selfreport';
                 var new_doc = {
                     "states": factory.states,
-                    "_id": 'family_selfreport_' + date
+                    "_id": 'family_selfreport'
                 }
                 $http({
                     method: 'PUT',
                     url: url,
                     data: new_doc
                 }).then(function success(response){
-                    doc_id = response.data._id;
-                    doc_rev = response.data._rev;
+                    factory.doc_id = response.data._id;
+                    factory.doc_rev = response.data._rev;
                     //console.log("rev of the PUT");
                     //console.log(doc_rev);
                     factory._notify();
@@ -164,10 +164,10 @@ angular.module('FamilySleep')
 
     factory.putData = function(){
         var date = dateFactory.getDateString();
-        var url = BASEURL_PYRAMID + '/document/family_selfreport_' + date;
+        var url = BASEURL_PYRAMID + '/document/family_selfreport';
         var new_doc = {
-            "_id": doc_id,
-            "_rev": doc_rev,
+            "_id": factory.doc_id,
+            "_rev": factory.doc_rev,
             "states": factory.states
         };
         $http({
@@ -176,7 +176,7 @@ angular.module('FamilySleep')
             data: new_doc
         }).then(function success(response){
             //doc_id = response.data._id;
-            doc_rev = response.data._rev;
+            factory.doc_rev = response.data._rev;
             //console.log("rev of the PUT");
             //console.log(doc_rev);
             factory._notify();
@@ -194,7 +194,7 @@ angular.module('FamilySleep')
     factory._nextRetrievePromise = null;
 
     factory.observe = function (scope, callback) {
-        var deregister = $rootScope.$on('personaFactory-data', callback);
+        var deregister = $rootScope.$on('selfReportState-data', callback);
 
         factory._numberObservers += 1;
         factory.retrieveData();
@@ -241,12 +241,6 @@ angular.module('FamilySleep')
         //console.log(factory.states);
     };
 
-    factory.getDate = function(){
-        //returning the root key that represents date of self-report
-        var d = Object.keys(factory.states)[0]; 
-        return d;
-    };
-    //todo: this is incorrect
     
     factory.initializeSingle = function(id){
         var d = dateFactory.getDateString();
@@ -272,28 +266,43 @@ angular.module('FamilySleep')
         console.log(factory.states[d]);
     };
 
-    factory.getAllMoods = function(date){
-        console.log("in getAllMoods");
-        console.log("date = " + date);
-        var d = factory.getDate();
-        //console.log("printing moods based on date");
-        //console.log (factory.states[d]);
-        return factory.states[d];
-    };
 
-    factory.getAllMoodsDay = function(date){
+    //not more of this
+    // factory.getDate = function(){
+    //     //returning the root key that represents date of self-report
+    //     var d = Object.keys(factory.states)[0]; 
+    //     return d;
+    // };
+
+    // factory.getAllMoods = function(date){
+    //     console.log("in getAllMoods");
+    //     console.log("date = " + date);
+    //     //var d = factory.getDate();
+    //     //console.log("printing moods based on date");
+    //     //console.log (factory.states[d]);
+    //     return factory.states[d];
+    // };
+
+    //returns null if moods do not exist for this date
+    // moods for entire family for a particular day
+    factory.getAllMoodsDay = function(pids, date){
         console.log("in getAllMoodsDay");
         console.log("date = " + date);
-        var temp;
+        var temp = {};
         if(factory.states.hasOwnProperty(date)){
             temp = factory.states[date];
-        } else{ 
-            temp = null;
+        } else { 
+            factory.initializeAllEmptyNewDay(pids, date);
+            temp[date] = {};
+            temp = factory.states[date];
         }
         return temp;
     };
 
-    factory.getAllMoodsWeek = function(week_date){
+    //return null for the people we don't have date
+    //returns mood for the entire family for the ones
+    //that we have moods for
+    factory.getAllMoodsWeek = function(pids, week_date){
         console.log("in getAllMoodsWeek");
         //console.log("date = " + week_date);
         //var week_date = dateFactory.getWeekDateString();
@@ -307,16 +316,26 @@ angular.module('FamilySleep')
                 temp[d] = factory.states[d];
             } else {
                 console.log("NO selfReportState for date = " + d);
-                temp[d] = null;
+                factory.initializeAllEmptyNewDay(pids, d);
+                temp[d] = factory.states[d];
+                
+                // temp[d] = {};
+                // temp[d][id] = {};
+                // temp[d][id]['state'] = false;
+                // temp[d][id]['mood'] = null;
+                // temp[d][id]['image'] = null;
+                // temp[d][id]['reporter'] = null;
             }
         }
         return temp;
     };
 
+    //this is for single mood
+    //returns null if there isn't mood for that family member
     factory.getMood = function(id, date){
         console.log("in getMoods");
         console.log("date = " + date);
-        var d = factory.getDate();
+        //var d = factory.getDate();
         var temp;
         // if(angular.equals(date, d)){
         //     console.log("same dates");
@@ -336,16 +355,8 @@ angular.module('FamilySleep')
         return temp;
     };
 
-    factory.getMoodDay = function(id, date){
-        console.log("in getAMoodDay");
-        console.log("date = " + date);
 
-        //check for date
-        //check to see if you we have data for the date
-        //return mood
-        //or return null
-    };
-
+    //mood for single user
     //returns an object
     factory.getMoodWeekly = function(id, date){
         console.log("in getMoodsWeekly");
@@ -385,32 +396,87 @@ angular.module('FamilySleep')
     };
 
     factory.setMood = function(id, mood, image, reporter, date){
-        var d = factory.getDate();
+        //var d = factory.getDate();
         //var reportId = personaFactory.getID(reporter);
         // console.log('in set mood');
         // console.log('d = ' + d);
         // console.log('date = ' + date);
         // console.log('hasOwnProperty = ' + factory.states.hasOwnProperty(date));
-        if(d == date){
-            console.log('dates are the same');
-            var moods = factory.getAllMoods();
-            if(moods.hasOwnProperty(id)){
-                moods[id].mood = mood;
-                moods[id].image = image;
-                moods[id].state = true;
-                moods[id].reporter = reporter;
-                //factory.states[id] = moods[id];
-                // console.log("mood of " + id + " has been updated");
-                // console.log(factory.states[d][id]);
-                // console.log('entire state');
-                // console.log(factory.states);
-            }
-        } else {
-            console.log('dates are different');
-            //need to create new object
+        var mood;
+        if(factory.states.hasOwnProperty(date)){
+            factory.states[date][id].mood = mood;
+            factory.states[date][id].image = image;
+            factory.states[date][id].state = true;
+            factory.states[date][id].reporter = reporter;
+        } else { //no data for that date
+            factory.initializeSingleReportEmptyNewDay(id, date);
+            //factory.states[date] = {};
         }
+        // if(d == date){
+        //     console.log('dates are the same');
+        //     var moods = factory.getAllMoods();
+        //     if(moods.hasOwnProperty(id)){
+        //         moods[id].mood = mood;
+        //         moods[id].image = image;
+        //         moods[id].state = true;
+        //         moods[id].reporter = reporter;
+        //         //factory.states[id] = moods[id];
+        //         // console.log("mood of " + id + " has been updated");
+        //         // console.log(factory.states[d][id]);
+        //         // console.log('entire state');
+        //         // console.log(factory.states);
+        //     }
+        // } else {
+        //     console.log('dates are different');
+            
+        // }
 
     };
+
+    factory.initializeSingleReportEmptyNewDay = function(id, date){
+        //date I'm assuming 'date' is in String form.
+        //if the date does not exist, create new 
+        //subobject with all the needed properties
+        //NEED TO CHECK DATEPICKER TO CREATE ONE?
+        if(!factory.states.hasOwnProperty(date)){
+            var temp = {};
+            temp[id] = {};
+            temp[id]['state'] = false;
+            temp[id]['mood'] = null;
+            temp[id]['image'] = null;
+            temp[id]['reporter'] = null;
+            factory.states[date] = temp;
+        } else if(!factory.states[date].hasOwnProperty(id)){
+            var temp = {};
+            temp[id] = {};
+            temp[id]['state'] = false;
+            temp[id]['mood'] = null;
+            temp[id]['image'] = null;
+            temp[id]['reporter'] = null;
+            factory.states[date] = temp;
+        }
+    };
+
+    factory.initializeAllEmptyNewDay = function(pids, date){
+        //assuming ids is an array of participants
+        //pids = personafactory.getAllIDs -> returns array of ids
+        var id;
+        var temp = {};
+        if(!factory.states.hasOwnProperty(date)){
+            for (var i = pids.length - 1; i >= 0; i--) {
+                id = pids[i];
+                temp[id] = {};
+                temp[id]['state'] = false;
+                temp[id]['mood'] = null;
+                temp[id]['image'] = null;
+                temp[id]['reporter'] = null;
+            }
+            factory.states[date] = temp;
+        }
+        //else
+    };
+
+
 
     //TODO: need to add mood for a new day
     factory.initializeNewDay = function(date){
@@ -429,12 +495,5 @@ angular.module('FamilySleep')
     }*/
 
 
-    /*return {
-        intializeAll: intializeAll,
-        initializeSingle: initializeSingle,
-        getAllMoods: getAllMoods,
-        setMood: setMood,
-        clearAll: clearAll
-    }*/
     return factory;
 }]);

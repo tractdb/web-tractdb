@@ -23,6 +23,15 @@
                             <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary"> Daily View</button>
                             <!--want an ng-if here to show only after daily sleep and self-report is available -->
                         </div>
+                        <!-- <div ng-show="memberCurrent.duration == -1" ng-controller="PiechartcontrollerCtrl" class="chart-placement"> -->
+                        <!-- <div ng-show="memberCurrent.duration == -1" class="chart-doughnut">
+                            <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                            </canvas>
+                        </div>
+                        <div ng-show="memberCurrent.duration !=-1" class="chart-placement">
+                            <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                            </canvas>
+                        </div> -->
                         <div class="chart-placement">
                             <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
                             </canvas>
@@ -38,8 +47,7 @@
                     <!-- <div ng-if=!$ctrl.states[pidCurrent].state> -->
                     <div ng-if=!viewModel.states[pidCurrent].state>
                         <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
-                            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color"
-                                    chart-options="options">
+                            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color" chart-options="options">
                             </canvas>
                         </div>
                         <!--inserts code for the modal popup window-->
@@ -58,6 +66,18 @@
                         <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
                         </canvas>
                     </div>
+                    <!-- <div ng-show="memberCurrent.duration == -1" class="chart-doughnut">
+                          <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                            </canvas>
+                    </div>
+                    <div ng-show="memberCurrent.duration !=-1" class="chart-placement">
+                            <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                            </canvas>
+                    </div> -->
+                    <!-- <div class="chart-placement"> -->
+                        <!-- <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                        </canvas> 
+                    </div>-->
                     <div ng-if=viewModel.states[pidCurrent].state>
                         <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
                         <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->

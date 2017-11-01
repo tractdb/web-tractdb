@@ -14,12 +14,16 @@
         </div>
           <div ng-repeat="day in memberCurrent.days | toArray | orderBy:'-date'" class="fwv-columns">
             
-            <div ng-show="day.duration !=-1" class="fwv-chart-placement">
+            <!-- <div ng-show="day.duration !=-1" class="fwv-chart-placement"> -->
+            <div class="fwv-chart-placement">
                 <!-- <p>{{day.duration}}</p> -->
                 <!--<class="chart-placement">-->
                     <!-- <p>{{day.date}}</p> -->
                      <canvas id="doughnut" class="chart chart-doughnut" chart-data="day.sleep" chart-labels="viewModel.labels" chart-colors ="viewModel.colors" chart-options="viewModel.options"> 
-                    </canvas>
+                    <!-- </canvas>
+                    <div ng-show="day.duration == -1">
+                      <p>No data</p>
+                    </div> -->
                     <div ng-show="viewModel.states[day.date][pidCurrent].state">
                       <img ng-src="{{viewModel.states[day.date][pidCurrent].image}}" class="fwv-mood-pics">
                       <p class="fwv-mood-text">{{viewModel.states[day.date][pidCurrent].mood | uppercase }}</p>
@@ -34,10 +38,12 @@
                     
                 <!--</div>-->
             </div>
-            <div ng-show="day.duration==-1" ng-controller="PiechartcontrollerCtrl" class="fwv-chart-placement">
-                  <canvas id="doughnut" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
-                  </canvas>
-            </div>
+            <!-- <div ng-show="day.duration==-1" class="fwv-chart-placement"> -->
+                 <!--  <canvas id="doughnut" class="chart chart-pie" chart-data="data" chart-colors ="color" chart-options="options">
+                  </canvas> -->
+                  <!-- <canvas id="doughnut" class="chart chart-doughnut" chart-data="day.sleep" chart-labels="viewModel.labels" chart-colors ="viewModel.colors" chart-options="viewModel.options"> 
+                  </canvas> -->
+            <!-- </div> -->
           </div>
       </div>
     </div>

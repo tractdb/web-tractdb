@@ -45,7 +45,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
     $ctrl.famIDs = personaFactory.getAllIDs();
     $ctrl.animationsEnabled = true;
     /**asigning selfReportState factory to states to have access in the viewer*/
-    $ctrl.states = selfReportState.getAllMoodsDay(date);
+    $ctrl.states = selfReportState.getAllMoodsDay($ctrl.famIDs, date);
     /*console.log("printing $ctrl.states object from ModalCrtl");
     console.log($ctrl.states);*/
     //$ctrl.famID;
@@ -104,7 +104,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       // console.log(personaFactory.personas);
       var date = dateFactory.getDateString();
       selfReportState.setMood($ctrl.famID, selectedItems.selected.name, selectedItems.selected.image, selectedItems.selectedFam, date);
-      selfReportState.putData();
+      //selfReportState.putData();
       console.log('personaFactory personas');
       console.log(personaFactory.personas);
       //$log.info(selectedItems.selected);
