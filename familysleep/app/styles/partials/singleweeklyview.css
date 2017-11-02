@@ -3,29 +3,37 @@
 ** Single Weekly View
 =========================================================================
 */
-/* line 6, singleweeklyview.scss */
-.swv-row {
-  margin-bottom: 10px;
+/* line 5, singleweeklyview.scss */
+.singleweeklyview-container {
+  width: 90%;
+  margin: auto;
 }
 
 /* line 10, singleweeklyview.scss */
-.swv-date {
-  margin-bottom: 0;
+.swv-row {
+  margin-bottom: 10px;
+  margin-left: 20px;
 }
 
-/* line 14, singleweeklyview.scss */
+/* line 15, singleweeklyview.scss */
+.swv-date {
+  margin-bottom: 0;
+  font-size: medium;
+}
+
+/* line 20, singleweeklyview.scss */
 .swv-date-first {
   margin-top: -25px;
 }
 
-/* line 18, singleweeklyview.scss */
+/* line 24, singleweeklyview.scss */
 #swv-legend {
   margin-bottom: 80px;
   margin-left: 400px;
   padding-top: 50px;
 }
 
-/* line 24, singleweeklyview.scss */
+/* line 30, singleweeklyview.scss */
 #swv-legend li {
   display: inline-block;
 }
@@ -36,7 +44,7 @@
     font-size: 12px;
 }​
 */
-/* line 35, singleweeklyview.scss */
+/* line 41, singleweeklyview.scss */
 #swv-legend li:nth-child(2),
 #swv-legend li:nth-child(4),
 #swv-legend li:nth-child(6),
@@ -45,60 +53,60 @@
   font-size: 12px;
 }
 
-/* line 43, singleweeklyview.scss */
+/* line 49, singleweeklyview.scss */
 #no-data-chart {
   height: 55px;
 }
 
 /* green */
-/* line 48, singleweeklyview.scss */
+/* line 54, singleweeklyview.scss */
 #swv-legend-sleep {
   background-color: #44d2d1;
 }
 
 /* purple */
-/* line 53, singleweeklyview.scss */
+/* line 59, singleweeklyview.scss */
 #swv-legend-movement {
   background-color: #551A8B;
 }
 
 /* pink */
-/* line 58, singleweeklyview.scss */
+/* line 64, singleweeklyview.scss */
 #swv-legend-restless {
   background-color: #FC3F73;
 }
 
-/* line 62, singleweeklyview.scss */
+/* line 68, singleweeklyview.scss */
 #swv-legend-no-data {
   background-color: #D6C3DB;
 }
 
-/* line 66, singleweeklyview.scss */
+/* line 72, singleweeklyview.scss */
 #swv-legend-sleep, #swv-legend-movement, #swv-legend-restless, #swv-legend-no-data {
   width: 40px;
   height: 15px;
   margin-bottom: -3px;
 }
 
-/* line 72, singleweeklyview.scss */
+/* line 78, singleweeklyview.scss */
 .swv-chart-placement {
   margin-left: 100px;
   margin-top: -40px;
 }
 
-/* line 77, singleweeklyview.scss */
+/* line 83, singleweeklyview.scss */
 .swv-empty-chart-placement {
   margin-left: 100px;
   margin-top: -30px;
 }
 
-/* line 82, singleweeklyview.scss */
+/* line 88, singleweeklyview.scss */
 .swv-chart-placement-last {
   margin-left: 100px;
   margin-top: -30px;
 }
 
-/* line 87, singleweeklyview.scss */
+/* line 93, singleweeklyview.scss */
 .swv-mood-pics {
   width: 40px;
   height: 40px;
@@ -106,7 +114,7 @@
   margin-left: 920px;
 }
 
-/* line 94, singleweeklyview.scss */
+/* line 100, singleweeklyview.scss */
 .swv-mood-pics-last {
   width: 40px;
   height: 40px;

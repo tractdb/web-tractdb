@@ -2,6 +2,14 @@
 ** Single Daily View
 =========================================================================
 */
+.singleview-container{
+  width: 90%;
+  margin: auto;
+}
+
+.sdv-empty-chart {
+  margin-top: 230px;
+}
 
 #sdv-profile-pic {
 	position: relative; 
@@ -14,17 +22,21 @@
 	position: absolute;
   width: 100px;
   height: 100px;
-  top: 25px;
-  left: 25px;
+  top: 75px;
+  left: 240px;
   z-index: 1;
 }
 
-#sdv-mood-report {
-	margin-top: 50px;
-  margin-bottom: 50px;
-  top: 200px;
-  margin-left: 350px;
-  width: 200px;
+.sdv-mood-report {
+  position: absolute;
+  top: 210px;
+  font-size: medium; 
+  width: 70%;
+  margin-left: 145px;
+}
+
+.sdv-mood-report-text {
+  text-align: center;
 }
 
 #sdv-name {
