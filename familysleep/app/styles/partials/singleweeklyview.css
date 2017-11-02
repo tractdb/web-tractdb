@@ -50,12 +50,12 @@
 #swv-legend li:nth-child(6),
 #swv-legend li:nth-child(8) {
   margin-right: 10px;
-  font-size: 12px;
+  font-size: medium;
 }
 
 /* line 49, singleweeklyview.scss */
 #no-data-chart {
-  height: 55px;
+  /*height: 55px;*/
 }
 
 /* green */

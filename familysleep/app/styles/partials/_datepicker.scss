@@ -11,25 +11,29 @@ input[aria-expanded=false] {
 	color: white;
 }
 
+.md-button {
+  height: 45px;
+}
 
 .md-button.md-icon-button {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: #D3DBE9; /*rgba(255, 255, 255, 0.4);*/
 }
 
 .md-datepicker-input {
   color: white;
+  font-size: medium;
 }
 
 md-icon {
   svg {
     path {
-      fill: #ffffff;
+      fill: darkslategrey; /*#ffffff;*/
     }
   }
 }
 
 .md-datepicker-triangle-button .md-datepicker-expand-triangle {
-  border-top-color: white;
+  border-top-color: darkslategrey;
 }
 
 #datepicker-placement {
@@ -43,5 +47,8 @@ md-icon {
 }
 
 #yesterday, #today, #tomorrow {
-	background-color: #778ec4;/*#6e85b6;*/
+	background-color: #D3DBE9 ;/*#6e85b6;*/
+  font-size: medium;
+  font-weight: 500;
+  color: darkslategrey;
 }

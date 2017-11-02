@@ -8068,42 +8068,53 @@ input[aria-expanded=false] {
   color: white;
 }
 
-/* line 15, partials/_datepicker.scss */
-.md-button.md-icon-button {
-  background-color: rgba(255, 255, 255, 0.4);
+/* line 14, partials/_datepicker.scss */
+.md-button {
+  height: 45px;
 }
 
-/* line 19, partials/_datepicker.scss */
+/* line 18, partials/_datepicker.scss */
+.md-button.md-icon-button {
+  background-color: #D3DBE9;
+  /*rgba(255, 255, 255, 0.4);*/
+}
+
+/* line 22, partials/_datepicker.scss */
 .md-datepicker-input {
   color: white;
+  font-size: medium;
 }
 
-/* line 25, partials/_datepicker.scss */
+/* line 29, partials/_datepicker.scss */
 md-icon svg path {
-  fill: #ffffff;
-}
-
-/* line 31, partials/_datepicker.scss */
-.md-datepicker-triangle-button .md-datepicker-expand-triangle {
-  border-top-color: white;
+  fill: darkslategrey;
+  /*#ffffff;*/
 }
 
 /* line 35, partials/_datepicker.scss */
+.md-datepicker-triangle-button .md-datepicker-expand-triangle {
+  border-top-color: darkslategrey;
+}
+
+/* line 39, partials/_datepicker.scss */
 #datepicker-placement {
   margin-top: 10px;
   margin-left: 40px;
 }
 
-/* line 40, partials/_datepicker.scss */
+/* line 44, partials/_datepicker.scss */
 ._md-datepicker-has-triangle-icon {
   padding-right: 18px;
   margin-right: 0px;
 }
 
-/* line 45, partials/_datepicker.scss */
+/* line 49, partials/_datepicker.scss */
 #yesterday, #today, #tomorrow {
-  background-color: #778ec4;
+  background-color: #D3DBE9;
   /*#6e85b6;*/
+  font-size: medium;
+  font-weight: 500;
+  color: darkslategrey;
 }
 
 /*=======================================================================
@@ -8301,7 +8312,7 @@ md-icon svg path {
 #sdv-legend li:nth-child(6),
 #sdv-legend li:nth-child(8) {
   margin-right: 10px;
-  font-size: 12px;
+  font-size: medium;
 }
 
 /* line 66, partials/singledailyview.scss */
@@ -8404,7 +8415,7 @@ nav a {
   padding: 18px 30px;
   color: #fff !important;
   font-weight: bold;
-  font-size: 16px;
+  font-size: large;
   text-decoration: none !important;
   line-height: 1;
   background-color: transparent;
@@ -8487,20 +8498,22 @@ html, body {
 
 /* line 116, main.scss */
 .recorder {
+  /*width: 99%;*/
   float: right;
   height: 9%;
   display: inline-block;
   margin-top: 10px;
   color: white;
+  font-size: large;
 }
 
 /* Custom page header */
-/* line 126, main.scss */
+/* line 127, main.scss */
 .header {
   margin-bottom: 10px;
   /* Make the masthead heading the same height as the navigation */
 }
-/* line 131, main.scss */
+/* line 132, main.scss */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -8509,7 +8522,7 @@ html, body {
 }
 
 /* Custom page footer */
-/* line 140, main.scss */
+/* line 141, main.scss */
 .footer {
   /*padding-top: 10px;
   padding-bottom: 10px;
@@ -8523,49 +8536,49 @@ html, body {
   margin-top: -40px;
 }
 
-/* line 153, main.scss */
+/* line 154, main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
-/* line 157, main.scss */
-.container {
+/* line 158, main.scss */
+body > .container {
   color: white;
-  min-height: 100%;
+  min-height: 85%;
   padding-bottom: 40px;
 }
 
 /* Main marketing message and sign up button */
-/* line 164, main.scss */
+/* line 165, main.scss */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
-/* line 168, main.scss */
+/* line 169, main.scss */
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
 }
 
 /* Supporting marketing content */
-/* line 175, main.scss */
+/* line 176, main.scss */
 .marketing {
   margin: 40px 0;
 }
-/* line 178, main.scss */
+/* line 179, main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* line 185, main.scss */
+  /* line 186, main.scss */
   .container {
     width: 1250px;
   }
 
   /* Remove the padding we set earlier */
-  /* line 190, main.scss */
+  /* line 191, main.scss */
   .header,
   .marketing,
   .footer {
@@ -8574,13 +8587,13 @@ html, body {
   }
 
   /* Space out the masthead */
-  /* line 197, main.scss */
+  /* line 198, main.scss */
   .header {
     margin-bottom: 30px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 201, main.scss */
+  /* line 202, main.scss */
   .jumbotron {
     border-bottom: 0;
   }

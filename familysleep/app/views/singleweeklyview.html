@@ -34,7 +34,7 @@
 <!--<p>No Data</p>-->
 	<div class="swv-row row" ng-repeat="day in viewModel.data | toArray : false | orderBy:'-date'">
 		<!-- <p class="swv-date">{{day.date}}</p> -->
-		<div ng-if="day.duration==-1" ng-controller="EmptybarchartCtrl" id="no-data-chart"> <!--no data -->
+		<div ng-if="day.duration==-1" ng-controller="EmptybarchartCtrl"> <!--no data -->
 		<!--<p>{{day.duration}}</p>
 				-<p>{{data}}</p>-->
 				<p class="swv-date">{{day.date}}</p>
