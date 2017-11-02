@@ -7571,45 +7571,46 @@ button.close {
   height: 150px;
   position: absolute;
   width: 150px;
-  margin-left: 90px;
-  top: 80px;
+  margin-left: 150px;
+  top: 100px;
 }
 
 /* line 64, partials/_familydailyview.scss */
 .how-sleep-button {
   position: absolute;
-  top: 125px;
-  left: 130px;
+  top: 145px;
+  left: 185px;
   z-index: 1;
   white-space: normal;
-  max-width: 100px;
+  max-width: 110px;
   color: #555555;
   background-color: transparent;
   border: 0px solid transparent;
   font-weight: bold;
+  font-size: 15px;
 }
 
-/* line 77, partials/_familydailyview.scss */
+/* line 78, partials/_familydailyview.scss */
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
   color: white;
   background-color: #D6C3DB;
   border-color: #D6C3DB;
 }
 
-/* line 83, partials/_familydailyview.scss */
+/* line 84, partials/_familydailyview.scss */
 .profile-pics {
   position: absolute;
   top: 0px;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
 
-/* line 90, partials/_familydailyview.scss */
+/* line 91, partials/_familydailyview.scss */
 .profile-area {
   display: inline-block;
 }
 
-/* line 94, partials/_familydailyview.scss */
+/* line 95, partials/_familydailyview.scss */
 .single-view-button {
   margin-left: 200px;
   margin-bottom: 50px;
@@ -7617,31 +7618,35 @@ button.close {
   top: 5px;
 }
 
-/* line 101, partials/_familydailyview.scss */
+/* line 102, partials/_familydailyview.scss */
 .weekly-view-button {
   margin-left: 80px;
   margin-bottom: 50px;
   position: absolute;
   top: 5px;
+  height: 50px;
+  width: 120px;
+  font-size: medium;
 }
 
-/* line 108, partials/_familydailyview.scss */
-.single-view-button .btn, .weekly-view-button .btn {
+/* line 113, partials/_familydailyview.scss */
+.single-view-button .btn, .weekly-view-button {
   background-color: #d6c3db;
   border-color: #d6c3db;
   color: black;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
-/* line 115, partials/_familydailyview.scss */
+/* line 120, partials/_familydailyview.scss */
 .target-hours {
   position: absolute;
-  top: 45px;
+  top: 65px;
   margin-left: 82px;
   margin-bottom: 15px;
+  font-size: medium;
 }
 
-/* line 122, partials/_familydailyview.scss */
+/* line 128, partials/_familydailyview.scss */
 .mood-pics {
   position: absolute;
   width: 100px;
@@ -7651,7 +7656,7 @@ button.close {
   z-index: 1;
 }
 
-/* line 131, partials/_familydailyview.scss */
+/* line 137, partials/_familydailyview.scss */
 #family_moon {
   position: fixed;
   height: 150px;
@@ -7663,37 +7668,41 @@ button.close {
   /* Negative half of width. */
 }
 
-/* line 140, partials/_familydailyview.scss */
+/* line 146, partials/_familydailyview.scss */
 .fdv-names {
   text-align: center;
   position: absolute;
-  top: 60px;
-  width: 60px;
+  top: 70px;
+  width: 70px;
   margin: 0;
+  font-weight: bold;
+  font-size: medium;
 }
 
-/* line 148, partials/_familydailyview.scss */
+/* line 156, partials/_familydailyview.scss */
 .fdv-even-column {
-  margin-right: 125px;
+  /*margin-right: 125px;*/
   margin-bottom: 20px;
   height: 260px;
+  width: 450px;
 }
 
-/* line 154, partials/_familydailyview.scss */
+/* line 163, partials/_familydailyview.scss */
 .fdv-odd-column {
-  margin-left: 160px;
+  margin-left: 200px;
   margin-bottom: 20px;
   height: 260px;
+  width: 450px;
 }
 
-/* line 160, partials/_familydailyview.scss */
+/* line 170, partials/_familydailyview.scss */
 .hours-slept {
   font-size: small;
   position: absolute;
   top: 110px;
 }
 
-/* line 166, partials/_familydailyview.scss */
+/* line 176, partials/_familydailyview.scss */
 .mood-report {
   position: absolute;
   top: 240px;
@@ -8495,7 +8504,7 @@ html, body {
 @media screen and (min-width: 768px) {
   /* line 185, main.scss */
   .container {
-    max-width: 900px;
+    width: 1250px;
   }
 
   /* Remove the padding we set earlier */

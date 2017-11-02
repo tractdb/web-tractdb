@@ -57,21 +57,22 @@
   height: 150px;
   position: absolute;
   width: 150px;
-  margin-left: 90px;
-  top: 80px;
+  margin-left: 150px;
+  top: 100px;
 }
 
 .how-sleep-button {
-  position: absolute; 
-  top: 125px; 
-  left: 130px; 
-  z-index: 1; 
-  white-space: normal; 
-  max-width: 100px; 
-  color: #555555; 
-  background-color: transparent; 
-  border:0px solid transparent; 
+  position: absolute;
+  top: 145px;
+  left: 185px;
+  z-index: 1;
+  white-space: normal;
+  max-width: 110px;
+  color: #555555;
+  background-color: transparent;
+  border: 0px solid transparent;
   font-weight: bold;
+  font-size: 15px;
 }
 
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
@@ -83,8 +84,8 @@
 .profile-pics {
   position: absolute; 
   top: 0px; 
-  width: 60px; 
-  height: 60px;
+  width: 70px; 
+  height: 70px;
 }
 
 .profile-area {
@@ -103,9 +104,13 @@
   margin-bottom: 50px;
   position: absolute;
   top: 5px;
+  height: 50px;
+  width: 120px;
+  font-size: medium;
+
 }
 
-.single-view-button .btn, .weekly-view-button .btn {
+.single-view-button .btn, .weekly-view-button {
   background-color: #d6c3db;
   border-color: #d6c3db;
   color: black;
@@ -114,9 +119,10 @@
 
 .target-hours {
   position: absolute;
-  top: 45px;
+  top: 65px;
   margin-left: 82px;
   margin-bottom: 15px;
+  font-size: medium;
 }
 
 .mood-pics {
@@ -140,21 +146,25 @@
 .fdv-names {
   text-align: center;
   position: absolute;
-  top: 60px;
-  width: 60px;
+  top: 70px;
+  width: 70px;
   margin: 0;
+  font-weight: bold;
+  font-size: medium;
 }
 
 .fdv-even-column {
-  margin-right: 125px;
+  /*margin-right: 125px;*/
   margin-bottom: 20px;
   height: 260px;
+  width: 450px;
 }
 
 .fdv-odd-column {
-  margin-left: 160px;
+  margin-left: 300px;
   margin-bottom: 20px;
   height: 260px;
+  width: 450px;
 }
 
 .hours-slept {
