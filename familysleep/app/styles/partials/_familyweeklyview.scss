@@ -5,6 +5,8 @@
 
 .familyweeklyview-container {
   color: white;
+  width: 90%;
+  margin: auto;
 }
 
 .fwv-person {
@@ -16,11 +18,17 @@
 .fwv-chart-placement {
   height:80px;
   width:80px; 
+  margin: auto;
 }
 
-
 .fwv-names {
-	text-align: center;
+  text-align: center;
+  position: absolute;
+  top: 80px;
+  width: 70px;
+  margin: 0;
+  font-weight: bold;
+  font-size: medium;
 }
 
 .fwv-profile-pics {
@@ -32,11 +40,16 @@
 }
 
 .fwv-columns {
-  float:left; 
-  width:85px;
+  float: left; 
+  width: 120px;
   margin-left: 7px;
   margin-right: 7px;
+  margin-bottom: 20px;
   position: relative;
+}
+
+.pic-column {
+  height: 80px;
 }
 
 #blank-date {
@@ -54,8 +67,10 @@
 
 .fwv-mood-text {
   text-align: center;
+  font-size: medium;
 }
 
 .fwv-date {
   text-align: center;
+  font-size: medium;
 }

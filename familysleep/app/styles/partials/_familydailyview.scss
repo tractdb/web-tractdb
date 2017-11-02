@@ -93,14 +93,17 @@
 }
 
 .single-view-button {
-  margin-left: 200px;
+  margin-left: 230px;
   margin-bottom: 50px;
   position: absolute;
   top: 5px;
+  height: 50px;
+  width: 120px;
+  font-size: medium;
 }
 
 .weekly-view-button {
-  margin-left: 80px;
+  margin-left: 100px;
   margin-bottom: 50px;
   position: absolute;
   top: 5px;
@@ -110,7 +113,7 @@
 
 }
 
-.single-view-button .btn, .weekly-view-button {
+.single-view-button, .weekly-view-button {
   background-color: #d6c3db;
   border-color: #d6c3db;
   color: black;
@@ -120,17 +123,21 @@
 .target-hours {
   position: absolute;
   top: 65px;
-  margin-left: 82px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: medium;
+  width:100%;
+}
+
+.target-hours-text {
+
 }
 
 .mood-pics {
   position: absolute;
   width: 100px;
   height: 100px;
-  top: 105px;
-  left: 130px;
+  top: 125px;
+  left: 190px;
   z-index: 1;
 }
 
@@ -154,27 +161,34 @@
 }
 
 .fdv-even-column {
-  /*margin-right: 125px;*/
-  margin-bottom: 20px;
+  margin-left: 50px;
+  margin-bottom: 50px;
   height: 260px;
   width: 450px;
 }
 
 .fdv-odd-column {
-  margin-left: 300px;
-  margin-bottom: 20px;
+  margin-left: 270px;
+  margin-bottom: 50px;
   height: 260px;
   width: 450px;
 }
 
 .hours-slept {
-  font-size: small;
+  font-size: medium;
   position: absolute;
-  top: 110px;
+  top: 150px;
+  left: 35px;
+  text-align: center;
 }
 
 .mood-report {
   position: absolute;
-  top: 240px;
-  font-size: small;
+  top: 260px;
+  font-size: medium;
+  width: 100%;
+}
+
+.mood-report-text {
+  text-align: center;
 }

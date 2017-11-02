@@ -7484,13 +7484,13 @@ button.close {
 
 /* line 22, partials/_signup.scss */
 .avatar-area {
-  width: 650px;
-  margin-left: 300px;
+  width: 700px;
+  margin-left: 420px;
 }
 
 /* line 27, partials/_signup.scss */
 .signup-buttons {
-  width: 333px;
+  width: 478px;
   margin-left: -5px;
   margin-top: 15px;
 }
@@ -7612,15 +7612,7 @@ button.close {
 
 /* line 95, partials/_familydailyview.scss */
 .single-view-button {
-  margin-left: 200px;
-  margin-bottom: 50px;
-  position: absolute;
-  top: 5px;
-}
-
-/* line 102, partials/_familydailyview.scss */
-.weekly-view-button {
-  margin-left: 80px;
+  margin-left: 230px;
   margin-bottom: 50px;
   position: absolute;
   top: 5px;
@@ -7629,34 +7621,45 @@ button.close {
   font-size: medium;
 }
 
-/* line 113, partials/_familydailyview.scss */
-.single-view-button .btn, .weekly-view-button {
+/* line 105, partials/_familydailyview.scss */
+.weekly-view-button {
+  margin-left: 100px;
+  margin-bottom: 50px;
+  position: absolute;
+  top: 5px;
+  height: 50px;
+  width: 120px;
+  font-size: medium;
+}
+
+/* line 116, partials/_familydailyview.scss */
+.single-view-button, .weekly-view-button {
   background-color: #d6c3db;
   border-color: #d6c3db;
   color: black;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
-/* line 120, partials/_familydailyview.scss */
+/* line 123, partials/_familydailyview.scss */
 .target-hours {
   position: absolute;
   top: 65px;
-  margin-left: 82px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: medium;
+  width: 100%;
 }
 
-/* line 128, partials/_familydailyview.scss */
+/* line 135, partials/_familydailyview.scss */
 .mood-pics {
   position: absolute;
   width: 100px;
   height: 100px;
-  top: 105px;
-  left: 130px;
+  top: 125px;
+  left: 190px;
   z-index: 1;
 }
 
-/* line 137, partials/_familydailyview.scss */
+/* line 144, partials/_familydailyview.scss */
 #family_moon {
   position: fixed;
   height: 150px;
@@ -7668,7 +7671,7 @@ button.close {
   /* Negative half of width. */
 }
 
-/* line 146, partials/_familydailyview.scss */
+/* line 153, partials/_familydailyview.scss */
 .fdv-names {
   text-align: center;
   position: absolute;
@@ -7679,34 +7682,42 @@ button.close {
   font-size: medium;
 }
 
-/* line 156, partials/_familydailyview.scss */
-.fdv-even-column {
-  /*margin-right: 125px;*/
-  margin-bottom: 20px;
-  height: 260px;
-  width: 450px;
-}
-
 /* line 163, partials/_familydailyview.scss */
-.fdv-odd-column {
-  margin-left: 200px;
-  margin-bottom: 20px;
+.fdv-even-column {
+  margin-left: 50px;
+  margin-bottom: 50px;
   height: 260px;
   width: 450px;
 }
 
 /* line 170, partials/_familydailyview.scss */
-.hours-slept {
-  font-size: small;
-  position: absolute;
-  top: 110px;
+.fdv-odd-column {
+  margin-left: 270px;
+  margin-bottom: 50px;
+  height: 260px;
+  width: 450px;
 }
 
-/* line 176, partials/_familydailyview.scss */
+/* line 177, partials/_familydailyview.scss */
+.hours-slept {
+  font-size: medium;
+  position: absolute;
+  top: 150px;
+  left: 35px;
+  text-align: center;
+}
+
+/* line 185, partials/_familydailyview.scss */
 .mood-report {
   position: absolute;
-  top: 240px;
-  font-size: small;
+  top: 260px;
+  font-size: medium;
+  width: 100%;
+}
+
+/* line 192, partials/_familydailyview.scss */
+.mood-report-text {
+  text-align: center;
 }
 
 /* line 1, partials/_recorder.scss */
@@ -7956,27 +7967,30 @@ MODAL WINDOW END
 /* line 6, partials/_familyweeklyview.scss */
 .familyweeklyview-container {
   color: white;
+  width: 90%;
+  margin: auto;
 }
 
-/* line 10, partials/_familyweeklyview.scss */
+/* line 12, partials/_familyweeklyview.scss */
 .fwv-person {
   margin-bottom: 40px;
   margin-left: 0;
   margin-right: 0;
 }
 
-/* line 16, partials/_familyweeklyview.scss */
+/* line 18, partials/_familyweeklyview.scss */
 .fwv-chart-placement {
   height: 80px;
   width: 80px;
+  margin: auto;
 }
 
-/* line 22, partials/_familyweeklyview.scss */
+/* line 24, partials/_familyweeklyview.scss */
 .fwv-names {
   text-align: center;
 }
 
-/* line 26, partials/_familyweeklyview.scss */
+/* line 28, partials/_familyweeklyview.scss */
 .fwv-profile-pics {
   display: block;
   margin-left: auto;
@@ -7985,21 +7999,26 @@ MODAL WINDOW END
   height: 60px;
 }
 
-/* line 34, partials/_familyweeklyview.scss */
+/* line 36, partials/_familyweeklyview.scss */
 .fwv-columns {
   float: left;
-  width: 85px;
+  width: 120px;
   margin-left: 7px;
   margin-right: 7px;
   position: relative;
 }
 
-/* line 42, partials/_familyweeklyview.scss */
+/* line 44, partials/_familyweeklyview.scss */
+.pic-column {
+  height: 80px;
+}
+
+/* line 48, partials/_familyweeklyview.scss */
 #blank-date {
   visibility: hidden;
 }
 
-/* line 46, partials/_familyweeklyview.scss */
+/* line 52, partials/_familyweeklyview.scss */
 .fwv-mood-pics {
   position: absolute;
   width: 50px;
@@ -8009,12 +8028,12 @@ MODAL WINDOW END
   margin-left: 15px;
 }
 
-/* line 55, partials/_familyweeklyview.scss */
+/* line 61, partials/_familyweeklyview.scss */
 .fwv-mood-text {
   text-align: center;
 }
 
-/* line 59, partials/_familyweeklyview.scss */
+/* line 65, partials/_familyweeklyview.scss */
 .fwv-date {
   text-align: center;
 }
