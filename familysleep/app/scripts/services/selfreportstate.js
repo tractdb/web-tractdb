@@ -61,10 +61,10 @@ angular.module('FamilySleep')
     factory.doc_id = null;
 
     factory.retrieveData = function () {
-        var date = dateFactory.getDateString();
+        //var date = dateFactory.getDateString();
         var url = BASEURL_PYRAMID + '/document/family_selfreport';
-        console.log('printing ulr string');
-        console.log(url);
+        //console.log('printing ulr string');
+        //console.log(url);
         $http(
             {
                 method: 'GET',
@@ -74,8 +74,7 @@ angular.module('FamilySleep')
             var states = response.data.states;
             console.log(states)
             var date = dateFactory.getDateString;
-            factory.states = states;
-
+            factory.states = response.data.states;
             factory.doc_id = response.data._id;
             factory.doc_rev = response.data._rev;
             factory._notify();
@@ -88,83 +87,111 @@ angular.module('FamilySleep')
         });
     };
 
+    //ORIGINAL factory.putNewData
+    // factory.putNewData = function(){
+    //     //var date = dateFactory.getDateString();
+    //     //var url = BASEURL_PYRAMID + '/document/family_selfreport';
+    //     $http(
+    //         {
+    //         method: 'GET',
+    //         url: BASEURL_PYRAMID + '/document/family_selfreport'
+    //         }
+    //     ).then(function success(response){
+    //         console.log('printing reponse in putData of selfReportState');
+    //         console.log(response);
+    //         factory.doc_id = response.data._id;
+    //         factory.doc_rev = response.data._rev;
+    //         var old_states = response.states;
+    //         //console.log("doc_rev at GET from setData");
+    //         //console.log(doc_rev);
+    //         //factory.personas = new_personas;
+    //         var new_doc = {
+    //         "_id": factory.doc_id,
+    //         "_rev": factory.doc_rev,
+    //         "states": factory.states
+    //         };
+    //         // console.log("printing obj for PUT");
+    //         // console.log(new_doc);
+    //         //now doing the PUT
+    //         //embedding PUT in GET this doesn't seem the right logic
+    //         url = BASEURL_PYRAMID + '/document/family_selfreport';
+    //         $http({
+    //             method: 'PUT',
+    //             url: url,
+    //             data: new_doc
+    //         }).then(function success(response){
+    //             factory.doc_id = response.data._id;
+    //             factory.doc_rev = response.data._rev;
+    //             //console.log("rev of the PUT");
+    //             //console.log(doc_rev);
+    //             factory._notify();
+    //         }).catch (function errorCallback(response){ 
+    //             console.log("error in the PUT");
+    //             console.log(response.status);
+    //         }).finally(function (){
+    //             factory._scheduleNextRetrieve();
+    //         });
+    //     }).catch (function errorCallback(response){
+    //         console.log(response);
+    //         console.log("error " + response.status);
+    //         console.log("error text" + response.statusText);
+    //         if(response.status == 404){
+    //             //url = BASEURL_PYRAMID + '/document/family_selfreport';
+    //             var new_doc = {
+    //                 "states": factory.states,
+    //                 "_id": "family_selfreport"
+    //             };
+    //             $http({
+    //                 method: 'PUT',
+    //                 url: BASEURL_PYRAMID + '/document/family_selfreport',
+    //                 data: new_doc
+    //             }).then(function success(response){
+    //                 factory.doc_id = response.data._id;
+    //                 factory.doc_rev = response.data._rev;
+    //                 //console.log("rev of the PUT");
+    //                 //console.log(doc_rev);
+    //                 factory._notify();
+    //             }).catch (function errorCallback(response){
+    //                 console.log("error in the PUT");
+    //                 console.log(response);
+    //                 console.log(response.status);
+    //             }).finally(function (){
+    //                 //factory._scheduleNextRetrieve();
+    //                 //schedule next PUT
+    //             });
+    //         }
+    //     });
+    // };
+
     factory.putNewData = function(){
-        var date = dateFactory.getDateString();
-        //var url = BASEURL_PYRAMID + '/document/family_selfreport';
-        $http(
-            {
-            method: 'GET',
-            url: BASEURL_PYRAMID + '/document/family_selfreport'
-            }
-        ).then(function success(response){
-            console.log('printing reponse in putData of selfReportState');
-            console.log(response);
+        var new_doc = {
+            "states": factory.states,
+            "_id": "family_selfreport"
+        };
+
+        $http({
+            method: 'PUT',
+            url: BASEURL_PYRAMID + '/document/family_selfreport',
+            data: new_doc
+        }).then(function success(response){
             factory.doc_id = response.data._id;
             factory.doc_rev = response.data._rev;
-            var old_states = response.states;
-            //console.log("doc_rev at GET from setData");
+            //console.log("rev of the PUT");
             //console.log(doc_rev);
-            //factory.personas = new_personas;
-            var new_doc = {
-            "_id": factory.doc_id,
-            "_rev": factory.doc_rev,
-            "states": factory.states
-            };
-            // console.log("printing obj for PUT");
-            // console.log(new_doc);
-            //now doing the PUT
-            //embedding PUT in GET this doesn't seem the right logic
-            url = BASEURL_PYRAMID + '/document/family_selfreport';
-            $http({
-                method: 'PUT',
-                url: url,
-                data: new_doc
-            }).then(function success(response){
-                factory.doc_id = response.data._id;
-                factory.doc_rev = response.data._rev;
-                //console.log("rev of the PUT");
-                //console.log(doc_rev);
-                factory._notify();
-            }).catch (function errorCallback(response){ 
-                console.log("error in the PUT");
-                console.log(response.status);
-            }).finally(function (){
-                factory._scheduleNextRetrieve();
-            });
+            //factory._notify();
         }).catch (function errorCallback(response){
+            console.log("error in the PUT");
             console.log(response);
-            console.log("error " + response.status);
-            console.log("error text" + response.statusText);
-            if(response.status == 404){
-                //url = BASEURL_PYRAMID + '/document/family_selfreport';
-                var new_doc = {
-                    "states": factory.states,
-                    "_id": "family_selfreport"
-                };
-                $http({
-                    method: 'PUT',
-                    url: BASEURL_PYRAMID + '/document/family_selfreport',
-                    data: new_doc
-                }).then(function success(response){
-                    factory.doc_id = response.data._id;
-                    factory.doc_rev = response.data._rev;
-                    //console.log("rev of the PUT");
-                    //console.log(doc_rev);
-                    factory._notify();
-                }).catch (function errorCallback(response){
-                    console.log("error in the PUT");
-                    console.log(response);
-                    console.log(response.status);
-                }).finally(function (){
-                    //factory._scheduleNextRetrieve();
-                    //schedule next PUT
-                });
-            }
+            console.log(response.status);
+        }).finally(function (){
+            //factory._scheduleNextRetrieve();
+            //schedule next PUT
         });
-    };
+
+    }
 
     factory.putData = function(){
-        var date = dateFactory.getDateString();
+        //var date = dateFactory.getDateString();
         //var url = BASEURL_PYRAMID + '/document/family_selfreport';
         // var new_doc = {
         //     "_id": factory.doc_id,
@@ -172,8 +199,8 @@ angular.module('FamilySleep')
         //     "states": factory.states
         // };
         var new_doc = {
-            "_id": "family_selfreport",
-            "_rev": "1",
+            "_id": factory.doc_id,
+            "_rev": factory.doc_rev,
             "states": factory.states
         };
         $http({
@@ -186,12 +213,14 @@ angular.module('FamilySleep')
             factory.doc_id = response.data._id;
             //console.log("rev of the PUT");
             //console.log(doc_rev);
-            factory._notify();
+            //factory._notify();
         }).catch (function errorCallback(response){ 
             console.log("error in the PUT");
             console.log(response.status);
         }).finally(function (){
-            factory._scheduleNextRetrieve();
+            //factory._scheduleNextRetrieve();
+            //schedule next PUT?
+            //factory._scheduleNextPut();
         });
     };
      //
@@ -489,6 +518,13 @@ angular.module('FamilySleep')
     factory.initializeNewDay = function(date){
 
     };
+
+
+    //scheduling next PUT, not sure if this is what I want
+    factory._scheduleNextPut = function (){
+        $timeout.cancel(factory._nextRetrievePromise);
+    };
+
 
     /*TODO: THIS IS INCORRECT
     */

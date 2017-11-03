@@ -59,5 +59,9 @@ angular
             })
             .otherwise({ //I want to add an error page when we don't get to the right page
                 redirectTo: '/404.html'
+                // I want to redirect to family dailyview
+                // templateUrl: 'app/views/familydailyview.html',
+                // controller: 'FamilyDailyViewCtrl',
+                // controllerAs: 'viewModel'
             });
     });

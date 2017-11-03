@@ -162,6 +162,7 @@ module.controller(
                         });
 
                     }
+                    //tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
 
                 }
 
@@ -172,10 +173,17 @@ module.controller(
             //should it be $scope or viewModel? we should use them consistently
             personaFactory.observe($scope, viewModel.updateFamilyInfo);
             tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
+            // if(selfReportState.states == null){
+            //     var pids = personaFactory.getAllIDs();
+            //     selfReportState.getAllMoodsDay(pids, viewModel.calendarDate);
+
+            // }
             //selfReportState.observe($scope, viewModel.updateFamilyInfo);
 
             //updating moon
             $rootScope.$broadcast('familydailyview:updated');
+
+            //can go SelfReport GET for when the page refreshes
 
             //
             // Current approach to showing the menu for choosing views

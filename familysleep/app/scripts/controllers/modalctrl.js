@@ -104,7 +104,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       // console.log(personaFactory.personas);
       var date = dateFactory.getDateString();
       selfReportState.setMood($ctrl.famID, selectedItems.selected.name, selectedItems.selected.image, selectedItems.selectedFam, date);
-      //selfReportState.putData();
+      selfReportState.putData();
       console.log('personaFactory personas');
       console.log(personaFactory.personas);
       //$log.info(selectedItems.selected);
