@@ -4,13 +4,11 @@
 		<div class="col-xs-4">
             <img ng-src={{viewModel.familyInfo.profilePic}} class="profile-pics">
             <p class="fdv-names">{{viewModel.familyInfo.name}}</p>
-            <div ng-if="viewModel.familyInfo.duration == -1"> <!-- THIS IS FOR THE EMPTY PIE -->
 
-		    	<div ng-controller="PiechartcontrollerCtrl" class="sdv-chart-placement">
-		            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color" chart-options="options">
-		            </canvas>
-		        </div>
-				<div ng-show="viewModel.state.state">
+            <div class="sdv-chart-placement">
+	            <canvas id="doughnut" class="chart-doughnut" chart-data="viewModel.familyInfo.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+	            </canvas>
+	            <div ng-show="viewModel.state.state">
 					<img ng-src={{viewModel.state.image}} class="sdv-mood-pics">
 					<div class="sdv-mood-report">
                         <p class="sdv-mood-report-text">{{viewModel.state.mood | uppercase}}</p>
@@ -18,22 +16,12 @@
 				</div>
 				<div ng-hide="!viewModel.state.state">
 				</div>
-			</div>
-			<div ng-if="viewModel.familyInfo.duration > -1"> <!-- THIS IS FOR THE PIE -->
-				<div class="sdv-chart-placement">
-		            <canvas id="doughnut" class="chart-doughnut" chart-data="viewModel.familyInfo.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
-		            </canvas>
-		            <div ng-show="viewModel.state.state">
-		            	<img ng-src={{viewModel.state.image}} class="sdv-mood-pics">
-		            	<p>{{viewModel.state.mood | uppercase}}</p>
-		            </div>
-		            <div ng-hide="!viewModel.state.state">
-		            </div>
-		        </div>
-			</div>
+		    </div>
+            
         </div>
         
         <!-- <p>{{viewModel.familyInfo.duration}}</p> -->
+        <!-- THIS IS THE LEGEND -->
         <div ng-if="viewModel.familyInfo.duration > -1">
         	<ul class="sdv-sleep-data">
 	           	<li>{{ viewModel.familyInfo.targetedHours }}</li>
@@ -42,8 +30,8 @@
 		        <li>{{viewModel.familyInfo.startTime | date:'shortTime'}}</li>
 		        <li>Fell asleep</li>
 		        
-		        <li>{{viewModel.family.restless}}</li>
-		        <li>Minutes Restless</li>
+	        	<!-- <li>{{viewModel.family.restless}}</li>
+		        <li>Minutes Restless</li> -->
 		        
 		        <li>{{viewModel.familyInfo.hours | number:2}}</li>
 		        <li>Hours slept</li>
@@ -53,8 +41,7 @@
 		    </ul>
 	    </div>
 	</div>
-	<div class="row sdv-barchart-placement">
-		<!-- THIS IS FOR THE BAR -->
+	<div class="row sdv-barchart-placement"> <!-- THIS IS FOR THE DATA BAR -->
 		<!-- need duration > -1 -->
 			<div class="row" ng-if="viewModel.familyInfo.duration > -1">
 				<canvas class="chart chart-bar" chart-data="viewModel.familyInfo.night" chart-labels="viewModel.barlabels" chart-options="viewModel.baroptions" chart-series="viewModel.barseries" chart-colors="viewModel.barcolors" width="50" height="10">
@@ -68,7 +55,8 @@
 			
 			</div>
 
-			<!-- need duration == -1 -->
+			<!-- need duration == -1 THIS IS FOR THE EMPTY BAR-->
+			<!-- don't know if I need this here class="row" -->
 			<div class="sdv-empty-chart" ng-if="viewModel.familyInfo.duration == -1" ng-controller="EmptybarchartCtrl">
 				<canvas class="chart chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="color" height="200" width="1100"></canvas>	
 			</div>

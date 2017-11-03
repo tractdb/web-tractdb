@@ -27,11 +27,12 @@ angular.module('FamilySleep')
                 // console.log("dateWeekStr with just calling one date");
                 // console.log(viewModel.date);
                 var personas = personaFactory.personas;
+                var pids = personaFactory.getAllIDs();
                 // console.log('personas');
                 // console.log(personas);
                 tractdbFactory.setQuery('familyweekly', null, viewModel.calendarDate);
                 var tractdbData = tractdbFactory.tractdbData;
-                viewModel.states = selfReportState.getAllMoodsWeek(viewModel.dateWeekStr);
+                viewModel.states = selfReportState.getAllMoodsWeek(pids, viewModel.dateWeekStr);
                 // console.log("queried data");
                 // console.log(tractdbData);
                 if(personas && tractdbData){
@@ -54,6 +55,23 @@ angular.module('FamilySleep')
                             console.log(sleep_data);
                             if(sleep_data.duration == -1){
                                 viewModel.familyInfo[famID].days[d].duration = -1;
+                                viewModel.familyInfo[famID].days[d].sleep = [200];
+                                viewModel.familyInfo[famID].days[d].hours = 0;
+                                viewModel.familyInfo[famID].days[d].date = d;
+                                viewModel.familyInfo[famID].days[d].labels = ['no sleep'];
+                                viewModel.familyInfo[famID].days[d].colors = ['#D6C3DB'];
+                                viewModel.familyInfo[famID].days[d].options = {
+                                    elements: {
+                                        arc: {
+                                            //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                                            borderWidth: 0
+                                        }
+                                    },
+                                    cutoutPercentage: 65,
+                                    animation: false,
+                                    hover: {mode: null},
+                                    tooltips: {enabled: false}
+                                };
                             } else {
                                 var hours = sleep_data.duration / 1000 / 60 / 60;
                                 var targetedHours = viewModel.familyInfo[famID].targetedHours;
@@ -77,6 +95,26 @@ angular.module('FamilySleep')
                                 viewModel.familyInfo[famID].days[d].duration = sleep_data.duration;
                                 viewModel.familyInfo[famID].days[d].date = d;
                                 //console.log(viewModel.familyInfo[famID][d]);
+                                viewModel.familyInfo[famID].days[d].labels = ['extra hours', 'hours slept', 'hours awake'];
+                                //define colors here
+                                viewModel.familyInfo[famID].days[d].colors = ['#000066', '#0000FF', '#E0E0E0'];
+                                // viewModel.options = {
+                                //     borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                                //     cutoutPercentage: 70
+                                // };
+                                viewModel.familyInfo[famID].days[d].options = {
+                                    elements: {
+                                        arc: {
+                                            //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                                            borderWidth: 0
+                                            
+                                        }
+                                    },
+                                    cutoutPercentage: 65,
+                                    //animation: false,
+                                    hover: {mode: null},
+                                    tooltips: {enabled: false}
+                                };
                             }
                             
                         }
@@ -86,28 +124,11 @@ angular.module('FamilySleep')
                     // console.log("printing familyInfo with sleep data");
                     // console.log(viewModel.familyInfo);
                 }
-               viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
-                //define colors here
-                viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
-                // viewModel.options = {
-                //     borderColor: ['#000066', '#0000FF', '#E0E0E0'],
-                //     cutoutPercentage: 70
-                // };
-                viewModel.options = {
-                    elements: {
-                        arc: {
-                            //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
-                            borderWidth: 0
-                            
-                        }
-                    },
-                    cutoutPercentage: 65
-                };
             }
 
             //$scope.famWeekData = famWeeklySleep.sleep_data;
 
-            //should it be $scope or viewModel? we should use them consistently
+            //I don't know if I need a personFactory.observe
             personaFactory.observe($scope, viewModel.updateWeekFamilyInfo);
             tractdbFactory.observe($scope, viewModel.updateWeekFamilyInfo);
             //
@@ -134,7 +155,11 @@ angular.module('FamilySleep')
 
                 //need to check I need to use viewModel
                 $scope.$on('date:updated', function() {
-                  viewModel.updateWeekFamilyInfo();
+                    viewModel.dateWeekStr = dateFactory.getWeekDateString();
+                    viewModel.today = dateFactory.getTodayString();
+                    viewModel.calendarDate = dateFactory.getDateString();
+                    //tractdbFactory.setQuery('familyweekly', null, viewModel.calendarDateview                    
+                    viewModel.updateWeekFamilyInfo();
                 });
 
 }]);

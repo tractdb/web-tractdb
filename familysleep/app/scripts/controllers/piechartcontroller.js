@@ -17,6 +17,7 @@ angular.module('FamilySleep')
   				borderWidth: 0
   			}
   		},
+      //cutoutPercentage: 65,
   		animation: false,
   		hover: {mode: null},
   		tooltips: {enabled: false}

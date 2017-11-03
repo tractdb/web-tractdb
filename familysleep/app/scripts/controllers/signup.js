@@ -66,6 +66,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 		];
 
 		$scope.famTypes = ["Father", "Mother", "Daughter", "Son", "Grandfather", "GrandMother", ""];
+		//check this fitbitd
 		$scope.fitbits = ["asdxas", "asdfxz", "asdfserter"];
 
 		// In our signup.html, we'll be using the ng-model
@@ -102,8 +103,8 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 				!member.name ||
 				!member.type ||
 				!member.profilePic ||
-				!member.age
-				||!member.fitbit
+				!member.age ||
+				!member.fitbit
 			) {
 				alert('Please fill out all form fields.');
 				return false;
@@ -213,7 +214,9 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 
 			//console.log('testing selfReportState get');
 			selfReportState.putNewData();
+			//selfReportState.putData();
             var date = dateFactory.getDateString();
+            //test without this below
             tractdbFactory.setQuery('familydaily', null, date);
 			changeView();
 		};

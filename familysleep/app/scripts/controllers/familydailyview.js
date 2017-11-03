@@ -70,8 +70,9 @@ module.controller(
                     //console.log("date from FDV");
                     //console.log(date);
                     var personas = personaFactory.personas;
+                    var pids = personaFactory.getAllIDs();
                     var tractdbData = tractdbFactory.tractdbData;
-                    viewModel.states = selfReportState.getAllMoodsDay(viewModel.calendarDate);
+                    viewModel.states = selfReportState.getAllMoodsDay(pids, viewModel.calendarDate);
                     console.log("queried data");
                     console.log(tractdbData);
 
@@ -90,8 +91,21 @@ module.controller(
                             var sleep_data = value[d];
                             if(sleep_data.duration == -1){
                                 viewModel.familyInfo[famID].duration = sleep_data.duration;
-                                viewModel.familyInfo[famID].sleep = [0, 0, 0];
+                                viewModel.familyInfo[famID].sleep = [200];
                                 viewModel.familyInfo[famID].hours = 0;
+                                viewModel.familyInfo[famID].labels = ['no sleep'];
+                                viewModel.familyInfo[famID].colors = ['#D6C3DB'];
+                                viewModel.familyInfo[famID].options = {
+                                    elements: {
+                                        arc: {
+                                            //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                                            borderWidth: 0
+                                        }
+                                    },
+                                    cutoutPercentage: 65,
+                                    hover: {mode: null},
+                                    tooltips: {enabled: false}
+                                };
                             } else {
                                 var hours = sleep_data.duration / 1000 / 60 / 60;
                                 var targetedHours = viewModel.familyInfo[famID].targetedHours;
@@ -124,24 +138,26 @@ module.controller(
                                 //console.log(personaFactory.personas);
                                 //could go here or might go out of outside of the if
                                 //or might go outside of updateFamilyInfo
-                                viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
-                                    //define colors here
-                                    viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
-                                    // viewModel.options = {
-                                    //     borderColor: ['#000066', '#0000FF', '#E0E0E0'],
-                                    //     cutoutPercentage: 70
-                                    // };
-                                    viewModel.options = {
-                                        elements: {
-                                            arc: {
-                                                //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
-                                                borderWidth: 0
-                                                
-                                            }
-                                        },
-                                        cutoutPercentage: 65
-                                    };
-                                }
+                                viewModel.familyInfo[famID].labels = ['extra hours', 'hours slept', 'hours awake'];
+                                //define colors here
+                                viewModel.familyInfo[famID].colors = ['#000066', '#0000FF', '#E0E0E0'];
+                                // viewModel.options = {
+                                //     borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                                //     cutoutPercentage: 70
+                                // };
+                                viewModel.familyInfo[famID].options = {
+                                    elements: {
+                                        arc: {
+                                            //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+                                            borderWidth: 0
+                                            
+                                        }
+                                    },
+                                    cutoutPercentage: 65,
+                                    hover: {mode: null},
+                                    tooltips: {enabled: false}
+                                };
+                            }
     
                         });
 
@@ -156,7 +172,10 @@ module.controller(
             //should it be $scope or viewModel? we should use them consistently
             personaFactory.observe($scope, viewModel.updateFamilyInfo);
             tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
-            selfReportState.observe($scope, viewModel.updateFamilyInfo);
+            //selfReportState.observe($scope, viewModel.updateFamilyInfo);
+
+            //updating moon
+            $rootScope.$broadcast('familydailyview:updated');
 
             //
             // Current approach to showing the menu for choosing views
@@ -186,15 +205,20 @@ module.controller(
                 tractdbFactory.setQuery('familydaily', null, viewModel.calendarDate);
                 //selfreportstate.initializeAll(pids);
                 viewModel.updateFamilyInfo();
+                $rootScope.$broadcast('familydailyview:updated');
             });
 
             //should replace to viewModel
-            $scope.changeView = function(id){
+            $scope.changeToSingleDailyView = function(id){
                 //var view = '/familydailyview';
-                console.log("in changeview FDV " + id);
-                console.log('personas');
-                console.log(personaFactory.personas);
+                //console.log("in changeview FDV " + id);
+                //console.log('personas');
+                //console.log(personaFactory.personas);
                 $location.path('/sdview/' + id);
                 viewLogs.logPage('individual-daily-view', dateFactory.getDateString());
+            };
+
+            $scope.changeToSingleWeeklyView = function(id){
+                $location.path('/singleweeklyview/' + id);
             };
         }]);

@@ -8,8 +8,8 @@
  * Controller of the FamilySleep
  */
 angular.module('FamilySleep')
-  .controller('MoonCtrl', ['$scope', '$rootScope', 'sleepFamDailyDataFactory', 'dateFactory',
-  	function ($scope, $rootScope, famDailySleep, dateFactory) {
+  .controller('MoonCtrl', ['$scope', '$rootScope', 'tractdbFactory', 'dateFactory', 'personaFactory',
+  	function ($scope, $rootScope, tractdbFactory, dateFactory, personaFactory) {
 
 
     $scope.moonImage = 'app/images/moons/moon7a.png';
@@ -21,12 +21,30 @@ angular.module('FamilySleep')
     var updateMoon = function() {
     	var totalSleep = 0;
 		var i = 0;
-		angular.forEach(famDailySleep.sleep_data, function(person){
-  			i++;
-  			totalSleep = totalSleep+person[dateFactory.getDateString()].duration/1000/60/60;
-		});
+		var tractdbData = tractdbFactory.tractdbData;
+		var duration, pid, date;
+		var pids = personaFactory.getAllIDs();
+		if(tractdbData != null){
+			date = dateFactory.getDateString();
+			for (var i = pids.length - 1; i >= 0; i--) {
+				pid = pids[i];
+				duration = tractdbData[pid][date].duration;
+				if(duration == -1){
+					totalSleep+=0;
+				} else {
+					totalSleep +=duration;
+				}
+			}
+		} else {
+			totalSleep = 0;
+		}
 		
-		var avgSleep = totalSleep/i;
+		// angular.forEach(famDailySleep.sleep_data, function(person){
+  // 			i++;
+  // 			totalSleep = totalSleep+person[dateFactory.getDateString()].duration/1000/60/60;
+		// });
+		
+		var avgSleep = totalSleep/(pids.length-1);
 		var percentage = avgSleep/24; // would be their total targetsleephours divided by i
 		console.log(percentage);
 		if(percentage < (1/6)) {
@@ -47,4 +65,6 @@ angular.module('FamilySleep')
 
 		//console.log();//['mom'][newDate].duration
     }
+
+    tractdbFactory.observe($scope, updateMoon);
   }]);

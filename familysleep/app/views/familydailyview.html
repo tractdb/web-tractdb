@@ -11,8 +11,10 @@
             <div class="target-hours">
                 <p class="target-hours-text">Target hours: {{ memberCurrent.targetedHours }}</p>
             </div>
-            <div>
-                <button class="btn btn-primary weekly-view-button"> Weekly View</button>
+
+            <div class="weekly-view-button">
+                <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary weekly-view-button"> Weekly View</button>
+
             </div>
             <div ng-controller="ModalCrtl as $ctrl">
                 <div ng-if= "viewModel.today == viewModel.calendarDate" >
@@ -20,11 +22,20 @@
                     <!-- <div ng-if=$ctrl.states[pidCurrent].state> -->
                         <div>
                             <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
-                            <button ng-click="changeView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
+                            <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
                             <!--want an ng-if here to show only after daily sleep and self-report is available -->
                         </div>
-                        <div class="chart-placement">
+                        <!-- <div ng-show="memberCurrent.duration == -1" ng-controller="PiechartcontrollerCtrl" class="chart-placement"> -->
+                        <!-- <div ng-show="memberCurrent.duration == -1" class="chart-doughnut">
                             <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                            </canvas>
+                        </div>
+                        <div ng-show="memberCurrent.duration !=-1" class="chart-placement">
+                            <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                            </canvas>
+                        </div> -->
+                        <div class="chart-placement">
+                            <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="memberCurrent.labels" chart-colors="memberCurrent.colors" chart-options="memberCurrent.options">
                             </canvas>
                         </div>
                         <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
@@ -40,8 +51,7 @@
                     <!-- <div ng-if=!$ctrl.states[pidCurrent].state> -->
                     <div ng-if=!viewModel.states[pidCurrent].state>
                         <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
-                            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color"
-                                    chart-options="options">
+                            <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color" chart-options="options">
                             </canvas>
                         </div>
                         <!--inserts code for the modal popup window-->
@@ -52,14 +62,27 @@
                 </div>
                 <div ng-if= "viewModel.today != viewModel.calendarDate" >
                     <div>
-                        
-                        <button ng-click="changeView(pidCurrent)" class="btn btn-primary single-view-button">Daily View</button>
+                    
+                        <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button">Daily View</button>
+
                         
                     </div>
                     <div class="chart-placement">
-                        <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                        <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="memberCurrent.labels" chart-colors="memberCurrent.colors" chart-options="memberCurrent.options">
                         </canvas>
                     </div>
+                    <!-- <div ng-show="memberCurrent.duration == -1" class="chart-doughnut">
+                          <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                            </canvas>
+                    </div>
+                    <div ng-show="memberCurrent.duration !=-1" class="chart-placement">
+                            <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                            </canvas>
+                    </div> -->
+                    <!-- <div class="chart-placement"> -->
+                        <!-- <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                        </canvas> 
+                    </div>-->
                     <div ng-if=viewModel.states[pidCurrent].state>
                         <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
                         <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->
@@ -87,19 +110,21 @@
             <div class="target-hours">
                 <p class="target-hours-text">Target hours: {{ memberCurrent.targetedHours }}</p>
             </div>
-            <div>
-                <button class="btn btn-primary weekly-view-button">Weekly View</button>
+
+            <div class="weekly-view-button">
+                <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary weekly-view-button"> Weekly View</button>
+
             </div>
             <div ng-controller="ModalCrtl as $ctrl">
                 <div ng-if= "viewModel.today == viewModel.calendarDate" >
                     <div ng-if=viewModel.states[pidCurrent].state>
                         <div>
                             <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
-                            <button ng-click="changeView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
+                            <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
                             <!--want an ng-if here to show only after daily sleep and self-report is available -->
                         </div>
                         <div class="chart-placement">
-                            <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                            <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="memberCurrent.labels" chart-colors="memberCurrent.colors" chart-options="memberCurrent.options">
                             </canvas>
                         </div>
                         <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
@@ -124,13 +149,11 @@
                     </div>
                 </div>
                 <div ng-if= "viewModel.today != viewModel.calendarDate" >
-                    <div>
-                        
-                        <button ng-click="changeView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
-                        
+                    <div> 
+                        <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
                     </div>
                     <div class="chart-placement">
-                        <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
+                        <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="memberCurrent.labels" chart-colors="memberCurrent.colors" chart-options="memberCurrent.options">
                         </canvas>
                     </div>
                     <div ng-if=viewModel.states[pidCurrent].state>
