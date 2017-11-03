@@ -12,7 +12,9 @@
 		        </div>
 				<div ng-show="viewModel.state.state">
 					<img ng-src={{viewModel.state.image}} class="sdv-mood-pics">
-					<p>{{viewModel.state.mood | uppercase}}</p>
+					<div class="sdv-mood-report">
+                        <p class="sdv-mood-report-text">{{viewModel.state.mood | uppercase}}</p>
+                    </div>
 				</div>
 				<div ng-hide="!viewModel.state.state">
 				</div>
@@ -67,8 +69,8 @@
 			</div>
 
 			<!-- need duration == -1 -->
-			<div ng-if="viewModel.familyInfo.duration == -1" ng-controller="EmptybarchartCtrl">
-				<canvas class="chart chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="color" height="40" width="800"></canvas>	
+			<div class="sdv-empty-chart" ng-if="viewModel.familyInfo.duration == -1" ng-controller="EmptybarchartCtrl">
+				<canvas class="chart chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="color" height="200" width="1100"></canvas>	
 			</div>
 		<!-- Legend -->
 		<ul id="sdv-legend">
