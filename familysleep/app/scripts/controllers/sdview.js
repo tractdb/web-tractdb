@@ -7,8 +7,8 @@
  * Controller of the FamilySleep
  */
 angular.module('FamilySleep')
-	.controller('SdviewCtrl', ['$rootScope', '$scope', '$routeParams', 'tractdbFactory', 'dateFactory', 'personaFactory', 'selfReportState',
-		function($rootScope, $scope, $routeParams, tractdbFactory, dateFactory, personaFactory, selfReportState) {
+	.controller('SdviewCtrl', ['$rootScope', '$scope', '$routeParams', 'tractdbFactory', 'dateFactory', 'personaFactory', 'selfReportState', 'viewLogs',
+		function($rootScope, $scope, $routeParams, tractdbFactory, dateFactory, personaFactory, selfReportState, viewLogs) {
 
 			var viewModel = this;
 			viewModel.familyInfo = null;
@@ -173,6 +173,7 @@ angular.module('FamilySleep')
 		$rootScope.active = 'individual-daily-view';
 		$rootScope.updateActive = function (item) {
 			$rootScope.active = item;
+			viewLogs.logPage(item, dateFactory.getDateString());
 		};
 
 		//does this need to be viewModel?
