@@ -52,6 +52,21 @@ angular.module('FamilySleep')
 						viewModel.familyInfo.endTime = sleep_data.endTime;
 						viewModel.familyInfo.startTime = sleep_data.startTime;
 						viewModel.familyInfo.night = [0, 0, 0];
+						viewModel.familyInfo.sleep = [200];
+						viewModel.labels = ['no sleep'];
+						viewModel.colors = ['#D6C3DB'];
+						viewModel.options = {
+	                        elements: {
+	                            arc: {
+	                                //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+	                                borderWidth: 0
+	                            }
+	                        },
+	                        cutoutPercentage: 65,
+	                        hover: {mode: null},
+	                        tooltips: {enabled: false}
+	                    };
+
 					} else {
 						//console.log(sleep_data);
 						var hours = sleep_data.duration / 1000 / 60 / 60;
@@ -92,88 +107,44 @@ angular.module('FamilySleep')
 							sleep_data.minuteData.two,
 							sleep_data.minuteData.three
 						];
+						//bar labels
 						viewModel.barlabels = sleep_data.minuteData.labels;
+						viewModel.options = {
+							elements: {
+									arc: {
+											//borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+											borderWidth: 0
+											
+									}
+							},
+							cutoutPercentage: 65
+						};
+						viewModel.barseries = ["Sleep", "Movement", "Restless"];
+						//ring setup
+						viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
+						viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
+						viewModel.barcolors = [
+						{
+							backgroundColor: "#44d2d1",
+							borderColor: "#44d2d1",
+							pointBackgroundColor: "#44d2d1",
+							pointBorderColor: "#44d2d1"
+						}, 
+						{
+							backgroundColor: "#551A8B",
+							borderColor: "#551A8B",
+							pointBackgroundColor: "#551A8B",
+							pointBorderColor: "#551A8B"
+						},
+						{
+							backgroundColor: "#FC3F73",
+							borderColor: "#FC3F73",
+							pointBackgroundColor: "#FC3F73",
+							pointBorderColor: "#FC3F73"
+						}];
 					}
 				}
-
-				//bar setup
-				viewModel.baroptions = {
-					layout: {
-						padding: {
-							left: 0,
-							right: 0,
-							top: 18,
-							bottom: 0
-						}
-					},
-					scales: {
-	                    xAxes: [{
-	                    	categoryPercentage: 1,
-                        	barPercentage: 1,
-                        	barThickness : 1,
-	                        gridLines: {
-	                          display: false, // Set to false here => xAxis labels displayed out of canvas
-	                          offsetGridLines: true,
-	                        },
-	                        ticks: {
-								display: true,
-								fontSize: 12,
-								fontColor: 'white',
-								fontFamily: 'HelveticaNeue, HelveticaNeue, Roboto, ArialRounded',
-								autoSkip: true,
-								maxTicksLimit: 20
-							}
-						}],
-	                    yAxes: [{
-	                        display: false
-	                    }]
-               		},
-					hover: { //turn off hover
-						mode: null
-					},
-					tooltips: {
-						enabled: null
-					},
-					legend: {
-						display: false
-					}
-				};
-
-				viewModel.barseries = ["Sleep", "Movement", "Restless"];
-				viewModel.barcolors = [
-				{
-					backgroundColor: "#44d2d1",
-					borderColor: "#44d2d1",
-					pointBackgroundColor: "#44d2d1",
-					pointBorderColor: "#44d2d1"
-				}, 
-				{
-					backgroundColor: "#551A8B",
-					borderColor: "#551A8B",
-					pointBackgroundColor: "#551A8B",
-					pointBorderColor: "#551A8B"
-				},
-				{
-					backgroundColor: "#FC3F73",
-					borderColor: "#FC3F73",
-					pointBackgroundColor: "#FC3F73",
-					pointBorderColor: "#FC3F73"
-				}];
-
-					//ring setup
-				viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
-				viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
-				viewModel.options = {
-						elements: {
-								arc: {
-										//borderColor: ['#000066', '#0000FF', '#E0E0E0'],
-										borderWidth: 0
-										
-								}
-						},
-						cutoutPercentage: 65
-				};
-		}
+		}//
 
 		
 		tractdbFactory.setQuery('singledaily', viewModel.id, viewModel.date);
@@ -181,7 +152,7 @@ angular.module('FamilySleep')
 		//should it be $scope or viewModel? we should use them consistently
 		personaFactory.observe($scope, viewModel.updateFamilyInfo);
 		tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
-		selfReportState.observe($scope, viewModel.updateFamilyInfo);
+		//selfReportState.observe($scope, viewModel.updateFamilyInfo);
 		$rootScope.menu = [
 			{
 					title: 'Back',

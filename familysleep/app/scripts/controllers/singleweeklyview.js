@@ -71,6 +71,8 @@ angular.module('FamilySleep')
     		});
     		 
     	}
+    	//TODO: need to look if  need to make one per day
+    	//there's a different Controller
     	viewModel.series = ["Sleep", "Movement", "Restless"];
     	viewModel.options = {
 			scales: {
@@ -231,7 +233,7 @@ angular.module('FamilySleep')
     //should it be $scope or viewModel? we should use them consistently
     personaFactory.observe($scope, viewModel.updateFamilyInfo);
     tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
-    selfReportState.observe($scope, viewModel.updateFamilyInfo);
+    //selfReportState.observe($scope, viewModel.updateFamilyInfo);
 
 	$rootScope.menu = [
 	  {

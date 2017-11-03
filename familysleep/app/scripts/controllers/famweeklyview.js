@@ -58,9 +58,9 @@ angular.module('FamilySleep')
                                 viewModel.familyInfo[famID].days[d].sleep = [200];
                                 viewModel.familyInfo[famID].days[d].hours = 0;
                                 viewModel.familyInfo[famID].days[d].date = d;
-                                viewModel.labels = ['no sleep'];
-                                viewModel.colors = ['#D6C3DB'];
-                                viewModel.options = {
+                                viewModel.familyInfo[famID].days[d].labels = ['no sleep'];
+                                viewModel.familyInfo[famID].days[d].colors = ['#D6C3DB'];
+                                viewModel.familyInfo[famID].days[d].options = {
                                     elements: {
                                         arc: {
                                             //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
@@ -95,14 +95,14 @@ angular.module('FamilySleep')
                                 viewModel.familyInfo[famID].days[d].duration = sleep_data.duration;
                                 viewModel.familyInfo[famID].days[d].date = d;
                                 //console.log(viewModel.familyInfo[famID][d]);
-                                viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
+                                viewModel.familyInfo[famID].days[d].labels = ['extra hours', 'hours slept', 'hours awake'];
                                 //define colors here
-                                viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
+                                viewModel.familyInfo[famID].days[d].colors = ['#000066', '#0000FF', '#E0E0E0'];
                                 // viewModel.options = {
                                 //     borderColor: ['#000066', '#0000FF', '#E0E0E0'],
                                 //     cutoutPercentage: 70
                                 // };
-                                viewModel.options = {
+                                viewModel.familyInfo[famID].days[d].options = {
                                     elements: {
                                         arc: {
                                             //borderColor: ['#000066', '#0000FF', '#E0E0E0'],

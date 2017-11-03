@@ -93,9 +93,9 @@ module.controller(
                                 viewModel.familyInfo[famID].duration = sleep_data.duration;
                                 viewModel.familyInfo[famID].sleep = [200];
                                 viewModel.familyInfo[famID].hours = 0;
-                                viewModel.labels = ['no sleep'];
-                                viewModel.colors = ['#D6C3DB'];
-                                viewModel.options = {
+                                viewModel.familyInfo[famID].labels = ['no sleep'];
+                                viewModel.familyInfo[famID].colors = ['#D6C3DB'];
+                                viewModel.familyInfo[famID].options = {
                                     elements: {
                                         arc: {
                                             //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
@@ -138,14 +138,14 @@ module.controller(
                                 //console.log(personaFactory.personas);
                                 //could go here or might go out of outside of the if
                                 //or might go outside of updateFamilyInfo
-                                viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
+                                viewModel.familyInfo[famID].labels = ['extra hours', 'hours slept', 'hours awake'];
                                 //define colors here
-                                viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
+                                viewModel.familyInfo[famID].colors = ['#000066', '#0000FF', '#E0E0E0'];
                                 // viewModel.options = {
                                 //     borderColor: ['#000066', '#0000FF', '#E0E0E0'],
                                 //     cutoutPercentage: 70
                                 // };
-                                viewModel.options = {
+                                viewModel.familyInfo[famID].options = {
                                     elements: {
                                         arc: {
                                             //borderColor: ['#000066', '#0000FF', '#E0E0E0'],
