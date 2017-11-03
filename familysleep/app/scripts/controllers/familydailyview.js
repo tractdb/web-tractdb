@@ -53,8 +53,8 @@ var module = angular.module(
 module.controller(
     'FamilyDailyViewCtrl',
     
-        ['$scope', '$rootScope', 'tractdbFactory', 'dateFactory', 'selfReportState', 'personaFactory', '$location',
-            function ($scope, $rootScope, tractdbFactory, dateFactory, selfReportState, personaFactory, $location) {
+        ['$scope', '$rootScope', 'tractdbFactory', 'dateFactory', 'selfReportState', 'personaFactory', '$location', 'viewLogs',
+            function ($scope, $rootScope, tractdbFactory, dateFactory, selfReportState, personaFactory, $location, viewLogs) {
                 var viewModel = this;
 
                 viewModel.familyInfo = null;
@@ -177,6 +177,7 @@ module.controller(
             $rootScope.active = 'family-daily-view';
             $rootScope.updateActive = function (item) {
                 $rootScope.active = item;
+                viewLogs.logPage(item, dateFactory.getDateString());
             };
 
             $scope.$on('date:updated', function () {
@@ -194,5 +195,6 @@ module.controller(
                 console.log('personas');
                 console.log(personaFactory.personas);
                 $location.path('/sdview/' + id);
+                viewLogs.logPage('individual-daily-view', dateFactory.getDateString());
             };
         }]);

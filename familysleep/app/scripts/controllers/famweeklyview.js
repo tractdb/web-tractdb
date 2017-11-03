@@ -9,8 +9,8 @@
  */
 angular.module('FamilySleep')
     .controller('FamweeklyviewCtrl', [
-        '$scope', '$rootScope', 'tractdbFactory', 'sleepFamWeeklyDataFactory', 'dateFactory', 'personaFactory', 'selfReportState', 
-        function($scope, $rootScope, tractdbFactory, famWeeklySleep, dateFactory, personaFactory, selfReportState) {
+        '$scope', '$rootScope', 'tractdbFactory', 'sleepFamWeeklyDataFactory', 'dateFactory', 'personaFactory', 'selfReportState', 'viewLogs',
+        function($scope, $rootScope, tractdbFactory, famWeeklySleep, dateFactory, personaFactory, selfReportState, viewLogs) {
             var viewModel = this;
             viewModel.familyInfo = null;
             //viewModel.personas = null;
@@ -129,6 +129,7 @@ angular.module('FamilySleep')
                 $rootScope.active = 'family-weekly-view';
                 $rootScope.updateActive = function (item) {
                   $rootScope.active = item;
+                  viewLogs.logPage(item, dateFactory.getDateString());
                 };
 
                 //need to check I need to use viewModel
