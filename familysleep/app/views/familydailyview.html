@@ -9,18 +9,20 @@
                 <p class="fdv-names">{{memberCurrent.name}}</p>
             </div>
             <div class="target-hours">
-                <p>Target hours: {{ memberCurrent.targetedHours }}</p>
+                <p class="target-hours-text">Target hours: {{ memberCurrent.targetedHours }}</p>
             </div>
+
             <div class="weekly-view-button">
-                <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary"> Weekly View</button>
+                <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary weekly-view-button"> Weekly View</button>
+
             </div>
             <div ng-controller="ModalCrtl as $ctrl">
                 <div ng-if= "viewModel.today == viewModel.calendarDate" >
                     <div ng-if=viewModel.states[pidCurrent].state>
                     <!-- <div ng-if=$ctrl.states[pidCurrent].state> -->
-                        <div class="single-view-button">
+                        <div>
                             <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
-                            <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary"> Daily View</button>
+                            <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
                             <!--want an ng-if here to show only after daily sleep and self-report is available -->
                         </div>
                         <!-- <div ng-show="memberCurrent.duration == -1" ng-controller="PiechartcontrollerCtrl" class="chart-placement"> -->
@@ -42,7 +44,9 @@
                             <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
                         </div>
                         <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->
-                        <p class="mood-report">Mood reported to be {{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                        <div class="mood-report">
+                            <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                        </div>
                     </div>
                     <!-- <div ng-if=!$ctrl.states[pidCurrent].state> -->
                     <div ng-if=!viewModel.states[pidCurrent].state>
@@ -57,9 +61,10 @@
                     </div>
                 </div>
                 <div ng-if= "viewModel.today != viewModel.calendarDate" >
-                    <div class="single-view-button">
-                        
-                        <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary">Daily View</button>
+                    <div>
+                    
+                        <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button">Daily View</button>
+
                         
                     </div>
                     <div class="chart-placement">
@@ -84,10 +89,14 @@
                         <div>
                             <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
                         </div>
-                        <p class="mood-report">Mood reported to be {{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                        <div class="mood-report">
+                            <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                        </div>
                     </div>
                     <div ng-if=!viewModel.states[pidCurrent].state>
-                        <p class="mood-report">No mood reported for this date</p>
+                        <div class="mood-report">
+                            <p class="mood-report-text">No mood reported for this date</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -99,17 +108,19 @@
                 <p class="fdv-names">{{memberCurrent.name}}</p>
             </div>
             <div class="target-hours">
-                <p>Target hours: {{ memberCurrent.targetedHours }}</p>
+                <p class="target-hours-text">Target hours: {{ memberCurrent.targetedHours }}</p>
             </div>
+
             <div class="weekly-view-button">
-                <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary"> Weekly View</button>
+                <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary weekly-view-button"> Weekly View</button>
+
             </div>
             <div ng-controller="ModalCrtl as $ctrl">
                 <div ng-if= "viewModel.today == viewModel.calendarDate" >
                     <div ng-if=viewModel.states[pidCurrent].state>
-                        <div class="single-view-button">
+                        <div>
                             <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
-                            <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary"> Daily View</button>
+                            <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
                             <!--want an ng-if here to show only after daily sleep and self-report is available -->
                         </div>
                         <div class="chart-placement">
@@ -121,7 +132,9 @@
                             <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
                         </div>
                         <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->
-                        <p class="mood-report">Mood reported to be {{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                        <div class="mood-report">
+                            <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                        </div>
                     </div>
                     <div ng-if=!viewModel.states[pidCurrent].state>
                         <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
@@ -136,10 +149,8 @@
                     </div>
                 </div>
                 <div ng-if= "viewModel.today != viewModel.calendarDate" >
-                    <div class="single-view-button">
-                        
-                        <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary"> Daily View</button>
-                        
+                    <div> 
+                        <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
                     </div>
                     <div class="chart-placement">
                         <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="memberCurrent.labels" chart-colors="memberCurrent.colors" chart-options="memberCurrent.options">
@@ -151,10 +162,14 @@
                         <div>
                             <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
                         </div>
-                        <p class="mood-report">Mood reported to be {{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                        <div class="mood-report">
+                            <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                        </div>
                     </div>
                     <div ng-if=!viewModel.states[pidCurrent].state>
-                        <p class="mood-report">No mood reported for this date</p>
+                        <div class="mood-report">
+                            <p class="mood-report-text">No mood reported for this date</p>
+                        </div>
                     </div>
                 </div>
             </div>

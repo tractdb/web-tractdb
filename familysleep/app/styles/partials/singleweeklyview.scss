@@ -2,13 +2,19 @@
 ** Single Weekly View
 =========================================================================
 */
+.singleweeklyview-container {
+  width: 90%;
+  margin: auto;
+}
 
 .swv-row {
 	margin-bottom: 10px;
+  margin-left: 20px;
 }
 
 .swv-date {
 	margin-bottom: 0;
+  font-size: medium;
 }
 
 .swv-date-first {
@@ -71,29 +77,30 @@
 
 .swv-chart-placement {
 	margin-left: 100px;
-    margin-top: -40px;
+  margin-top: -40px;
 }
 
 .swv-empty-chart-placement {
 	margin-left: 100px;
-    margin-top: -30px;
+  margin-top: -30px;
 }
 
 .swv-chart-placement-last {
 	margin-left: 100px;
-    margin-top: -30px;
+  margin-top: -30px;
 }
 
 .swv-mood-pics {
 	width: 40px;
-  	height: 40px;
-  	margin-top: -55px;
-  	margin-left: 920px;
+  height: 40px;
+  margin-top: -55px;
+  margin-left: 920px;
 }
 
 .swv-mood-pics-last {
 	width: 40px;
-  	height: 40px;
-  	margin-top: -180px;
-  	margin-left: 920px;
+  height: 40px;
+  margin-top: -180px;
+  margin-left: 920px;
 }
+

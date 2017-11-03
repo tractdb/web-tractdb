@@ -7484,13 +7484,13 @@ button.close {
 
 /* line 22, partials/_signup.scss */
 .avatar-area {
-  width: 650px;
-  margin-left: 300px;
+  width: 700px;
+  margin-left: 420px;
 }
 
 /* line 27, partials/_signup.scss */
 .signup-buttons {
-  width: 333px;
+  width: 478px;
   margin-left: -5px;
   margin-top: 15px;
 }
@@ -7571,87 +7571,100 @@ button.close {
   height: 150px;
   position: absolute;
   width: 150px;
-  margin-left: 90px;
-  top: 80px;
+  margin-left: 150px;
+  top: 100px;
 }
 
 /* line 64, partials/_familydailyview.scss */
 .how-sleep-button {
   position: absolute;
-  top: 125px;
-  left: 130px;
+  top: 145px;
+  left: 185px;
   z-index: 1;
   white-space: normal;
-  max-width: 100px;
+  max-width: 110px;
   color: #555555;
   background-color: transparent;
   border: 0px solid transparent;
   font-weight: bold;
+  font-size: 15px;
 }
 
-/* line 77, partials/_familydailyview.scss */
+/* line 78, partials/_familydailyview.scss */
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
   color: white;
   background-color: #D6C3DB;
   border-color: #D6C3DB;
 }
 
-/* line 83, partials/_familydailyview.scss */
+/* line 84, partials/_familydailyview.scss */
 .profile-pics {
   position: absolute;
   top: 0px;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
 
-/* line 90, partials/_familydailyview.scss */
+/* line 91, partials/_familydailyview.scss */
 .profile-area {
   display: inline-block;
 }
 
-/* line 94, partials/_familydailyview.scss */
+/* line 95, partials/_familydailyview.scss */
 .single-view-button {
-  margin-left: 200px;
+  margin-left: 230px;
   margin-bottom: 50px;
   position: absolute;
   top: 5px;
+  height: 50px;
+  width: 120px;
+  font-size: medium;
 }
 
-/* line 101, partials/_familydailyview.scss */
+/* line 105, partials/_familydailyview.scss */
 .weekly-view-button {
-  margin-left: 80px;
+  margin-left: 100px;
   margin-bottom: 50px;
   position: absolute;
   top: 5px;
+  height: 50px;
+  width: 120px;
+  font-size: medium;
 }
 
-/* line 108, partials/_familydailyview.scss */
-.single-view-button .btn, .weekly-view-button .btn {
+/* line 116, partials/_familydailyview.scss */
+.single-view-button, .weekly-view-button {
   background-color: #d6c3db;
   border-color: #d6c3db;
   color: black;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
-/* line 115, partials/_familydailyview.scss */
+/* line 123, partials/_familydailyview.scss */
 .target-hours {
   position: absolute;
-  top: 45px;
-  margin-left: 82px;
-  margin-bottom: 15px;
+  top: 65px;
+  margin-bottom: 20px;
+  font-size: medium;
+  width: 100%;
 }
 
-/* line 122, partials/_familydailyview.scss */
+/* line 131, partials/_familydailyview.scss */
+.target-hours-text {
+  text-align: center;
+}
+
+/* line 135, partials/_familydailyview.scss */
 .mood-pics {
   position: absolute;
   width: 100px;
   height: 100px;
-  top: 105px;
-  left: 130px;
+  top: 125px;
+  left: 190px;
   z-index: 1;
 }
 
-/* line 131, partials/_familydailyview.scss */
+/* line 144, partials/_familydailyview.scss */
 #family_moon {
   position: fixed;
   height: 150px;
@@ -7663,41 +7676,53 @@ button.close {
   /* Negative half of width. */
 }
 
-/* line 140, partials/_familydailyview.scss */
+/* line 153, partials/_familydailyview.scss */
 .fdv-names {
   text-align: center;
   position: absolute;
-  top: 60px;
-  width: 60px;
+  top: 70px;
+  width: 70px;
   margin: 0;
+  font-weight: bold;
+  font-size: medium;
 }
 
-/* line 148, partials/_familydailyview.scss */
+/* line 163, partials/_familydailyview.scss */
 .fdv-even-column {
-  margin-right: 125px;
-  margin-bottom: 20px;
+  margin-left: 50px;
+  margin-bottom: 50px;
   height: 260px;
+  width: 450px;
 }
 
-/* line 154, partials/_familydailyview.scss */
+/* line 170, partials/_familydailyview.scss */
 .fdv-odd-column {
-  margin-left: 160px;
-  margin-bottom: 20px;
+  margin-left: 270px;
+  margin-bottom: 50px;
   height: 260px;
+  width: 450px;
 }
 
-/* line 160, partials/_familydailyview.scss */
+/* line 177, partials/_familydailyview.scss */
 .hours-slept {
-  font-size: small;
+  font-size: medium;
   position: absolute;
-  top: 110px;
+  top: 150px;
+  left: 35px;
+  text-align: center;
 }
 
-/* line 166, partials/_familydailyview.scss */
+/* line 185, partials/_familydailyview.scss */
 .mood-report {
   position: absolute;
-  top: 240px;
-  font-size: small;
+  top: 260px;
+  font-size: medium;
+  width: 100%;
+}
+
+/* line 192, partials/_familydailyview.scss */
+.mood-report-text {
+  text-align: center;
 }
 
 /* line 1, partials/_recorder.scss */
@@ -7947,27 +7972,36 @@ MODAL WINDOW END
 /* line 6, partials/_familyweeklyview.scss */
 .familyweeklyview-container {
   color: white;
+  width: 90%;
+  margin: auto;
 }
 
-/* line 10, partials/_familyweeklyview.scss */
+/* line 12, partials/_familyweeklyview.scss */
 .fwv-person {
   margin-bottom: 40px;
   margin-left: 0;
   margin-right: 0;
 }
 
-/* line 16, partials/_familyweeklyview.scss */
+/* line 18, partials/_familyweeklyview.scss */
 .fwv-chart-placement {
   height: 80px;
   width: 80px;
+  margin: auto;
 }
 
-/* line 22, partials/_familyweeklyview.scss */
+/* line 24, partials/_familyweeklyview.scss */
 .fwv-names {
   text-align: center;
+  position: absolute;
+  top: 80px;
+  width: 70px;
+  margin: 0;
+  font-weight: bold;
+  font-size: medium;
 }
 
-/* line 26, partials/_familyweeklyview.scss */
+/* line 34, partials/_familyweeklyview.scss */
 .fwv-profile-pics {
   display: block;
   margin-left: auto;
@@ -7976,21 +8010,27 @@ MODAL WINDOW END
   height: 60px;
 }
 
-/* line 34, partials/_familyweeklyview.scss */
+/* line 42, partials/_familyweeklyview.scss */
 .fwv-columns {
   float: left;
-  width: 85px;
+  width: 120px;
   margin-left: 7px;
   margin-right: 7px;
+  margin-bottom: 20px;
   position: relative;
 }
 
-/* line 42, partials/_familyweeklyview.scss */
+/* line 51, partials/_familyweeklyview.scss */
+.pic-column {
+  height: 80px;
+}
+
+/* line 55, partials/_familyweeklyview.scss */
 #blank-date {
   visibility: hidden;
 }
 
-/* line 46, partials/_familyweeklyview.scss */
+/* line 59, partials/_familyweeklyview.scss */
 .fwv-mood-pics {
   position: absolute;
   width: 50px;
@@ -8000,14 +8040,16 @@ MODAL WINDOW END
   margin-left: 15px;
 }
 
-/* line 55, partials/_familyweeklyview.scss */
+/* line 68, partials/_familyweeklyview.scss */
 .fwv-mood-text {
   text-align: center;
+  font-size: medium;
 }
 
-/* line 59, partials/_familyweeklyview.scss */
+/* line 73, partials/_familyweeklyview.scss */
 .fwv-date {
   text-align: center;
+  font-size: medium;
 }
 
 /* line 1, partials/_datepicker.scss */
@@ -8026,71 +8068,90 @@ input[aria-expanded=false] {
   color: white;
 }
 
-/* line 15, partials/_datepicker.scss */
-.md-button.md-icon-button {
-  background-color: rgba(255, 255, 255, 0.4);
+/* line 14, partials/_datepicker.scss */
+.md-button {
+  height: 45px;
 }
 
-/* line 19, partials/_datepicker.scss */
+/* line 18, partials/_datepicker.scss */
+.md-button.md-icon-button {
+  background-color: #D3DBE9;
+  /*rgba(255, 255, 255, 0.4);*/
+}
+
+/* line 22, partials/_datepicker.scss */
 .md-datepicker-input {
   color: white;
+  font-size: medium;
 }
 
-/* line 25, partials/_datepicker.scss */
+/* line 29, partials/_datepicker.scss */
 md-icon svg path {
-  fill: #ffffff;
-}
-
-/* line 31, partials/_datepicker.scss */
-.md-datepicker-triangle-button .md-datepicker-expand-triangle {
-  border-top-color: white;
+  fill: darkslategrey;
+  /*#ffffff;*/
 }
 
 /* line 35, partials/_datepicker.scss */
+.md-datepicker-triangle-button .md-datepicker-expand-triangle {
+  border-top-color: darkslategrey;
+}
+
+/* line 39, partials/_datepicker.scss */
 #datepicker-placement {
   margin-top: 10px;
   margin-left: 40px;
 }
 
-/* line 40, partials/_datepicker.scss */
+/* line 44, partials/_datepicker.scss */
 ._md-datepicker-has-triangle-icon {
   padding-right: 18px;
   margin-right: 0px;
 }
 
-/* line 45, partials/_datepicker.scss */
+/* line 49, partials/_datepicker.scss */
 #yesterday, #today, #tomorrow {
-  background-color: #778ec4;
+  background-color: #D3DBE9;
   /*#6e85b6;*/
+  font-size: medium;
+  font-weight: 500;
+  color: darkslategrey;
 }
 
 /*=======================================================================
 ** Single Weekly View
 =========================================================================
 */
-/* line 6, partials/singleweeklyview.scss */
-.swv-row {
-  margin-bottom: 10px;
+/* line 5, partials/singleweeklyview.scss */
+.singleweeklyview-container {
+  width: 90%;
+  margin: auto;
 }
 
 /* line 10, partials/singleweeklyview.scss */
-.swv-date {
-  margin-bottom: 0;
+.swv-row {
+  margin-bottom: 10px;
+  margin-left: 20px;
 }
 
-/* line 14, partials/singleweeklyview.scss */
+/* line 15, partials/singleweeklyview.scss */
+.swv-date {
+  margin-bottom: 0;
+  font-size: medium;
+}
+
+/* line 20, partials/singleweeklyview.scss */
 .swv-date-first {
   margin-top: -25px;
 }
 
-/* line 18, partials/singleweeklyview.scss */
+/* line 24, partials/singleweeklyview.scss */
 #swv-legend {
   margin-bottom: 80px;
   margin-left: 400px;
   padding-top: 50px;
 }
 
-/* line 24, partials/singleweeklyview.scss */
+/* line 30, partials/singleweeklyview.scss */
 #swv-legend li {
   display: inline-block;
 }
@@ -8101,7 +8162,7 @@ md-icon svg path {
     font-size: 12px;
 }​
 */
-/* line 35, partials/singleweeklyview.scss */
+/* line 41, partials/singleweeklyview.scss */
 #swv-legend li:nth-child(2),
 #swv-legend li:nth-child(4),
 #swv-legend li:nth-child(6),
@@ -8110,60 +8171,60 @@ md-icon svg path {
   font-size: 12px;
 }
 
-/* line 43, partials/singleweeklyview.scss */
+/* line 49, partials/singleweeklyview.scss */
 #no-data-chart {
   height: 55px;
 }
 
 /* green */
-/* line 48, partials/singleweeklyview.scss */
+/* line 54, partials/singleweeklyview.scss */
 #swv-legend-sleep {
   background-color: #44d2d1;
 }
 
 /* purple */
-/* line 53, partials/singleweeklyview.scss */
+/* line 59, partials/singleweeklyview.scss */
 #swv-legend-movement {
   background-color: #551A8B;
 }
 
 /* pink */
-/* line 58, partials/singleweeklyview.scss */
+/* line 64, partials/singleweeklyview.scss */
 #swv-legend-restless {
   background-color: #FC3F73;
 }
 
-/* line 62, partials/singleweeklyview.scss */
+/* line 68, partials/singleweeklyview.scss */
 #swv-legend-no-data {
   background-color: #D6C3DB;
 }
 
-/* line 66, partials/singleweeklyview.scss */
+/* line 72, partials/singleweeklyview.scss */
 #swv-legend-sleep, #swv-legend-movement, #swv-legend-restless, #swv-legend-no-data {
   width: 40px;
   height: 15px;
   margin-bottom: -3px;
 }
 
-/* line 72, partials/singleweeklyview.scss */
+/* line 78, partials/singleweeklyview.scss */
 .swv-chart-placement {
   margin-left: 100px;
   margin-top: -40px;
 }
 
-/* line 77, partials/singleweeklyview.scss */
+/* line 83, partials/singleweeklyview.scss */
 .swv-empty-chart-placement {
   margin-left: 100px;
   margin-top: -30px;
 }
 
-/* line 82, partials/singleweeklyview.scss */
+/* line 88, partials/singleweeklyview.scss */
 .swv-chart-placement-last {
   margin-left: 100px;
   margin-top: -30px;
 }
 
-/* line 87, partials/singleweeklyview.scss */
+/* line 93, partials/singleweeklyview.scss */
 .swv-mood-pics {
   width: 40px;
   height: 40px;
@@ -8171,7 +8232,7 @@ md-icon svg path {
   margin-left: 920px;
 }
 
-/* line 94, partials/singleweeklyview.scss */
+/* line 100, partials/singleweeklyview.scss */
 .swv-mood-pics-last {
   width: 40px;
   height: 40px;
@@ -8183,7 +8244,18 @@ md-icon svg path {
 ** Single Daily View
 =========================================================================
 */
-/* line 6, partials/singledailyview.scss */
+/* line 5, partials/singledailyview.scss */
+.singleview-container {
+  width: 90%;
+  margin: auto;
+}
+
+/* line 10, partials/singledailyview.scss */
+.sdv-empty-chart {
+  margin-top: 230px;
+}
+
+/* line 14, partials/singledailyview.scss */
 #sdv-profile-pic {
   position: relative;
   top: 0px;
@@ -8191,54 +8263,59 @@ md-icon svg path {
   height: 70px;
 }
 
-/* line 13, partials/singledailyview.scss */
+/* line 21, partials/singledailyview.scss */
 .sdv-mood-pics {
   position: absolute;
   width: 100px;
   height: 100px;
-  top: 25px;
-  left: 25px;
+  top: 75px;
+  left: 240px;
   z-index: 1;
 }
 
-/* line 22, partials/singledailyview.scss */
-#sdv-mood-report {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  top: 200px;
-  margin-left: 350px;
-  width: 200px;
+/* line 30, partials/singledailyview.scss */
+.sdv-mood-report {
+  position: absolute;
+  top: 210px;
+  font-size: medium;
+  width: 70%;
+  margin-left: 145px;
 }
 
-/* line 30, partials/singledailyview.scss */
+/* line 38, partials/singledailyview.scss */
+.sdv-mood-report-text {
+  text-align: center;
+}
+
+/* line 42, partials/singledailyview.scss */
 #sdv-name {
   text-align: center;
   width: 70px;
   margin: 0;
 }
 
-/* line 36, partials/singledailyview.scss */
+/* line 48, partials/singledailyview.scss */
 #sdv-legend {
   margin-bottom: 30px;
   margin-top: 20px;
   margin-left: 400px;
 }
 
-/* line 42, partials/singledailyview.scss */
+/* line 54, partials/singledailyview.scss */
 #sdv-legend li {
   display: inline-block;
 }
 
-/* line 46, partials/singledailyview.scss */
+/* line 58, partials/singledailyview.scss */
 #sdv-legend li:nth-child(2),
 #sdv-legend li:nth-child(4),
 #sdv-legend li:nth-child(6),
 #sdv-legend li:nth-child(8) {
   margin-right: 10px;
-  font-size: 12px;
+  font-size: medium;
 }
 
-/* line 54, partials/singledailyview.scss */
+/* line 66, partials/singledailyview.scss */
 .sdv-chart-placement {
   height: 150px;
   position: absolute;
@@ -8247,17 +8324,17 @@ md-icon svg path {
   top: 50px;
 }
 
-/* line 62, partials/singledailyview.scss */
+/* line 74, partials/singledailyview.scss */
 .sdv-barchart-placement {
   /*margin-top: 120px;*/
 }
 
-/* line 66, partials/singledailyview.scss */
+/* line 78, partials/singledailyview.scss */
 .sdv-mood-text {
   text-align: center;
 }
 
-/* line 70, partials/singledailyview.scss */
+/* line 82, partials/singledailyview.scss */
 .sdv-sleep-data {
   margin-left: 500px;
   list-style-type: none;
@@ -8267,19 +8344,19 @@ md-icon svg path {
   margin-top: 50px;
 }
 
-/* line 79, partials/singledailyview.scss */
+/* line 91, partials/singledailyview.scss */
 .sdv-sleep-data li {
   text-align: center;
 }
 
 /* numbers */
-/* line 84, partials/singledailyview.scss */
+/* line 96, partials/singledailyview.scss */
 .sdv-sleep-data li:nth-child(odd) {
   font-size: 24px;
   font-weight: bold;
 }
 
-/* line 89, partials/singledailyview.scss */
+/* line 101, partials/singledailyview.scss */
 .sdv-sleep-data li:nth-child(even) {
   font-size: 12px;
   margin-bottom: 30px;
@@ -8338,7 +8415,7 @@ nav a {
   padding: 18px 30px;
   color: #fff !important;
   font-weight: bold;
-  font-size: 16px;
+  font-size: large;
   text-decoration: none !important;
   line-height: 1;
   background-color: transparent;
@@ -8421,20 +8498,22 @@ html, body {
 
 /* line 116, main.scss */
 .recorder {
+  /*width: 99%;*/
   float: right;
   height: 9%;
   display: inline-block;
   margin-top: 10px;
   color: white;
+  font-size: large;
 }
 
 /* Custom page header */
-/* line 126, main.scss */
+/* line 127, main.scss */
 .header {
   margin-bottom: 10px;
   /* Make the masthead heading the same height as the navigation */
 }
-/* line 131, main.scss */
+/* line 132, main.scss */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -8443,7 +8522,7 @@ html, body {
 }
 
 /* Custom page footer */
-/* line 140, main.scss */
+/* line 141, main.scss */
 .footer {
   /*padding-top: 10px;
   padding-bottom: 10px;
@@ -8457,49 +8536,49 @@ html, body {
   margin-top: -40px;
 }
 
-/* line 153, main.scss */
+/* line 154, main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
-/* line 157, main.scss */
-.container {
+/* line 158, main.scss */
+body > .container {
   color: white;
-  min-height: 100%;
+  min-height: 85%;
   padding-bottom: 40px;
 }
 
 /* Main marketing message and sign up button */
-/* line 164, main.scss */
+/* line 165, main.scss */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
-/* line 168, main.scss */
+/* line 169, main.scss */
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
 }
 
 /* Supporting marketing content */
-/* line 175, main.scss */
+/* line 176, main.scss */
 .marketing {
   margin: 40px 0;
 }
-/* line 178, main.scss */
+/* line 179, main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* line 185, main.scss */
+  /* line 186, main.scss */
   .container {
-    max-width: 900px;
+    width: 1250px;
   }
 
   /* Remove the padding we set earlier */
-  /* line 190, main.scss */
+  /* line 191, main.scss */
   .header,
   .marketing,
   .footer {
@@ -8508,13 +8587,13 @@ html, body {
   }
 
   /* Space out the masthead */
-  /* line 197, main.scss */
+  /* line 198, main.scss */
   .header {
     margin-bottom: 30px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 201, main.scss */
+  /* line 202, main.scss */
   .jumbotron {
     border-bottom: 0;
   }

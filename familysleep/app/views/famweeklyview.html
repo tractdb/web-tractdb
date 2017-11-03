@@ -8,9 +8,9 @@
     <div ng-repeat="(pidCurrent, memberCurrent) in viewModel.familyInfo">
 	   <div class="fwv-person row">
         <!-- week col for particular person -->
-        <div class="fwv-columns">
+        <div class="fwv-columns pic-column">
             <img ng-src={{memberCurrent.profilePic}} class="profile-pics">
-            <p class="fdv-names">{{memberCurrent.name}}</p>
+            <p class="fwv-names">{{memberCurrent.name}}</p>
         </div>
           <div ng-repeat="day in memberCurrent.days | toArray | orderBy:'-date'" class="fwv-columns">
             
