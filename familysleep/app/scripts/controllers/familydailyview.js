@@ -174,6 +174,9 @@ module.controller(
             tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
             //selfReportState.observe($scope, viewModel.updateFamilyInfo);
 
+            //updating moon
+            $rootScope.$broadcast('familydailyview:updated');
+
             //
             // Current approach to showing the menu for choosing views
             //
@@ -202,6 +205,7 @@ module.controller(
                 tractdbFactory.setQuery('familydaily', null, viewModel.calendarDate);
                 //selfreportstate.initializeAll(pids);
                 viewModel.updateFamilyInfo();
+                $rootScope.$broadcast('familydailyview:updated');
             });
 
             //should replace to viewModel
