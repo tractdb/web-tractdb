@@ -211,11 +211,11 @@ module.controller(
             //should replace to viewModel
             $scope.changeToSingleDailyView = function(id){
                 //var view = '/familydailyview';
-                //console.log("in changeview FDV " + id);
+                console.log("in changeview FDV " + id);
                 //console.log('personas');
                 //console.log(personaFactory.personas);
                 $location.path('/sdview/' + id);
-                viewLogs.logPage('individual-daily-view', dateFactory.getDateString());
+                viewLogs.logPage('individual-daily-view', dateFactory.getDateString(), id);
             };
 
             $scope.changeToSingleWeeklyView = function(id){

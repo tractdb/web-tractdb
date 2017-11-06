@@ -173,7 +173,7 @@ angular.module('FamilySleep')
 		$rootScope.active = 'individual-daily-view';
 		$rootScope.updateActive = function (item) {
 			$rootScope.active = item;
-			viewLogs.logPage(item, dateFactory.getDateString());
+			viewLogs.logPage(item, dateFactory.getDateString(), item != 'family-daily-view' ? $routeParams.id : null);
 		};
 
 		//does this need to be viewModel?
