@@ -12,7 +12,7 @@
      /*
         logSession = {
             'pages' : [
-                {'page' : '', 'date' : },
+                {'page' : '', id : '', date' : },
                 {},
             ],
             'sessionTimeStamps': [],
@@ -28,7 +28,7 @@
                     'endTime':
                 }
                 'pages' : [
-                    {'page' : '', 'date' : },
+                    {'page' : '', id : '', 'date' : },
                     {},
                 ]
             },
@@ -62,27 +62,24 @@ module.factory(
       }
     };
 
-    factory.logPage = function (page, date) {
-      /*
-        if logSession is null: (start session)
-            initialize logSession = {};
-            logSession.startTime = date;
-            logSession.pages.add({page, date})
-    
-        else 
+    /*
+      if logSession is null: (start session)
+          initialize logSession = {};
+          logSession.startTime = date;
+          logSession.pages.add({page, date})
+  
+      else 
 
-        start x min timer, once times up:
-            check with session to see if date == logSession.page.last.date
-            if different, means user clicked after this, we don't do anything
-            if same, means user haven't clicked for 2 mins. we treat it as the last click"  
-                save last click,
-                save the whole thing to logs.
-      */
+      start x min timer, once times up:
+          check with session to see if date == logSession.page.last.date
+          if different, means user clicked after this, we don't do anything
+          if same, means user haven't clicked for 2 mins. we treat it as the last click"  
+              save last click,
+              save the whole thing to logs.
+    */
+    factory.logPage = function (page, date, id=null) { 
       var currentTime = new Date();
       if (factory.logSession == null) {
-
-        $timeout(factory.popup, 1 * 10000);
-
         factory.logSession = {
             'pages': [],
             'sessionTimeStamps': [],
@@ -90,9 +87,10 @@ module.factory(
             'startTime': null,
             'endTime': null
         };
-        factory.logSession.startTime = currentTime;   
+        factory.logSession.startTime = currentTime;  
+        $timeout(factory.popup, 1 * 1000); 
       }
-      factory.logSession.pages.push({'page': page, 'date': date});
+      factory.logSession.pages.push({'page': page, 'id' : id, 'date': date});
       factory.logSession.sessionTimeStamps.push(currentTime);
       $timeout(factory.logLastPage, 6 * 10000, true, currentTime);
     }

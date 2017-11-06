@@ -70,7 +70,7 @@ angular.module('FamilySleep')
           $scope.recordPausing = false;
           $scope.recordStopped = false;
           $scope.recordReplay = false;
-          recorder.reset();
+          //recorder.reset();
         }
 
         //stop the recording
@@ -82,7 +82,7 @@ angular.module('FamilySleep')
             $scope.url = decodeURIComponent($window.recordRTC.toURL());
             var recordedBlob = $window.recordRTC.getBlob();
             $scope.recordedBlob = recordedBlob;
-            console.log($scope.url);
+            //console.log($scope.url);
           });
         }
 

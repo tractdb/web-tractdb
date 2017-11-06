@@ -189,10 +189,7 @@ module.controller(
                 // }
 
                 //updating moon
-                $rootScope.$broadcast('familydailyview:updated');
-
-            
-
+                $rootScope.$broadcast('familydailyview:updated');         
                 //
                 // Current approach to showing the menu for choosing views
                 //
