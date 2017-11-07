@@ -70,7 +70,7 @@ angular.module('FamilySleep')
                 method: 'GET',
                 url: url
             }
-        ).then(function (response) {
+        ).then(function success(response){
             var states = response.data.states;
             console.log(states)
             var date = dateFactory.getDateString;
@@ -78,7 +78,7 @@ angular.module('FamilySleep')
             factory.doc_id = response.data._id;
             factory.doc_rev = response.data._rev;
             factory._notify();
-        }).catch(function () {
+        }).catch (function errorCallback(response){
           //error message
 
         }).finally(function () {
@@ -325,8 +325,21 @@ angular.module('FamilySleep')
         console.log("in getAllMoodsDay");
         console.log("date = " + date);
         var temp = {};
-        if(factory.states.hasOwnProperty(date)){
+        //if(factory.states.hasOwnProperty(date)){
+        if(angular.equals(factory.states, {})) {
+            factory.initializeAllEmptyNewDay(pids, date);
+            temp[date] = {};
             temp = factory.states[date];
+            
+        } else if(factory.states.hasOwnProperty(date) ) {
+            //temp = factory.states[date]
+            if(!angular.equals(factory.states[date], {})){
+                temp = factory.states[date];    
+            } else {
+                factory.initializeAllEmptyNewDay(pids, date);
+                temp[date] = {};
+                temp = factory.states[date];
+            }            
         } else { 
             factory.initializeAllEmptyNewDay(pids, date);
             temp[date] = {};
@@ -498,7 +511,7 @@ angular.module('FamilySleep')
         //pids = personafactory.getAllIDs -> returns array of ids
         var id;
         var temp = {};
-        if(!factory.states.hasOwnProperty(date)){
+        if(!factory.states.hasOwnProperty(date) || angular.equals(factory.states[date], {}) ) {
             for (var i = pids.length - 1; i >= 0; i--) {
                 id = pids[i];
                 temp[id] = {};
@@ -509,7 +522,6 @@ angular.module('FamilySleep')
             }
             factory.states[date] = temp;
         }
-        //else
     };
 
 
