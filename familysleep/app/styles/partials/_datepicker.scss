@@ -17,6 +17,7 @@ input[aria-expanded=false] {
 
 .md-button.md-icon-button {
   background-color: #D3DBE9; /*rgba(255, 255, 255, 0.4);*/
+  opacity: 0.8;
 }
 
 .md-datepicker-input {
@@ -48,6 +49,7 @@ md-icon {
 
 #yesterday, #today, #tomorrow {
 	background-color: #D3DBE9 ;/*#6e85b6;*/
+  opacity: 0.8;
   font-size: medium;
   font-weight: 500;
   color: darkslategrey;

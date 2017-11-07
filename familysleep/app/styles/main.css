@@ -8089,41 +8089,43 @@ input[aria-expanded=false] {
 .md-button.md-icon-button {
   background-color: #D3DBE9;
   /*rgba(255, 255, 255, 0.4);*/
+  opacity: 0.8;
 }
 
-/* line 22, partials/_datepicker.scss */
+/* line 23, partials/_datepicker.scss */
 .md-datepicker-input {
   color: white;
   font-size: medium;
 }
 
-/* line 29, partials/_datepicker.scss */
+/* line 30, partials/_datepicker.scss */
 md-icon svg path {
   fill: darkslategrey;
   /*#ffffff;*/
 }
 
-/* line 35, partials/_datepicker.scss */
+/* line 36, partials/_datepicker.scss */
 .md-datepicker-triangle-button .md-datepicker-expand-triangle {
   border-top-color: darkslategrey;
 }
 
-/* line 39, partials/_datepicker.scss */
+/* line 40, partials/_datepicker.scss */
 #datepicker-placement {
   margin-top: 10px;
   margin-left: 40px;
 }
 
-/* line 44, partials/_datepicker.scss */
+/* line 45, partials/_datepicker.scss */
 ._md-datepicker-has-triangle-icon {
   padding-right: 18px;
   margin-right: 0px;
 }
 
-/* line 49, partials/_datepicker.scss */
+/* line 50, partials/_datepicker.scss */
 #yesterday, #today, #tomorrow {
   background-color: #D3DBE9;
   /*#6e85b6;*/
+  opacity: 0.8;
   font-size: medium;
   font-weight: 500;
   color: darkslategrey;
