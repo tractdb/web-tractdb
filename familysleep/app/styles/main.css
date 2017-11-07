@@ -7845,7 +7845,7 @@ div a.myCloseBtn {
 
 /* line 31, partials/_modalstyle.scss */
 .app-modal-window .modal-dialog {
-  width: 510px;
+  width: 550px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
@@ -7855,7 +7855,6 @@ div a.myCloseBtn {
 /* line 39, partials/_modalstyle.scss */
 .mood-name {
   text-align: center;
-  margin-bottom: 20px;
 }
 
 /* line 43, partials/_modalstyle.scss */
@@ -7964,14 +7963,48 @@ section.the-modal button {
 
 /* line 134, partials/_modalstyle.scss */
 .modal-mood-pics {
-  height: 90px;
-  width: 90px;
-  margin: 0 10px 0 10px;
+  height: 85px;
+  width: 85px;
+  margin: 0 10px 10px 10px;
 }
 
-/* line 138, partials/_modalstyle.scss */
+/* line 140, partials/_modalstyle.scss */
 .modal-btn {
   width: 90px;
+}
+
+/* line 144, partials/_modalstyle.scss */
+button.modalOK:enabled {
+  background-color: green;
+}
+
+/* line 148, partials/_modalstyle.scss */
+button.modal-mood-reporter:focus, button.modal-mood-reporter:active, button.modal-mood-reporter:hover {
+  outline: none !important;
+  background-color: #34cfca;
+}
+
+/* line 153, partials/_modalstyle.scss */
+.activeMoodReporter {
+  border: 3px solid #478de7;
+}
+
+/* line 157, partials/_modalstyle.scss */
+img.modal-mood-pics:focus {
+  outline: 0;
+}
+
+/* line 161, partials/_modalstyle.scss */
+.mood-item {
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+/* line 166, partials/_modalstyle.scss */
+.activeMoodItem {
+  border: 4px solid #478de7;
+  /*margin-bottom: 20px;
+  padding: 5px;*/
 }
 
 /*
@@ -8100,13 +8133,12 @@ input[aria-expanded=false] {
 
 /* line 30, partials/_datepicker.scss */
 md-icon svg path {
-  fill: darkslategrey;
-  /*#ffffff;*/
+  fill: #555555;
 }
 
 /* line 36, partials/_datepicker.scss */
 .md-datepicker-triangle-button .md-datepicker-expand-triangle {
-  border-top-color: darkslategrey;
+  border-top-color: #555555;
 }
 
 /* line 40, partials/_datepicker.scss */
@@ -8128,7 +8160,7 @@ md-icon svg path {
   opacity: 0.8;
   font-size: medium;
   font-weight: 500;
-  color: darkslategrey;
+  color: #555555;
 }
 
 /*=======================================================================

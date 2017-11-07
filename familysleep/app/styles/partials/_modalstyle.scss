@@ -29,7 +29,7 @@ div a.myCloseBtn{
 }
 
 .app-modal-window .modal-dialog {
-    width: 510px;
+    width: 550px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
@@ -37,7 +37,7 @@ div a.myCloseBtn{
 }
 
 .mood-name {
-    text-align:center; margin-bottom: 20px;
+    text-align:center;
 }
 
 .mood-name a:link {
@@ -132,11 +132,41 @@ section.the-modal button{
 }
 
 .modal-mood-pics {
-    height:90px; width:90px;margin: 0 10px 0 10px;
+    height: 85px; 
+    width: 85px;
+    margin: 0 10px 10px 10px;
 }
 
 .modal-btn {
     width:90px;
+}
+
+button.modalOK:enabled {
+    background-color: green;
+}
+
+button.modal-mood-reporter:focus, button.modal-mood-reporter:active, button.modal-mood-reporter:hover {
+   outline: none !important;
+   background-color: #34cfca;
+}
+
+.activeMoodReporter {
+    border: 3px solid #478de7;
+}
+
+img.modal-mood-pics:focus {
+    outline: 0;
+}
+
+.mood-item {
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.activeMoodItem {
+    border: 4px solid #478de7;
+    /*margin-bottom: 20px;
+    padding: 5px;*/
 }
 /*
 MODAL WINDOW END

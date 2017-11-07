@@ -28,13 +28,13 @@ input[aria-expanded=false] {
 md-icon {
   svg {
     path {
-      fill: darkslategrey; /*#ffffff;*/
+      fill: #555555;
     }
   }
 }
 
 .md-datepicker-triangle-button .md-datepicker-expand-triangle {
-  border-top-color: darkslategrey;
+  border-top-color: #555555;
 }
 
 #datepicker-placement {
@@ -52,5 +52,5 @@ md-icon {
   opacity: 0.8;
   font-size: medium;
   font-weight: 500;
-  color: darkslategrey;
+  color: #555555;
 }
