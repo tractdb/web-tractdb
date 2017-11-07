@@ -16,7 +16,17 @@
 .signup-avatars {
 	height:90px; 
 	width:90px;
-	margin: 0 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+}
+
+/*disable default blue outline on focus*/
+img.signup-avatars:focus {
+    outline: 0;
+}
+
+/*and replace with custom border*/
+.activePicItem {
+    border: 5px solid #478de7;
 }
 
 .avatar-area {

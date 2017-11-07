@@ -102,15 +102,15 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="profilePic">Profile Picture</label>
 						<ul class="avatar-area list-inline"> <!--IMPROVE LIST STYLE IN CSS-->
-				      <li ng-repeat="item in profilePicItems">
-				        <div>
-				          <img class="signup-avatars" ng-src="{{item.path}}" alt="{{item.name}}" ng-click="$event.preventDefault(); member.profilePic = item.path;">
-				        </div>
+				      		<li ng-repeat="item in profilePicItems">
+				        		<div ng-class="{activePicItem : activeProfilePicMenu === item.name}">
+				          			<img class="signup-avatars" ng-src="{{item.path}}" alt="{{item.name}}" ng-click="$event.preventDefault(); member.profilePic = item.path; setActivePic(item.name)">
+				        		</div>
 				       <!--  <div class="mood-name">
 				          <a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item; $ctrl.buttonState=$ctrl.buttonState+1">{{item.name}}</a>
 				        </div> -->
-				      </li>
-			      </ul>
+				      		</li>
+			      		</ul>
 					</div>
 
 					<div class="form-group">

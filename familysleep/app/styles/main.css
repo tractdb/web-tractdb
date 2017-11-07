@@ -7479,34 +7479,46 @@ button.close {
 .signup-avatars {
   height: 90px;
   width: 90px;
-  margin: 0 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
 }
 
-/* line 22, partials/_signup.scss */
+/*disable default blue outline on focus*/
+/* line 23, partials/_signup.scss */
+img.signup-avatars:focus {
+  outline: 0;
+}
+
+/*and replace with custom border*/
+/* line 28, partials/_signup.scss */
+.activePicItem {
+  border: 5px solid #478de7;
+}
+
+/* line 32, partials/_signup.scss */
 .avatar-area {
   width: 700px;
   margin-left: 420px;
 }
 
-/* line 27, partials/_signup.scss */
+/* line 37, partials/_signup.scss */
 .signup-buttons {
   width: 478px;
   margin-left: -5px;
   margin-top: 15px;
 }
 
-/* line 33, partials/_signup.scss */
+/* line 43, partials/_signup.scss */
 #last-button {
   margin-bottom: 50px;
 }
 
-/* line 37, partials/_signup.scss */
+/* line 47, partials/_signup.scss */
 .family-type-container {
   float: left;
   width: 550px;
 }
 
-/* line 42, partials/_signup.scss */
+/* line 52, partials/_signup.scss */
 .family-type {
   margin-top: 5px;
   margin-botton: 5px;

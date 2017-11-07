@@ -69,6 +69,12 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 		//check this fitbitd
 		$scope.fitbits = ["asdxas", "asdfxz", "asdfserter"];
 
+		// set activePicItem class to profile pictures for styling clicked/active images
+		$scope.activeProfilePicMenu = $scope.profilePicItems[0].name;
+		$scope.setActivePic = function(profilePicItem) {
+			$scope.activeProfilePicMenu = profilePicItem;
+		}
+
 		// In our signup.html, we'll be using the ng-model
 		// attribute to populate this object.
 
