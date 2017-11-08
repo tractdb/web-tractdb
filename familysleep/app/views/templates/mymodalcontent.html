@@ -3,7 +3,7 @@
 </div>
 <!--<p>{{$ctrl.buttonState}}</p>-->
 <div class="modal-body" id="modal-body">
-  <h3>Who is reporting Mood for {{famID}}?</h3>
+  <h3>Who is reporting Mood for {{$ctrl.famName}}?</h3>
    <div class="source">
       <ul class="list-inline"> 
         <li ng-repeat="fam in $ctrl.famMems">
@@ -12,7 +12,7 @@
       </ul>
     </div>
   <ul class="list-inline"> 
-    <h3>Tell us how {{famID}} feels</h3>
+    <h3>Tell us how {{$ctrl.famName}} feels</h3>
       <li ng-repeat="item in $ctrl.items">
         <div>
           <img ng-src="{{item.image}}" alt="{{item.name}}" ng-click="$event.preventDefault(); $ctrl.selected.item = item; $ctrl.moodButton=true" class="modal-mood-pics">
