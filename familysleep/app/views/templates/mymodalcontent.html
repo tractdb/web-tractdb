@@ -3,28 +3,28 @@
 </div>
 <!--<p>{{$ctrl.buttonState}}</p>-->
 <div class="modal-body" id="modal-body">
-  <h3>Who is reporting Mood for {{$ctrl.famID}}?</h3>
+  <h3>Who is reporting Mood for {{famID}}?</h3>
    <div class="source">
       <ul class="list-inline"> 
         <li ng-repeat="fam in $ctrl.famMems">
-          <button class="btn btn-info btn-lg btn-block" type="button" ng-click="$event.preventDefault(); $ctrl.selectedFam.item = fam; $ctrl.buttonState=$ctrl.buttonState+1">{{ fam }}</button> 
+          <button class="btn btn-info btn-lg btn-block" type="button" ng-click="$event.preventDefault(); $ctrl.selectedFam.item = fam; $ctrl.famButton=true">{{ fam }}</button> 
         </li>
       </ul>
     </div>
   <ul class="list-inline"> 
-    <h3>Tell us how {{$ctrl.famID}} feels</h3>
+    <h3>Tell us how {{famID}} feels</h3>
       <li ng-repeat="item in $ctrl.items">
         <div>
-          <img ng-src="{{item.image}}" alt="{{item.name}}" ng-click="$event.preventDefault(); $ctrl.selected.item = item; $ctrl.buttonState=$ctrl.buttonState+1" class="modal-mood-pics">
+          <img ng-src="{{item.image}}" alt="{{item.name}}" ng-click="$event.preventDefault(); $ctrl.selected.item = item; $ctrl.moodButton=true" class="modal-mood-pics">
         </div>
         <div class="mood-name">
-          <a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item; $ctrl.buttonState=$ctrl.buttonState+1">{{item.name}}</a>
+          <a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item; $ctrl.moodButton=true">{{item.name}}</a>
         </div>
       </li>
   </ul>
    
 </div>
 <div class="modal-footer">
-        <button class="modal-btn btn btn-primary btn-lg" type="button" ng-disabled="!($ctrl.buttonState >=2)" ng-click="$ctrl.ok()">OK</button>
+        <button class="modal-btn btn btn-primary btn-lg" type="button" ng-disabled="!($ctrl.famButton && $ctrl.moodButton)" ng-click="$ctrl.ok()">OK</button>
         <button class="btn btn-warning btn-lg" type="button" ng-click="$ctrl.cancel()">Cancel</button>
 </div>

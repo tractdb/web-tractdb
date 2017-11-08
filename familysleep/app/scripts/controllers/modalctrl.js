@@ -4,7 +4,9 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
     function(selfReportState, $uibModal, $log, $document, tractdbdata, personaFactory, sleepFamDailyDataFactory, dateFactory){
     var templateDir = 'app/views/templates/';
     var $ctrl = this;
-    $ctrl.buttonState = 0;
+    //$ctrl.buttonState = 0;
+    $ctrl.famButton = false;
+    $ctrl.moodButton = false;
 
     var moodImages = [
     	{	name:'Happy',
@@ -52,7 +54,8 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
 
     console.log(famID);
     $ctrl.famID = famID;
-    $ctrl.buttonState = 0;
+    $ctrl.famButton = false;
+    $ctrl.moodButton = false;
 
     for (var i = 0; i < $ctrl.famIDs.length; i++) {
         if ($ctrl.famIDs[i] == $ctrl.famID) {
