@@ -7981,30 +7981,66 @@ button.modalOK:enabled {
 /* line 148, partials/_modalstyle.scss */
 button.modal-mood-reporter:focus, button.modal-mood-reporter:active, button.modal-mood-reporter:hover {
   outline: none !important;
-  background-color: #34cfca;
 }
 
-/* line 153, partials/_modalstyle.scss */
+/* line 152, partials/_modalstyle.scss */
+.activeMoodReporter button {
+  background-color: #268986;
+  border-color: #268986;
+  outline: none !important;
+}
+
+/* line 158, partials/_modalstyle.scss */
 .activeMoodReporter {
-  border: 3px solid #478de7;
+  /*border: 3px solid #478de7;*/
 }
 
-/* line 157, partials/_modalstyle.scss */
+/* line 162, partials/_modalstyle.scss */
 img.modal-mood-pics:focus {
   outline: 0;
 }
 
-/* line 161, partials/_modalstyle.scss */
+/* line 166, partials/_modalstyle.scss */
 .mood-item {
   margin-bottom: 20px;
   padding: 5px;
 }
 
-/* line 166, partials/_modalstyle.scss */
+/* line 171, partials/_modalstyle.scss */
 .activeMoodItem {
   border: 4px solid #478de7;
-  /*margin-bottom: 20px;
-  padding: 5px;*/
+}
+
+/*for log modal window*/
+/* line 176, partials/_modalstyle.scss */
+label.logModalReporter:focus, label.logModalReporter:active, label.logModalReporter:hover {
+  outline: none !important;
+}
+
+/* line 180, partials/_modalstyle.scss */
+.activeLogReporter label {
+  background-color: #268986 !important;
+  border-color: #268986 !important;
+  outline: none !important;
+}
+
+/* line 186, partials/_modalstyle.scss */
+.activeLogReporter label:hover, .activeLogReporter label:active, .activeLogReporter label:focus {
+  background-color: #268986 !important;
+  border-color: #268986 !important;
+}
+
+/* line 191, partials/_modalstyle.scss */
+.inactiveReporter label {
+  background-color: #34cfca !important;
+  border-color: #34cfca !important;
+  outline: none !important;
+}
+
+/* line 197, partials/_modalstyle.scss */
+.inactiveReporter label:hover, .inactiveReporter label:active, .inactiveReporter label:focus {
+  background-color: #34cfca !important;
+  border-color: #34cfca !important;
 }
 
 /*
@@ -8161,6 +8197,12 @@ md-icon svg path {
   font-size: medium;
   font-weight: 500;
   color: #555555;
+  height: 45px;
+}
+
+/* line 59, partials/_datepicker.scss */
+#yesterday img, #tomorrow img {
+  height: 30px;
 }
 
 /*=======================================================================
