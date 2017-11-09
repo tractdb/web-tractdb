@@ -8,9 +8,9 @@
 	        <img ng-src={{viewModel.familyInfo.profilePic}} class="profile-pics">
 	        <p class="fdv-names">{{viewModel.familyInfo.name}}</p>
 	    </div>
-	    <div class="target-hours">
-	        <p class="target-hours-text">Target hours: {{ viewModel.familyInfo.targetedHours }}</p>
-	    </div>
+	    <div class="swv-target-hours">
+        	<p class="target-hours-text"><span class="data-label">Target hours: </span><br><span class="data-number">{{ viewModel.familyInfo.targetedHours }}</span></p>
+        </div>
 			<!--<img ng-src="{{persona." alt="momcircle" id="sdv-profile-pic">
 			<p id="sdv-name">{{id}}</p>-->
 	<!-- </div> -->
@@ -34,7 +34,7 @@
 <!--<p>No Data</p>-->
 	<div class="swv-row row" ng-repeat="day in viewModel.data | toArray : false | orderBy:'-date'">
 		<!-- <p class="swv-date">{{day.date}}</p> -->
-		<div ng-if="day.duration==-1" ng-controller="EmptybarchartCtrl"> <!--no data -->
+		<div class="regular-row" ng-if="day.duration==-1" ng-controller="EmptybarchartCtrl"> <!--no data -->
 		<!--<p>{{day.duration}}</p>
 				-<p>{{data}}</p>-->
 				<p class="swv-date">{{day.date}}</p>
@@ -43,34 +43,36 @@
 		</div>
 		<div ng-if="day.duration > -1">
 			<div ng-switch on="$index">
-				<div ng-switch-when="0">
+				<div ng-switch-when="0" class="first-row">
 					<canvas class="swv-chart-placement chart chart-bar" chart-data="day.data" chart-labels="day.labels" chart-options="viewModel.options_first" chart-series="viewModel.series" chart-colors="viewModel.colors"  height="90" width="800"></canvas>	
 					<!-- <img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics"> -->
-					<!-- <img ng-src="app/images/faces/happy.png" class="swv-mood-pics"> -->
+					<img ng-src="app/images/faces/happy.png" class="swv-mood-pics">
 					<p class="swv-date swv-date-first">{{day.date}}</p>
 					<div ng-show="viewModel.state[day.date].state">
-						<img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics">
+						<!-- <img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics"> -->
 					</div>
 					<div ng-hide="!viewModel.state[day.date].state">
 					</div>
 				</div>
-				<div ng-switch-when="6">
+				<div ng-switch-when="6" class="last-row">
 					<p class="swv-date">{{day.date}}</p>
 					<canvas class="swv-chart-placement-last chart chart-bar" chart-data="day.data" chart-labels="day.labels" chart-options="viewModel.options_last" chart-series="viewModel.series" chart-colors="viewModel.colors"  height="100" width="800"></canvas>
 					<!-- <img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics-last"> -->
+					<img ng-src="app/images/faces/happy.png" class="swv-mood-pics-last">
 					<div ng-show="viewModel.state[day.date].state">
-						<img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics-last">
+						<!-- <img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics-last"> -->
 					</div>
 					<div ng-hide="!viewModel.state[day.date].state">
 					</div>
 					<!-- <img ng-src="app/images/faces/happy.png" class="swv-mood-pics-last"> -->
 				</div>
-				<div ng-switch-default>
+				<div ng-switch-default class="regular-row">
 					<p class="swv-date">{{day.date}}</p>
 					<canvas class="swv-chart-placement chart chart-bar" chart-data="day.data" chart-labels="day.labels" chart-options="viewModel.options" chart-series="viewModel.series" chart-colors="viewModel.colors"  height="45" width="800"></canvas>	
 					<!-- <img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics"> -->
+					<img ng-src="app/images/faces/happy.png" class="swv-mood-pics">
 					<div ng-show="viewModel.state[day.date].state">
-						<img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics">
+						<!-- <img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics"> -->
 					</div>
 					<div ng-hide="!viewModel.state[day.date].state">
 					</div>

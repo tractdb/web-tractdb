@@ -51,7 +51,7 @@ md-icon {
 #yesterday, #today, #tomorrow {
 	background-color: #D3DBE9 ;/*#6e85b6;*/
   opacity: 0.8;
-  font-size: medium;
+  font-size: 17px;
   font-weight: 500;
   color: #555555;
   height: 45px;
@@ -72,7 +72,7 @@ md-icon {
 
 /*change dimension of input area in calendar so date shows through*/
 .md-datepicker-input-mask-opaque {
-  box-shadow: 0 0 0 999px white, inset 0 9px 0px 0px white, inset 13px 0 0 0px white, inset -34px 0 0 0px white;
+  box-shadow: 0 0 0 999px white, inset 0 9px 0px 0px white, inset 13px 0 0 0px white, inset -35px 0 0 0px white;
   left: 0 !important;
   top: 0 !important;
 }

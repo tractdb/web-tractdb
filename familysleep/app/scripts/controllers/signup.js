@@ -70,7 +70,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 		$scope.fitbits = ["asdxas", "asdfxz", "asdfserter"];
 
 		// set activePicItem class to profile pictures for styling clicked/active images
-		$scope.activeProfilePicMenu = $scope.profilePicItems[0].name;
+		$scope.activeProfilePicMenu = "None";
 		$scope.setActivePic = function(profilePicItem) {
 			$scope.activeProfilePicMenu = profilePicItem;
 		}

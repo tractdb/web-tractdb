@@ -9,11 +9,16 @@
 }
 
 /* line 10, singledailyview.scss */
+.singleview-container p {
+  font-size: 17px;
+}
+
+/* line 14, singledailyview.scss */
 .sdv-empty-chart {
   margin-top: 230px;
 }
 
-/* line 14, singledailyview.scss */
+/* line 18, singledailyview.scss */
 #sdv-profile-pic {
   position: relative;
   top: 0px;
@@ -21,50 +26,56 @@
   height: 70px;
 }
 
-/* line 21, singledailyview.scss */
+/* line 25, singledailyview.scss */
+.sdv-names {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+/* line 30, singledailyview.scss */
 .sdv-mood-pics {
   position: absolute;
   width: 100px;
   height: 100px;
-  top: 75px;
-  left: 240px;
+  top: 25px;
+  left: 25px;
   z-index: 1;
 }
 
-/* line 30, singledailyview.scss */
+/* line 39, singledailyview.scss */
 .sdv-mood-report {
   position: absolute;
-  top: 210px;
-  font-size: medium;
-  width: 70%;
-  margin-left: 145px;
+  top: 150px;
+  font-size: 17px;
+  width: 200px;
+  margin-left: -25px;
 }
 
-/* line 38, singledailyview.scss */
+/* line 47, singledailyview.scss */
 .sdv-mood-report-text {
   text-align: center;
 }
 
-/* line 42, singledailyview.scss */
+/* line 51, singledailyview.scss */
 #sdv-name {
   text-align: center;
   width: 70px;
   margin: 0;
 }
 
-/* line 48, singledailyview.scss */
+/* line 57, singledailyview.scss */
 #sdv-legend {
   margin-bottom: 30px;
   margin-top: 20px;
   margin-left: 400px;
 }
 
-/* line 54, singledailyview.scss */
+/* line 63, singledailyview.scss */
 #sdv-legend li {
   display: inline-block;
 }
 
-/* line 58, singledailyview.scss */
+/* line 67, singledailyview.scss */
 #sdv-legend li:nth-child(2),
 #sdv-legend li:nth-child(4),
 #sdv-legend li:nth-child(6),
@@ -73,26 +84,26 @@
   font-size: medium;
 }
 
-/* line 66, singledailyview.scss */
+/* line 75, singledailyview.scss */
 .sdv-chart-placement {
   height: 150px;
   position: absolute;
   width: 150px;
-  margin-left: 200px;
+  margin-left: 250px;
   top: 50px;
 }
 
-/* line 74, singledailyview.scss */
+/* line 83, singledailyview.scss */
 .sdv-barchart-placement {
   /*margin-top: 120px;*/
 }
 
-/* line 78, singledailyview.scss */
+/* line 87, singledailyview.scss */
 .sdv-mood-text {
   text-align: center;
 }
 
-/* line 82, singledailyview.scss */
+/* line 91, singledailyview.scss */
 .sdv-sleep-data {
   margin-left: 500px;
   list-style-type: none;
@@ -100,21 +111,22 @@
   -webkit-columns: 2;
   -moz-columns: 2;
   margin-top: 50px;
+  margin-bottom: 40px;
 }
 
-/* line 91, singledailyview.scss */
+/* line 101, singledailyview.scss */
 .sdv-sleep-data li {
   text-align: center;
 }
 
 /* numbers */
-/* line 96, singledailyview.scss */
+/* line 106, singledailyview.scss */
 .sdv-sleep-data li:nth-child(odd) {
   font-size: 24px;
   font-weight: bold;
 }
 
-/* line 101, singledailyview.scss */
+/* line 111, singledailyview.scss */
 .sdv-sleep-data li:nth-child(even) {
   font-size: 12px;
   margin-bottom: 30px;

@@ -5,6 +5,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
     var templateDir = 'app/views/templates/';
     var $ctrl = this;
     $ctrl.buttonState = 0;
+    $ctrl.imgState = 0;
 
     var moodImages = [
     	{	name:'Happy',
@@ -53,6 +54,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
     console.log(famID);
     $ctrl.famID = famID;
     $ctrl.buttonState = 0;
+    $ctrl.imgState = 0;
 
     for (var i = 0; i < $ctrl.famIDs.length; i++) {
         if ($ctrl.famIDs[i] == $ctrl.famID) {
