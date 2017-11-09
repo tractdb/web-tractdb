@@ -8082,7 +8082,7 @@ MODAL WINDOW END
 
 /* line 12, partials/_familyweeklyview.scss */
 .fwv-person {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   margin-left: 0;
   margin-right: 0;
 }
@@ -8098,11 +8098,11 @@ MODAL WINDOW END
 .fwv-names {
   text-align: center;
   position: absolute;
-  top: 80px;
+  top: 75px;
   width: 70px;
   margin: 0;
   font-weight: bold;
-  font-size: medium;
+  font-size: 18px;
 }
 
 /* line 34, partials/_familyweeklyview.scss */
