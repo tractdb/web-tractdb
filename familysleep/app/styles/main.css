@@ -8164,32 +8164,33 @@ input[aria-expanded=false] {
 /* line 23, partials/_datepicker.scss */
 .md-datepicker-input {
   color: white;
-  font-size: medium;
+  font-size: 18px;
+  margin-right: 20px;
 }
 
-/* line 30, partials/_datepicker.scss */
+/* line 31, partials/_datepicker.scss */
 md-icon svg path {
   fill: #555555;
 }
 
-/* line 36, partials/_datepicker.scss */
+/* line 37, partials/_datepicker.scss */
 .md-datepicker-triangle-button .md-datepicker-expand-triangle {
   border-top-color: #555555;
 }
 
-/* line 40, partials/_datepicker.scss */
+/* line 41, partials/_datepicker.scss */
 #datepicker-placement {
   margin-top: 10px;
-  margin-left: 40px;
+  margin-left: 45px;
 }
 
-/* line 45, partials/_datepicker.scss */
+/* line 46, partials/_datepicker.scss */
 ._md-datepicker-has-triangle-icon {
   padding-right: 18px;
   margin-right: 0px;
 }
 
-/* line 50, partials/_datepicker.scss */
+/* line 51, partials/_datepicker.scss */
 #yesterday, #today, #tomorrow {
   background-color: #D3DBE9;
   /*#6e85b6;*/
@@ -8198,11 +8199,29 @@ md-icon svg path {
   font-weight: 500;
   color: #555555;
   height: 45px;
+  width: 50px;
 }
 
-/* line 59, partials/_datepicker.scss */
+/* line 61, partials/_datepicker.scss */
 #yesterday img, #tomorrow img {
-  height: 30px;
+  height: 28px;
+  width: 28px;
+}
+
+/*change scale of popup calendar*/
+/* line 67, partials/_datepicker.scss */
+.md-datepicker-calendar-pane.md-pane-open {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5) !important;
+  top: 74px !important;
+}
+
+/*change dimension of input area in calendar so date shows through*/
+/* line 74, partials/_datepicker.scss */
+.md-datepicker-input-mask-opaque {
+  box-shadow: 0 0 0 999px white, inset 0 9px 0px 0px white, inset 13px 0 0 0px white, inset -34px 0 0 0px white;
+  left: 0 !important;
+  top: 0 !important;
 }
 
 /*=======================================================================

@@ -145,13 +145,13 @@ angular.module('FamilySleep').controller('ModalInstanceCtrl', function ($uibModa
   };*/
 
   // set activeMoodReporter class to modal reporter buttons for styling clicked/active buttons
-  $ctrl.activeReporterMenu = $ctrl.famMems;
+  $ctrl.activeReporterMenu = "None";
   $ctrl.setActiveMoodReporter = function(famName) {
     $ctrl.activeReporterMenu = famName;
   }
 
   // set activeMoodItem class to modal mood pictures for styling clicked/active images
-  $ctrl.activeModalMoodPicMenu = $ctrl.items[0];
+  $ctrl.activeModalMoodPicMenu = "None";
   $ctrl.setActiveMoodPic = function(modalMoodPicItem) {
     $ctrl.activeModalMoodPicMenu = modalMoodPicItem;
   }

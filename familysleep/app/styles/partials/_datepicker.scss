@@ -22,7 +22,8 @@ input[aria-expanded=false] {
 
 .md-datepicker-input {
   color: white;
-  font-size: medium;
+  font-size: 18px;
+  margin-right: 20px;
 }
 
 md-icon {
@@ -39,7 +40,7 @@ md-icon {
 
 #datepicker-placement {
   margin-top: 10px;
-  margin-left: 40px;
+  margin-left: 45px;
 }
 
 ._md-datepicker-has-triangle-icon {
@@ -54,8 +55,25 @@ md-icon {
   font-weight: 500;
   color: #555555;
   height: 45px;
+  width: 50px;
 }
 
 #yesterday img, #tomorrow img {
-    height: 30px;
+    height: 28px;
+    width: 28px;
 }
+
+/*change scale of popup calendar*/
+.md-datepicker-calendar-pane.md-pane-open {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5) !important;
+    top: 74px !important;
+}
+
+/*change dimension of input area in calendar so date shows through*/
+.md-datepicker-input-mask-opaque {
+  box-shadow: 0 0 0 999px white, inset 0 9px 0px 0px white, inset 13px 0 0 0px white, inset -34px 0 0 0px white;
+  left: 0 !important;
+  top: 0 !important;
+}
+
