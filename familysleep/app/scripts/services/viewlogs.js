@@ -88,7 +88,7 @@ module.factory(
             'endTime': null
         };
         factory.logSession.startTime = currentTime;  
-        $timeout(factory.popup, 1 * 1000); 
+        $timeout(factory.popup, 5 * 1000); 
       }
       factory.logSession.pages.push({'page': page, 'id' : id, 'date': date});
       factory.logSession.sessionTimeStamps.push(currentTime);
