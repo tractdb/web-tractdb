@@ -2,9 +2,10 @@
 
 	<div class="row">
 		<div class="col-xs-4">
-            <img ng-src={{viewModel.familyInfo.profilePic}} class="profile-pics">
-            <p class="sdv-names">{{viewModel.familyInfo.name}}</p>
-
+            <div>
+            	<img ng-src={{viewModel.familyInfo.profilePic}} class="profile-pics">
+            	<p class="sdv-names">{{viewModel.familyInfo.name}}</p>
+			</div>
             <div class="sdv-chart-placement">
 	            <canvas id="doughnut" class="chart-doughnut" chart-data="viewModel.familyInfo.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
 	            </canvas>
@@ -43,7 +44,7 @@
 	</div>
 	<div class="row sdv-barchart-placement"> <!-- THIS IS FOR THE DATA BAR -->
 		<!-- need duration > -1 -->
-			<div class="row" ng-if="viewModel.familyInfo.duration > -1">
+			<div class="row sdv-bar-chart" ng-if="viewModel.familyInfo.duration > -1">
 				<canvas class="chart chart-bar" chart-data="viewModel.familyInfo.night" chart-labels="viewModel.barlabels" chart-options="viewModel.baroptions" chart-series="viewModel.barseries" chart-colors="viewModel.barcolors" width="50" height="10">
 				</canvas>
 				<!-- 

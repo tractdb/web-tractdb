@@ -7,12 +7,10 @@
   margin: auto;
 }
 
-.singleview-container p {
-  font-size: 17px;
-}
-
-.sdv-empty-chart {
-  margin-top: 230px;
+p.sdv-names {
+  font-size: 20px;
+  width: 70px;
+  text-align: center;
 }
 
 #sdv-profile-pic {
@@ -23,8 +21,8 @@
 }
 
 .sdv-names {
-  font-size: 24px;
-  margin-top: 10px;
+  font-size: 19px !important;
+  margin-top: 70px;
 }
 
 .sdv-mood-pics {
@@ -80,8 +78,12 @@
   top: 50px;
 }
 
-.sdv-barchart-placement {
-  /*margin-top: 120px;*/
+.sdv-bar-chart {
+  margin-top: 0px;
+}
+
+.sdv-empty-chart,  {
+  margin-top: 120px;
 }
 
 .sdv-mood-text {
