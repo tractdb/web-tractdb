@@ -131,6 +131,7 @@ angular.module('FamilySleep')
             //I don't know if I need a personFactory.observe
             personaFactory.observe($scope, viewModel.updateWeekFamilyInfo);
             tractdbFactory.observe($scope, viewModel.updateWeekFamilyInfo);
+            selfReportState.observe($scope, viewModel.updateFamilyInfo);
             //
             // Current approach to showing the menu for choosing views
             //

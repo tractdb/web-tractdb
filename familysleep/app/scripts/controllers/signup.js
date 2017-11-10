@@ -197,7 +197,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 
 			//need to clear factory fields
 			personaFactory.personas = {};
-			selfReportState.states = {};
+			selfReportState.states = null;
 			count = 0;
 		}
 

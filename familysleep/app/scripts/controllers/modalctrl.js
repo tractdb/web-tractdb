@@ -96,7 +96,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       $ctrl.selected = selectedItems.selected;
       //source of report
       $ctrl.selectedFam = selectedItems.selectedFam;
-      //var reporterID = per
+      
       //console.log("printing on family member sleep object");
       //console.log(sleepFamDailyDataFactory.famID);
       // console.log("printing $ctrl.FamID");
@@ -104,6 +104,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       $ctrl.states[$ctrl.famID].state = true;
       $ctrl.states[$ctrl.famID].mood = selectedItems.selected.name;
       $ctrl.states[$ctrl.famID].image = selectedItems.selected.image;
+      var reporterID = personaFactory.getID(selectedItems.selectedFam);
 
       // console.log('$ctrl.states');
       // console.log($ctrl.states);
@@ -111,7 +112,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       // console.log('personas');
       // console.log(personaFactory.personas);
       var date = dateFactory.getDateString();
-      selfReportState.setMood($ctrl.famID, selectedItems.selected.name, selectedItems.selected.image, selectedItems.selectedFam, date);
+      selfReportState.setMood($ctrl.famID, selectedItems.selected.name, selectedItems.selected.image, reporterID, date);
       selfReportState.putData();
       console.log('personaFactory personas');
       console.log(personaFactory.personas);
