@@ -3,7 +3,8 @@
     <div flex-gt-xs="">
       <!-- <h4>Opening the calendar when the input is focused</h4> -->
       <md-button id="yesterday" class="md-primary md-raised" ng-click="yesterday()">Yesterday</md-button>
-      <md-datepicker ng-model="myDate" md-open-on-focus="" ng-change='pickNewDate()'>
+      <!-- added onkeydown = return false to get rid of keyboard but I think keyboard still shows up -->
+      <md-datepicker onkeydown="return false" ng-model="myDate" md-open-on-focus="" ng-change='pickNewDate()'>
       </md-datepicker>
 
       <!-- <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-is-open="ctrl.isOpen"></md-datepicker> -->

@@ -79,7 +79,7 @@ angular.module('FamilySleep')
           $scope.recordRecording = false;
           $scope.recordPausing = false;
           $window.recordRTC.stopRecording (function() {
-            $scope.url = $window.recordRTC.toURL();
+            $scope.url = decodeURIComponent($window.recordRTC.toURL());
             var recordedBlob = $window.recordRTC.getBlob();
             $scope.recordedBlob = recordedBlob;
             //console.log($scope.url);
