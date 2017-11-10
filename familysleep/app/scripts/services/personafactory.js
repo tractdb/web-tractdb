@@ -232,6 +232,16 @@ module.factory(
                 return names;
             }
 
+            //return single name
+            factory.getName = function (famID){
+               
+                for (var prop in factory.personas){
+                    if(factory.personas[prop].pid == famID){
+                        return factory.personas[prop].name;
+                    }
+                }
+                return null;
+            }
             //returns an Array of key values
             factory.getAllIDs = function(){
                 return Object.keys(factory.personas);

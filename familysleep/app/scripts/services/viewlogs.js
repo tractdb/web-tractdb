@@ -42,7 +42,7 @@ var module = angular.module(
     
 module.factory(
   'viewLogs', 
-  ['$timeout', '$uibModal', 'personaFactory', function ($timeout, $uibModal, personaFactory) {
+  ['$timeout', '$uibModal', 'personaFactory', '$log', function ($timeout, $uibModal, personaFactory, $log) {
     var factory = {};
 
     factory.logs = {};

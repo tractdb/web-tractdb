@@ -4,7 +4,9 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
     function(selfReportState, $uibModal, $log, $document, tractdbdata, personaFactory, sleepFamDailyDataFactory, dateFactory){
     var templateDir = 'app/views/templates/';
     var $ctrl = this;
-    $ctrl.buttonState = 0;
+    //$ctrl.buttonState = 0;
+    $ctrl.famButton = false;
+    $ctrl.moodButton = false;
 
     var moodImages = [
     	{	name:'Happy',
@@ -37,9 +39,11 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
 
    
 	$ctrl.open = function (famID) {
-		$log.info("in open of ModalCrtl"); //added this might need to pass log
+		//$log.info("in open of ModalCrtl"); //added this might need to pass log
     var date = dateFactory.getDateString();
-     //$ctrl.famMems = personaFactory.getAllNameIDs();
+    //console.log(famID);
+    $ctrl.famID = famID;
+
     $ctrl.famMems = personaFactory.getAllNames();
     //console.log($ctrl.famMems);
     $ctrl.famIDs = personaFactory.getAllIDs();
@@ -49,10 +53,10 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
     /*console.log("printing $ctrl.states object from ModalCrtl");
     console.log($ctrl.states);*/
     //$ctrl.famID;
+    $ctrl.famName = personaFactory.getName(famID);
 
-    console.log(famID);
-    $ctrl.famID = famID;
-    $ctrl.buttonState = 0;
+    $ctrl.famButton = false;
+    $ctrl.moodButton = false;
 
     for (var i = 0; i < $ctrl.famIDs.length; i++) {
         if ($ctrl.famIDs[i] == $ctrl.famID) {
@@ -60,6 +64,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
             break;
         }
     }
+
     var modalInstance = $uibModal.open({
       animation: $ctrl.animationsEnabled,
       ariaLabelledBy: 'modal-title',
@@ -79,6 +84,9 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
         },
         famID: function(){
           return $ctrl.famID;
+        },
+        famName: function(){
+          return $ctrl.famName;
         }
       }
     });
@@ -104,7 +112,7 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       // console.log(personaFactory.personas);
       var date = dateFactory.getDateString();
       selfReportState.setMood($ctrl.famID, selectedItems.selected.name, selectedItems.selected.image, selectedItems.selectedFam, date);
-      //selfReportState.putData();
+      selfReportState.putData();
       console.log('personaFactory personas');
       console.log(personaFactory.personas);
       //$log.info(selectedItems.selected);
@@ -129,10 +137,11 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
 
-angular.module('FamilySleep').controller('ModalInstanceCtrl', function ($uibModalInstance, items, famMems, $log, famID) {
+angular.module('FamilySleep').controller('ModalInstanceCtrl', function ($uibModalInstance, items, famMems, $log, famID, famName) {
   var $ctrl = this;
   $ctrl.items = items;
-  //$ctrl.famID = famID; //not sure if we need this
+  $ctrl.famID = famID; //not sure if we need this
+  $ctrl.famName = famName;
   //creating an object
   /*$ctrl.selected = {
     item: $ctrl.items[0]
