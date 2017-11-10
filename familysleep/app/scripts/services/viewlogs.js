@@ -132,6 +132,26 @@ module.factory(
 angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibModalInstance, famMems, famID) {
   var $ctrl = this;
   $ctrl.famMems = famMems;
+  $ctrl.buttonState = false;
+
+  // for checkbox buttons in logmodal instance
+  $ctrl.checkFam = [];
+  for (var i = 0; i < $ctrl.famMems.length; i++) {
+    $ctrl.checkFam[i] = ({name: $ctrl.famMems[i], checked : false});
+  }
+
+  // checks that at least one button is clicked in logmodal to activate OK button
+  $ctrl.isOK = function () {
+    for (var i = 0; i < $ctrl.checkFam.length; i++) {
+      if ($ctrl.checkFam[i].checked === true) {
+        $ctrl.buttonState = true;
+        break;
+      } else {
+        $ctrl.buttonState = false;
+      }
+    }
+  };
+
   $ctrl.ok = function () {
     $uibModalInstance.close({selectedFam: $ctrl.selectedFam.item});
   };

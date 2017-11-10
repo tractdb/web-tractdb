@@ -237,7 +237,7 @@ angular.module('FamilySleep')
 
 	$rootScope.menu = [
 	  {
-		  title: 'Back',
+		  title: 'Family Daily View',
 		  url: 'familydailyview',
 		  tag: 'family-daily-view'
 	  },

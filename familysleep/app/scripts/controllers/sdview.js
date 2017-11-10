@@ -155,7 +155,7 @@ angular.module('FamilySleep')
 		//selfReportState.observe($scope, viewModel.updateFamilyInfo);
 		$rootScope.menu = [
 			{
-					title: 'Back',
+					title: 'Family Daily View',
 					url: 'familydailyview',
 					tag: 'family-daily-view'
 			},

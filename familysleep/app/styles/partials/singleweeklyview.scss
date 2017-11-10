@@ -7,6 +7,14 @@
   margin: auto;
 }
 
+.swv-target-hours {
+  position: absolute;
+  top: 10px;
+  margin-bottom: 20px;
+  font-size: medium;
+  width: 100%;
+}
+
 .swv-row {
 	margin-bottom: 10px;
   margin-left: 20px;
@@ -18,11 +26,13 @@
 }
 
 .swv-date-first {
-  margin-top: -25px;
+  /* margin-top: -25px; */
+  position: absolute;
+  top: 300px;
 }
 
 #swv-legend {
-	margin-bottom: 80px;
+	margin-bottom: 50px;
   margin-left: 400px;
   padding-top: 50px;
 }
@@ -83,6 +93,7 @@
 .swv-empty-chart-placement {
 	margin-left: 100px;
   margin-top: -30px;
+  margin-bottom: 10px;
 }
 
 .swv-chart-placement-last {
@@ -90,17 +101,29 @@
   margin-top: -30px;
 }
 
+.regular-row {
+  height: 40px;
+}
+
+.first-row {
+  height: 105px;
+}
+
+.last-row {
+  height: 80px;
+}
+
 .swv-mood-pics {
 	width: 40px;
   height: 40px;
   margin-top: -55px;
-  margin-left: 920px;
+  margin-left: 940px;
 }
 
 .swv-mood-pics-last {
 	width: 40px;
   height: 40px;
   margin-top: -180px;
-  margin-left: 920px;
+  margin-left: 940px;
 }
 
