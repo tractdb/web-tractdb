@@ -2,22 +2,28 @@
 <div class='date-picker' id="datepicker-placement">
     <div flex-gt-xs="">
       <!-- <h4>Opening the calendar when the input is focused</h4> -->
+<!-- <<<<<<< HEAD -->
       <!-- <md-button id="yesterday" class="md-primary md-raised" ng-click="yesterday()">Yesterday</md-button> -->
-      <button type="button" id="yesterday" class="btn btn-default" aria-label="Left Chevron" ng-click="yesterday()">
+      <md-button type="button" id="yesterday" class="md-primary md-raised" aria-label="Left Chevron" ng-click="yesterday()">
       	<!-- <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> -->
       	<img src="app/images/arrow-left.svg"></img>
-      </button>
+      </md-button>
 
       <md-datepicker ng-model="myDate" md-open-on-focus="" ng-change='pickNewDate()' onkeydown="return false">
+<!-- =======
+      <md-button id="yesterday" class="md-primary md-raised" ng-click="yesterday()">Yesterday</md-button>
+      added onkeydown = return false to get rid of keyboard but I think keyboard still shows up
+      <md-datepicker onkeydown="return false" ng-model="myDate" md-open-on-focus="" ng-change='pickNewDate()'>
+>>>>>>> 890084bb93a2a9c58fe61dc92bd193677971745b -->
       </md-datepicker>
 
       <!-- <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-is-open="ctrl.isOpen"></md-datepicker> -->
       <md-button id="today" class="md-primary md-raised" ng-click="today()">Today</md-button>
       <!-- <md-button id="tomorrow" class="md-primary md-raised" ng-click="tomorrow()">Tomorrow</md-button> -->
-      <button type="button" id="tomorrow" class="btn btn-default" aria-label="Right Chevron" ng-click="tomorrow()">
+      <md-button type="button" id="tomorrow" class="md-primary md-raised" aria-label="Right Chevron" ng-click="tomorrow()">
       	<!-- <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> -->
       	<img src="app/images/arrow-right.svg"></img>
-      </button>
+      </md-button>
 
     </div>
 </div>

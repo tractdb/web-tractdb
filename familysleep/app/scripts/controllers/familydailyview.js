@@ -162,63 +162,79 @@ module.controller(
                         });
 
                     }
+                    //tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
 
                 }
 
-            //viewModel.calendarDate = dateFactory.getDateString();
-            //James
-            tractdbFactory.setQuery('familydaily', null, viewModel.calendarDate);
 
-            //should it be $scope or viewModel? we should use them consistently
-            personaFactory.observe($scope, viewModel.updateFamilyInfo);
-            tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
-            //selfReportState.observe($scope, viewModel.updateFamilyInfo);
-
-            //updating moon
-            $rootScope.$broadcast('familydailyview:updated');
-
-            //
-            // Current approach to showing the menu for choosing views
-            //
-            $rootScope.menu = [
-                {
-                    title: 'Family Daily View',
-                    url: 'familydailyview',
-                    tag: 'family-daily-view',
-                },
-                {
-                    title: 'Family Weekly View',
-                    url: 'famweeklyview',
-                    tag: 'family-weekly-view',
-                }
-            ];
-
-            $rootScope.active = 'family-daily-view';
-            $rootScope.updateActive = function (item) {
-                $rootScope.active = item;
-                viewLogs.logPage(item, dateFactory.getDateString());
-            };
-
-            $scope.$on('date:updated', function () {
-                viewModel.today = dateFactory.getTodayString();
-                viewModel.calendarDate = dateFactory.getDateString();
+                //viewModel.calendarDate = dateFactory.getDateString();
+                //James
                 tractdbFactory.setQuery('familydaily', null, viewModel.calendarDate);
-                //selfreportstate.initializeAll(pids);
-                viewModel.updateFamilyInfo();
+
+                //should it be $scope or viewModel? we should use them consistently
+                tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
+                //check if persona is not empty to then do persona.retrieveDATA
+                personaFactory.observe($scope, viewModel.updateFamilyInfo);
+                //can go SelfReport GET for when the page refreshes
+                //check if persona is not empty to then do persona.retrieveDatA
+                selfReportState.retrieveData();
+
+                //selfReportState.observe($scope, viewModel.updateFamilyInfo);
+                // if(angular.equals(selfReportState.states, {}) ){
+                //     var pids = personaFactory.getAllIDs();
+                //     selfReportState.initializeAllEmptyNewDay(pids, viewModel.calendarDate);
+                //     selfReportState.putNewData();                    
+                // } else {
+                //     selfReportState.retrieveData();
+                // }
+
+                //updating moon
                 $rootScope.$broadcast('familydailyview:updated');
-            });
 
-            //should replace to viewModel
-            $scope.changeToSingleDailyView = function(id){
-                //var view = '/familydailyview';
-                //console.log("in changeview FDV " + id);
-                //console.log('personas');
-                //console.log(personaFactory.personas);
-                $location.path('/sdview/' + id);
-                viewLogs.logPage('individual-daily-view', dateFactory.getDateString());
-            };
+            
 
-            $scope.changeToSingleWeeklyView = function(id){
-                $location.path('/singleweeklyview/' + id);
-            };
+                //
+                // Current approach to showing the menu for choosing views
+                //
+                $rootScope.menu = [
+                    {
+                        title: 'Family Daily View',
+                        url: 'familydailyview',
+                        tag: 'family-daily-view',
+                    },
+                    {
+                        title: 'Family Weekly View',
+                        url: 'famweeklyview',
+                        tag: 'family-weekly-view',
+                    }
+                ];
+
+                $rootScope.active = 'family-daily-view';
+                $rootScope.updateActive = function (item) {
+                    $rootScope.active = item;
+                    viewLogs.logPage(item, dateFactory.getDateString());
+                };
+
+                $scope.$on('date:updated', function () {
+                    viewModel.today = dateFactory.getTodayString();
+                    viewModel.calendarDate = dateFactory.getDateString();
+                    tractdbFactory.setQuery('familydaily', null, viewModel.calendarDate);
+                    //selfreportstate.initializeAll(pids);
+                    viewModel.updateFamilyInfo();
+                    $rootScope.$broadcast('familydailyview:updated');
+                });
+
+                //should replace to viewModel
+                $scope.changeToSingleDailyView = function(id){
+                    //var view = '/familydailyview';
+                    //console.log("in changeview FDV " + id);
+                    //console.log('personas');
+                    //console.log(personaFactory.personas);
+                    $location.path('/sdview/' + id);
+                    viewLogs.logPage('individual-daily-view', dateFactory.getDateString());
+                };
+
+                $scope.changeToSingleWeeklyView = function(id){
+                    $location.path('/singleweeklyview/' + id);
+                };
         }]);

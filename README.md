@@ -1,4 +1,4 @@
-This is a template for websites implemented using Jekyll.
+This is the beginning of a template for websites implemented using Jekyll.
 
 # Project Dependencies
 
@@ -7,7 +7,7 @@ Dependencies required for this project are:
 - Node 4.5.0
 - Ruby 2.3.3
 - Ruby DevKit
-- Docker Toolbox 1.12.3
+- Docker Toolbox v17.06.0a-ce
 
   Note we are using this version due to a potential bug in 1.12.5, which is unable to mount volumes on Windows.
 
@@ -93,7 +93,11 @@ When installing the Ruby DevKit:
 
 ## Installing Docker Toolbox
 
-[https://github.com/docker/toolbox/releases/download/v1.12.3/DockerToolbox-1.12.3.exe](https://github.com/docker/toolbox/releases/download/v1.12.3/DockerToolbox-1.12.3.exe)
+[https://github.com/docker/toolbox/releases/download/v17.06.0a-ce/DockerToolbox-17.06.0a-ce.exe](https://github.com/docker/toolbox/releases/download/v17.06.0a-ce/DockerToolbox-17.06.0a-ce.exe)
+
+This installer must be run by right-clicking and selecting 'Run as administrator'.
+This is required even when using an Administrator account.
+Otherwise, VirtualBox can fail to create the host-only network required for VirtualBox and Docker Toolbox.
 
 When installing Docker Toolbox:
 
@@ -185,20 +189,3 @@ Installing `rbenv` via Homebrew should automatically install `ruby-devkit`
 ## Installing Docker Toolbox
 
 `TODO`
-
-## Building and Serving the Site
-
-Invoke automation is provided for building the site.
-
-If it is not already active, you need to re-activate the virtual environment.
-From the working directory of our project:
-
-    env35\Scripts\activate.bat
-
-To build the site:
-
-    invoke build_test
-
-To build and serve the site on `localhost:4000`, continuously updating based on changes:
-
-    invoke serve_test
