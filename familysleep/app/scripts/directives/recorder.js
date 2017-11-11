@@ -88,7 +88,7 @@ angular.module('FamilySleep')
 
         $scope.onReplayRecord =  function() {
           $scope.recordReplay = true;
-          $scope.url = decodeURIComponent($window.recordRTC.toURL());
+          $scope.url = $window.recordRTC.toURL();
         }
         
         // sending the recording, not sure if it will get recorder back to clean slate

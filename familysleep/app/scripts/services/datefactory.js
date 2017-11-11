@@ -10,7 +10,7 @@
 
 
 angular.module('FamilySleep')
-  .factory('dateFactory', ['$rootScope', 'viewLogs', '$routeParams', '$route', function ($rootScope, viewLogs, $routeParams, $route) {
+  .factory('dateFactory', ['$rootScope', 'viewLogs', '$routeParams',function ($rootScope, viewLogs, $routeParams) {
     //I think we might want get/sets here
 
     // contains moment object
@@ -37,13 +37,12 @@ angular.module('FamilySleep')
       // console.log(date_week);
       // console.log('in dateFactory');
       // console.log(date.format());
-      console.log($route.current.controller);
-      if($rootScope.active && $rootScope.active.indexOf('weekly') == -1) {
-        viewLogs.logPage($rootScope.active, getDateString(), $routeParams.id);
-      } else if($rootScope.active && $rootScope.active.indexOf('daily') == -1){
-        viewLogs.logPage($rootScope.active, getDateString(), $routeParams.id);
-      } else if(!$rootScope.active && $route.current.controller != 'SignupCtrl') {
+      if(!$rootScope.active) {
         viewLogs.logPage('family-daily-view', getDateString(), $routeParams.id);
+      } else if($rootScope.active.indexOf('weekly') == -1) {
+        viewLogs.logPage($rootScope.active, getDateString(), $routeParams.id);
+      } else {
+        viewLogs.logPage($rootScope.active, getDateString(), $routeParams.id);
       }
       $rootScope.$broadcast('date:updated');
     };
