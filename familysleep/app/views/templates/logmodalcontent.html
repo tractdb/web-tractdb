@@ -4,17 +4,55 @@
 <!--<p>{{$ctrl.buttonState}}</p>-->
 <div class="modal-body" id="modal-body">
   <h3>Who is viewing?</h3>
-   <div class="source">
+  <div class="source">
       <ul class="list-inline"> 
         <li ng-repeat="fam in $ctrl.checkFam">
           <div ng-class="fam.checked ? 'activeLogReporter' : 'inactiveReporter'">
-            <label class="btn btn-info btn-lg btn-block logModalReporter" ng-click="$event.preventDefault(); $ctrl.selectedFam.item = fam.name; $ctrl.isOK();" ng-model="fam.checked" uib-btn-checkbox>{{ fam.name }}</label>
+            <label class="btn btn-info btn-lg btn-block logModalReporter" ng-click="$event.preventDefault(); $ctrl.isOK();" ng-model="fam.checked" uib-btn-checkbox>{{ fam.name }}</label>
           </div>
         </li>
       </ul>
-    </div>
+    </div>  
+</div>
+
+
+<!-- Working on this part -->
+<!--   <h3>Would you like to answer this question today? Do you feel well rested?</h3>
+  <div class="source">
+    <ul class="list-inline"> 
+      <li>
+        <button class="btn btn-info btn-lg " type="button"ng-click="$ctrl.recorderbuttonState=$ctrl.recorderbuttonState+1; $ctrl.record=true">Yes</button>
+        <button class="btn btn-info btn-lg " type="button" ng-click="$ctrl.recorderbuttonState=$ctrl.recorderbuttonState+1; $ctrl.record=false" >no</button>
+      </li>
+    </ul>
+  <div class="source">
+  <div ng-show="$ctrl.record" style="display: inline-block;">
+    <recorder></recorder>
+  </div>
+
 </div>
 <div class="modal-footer">
+        <button class="modal-btn btn btn-primary btn-lg" type="button" ng-disabled="!(($ctrl.personabuttonState >=1) && $ctrl.recorderbuttonState >= 1)" ng-click="$ctrl.ok()">OK</button>
+ -->
+
+
+<div class="modal-footer">
         <button class="modal-btn btn btn-primary btn-lg modalOK" type="button" ng-disabled="!($ctrl.buttonState)" ng-click="$ctrl.ok()">OK</button>
+
+<!-- 
+  <h3>Would you like to answer this question today? Do you feel well rested?</h3>
+  <div class="source">
+    <ul class="list-inline"> 
+      <li>
+        <button class="btn btn-info btn-lg " type="button"ng-click="$ctrl.recorderbuttonState=$ctrl.recorderbuttonState+1; $ctrl.record=true">Yes</button>
+        <button class="btn btn-info btn-lg " type="button" ng-click="$ctrl.recorderbuttonState=$ctrl.recorderbuttonState+1; $ctrl.record=false" >no</button>
+      </li>
+    </ul>
+  <div class="source">
+  <div ng-show="$ctrl.record" style="display: inline-block;">
+    <recorder></recorder>
+  </div>
+ -->
+<!-- </div> -->
         <button class="btn btn-warning btn-lg" type="button" ng-click="$ctrl.cancel()">Cancel</button>
 </div>
