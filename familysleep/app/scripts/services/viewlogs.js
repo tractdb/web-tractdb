@@ -117,7 +117,7 @@ module.factory(
         }
       });
       modalInstance.result.then(function (selectedItems) {
-        factory.logSession.users.push(selectedItems.selectedFam);
+        factory.logSession.users = selectedItems;
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
@@ -151,7 +151,13 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
   };
 
   $ctrl.ok = function () {
-    $uibModalInstance.close({selectedFam: $ctrl.selectedFam.item});
+    var selectedNames = [];
+     for (var i = 0; i < $ctrl.checkFam.length; i++) {
+      if ($ctrl.checkFam[i].checked === true) {
+        selectedNames.push($ctrl.checkFam[i].name)
+      }
+    }
+    $uibModalInstance.close(selectedNames);
   };
 
   $ctrl.cancel = function () {
