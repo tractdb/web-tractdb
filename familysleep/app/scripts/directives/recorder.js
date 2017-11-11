@@ -60,7 +60,7 @@ angular.module('FamilySleep')
         $scope.onReplay = function() {
           console.log("replaying");
           console.log($window.recordRTC.toURL());
-          $scope.url = $window.recordRTC.toURL();
+          $scope.url = decodeURIComponent($window.recordRTC.toURL());
         }
 
 
