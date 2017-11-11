@@ -189,8 +189,7 @@ module.controller(
                 // }
 
                 //updating moon
-                $rootScope.$broadcast('familydailyview:updated');
-
+                $rootScope.$broadcast('familydailyview:updated')
             
 
                 //
@@ -231,10 +230,11 @@ module.controller(
                     //console.log('personas');
                     //console.log(personaFactory.personas);
                     $location.path('/sdview/' + id);
-                    viewLogs.logPage('individual-daily-view', dateFactory.getDateString());
+                    viewLogs.logPage('individual-daily-view', dateFactory.getDateString(), id);
                 };
 
                 $scope.changeToSingleWeeklyView = function(id){
                     $location.path('/singleweeklyview/' + id);
+                    viewLogs.logPage('individual-weekly-view', dateFactory.getDateString(), id);
                 };
         }]);
