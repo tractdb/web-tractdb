@@ -155,7 +155,7 @@ angular.module('FamilySleep')
 		selfReportState.observe($scope, viewModel.updateFamilyInfo);
 		$rootScope.menu = [
 			{
-					title: 'Back',
+					title: 'Family Daily View',
 					url: 'familydailyview',
 					tag: 'family-daily-view'
 			},
@@ -173,7 +173,7 @@ angular.module('FamilySleep')
 		$rootScope.active = 'individual-daily-view';
 		$rootScope.updateActive = function (item) {
 			$rootScope.active = item;
-			viewLogs.logPage(item, dateFactory.getDateString());
+			viewLogs.logPage(item, dateFactory.getDateString(), item != 'family-daily-view' ? $routeParams.id : null);
 		};
 
 		//does this need to be viewModel?

@@ -4,9 +4,9 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
     function(selfReportState, $uibModal, $log, $document, tractdbdata, personaFactory, sleepFamDailyDataFactory, dateFactory){
     var templateDir = 'app/views/templates/';
     var $ctrl = this;
-    //$ctrl.buttonState = 0;
-    $ctrl.famButton = false;
-    $ctrl.moodButton = false;
+
+    $ctrl.buttonState = 0;
+    $ctrl.imgState = 0;
 
     var moodImages = [
     	{	name:'Happy',
@@ -55,8 +55,10 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
     //$ctrl.famID;
     $ctrl.famName = personaFactory.getName(famID);
 
-    $ctrl.famButton = false;
-    $ctrl.moodButton = false;
+    console.log(famID);
+    $ctrl.famID = famID;
+    $ctrl.buttonState = 0;
+    $ctrl.imgState = 0;
 
     for (var i = 0; i < $ctrl.famIDs.length; i++) {
         if ($ctrl.famIDs[i] == $ctrl.famID) {
@@ -153,6 +155,18 @@ angular.module('FamilySleep').controller('ModalInstanceCtrl', function ($uibModa
   /*$ctrl.selectedFam = {
     item: $ctrl.famMems[0]
   };*/
+
+  // set activeMoodReporter class to modal reporter buttons for styling clicked/active buttons
+  $ctrl.activeReporterMenu = "None";
+  $ctrl.setActiveMoodReporter = function(famName) {
+    $ctrl.activeReporterMenu = famName;
+  }
+
+  // set activeMoodItem class to modal mood pictures for styling clicked/active images
+  $ctrl.activeModalMoodPicMenu = "None";
+  $ctrl.setActiveMoodPic = function(modalMoodPicItem) {
+    $ctrl.activeModalMoodPicMenu = modalMoodPicItem;
+  }
 
   $ctrl.ok = function () {
     $uibModalInstance.close({selected: $ctrl.selected.item, selectedFam: $ctrl.selectedFam.item});

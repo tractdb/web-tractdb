@@ -237,7 +237,7 @@ angular.module('FamilySleep')
 
 	$rootScope.menu = [
 	  {
-		  title: 'Back',
+		  title: 'Family Daily View',
 		  url: 'familydailyview',
 		  tag: 'family-daily-view'
 	  },
@@ -255,8 +255,8 @@ angular.module('FamilySleep')
 
 	$rootScope.active = 'individual-weekly-view';
 	$rootScope.updateActive = function (item) {
-	  $rootScope.active = item;
-	  viewLogs.logPage(item, dateFactory.getDateString());
+	  	$rootScope.active = item;
+	  	viewLogs.logPage(item, dateFactory.getDateString(), item != 'family-daily-view' ? $routeParams.id : null);
 	};
 	//console.log("in SingleweeklyviewCtrl");
 

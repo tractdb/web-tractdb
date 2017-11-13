@@ -3,43 +3,43 @@
     <div ng-show="viewModel.Data">
         <div ng-repeat="(pidCurrent, memberCurrent) in viewModel.familyInfo">
             <div ng-if="$even" class="fdv-even-column col-xs-4">
-                <!--even object -->
+            <!--even object -->
                 <div>
                     <img ng-src={{memberCurrent.profilePic}} class="profile-pics">
                     <p class="fdv-names">{{memberCurrent.name}}</p>
                 </div>
                 <div class="target-hours">
-                    <p class="target-hours-text">Target hours: {{ memberCurrent.targetedHours }}</p>
+                    <p class="target-hours-text"><span class="data-label">Target hours: </span><br><span class="data-number">{{ memberCurrent.targetedHours }}</span></p>
                 </div>
 
-                <div class="weekly-view-button">
+                <div>
                     <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary weekly-view-button"> Weekly View</button>
 
                 </div>
                 <div ng-controller="ModalCrtl as $ctrl">
                     <div ng-if= "viewModel.today == viewModel.calendarDate" >
                         <div ng-if=viewModel.states[pidCurrent].state>
+                        <!-- <div ng-if=$ctrl.states[pidCurrent].state> -->
                             <div>
-                                
+                                <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
                                 <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
-                                
+                                <!--want an ng-if here to show only after daily sleep and self-report is available -->
                             </div>
-                            
                             <div class="chart-placement">
                                 <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="memberCurrent.labels" chart-colors="memberCurrent.colors" chart-options="memberCurrent.options">
                                 </canvas>
                             </div>
                             <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
-                            
+                            <!-- <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics"> -->
                             <div>
-                                <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
+                                <p class="hours-slept"><span class="data-label">Hours slept: </span><br><span class="data-number">{{memberCurrent.hours | number:2}}</span></p>
                             </div>
-                            
+                            <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->
                             <div class="mood-report">
                                 <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
                             </div>
                         </div>
-                        
+                        <!-- <div ng-if=!$ctrl.states[pidCurrent].state> -->
                         <div ng-if=!viewModel.states[pidCurrent].state>
                             <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
                                 <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color" chart-options="options">
@@ -55,9 +55,8 @@
                         <div>
                         
                             <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button">Daily View</button>
-
-                            
                         </div>
+
                         <div class="chart-placement">
                             <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="memberCurrent.labels" chart-colors="memberCurrent.colors" chart-options="memberCurrent.options">
                             </canvas>
@@ -67,7 +66,7 @@
                             <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
                             <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->
                             <div>
-                                <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
+                                <p class="hours-slept"><span class="data-label">Hours slept: </span><br><span class="data-number">{{memberCurrent.hours | number:2}}</span></p>
                             </div>
                             <div class="mood-report">
                                 <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
@@ -81,19 +80,19 @@
                     </div>
                 </div>
             </div>
+
             <div ng-if="$odd" class="fdv-odd-column col-xs-4">
-                <!--odd object -->
+            <!--odd object -->
                 <div>
                     <img ng-src={{memberCurrent.profilePic}} class="profile-pics">
                     <p class="fdv-names">{{memberCurrent.name}}</p>
                 </div>
                 <div class="target-hours">
-                    <p class="target-hours-text">Target hours: {{ memberCurrent.targetedHours }}</p>
+                    <p class="target-hours-text"><span class="data-label">Target hours: </span><br><span class="data-number">{{ memberCurrent.targetedHours }}</span></p>
                 </div>
 
-                <div class="weekly-view-button">
+                <div>
                     <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary weekly-view-button"> Weekly View</button>
-
                 </div>
                 <div ng-controller="ModalCrtl as $ctrl">
                     <div ng-if= "viewModel.today == viewModel.calendarDate" >
@@ -109,9 +108,8 @@
                             </div>
                             <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
                             <div>
-                                <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
-                            </div>
-                            
+                                <p class="hours-slept"><span class="data-label">Hours slept: </span><br><span class="data-number">{{memberCurrent.hours | number:2}}</span></p>
+                            </div>                            
                             <div class="mood-report">
                                 <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
                             </div>
@@ -136,11 +134,12 @@
                             <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="memberCurrent.labels" chart-colors="memberCurrent.colors" chart-options="memberCurrent.options">
                             </canvas>
                         </div>
+
                         <div ng-if=viewModel.states[pidCurrent].state>
                             <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
                             <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->
                             <div>
-                                <p class="hours-slept">Hours slept: <br>{{memberCurrent.hours | number:2}}</p>
+                                <p class="hours-slept"><span class="data-label">Hours slept: </span><br><span class="data-number">{{memberCurrent.hours | number:2}}</span></p>
                             </div>
                             <div class="mood-report">
                                 <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
@@ -148,15 +147,15 @@
                         </div>
                         <div ng-if=!viewModel.states[pidCurrent].state>
                             <div class="mood-report">
-                                <p class="mood-report-text">No mood reported for this date</p>
+                            <p class="mood-report-text">No mood reported for this date</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-            <div ng-controller="MoonCtrl" class="col-xs-4">
+        <div ng-controller="MoonCtrl" class="col-xs-4">
             <img ng-src="{{moonImage}}" alt="moon" id="family_moon">
         </div>
     </div>
