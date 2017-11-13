@@ -63,7 +63,8 @@ module.controller(
                 viewModel.today = dateFactory.getTodayString();
                 viewModel.calendarDate = dateFactory.getDateString();
 
-
+                viewModel.Data = false;
+                
                 viewModel.updateFamilyInfo = function () {
                     //TODO: date needs to change if calendar date changes
                     //var date = dateFactory.getDateString();
@@ -76,8 +77,9 @@ module.controller(
                     console.log("queried data");
                     console.log(tractdbData);
 
-                    if(personas && tractdbData) {
+                    if(personas && tractdbData && viewModel.states) {
                         // start with the personas data
+                     
                         viewModel.familyInfo = personas;
                         console.log('in family-daily-view');
                         console.log('viewModel.familyInfo');
@@ -103,6 +105,7 @@ module.controller(
                                         }
                                     },
                                     cutoutPercentage: 65,
+                                    animation: false,
                                     hover: {mode: null},
                                     tooltips: {enabled: false}
                                 };
@@ -154,13 +157,21 @@ module.controller(
                                         }
                                     },
                                     cutoutPercentage: 65,
+                                    animation: false,
                                     hover: {mode: null},
                                     tooltips: {enabled: false}
                                 };
                             }
     
                         });
+                        if(viewModel.Data != true){
+                            viewModel.Data = true;
+                            $rootScope.$broadcast('familydailyview:updated');
+                        } 
+                        
 
+                    } else {
+                        viewModel.Data = false;
                     }
                     //tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
 
@@ -175,9 +186,17 @@ module.controller(
                 tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
                 //check if persona is not empty to then do persona.retrieveDATA
                 personaFactory.observe($scope, viewModel.updateFamilyInfo);
+                selfReportState.observe($scope, viewModel.updateFamilyInfo);
+                //selfReportState.retrieveData();
                 //can go SelfReport GET for when the page refreshes
                 //check if persona is not empty to then do persona.retrieveDatA
-                selfReportState.retrieveData();
+                //selfReportState.retrieveData();
+                // if(selfReportState.doc_id == null){
+                //     selfReportState.putNewData();
+                // } else {
+                //     selfReportState.retrieveData();    
+                // }
+                
 
                 //selfReportState.observe($scope, viewModel.updateFamilyInfo);
                 // if(angular.equals(selfReportState.states, {}) ){
@@ -189,8 +208,7 @@ module.controller(
                 // }
 
                 //updating moon
-
-                $rootScope.$broadcast('familydailyview:updated');         
+                //$rootScope.$broadcast('familydailyview:updated');        
 
                 //
                 // Current approach to showing the menu for choosing views

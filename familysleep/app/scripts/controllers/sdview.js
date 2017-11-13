@@ -152,7 +152,7 @@ angular.module('FamilySleep')
 		//should it be $scope or viewModel? we should use them consistently
 		personaFactory.observe($scope, viewModel.updateFamilyInfo);
 		tractdbFactory.observe($scope, viewModel.updateFamilyInfo);
-		//selfReportState.observe($scope, viewModel.updateFamilyInfo);
+		selfReportState.observe($scope, viewModel.updateFamilyInfo);
 		$rootScope.menu = [
 			{
 					title: 'Family Daily View',
