@@ -11,8 +11,8 @@
 
 angular.module('FamilySleep')
   .controller('SingleweeklyviewCtrl', [
-	'$scope', 'sleepWeeklyDataFactory', 'tractdbFactory',  '$rootScope', 'dateFactory', '$routeParams', 'personaFactory', 'selfReportState', 'viewLogs', 
-	function ($scope, singleWeeklySleep, tractdbFactory, $rootScope, dateFactory, $routeParams, personaFactory, selfReportState, viewLogs) {
+	'$scope', 'tractdbFactory',  '$rootScope', 'dateFactory', '$routeParams', 'personaFactory', 'selfReportState', 'viewLogs', 
+	function ($scope, tractdbFactory, $rootScope, dateFactory, $routeParams, personaFactory, selfReportState, viewLogs) {
 
 	var viewModel = this;
 	viewModel.familyInfo = null;
