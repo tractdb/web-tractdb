@@ -94,6 +94,7 @@ angular.module('FamilySleep')
 			  display: false
 			},
 			responsive:false,
+			animation: false,
 			maintainAspectRatio: false
 		};
 		viewModel.options_first = {
@@ -148,6 +149,7 @@ angular.module('FamilySleep')
 			  display: false
 			},
 			responsive:false,
+			animation: false,
 			maintainAspectRatio: false
 		};
 
@@ -202,6 +204,7 @@ angular.module('FamilySleep')
 			  display: false
 			},
 			responsive:false,
+			animation: false,
 			maintainAspectRatio: false
 		};
 

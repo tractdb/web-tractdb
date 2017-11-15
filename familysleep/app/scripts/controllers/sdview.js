@@ -63,6 +63,7 @@ angular.module('FamilySleep')
 	                            }
 	                        },
 	                        cutoutPercentage: 65,
+	                        animation: false,
 	                        hover: {mode: null},
 	                        tooltips: {enabled: false}
 	                    };
@@ -109,20 +110,8 @@ angular.module('FamilySleep')
 						];
 						//bar labels
 						viewModel.barlabels = sleep_data.minuteData.labels;
-						viewModel.options = {
-							elements: {
-									arc: {
-											//borderColor: ['#000066', '#0000FF', '#E0E0E0'],
-											borderWidth: 0
-											
-									}
-							},
-							cutoutPercentage: 65
-						};
+
 						viewModel.barseries = ["Sleep", "Movement", "Restless"];
-						//ring setup
-						viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
-						viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
 						viewModel.barcolors = [
 						{
 							backgroundColor: "#44d2d1",
@@ -142,6 +131,23 @@ angular.module('FamilySleep')
 							pointBackgroundColor: "#FC3F73",
 							pointBorderColor: "#FC3F73"
 						}];
+						//ring setup
+						viewModel.options = {
+							elements: {
+									arc: {
+											//borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+											borderWidth: 0
+											
+									}
+							},
+							cutoutPercentage: 65,
+							animation: false,
+	                        hover: {mode: null},
+	                        tooltips: {enabled: false}
+						};
+						viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
+						viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
+						
 					}
 				}
 		}//
