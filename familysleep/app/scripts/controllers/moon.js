@@ -44,7 +44,7 @@ angular.module('FamilySleep')
   // 			totalSleep = totalSleep+person[dateFactory.getDateString()].duration/1000/60/60;
 		// });
 		
-		var avgSleep = totalSleep/(pids.length-1);
+		var avgSleep = totalSleep/(pids.length);
 		var percentage = avgSleep/24; // would be their total targetsleephours divided by i
 		console.log(percentage);
 		if(percentage < (1/6)) {

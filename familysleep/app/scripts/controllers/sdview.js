@@ -63,6 +63,7 @@ angular.module('FamilySleep')
 	                            }
 	                        },
 	                        cutoutPercentage: 65,
+	                        animation: false,
 	                        hover: {mode: null},
 	                        tooltips: {enabled: false}
 	                    };
@@ -109,20 +110,8 @@ angular.module('FamilySleep')
 						];
 						//bar labels
 						viewModel.barlabels = sleep_data.minuteData.labels;
-						viewModel.options = {
-							elements: {
-									arc: {
-											//borderColor: ['#000066', '#0000FF', '#E0E0E0'],
-											borderWidth: 0
-											
-									}
-							},
-							cutoutPercentage: 65
-						};
+
 						viewModel.barseries = ["Sleep", "Movement", "Restless"];
-						//ring setup
-						viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
-						viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
 						viewModel.barcolors = [
 						{
 							backgroundColor: "#44d2d1",
@@ -142,6 +131,23 @@ angular.module('FamilySleep')
 							pointBackgroundColor: "#FC3F73",
 							pointBorderColor: "#FC3F73"
 						}];
+						//ring setup
+						viewModel.options = {
+							elements: {
+									arc: {
+											//borderColor: ['#000066', '#0000FF', '#E0E0E0'],
+											borderWidth: 0
+											
+									}
+							},
+							cutoutPercentage: 65,
+							animation: false,
+	                        hover: {mode: null},
+	                        tooltips: {enabled: false}
+						};
+						viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];
+						viewModel.colors = ['#000066', '#0000FF', '#E0E0E0'];
+						
 					}
 				}
 		}//
@@ -184,99 +190,5 @@ angular.module('FamilySleep')
 			tractdbFactory.setQuery('singledaily', viewModel.id, viewModel.date);
 			viewModel.updateFamilyInfo();
 		});
-	var updateData = function() {
-		/*var newDate = dateFactory.getDateString();
-		if(dateFactory.getWeekDateString() != []) {
-		var promise = dbdata.get_single_daily_sleep($scope.id, newDate);
-		//have to wait for dbdate to populate 
-		promise.then(function(response) {
-			console.log('single daily');
-			console.log($scope.id);
-			console.log(sleepDataFactory);
-			$scope.options = {
-				scales: {
-					xAxes: [{
-						stacked: true,
-						categoryPercentage: 1,
-						barPercentage: 1,
-						barThickness : 1,
-						type: 'time',
-						gridLines: {
-							display: false, // Set to false here => xAxis labels displayed out of canvas
-							offsetGridLines: true,
-						},
-						ticks: {
-							display: true,
-							fontColor: "white",
-							fontSize: 10,
-							fontFamily: 'HelveticaNeue, HelveticaNeue, Roboto, ArialRounded',
-							autoSkip: true,
-							maxTicksLimit: 20
-						},
-						time: {
-							displayFormats: {
-								minute: 'HH:mm a'
-							},
-							tooltipFormat: 'HH:mm a',
-							unit: "minute",
-							unitStepSize: 1,
-						},
-						showXLabel: 60
-					}],
-					yAxes: [{
-						// stacked: true, //scaleLabel: "<%=value%>",
-						// ticks: {
-						//   fontSize: 12,
-						//   fontFamily: 'HelveticaNeue, HelveticaNeue, Roboto, ArialRounded'
-						// },
-						// gridLines: {
-						//   display: false, // Set to false here => xAxis labels displayed out of canvas
-						// },
-						display: false
-					}]
-				},
-				legend: {
-					display: true,
-					labels: {
-						fontColor: "white"
-					}
-				}
-			};
-
-			$scope.data = [
-					sleep_data.minuteData.one, 
-					sleep_data.minuteData.two,
-					sleep_data.minuteData.three
-			];
-
-			$scope.labels = sleep_data.labels;
-
-			$scope.colors = [{
-					backgroundColor: "#44d2d1",
-					borderColor: "#44d2d1",
-					pointBackgroundColor: "#44d2d1",
-					pointBorderColor: "#44d2d1"
-				}, 
-				{
-					backgroundColor: "#551A8B",
-					borderColor: "#551A8B",
-					pointBackgroundColor: "#551A8B",
-					pointBorderColor: "#551A8B"
-				},
-				{
-					backgroundColor: "#FC3F73",
-					borderColor: "#FC3F73",
-					pointBackgroundColor: "#FC3F73",
-					pointBorderColor: "#FC3F73"
-				}
-			];
-
-			$scope.series = ["Sleep", "Movement", "Restless"];
-
-		});
-	}else {
-			alert('date factory get week didnt populate');
-		}
-	*/}
-	//updateData();
+	
 }]);

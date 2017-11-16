@@ -1,7 +1,7 @@
 'use strict';
 /*** TODO need to add mood selected to the sleep object **/
-angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibModal', '$log', '$document', 'tractdbFactory', 'personaFactory', 'sleepFamDailyDataFactory', 'dateFactory',
-    function(selfReportState, $uibModal, $log, $document, tractdbdata, personaFactory, sleepFamDailyDataFactory, dateFactory){
+angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibModal', '$log', '$document', 'tractdbFactory', 'personaFactory', 'dateFactory',
+    function(selfReportState, $uibModal, $log, $document, tractdbdata, personaFactory, dateFactory){
     var templateDir = 'app/views/templates/';
     var $ctrl = this;
 
@@ -100,7 +100,6 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       $ctrl.selectedFam = selectedItems.selectedFam;
       
       //console.log("printing on family member sleep object");
-      //console.log(sleepFamDailyDataFactory.famID);
       // console.log("printing $ctrl.FamID");
       // console.log($ctrl.famID);
       $ctrl.states[$ctrl.famID].state = true;
