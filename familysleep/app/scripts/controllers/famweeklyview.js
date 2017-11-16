@@ -9,8 +9,8 @@
  */
 angular.module('FamilySleep')
     .controller('FamweeklyviewCtrl', [
-        '$scope', '$rootScope', 'tractdbFactory', 'sleepFamWeeklyDataFactory', 'dateFactory', 'personaFactory', 'selfReportState', 'viewLogs',
-        function($scope, $rootScope, tractdbFactory, famWeeklySleep, dateFactory, personaFactory, selfReportState, viewLogs) {
+        '$scope', '$rootScope', 'tractdbFactory', 'dateFactory', 'personaFactory', 'selfReportState', 'viewLogs',
+        function($scope, $rootScope, tractdbFactory, dateFactory, personaFactory, selfReportState, viewLogs) {
             var viewModel = this;
             viewModel.familyInfo = null;
             //viewModel.personas = null;
@@ -111,7 +111,7 @@ angular.module('FamilySleep')
                                         }
                                     },
                                     cutoutPercentage: 65,
-                                    //animation: false,
+                                    animation: false,
                                     hover: {mode: null},
                                     tooltips: {enabled: false}
                                 };

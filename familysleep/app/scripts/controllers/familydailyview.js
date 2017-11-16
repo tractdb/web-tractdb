@@ -1,7 +1,6 @@
 'use strict';
 
 // /*
-// notes for what to do here. familyInfo needs to be instantiated from sleepFamDailyDataFactory
 // selfReport stuff needs to be pushed into the sleepFamDailyDataFactory and maybe the weekly version.
 // Right now after self-Report is saved to sleepFamilyDailyDataFactory it will be loosed because we can't write to file.
 // throughout all the javascript for the family views I should fake that I have access to mood etc

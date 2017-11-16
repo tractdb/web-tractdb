@@ -11,8 +11,8 @@
 
 angular.module('FamilySleep')
   .controller('SingleweeklyviewCtrl', [
-	'$scope', 'sleepWeeklyDataFactory', 'tractdbFactory',  '$rootScope', 'dateFactory', '$routeParams', 'personaFactory', 'selfReportState', 'viewLogs', 
-	function ($scope, singleWeeklySleep, tractdbFactory, $rootScope, dateFactory, $routeParams, personaFactory, selfReportState, viewLogs) {
+	'$scope', 'tractdbFactory',  '$rootScope', 'dateFactory', '$routeParams', 'personaFactory', 'selfReportState', 'viewLogs', 
+	function ($scope, tractdbFactory, $rootScope, dateFactory, $routeParams, personaFactory, selfReportState, viewLogs) {
 
 	var viewModel = this;
 	viewModel.familyInfo = null;
@@ -94,6 +94,7 @@ angular.module('FamilySleep')
 			  display: false
 			},
 			responsive:false,
+			animation: false,
 			maintainAspectRatio: false
 		};
 		viewModel.options_first = {
@@ -148,6 +149,7 @@ angular.module('FamilySleep')
 			  display: false
 			},
 			responsive:false,
+			animation: false,
 			maintainAspectRatio: false
 		};
 
@@ -202,6 +204,7 @@ angular.module('FamilySleep')
 			  display: false
 			},
 			responsive:false,
+			animation: false,
 			maintainAspectRatio: false
 		};
 
