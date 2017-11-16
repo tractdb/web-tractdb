@@ -117,8 +117,39 @@ angular.module('FamilySleep')
 											
 									}
 							},
-							cutoutPercentage: 65
+							cutoutPercentage: 65,
+							animation: false,
+                            hover: {
+                            	mode: null
+                            },
+				        	tooltips: {
+         						enabled: false
+    						}
 						};
+						viewModel.baroptions = {
+				        	scales: {
+				        		xAxes: [{
+                					stacked: true,
+									categoryPercentage: 1,
+									barPercentage: 1,
+									// barThickness : 1,
+									ticks: {
+										display: true,
+										fontColor: "white",
+										fontSize: 12,
+										fontFamily: 'HelveticaNeue, HelveticaNeue, Roboto, ArialRounded',
+										autoSkip: true,
+										maxTicksLimit: 25
+									}
+            					}],
+           					 	yAxes: [{
+                					display: false
+            					}]
+				        	},
+				        	tooltips: {
+         						enabled: false
+    						}
+				        };
 						viewModel.barseries = ["Sleep", "Movement", "Restless"];
 						//ring setup
 						viewModel.labels = ['extra hours', 'hours slept', 'hours awake'];

@@ -9,13 +9,16 @@
             <div class="sdv-chart-placement">
 	            <canvas id="doughnut" class="chart-doughnut" chart-data="viewModel.familyInfo.sleep" chart-labels="viewModel.labels" chart-colors="viewModel.colors" chart-options="viewModel.options">
 	            </canvas>
-	            <div ng-show="viewModel.state.state">
+	            <div ng-if="viewModel.state.state">
 					<img ng-src={{viewModel.state.image}} class="sdv-mood-pics">
 					<div class="sdv-mood-report">
                         <p class="sdv-mood-report-text">{{viewModel.state.mood | uppercase}}</p>
                     </div>
 				</div>
-				<div ng-hide="!viewModel.state.state">
+				<div ng-if=!viewModel.state.state>
+					<div class="sdv-mood-report">
+                        <p class="sdv-mood-report-text">NO MOOD REPORTED FOR THIS DATE</p>
+                    </div>
 				</div>
 		    </div>
             
@@ -45,7 +48,7 @@
 	<div class="row sdv-barchart-placement"> <!-- THIS IS FOR THE DATA BAR -->
 		<!-- need duration > -1 -->
 			<div class="row sdv-bar-chart" ng-if="viewModel.familyInfo.duration > -1">
-				<canvas class="chart chart-bar" chart-data="viewModel.familyInfo.night" chart-labels="viewModel.barlabels" chart-options="viewModel.baroptions" chart-series="viewModel.barseries" chart-colors="viewModel.barcolors" width="50" height="10">
+				<canvas class="chart chart-bar" chart-data="viewModel.familyInfo.night" chart-labels="viewModel.barlabels" chart-options="viewModel.baroptions" chart-series="viewModel.barseries" chart-colors="viewModel.barcolors" width="1100" height="200">
 				</canvas>
 				<!-- 
 				add ring
@@ -59,7 +62,7 @@
 			<!-- need duration == -1 THIS IS FOR THE EMPTY BAR-->
 			<!-- don't know if I need this here class="row" -->
 			<div class="sdv-empty-chart" ng-if="viewModel.familyInfo.duration == -1" ng-controller="EmptybarchartCtrl">
-				<canvas class="chart chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="color" height="200" width="1100"></canvas>	
+				<canvas class="chart chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="color" height="190" width="1100"></canvas>	
 			</div>
 		<!-- Legend -->
 		<ul id="sdv-legend">

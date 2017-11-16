@@ -11,6 +11,7 @@ p.sdv-names {
   font-size: 20px;
   width: 70px;
   text-align: center;
+  font-weight: bold;
 }
 
 #sdv-profile-pic {
@@ -36,14 +37,14 @@ p.sdv-names {
 
 .sdv-mood-report {
   position: absolute;
-  top: 150px;
-  font-size: 17px;
+  top: 155px;
   width: 200px;
   margin-left: -25px;
 }
 
 .sdv-mood-report-text {
   text-align: center;
+  font-size: medium !important;
 }
 
 #sdv-name {
@@ -53,9 +54,11 @@ p.sdv-names {
 }
 
 #sdv-legend {
-  margin-bottom: 30px;
-  margin-top: 20px;
-  margin-left: 400px;
+  /*margin-top: 20px;
+  margin-left: 500px;*/
+  position: fixed;
+  top: 88%;
+  left: 50%;
 }
 
 #sdv-legend li {
@@ -75,15 +78,26 @@ p.sdv-names {
   position: absolute;
   width: 150px;
   margin-left: 250px;
-  top: 50px;
+  top: 20px;
+}
+
+.sdv-bar-chart canvas {
+    width: 1100px !important;
+}
+
+.sdv-barchart-placement {
+    width: 1100px;
+    height: 350px;
+    position: fixed;
+    top: 55%;
 }
 
 .sdv-bar-chart {
-  margin-top: 0px;
+  margin-top: 20px;
 }
 
 .sdv-empty-chart,  {
-  margin-top: 120px;
+  margin-top: -10px;
 }
 
 .sdv-mood-text {
