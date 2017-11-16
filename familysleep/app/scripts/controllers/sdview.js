@@ -128,27 +128,49 @@ angular.module('FamilySleep')
 						};
 						viewModel.baroptions = {
 				        	scales: {
-				        		xAxes: [{
-                					stacked: true,
-									categoryPercentage: 1,
-									barPercentage: 1,
-									// barThickness : 1,
-									ticks: {
-										display: true,
-										fontColor: "white",
-										fontSize: 12,
-										fontFamily: 'HelveticaNeue, HelveticaNeue, Roboto, ArialRounded',
-										autoSkip: true,
-										maxTicksLimit: 25
-									}
-            					}],
-           					 	yAxes: [{
-                					display: false
-            					}]
-				        	},
-				        	tooltips: {
-         						enabled: false
-    						}
+							  xAxes: [{
+								stacked: true,
+								categoryPercentage: 1,
+								barPercentage: 1,
+								barThickness : 1,
+								gridLines: {
+								  display: false, // Set to false here => xAxis labels displayed out of canvas
+								  offsetGridLines: true,
+								},
+								ticks: {
+								  display: true,
+								  fontSize: 12,
+								  fontColor: 'white',
+								  fontFamily: 'HelveticaNeue, HelveticaNeue, Roboto, ArialRounded',
+								  autoSkip: true,
+								  maxTicksLimit: 20
+								},
+								time: {
+								  displayFormats: {
+									minute: 'HH:mm a'
+								  },
+								  tooltipFormat: 'YYYY-MM-DD HH:mm a',
+								  unit: "minute",
+								  unitStepSize: 15,
+								},
+								showXLabel: 60
+							  }],
+							  yAxes: [{
+								display: false
+							  }]
+							},
+				        	hover: { //to turn off hover
+								mode: null
+							},
+							tooltips:{ //to turn off hover
+								enabled: false
+							},
+							legend: {
+							  display: false
+							},
+							animation: false,
+							responsive:false,
+							maintainAspectRatio: false
 				        };
 						viewModel.barseries = ["Sleep", "Movement", "Restless"];
 						//ring setup
