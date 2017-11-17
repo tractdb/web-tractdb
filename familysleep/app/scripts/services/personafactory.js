@@ -90,49 +90,47 @@ module.factory(
               setting the personas data.
             */
             factory.putData = function() {
-                $http(
-                    {
-                      method: 'GET',
-                      url: BASEURL_PYRAMID + '/document/familysleep_personas'
+                // Post the code back to our server
+                var new_doc;
+
+                $http({
+                    method: 'GET',
+                    url: BASEURL_PYRAMID + '/document/familysleep_personas'
+                }).then(
+                    // Success
+                    function (response) {
+                        new_doc = {
+                            "_id": "familysleep_personas",
+                            "_rev": response.data._rev,
+                            "personas": factory.personas
+                        };
+                    },
+                    // Failure
+                    function (response) {
+                        new_doc = {
+                            "_id": "familysleep_personas",
+                            "personas": factory.personas
+                        };
                     }
-                ).then(function success(response){
-                    var old_personas = response.data.personas;
-                    doc_id = response.data._id;
-                    doc_rev = response.data._rev;
-                    //console.log("doc_rev at GET from setData");
-                    //console.log(doc_rev);
-                    //factory.personas = new_personas;
-                    var new_doc = {
-                        "_id": doc_id,
-                        "_rev": doc_rev,
-                        "personas": factory.personas
-                    };
-                    // console.log("printing obj for PUT");
-                    // console.log(new_doc);
-                    //now doing the PUT
-                    //embedding PUT in GET this doesn't seem the right logic
-                    $http(
-                        {
+                ).then(
+                    function () {
+                        return $http({
                             method: 'PUT',
                             url: BASEURL_PYRAMID + '/document/familysleep_personas',
                             data: new_doc
-                        }
-                    ).then(function success(response){
-                        doc_id = response.data._id;
-                        doc_rev = response.data._rev;
-                        //console.log("rev of the PUT");
-                        //console.log(doc_rev);
-                        factory._notify();
-                    }).catch (function errorCallback(response){
-                        console.log("error in the PUT");
-                        console.log(response.code);
-                    }).finally(function (){
-                        factory._scheduleNextRetrieve();
-                    });
+                        })
+                    }
+                ).then(function success(response){
+                    doc_id = response.data._id;
+                    doc_rev = response.data._rev;
+                    //console.log("rev of the PUT");
+                    //console.log(doc_rev);
+                    factory._notify();
                 }).catch (function errorCallback(response){
-                    console.log("error in personaFactory in GET");
-                    console.log("error" + response.code);
-                    console.log("error text" + response.statusText);
+                    console.log("error in the PUT");
+                    console.log(response.code);
+                }).finally(function (){
+                    factory._scheduleNextRetrieve();
                 });
             }
 
