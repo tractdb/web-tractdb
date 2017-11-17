@@ -9,9 +9,10 @@
 
 .swv-target-hours {
   position: absolute;
-  top: 10px;
+  top: 30px;
+  left: 130px;
   margin-bottom: 20px;
-  font-size: medium;
+  font-size: 19px;
   width: 100%;
 }
 
@@ -32,9 +33,9 @@
 }
 
 #swv-legend {
-	margin-bottom: 50px;
+	margin-bottom: 65px;
   margin-left: 400px;
-  padding-top: 50px;
+  padding-top: 35px;
 }
 
 #swv-legend li {
@@ -101,12 +102,17 @@
   margin-top: -30px;
 }
 
+.first-empty-row {
+  height: /*40px;*/ 30px;
+  margin-top: 25px;
+}
+
 .regular-row {
-  height: 40px;
+  height: /*40px;*/ 30px;
 }
 
 .first-row {
-  height: 105px;
+  height: /*105px;*/ 95px;
 }
 
 .last-row {
@@ -114,16 +120,16 @@
 }
 
 .swv-mood-pics {
-	width: 40px;
-  height: 40px;
-  margin-top: -55px;
+	width: 35px;
+  height: 35px;
+  margin-top: -50px;
   margin-left: 940px;
 }
 
 .swv-mood-pics-last {
-	width: 40px;
-  height: 40px;
-  margin-top: -180px;
+	width: 35px;
+  height: 35px;
+  margin-top: -175px;
   margin-left: 940px;
 }
 
