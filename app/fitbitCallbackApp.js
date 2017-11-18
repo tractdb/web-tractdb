@@ -17,7 +17,7 @@ app.controller(
                 }).then(
                     // Success
                     function (response) {
-                        $window.location = $location.url('/profile').url()
+                        $window.location = $location.url('/configure/fitbit').url()
                     },
                     // Failure
                     function (response) {
