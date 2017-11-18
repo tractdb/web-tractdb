@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('FamilySleep') // make sure this is set to whatever it is in your client/scripts/app.js
-	.controller('SignupCtrl', ['$scope', '$http', '$sanitize', '$location', 'personaFactory', 'selfReportState', 'dateFactory', 'tractdbFactory',	
-	function ($scope, $http, $sanitize, $location, personaFactory, selfReportState, dateFactory, tractdbFactory) { 
+	.controller('SignupCtrl', ['$scope', '$http', '$sanitize', '$location', 'personaFactory', 'selfReportState', 'dateFactory', 'tractdbFactory', 'BASEURL_PYRAMID',
+	function ($scope, $http, $sanitize, $location, personaFactory, selfReportState, dateFactory, tractdbFactory, BASEURL_PYRAMID) {
 		
 		// Here we're creating some local references
 		// so that we don't have to type $scope every
@@ -66,14 +66,26 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 		];
 
 		$scope.famTypes = ["Father", "Mother", "Daughter", "Son", "Grandfather", "GrandMother", ""];
-		//check this fitbitd
-		$scope.fitbits = ["asdxas", "asdfxz", "asdfserter"];
 
 		// set activePicItem class to profile pictures for styling clicked/active images
 		$scope.activeProfilePicMenu = "None";
 		$scope.setActivePic = function(profilePicItem) {
 			$scope.activeProfilePicMenu = profilePicItem;
 		}
+
+		$scope.fitbitDevices = [];
+		$http({
+			method: 'GET',
+			url: BASEURL_PYRAMID + '/document/fitbit_tokens',
+			headers: {'Content-Type': 'application/json'},
+			data: ''
+		}).then(function onSuccess(response) {
+			response.data.fitbit_tokens.forEach(function(tokenCurrent) {
+				$scope.fitbitDevices.push(tokenCurrent.user_id);
+			});
+			$scope.fitbitDevices.sort();
+		}, function onError(response) {
+		});
 
 		// In our signup.html, we'll be using the ng-model
 		// attribute to populate this object.

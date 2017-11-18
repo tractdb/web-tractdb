@@ -24,6 +24,16 @@ app.controller(
                 $scope.personas = JSON.stringify(response.data, undefined, 2);
             }, function onError(response) {
             });
+
+            $http({
+                method: 'GET',
+                url: BASEURL_PYRAMID + '/document/fitbit_tokens',
+                headers: {'Content-Type': 'application/json'},
+                data: ''
+            }).then(function onSuccess(response) {
+                $scope.fitbitTokens = JSON.stringify(response.data, undefined, 2);
+            }, function onError(response) {
+            });
         }
     ]
 );

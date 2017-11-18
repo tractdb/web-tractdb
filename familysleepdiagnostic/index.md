@@ -28,4 +28,10 @@ angular_includes:
             <pre>Personas: {{ 'personas' | angular }}</pre>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <pre>Fitbit Tokens: {{ 'fitbitTokens' | angular }}</pre>
+        </div>
+    </div>
 </div>
