@@ -72,6 +72,8 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
       ariaLabelledBy: 'modal-title',
       ariaDescribedBy: 'modal-body',
       templateUrl: templateDir+'mymodalcontent.html',
+      backdrop: 'static',
+      keyboard: false,
       controller: 'ModalInstanceCtrl',
       controllerAs: '$ctrl',
       windowClass:'app-modal-window',
