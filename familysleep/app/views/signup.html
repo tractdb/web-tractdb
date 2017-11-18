@@ -116,8 +116,9 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="fitbit">Fitbit ID</label>
 						<div class="col-md-5">
-							<input id="fitbit" name="fitbit" ng-model="member.fitbit" placeholder="" class="form-control input-md">
-							
+							<!-- <input id="fitbit" name="fitbit" ng-model="member.fitbit" placeholder="" class="form-control input-md"> -->
+							<select id="fitbit" name="fitbit" ng-model="member.fitbit" ng-options="x for x in fitbitDevices">
+							</select>
 						</div>
 					</div>
 				</form>
