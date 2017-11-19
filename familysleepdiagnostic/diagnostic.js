@@ -34,6 +34,16 @@ app.controller(
                 $scope.fitbitTokens = JSON.stringify(response.data, undefined, 2);
             }, function onError(response) {
             });
+
+            $http({
+                method: 'GET',
+                url: BASEURL_PYRAMID + '/familysleep/fitbitquery',
+                headers: {'Content-Type': 'application/json'},
+                data: ''
+            }).then(function onSuccess(response) {
+                $scope.fitbitQuery = JSON.stringify(response.data, undefined, 2);
+            }, function onError(response) {
+            });
         }
     ]
 );
