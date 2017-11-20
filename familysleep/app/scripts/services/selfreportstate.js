@@ -55,7 +55,7 @@ might get rid of state and directly use mood (String) to identify if it has been
 angular.module('FamilySleep')
   .factory('selfReportState', ['dateFactory', 'personaFactory', 'BASEURL_PYRAMID', '$rootScope', '$http', '$timeout', function (dateFactory, personaFactory, BASEURL_PYRAMID, $rootScope, $http, $timeout ) {
     var factory = {};
-    factory.states = {};
+    factory.states = null;
 
     factory.doc_rev = null;
     factory.doc_id = null;
@@ -79,11 +79,40 @@ angular.module('FamilySleep')
             factory.doc_rev = response.data._rev;
             factory._notify();
         }).catch (function errorCallback(response){
-          //error message
-
+          // //error message
+          if(response.status == 404){
+            if(factory.states == null){
+                // var pids = personaFactory.getAllIDs();
+                // factory.initializeAll(pids);
+                factory.states = {};
+            }
+            factory._notify();
+            var new_doc = {
+                "states": factory.states,
+                "_id": "family_selfreport"
+            };
+            $http({
+                method: 'PUT',
+                url: BASEURL_PYRAMID + '/document/family_selfreport',
+                data: new_doc
+            }).then(function success(response){
+                factory.doc_id = response.data._id;
+                factory.doc_rev = response.data._rev;
+                //console.log("rev of the PUT");
+                //console.log(doc_rev);
+                //factory._notify();
+            }).catch (function errorCallback(response){
+                console.log("error in the PUT");
+                console.log(response);
+                console.log(response.status);
+            }).finally(function (){
+                //factory._scheduleNextRetrieve();
+                //schedule next PUT
+            });
+          }
         }).finally(function () {
             //
-            factory._scheduleNextRetrieve();
+            //factory._scheduleNextRetrieve();
         });
     };
 
@@ -263,6 +292,8 @@ angular.module('FamilySleep')
 
     factory.initializeAll = function (pids){
         var d = dateFactory.getDateString();
+        factory.states = {};
+        factory.states[d] = {};
         var temp = {};
         for (var i = pids.length - 1; i >= 0; i--) {
             var id = pids[i];
@@ -280,6 +311,7 @@ angular.module('FamilySleep')
     
     factory.initializeSingle = function(id){
         var d = dateFactory.getDateString();
+        //factory.states = {};
         var temp = {};
         temp[id] = {};
         temp[id]['state'] = false;
@@ -290,7 +322,9 @@ angular.module('FamilySleep')
         console.log(temp[id]);
         //might want to check when
         //factory.states[d] == null
-        if(angular.equals(factory.states, {})){ 
+        if(factory.states == null){
+            factory.states = {}; 
+            factory.states[d] = {};
             factory.states[d] = temp;    
         } else {
             factory.states[d][id] = {};
@@ -321,16 +355,59 @@ angular.module('FamilySleep')
 
     //returns null if moods do not exist for this date
     // moods for entire family for a particular day
+    // factory.getAllMoodsDay = function(pids, date){
+    //     console.log("in getAllMoodsDay");
+    //     console.log("date = " + date);
+    //     var temp = {};
+    //     //if(factory.states.hasOwnProperty(date)){
+    //     if(angular.equals(factory.states, null)) {
+    //         //factory.retrieveData();
+    //         if(!angular.equals(factory.states, {})){
+    //             factory.initializeAllEmptyNewDay(pids, date);    
+    //         }
+            
+    //         temp[date] = {};
+    //         temp = factory.states[date];
+            
+    //     } else if(factory.states.hasOwnProperty(date) ) {
+    //         //temp = factory.states[date]
+    //         if(!angular.equals(factory.states[date], {})){
+    //             temp = factory.states[date];    
+    //         } else {
+    //             factory.initializeAllEmptyNewDay(pids, date);
+    //             temp[date] = {};
+    //             temp = factory.states[date];
+    //         }            
+    //     } else { 
+    //         factory.initializeAllEmptyNewDay(pids, date);
+    //         temp[date] = {};
+    //         temp = factory.states[date];
+    //     }
+    //     return temp;
+    // };
+
     factory.getAllMoodsDay = function(pids, date){
         console.log("in getAllMoodsDay");
         console.log("date = " + date);
         var temp = {};
         //if(factory.states.hasOwnProperty(date)){
-        if(angular.equals(factory.states, {})) {
+        if(angular.equals(factory.states, {}) || factory.states == null) {
+            if(factory.states == null){
+                factory.states = {};
+            }
             factory.initializeAllEmptyNewDay(pids, date);
+            //factory.retrieveData();
+            // if(!angular.equals(factory.states, {})){
+            //     factory.initializeAllEmptyNewDay(pids, date);    
+            // }
+            
             temp[date] = {};
             temp = factory.states[date];
             
+        } else if(factory.states[date] == null){
+            factory.initializeAllEmptyNewDay(pids, date);
+            temp = factory.states[date];
+
         } else if(factory.states.hasOwnProperty(date) ) {
             //temp = factory.states[date]
             if(!angular.equals(factory.states[date], {})){
@@ -340,14 +417,14 @@ angular.module('FamilySleep')
                 temp[date] = {};
                 temp = factory.states[date];
             }            
-        } else { 
-            factory.initializeAllEmptyNewDay(pids, date);
-            temp[date] = {};
-            temp = factory.states[date];
-        }
+        } 
+        // else { 
+        //     factory.initializeAllEmptyNewDay(pids, date);
+        //     temp[date] = {};
+        //     temp = factory.states[date];
+        // }
         return temp;
     };
-
     //return null for the people we don't have date
     //returns mood for the entire family for the ones
     //that we have moods for
@@ -361,7 +438,8 @@ angular.module('FamilySleep')
         for (var i = week_date.length - 1; i >= 0; i--) {
             var d = week_date[i];
             if(factory.states.hasOwnProperty(d)){
-                console.log("contains DATE = " + d);
+                //console.log("contains DATE = " + d);
+                //if(factory.states[d].)
                 temp[d] = factory.states[d];
             } else {
                 console.log("NO selfReportState for date = " + d);
@@ -393,10 +471,17 @@ angular.module('FamilySleep')
         // }
         if(factory.states.hasOwnProperty(date)){
             console.log("contains property");
-            temp = factory.states[date][id];
+            if(factory.states[date].hasOwnProperty(id)){
+                temp = factory.states[date][id];    
+            } else {
+                factory.initializeSingleReportEmptyNewDay(id, date);
+                temp = factory.states[date][id];
+            }
+            
         } else {
             console.log("NO selfReportState for date = " + date);
-            temp = null;
+            factory.initializeSingleReportEmptyNewDay(id, date);
+            temp = factory.states[date][id];
         }
         // var keys = Object.keys(factory.states);
         // console.log(keys);
@@ -460,6 +545,10 @@ angular.module('FamilySleep')
         } else { //no data for that date
             factory.initializeSingleReportEmptyNewDay(id, date);
             //factory.states[date] = {};
+            factory.states[date][id].mood = mood;
+            factory.states[date][id].image = image;
+            factory.states[date][id].state = true;
+            factory.states[date][id].reporter = reporter;
         }
         // if(d == date){
         //     console.log('dates are the same');
@@ -487,6 +576,7 @@ angular.module('FamilySleep')
         //if the date does not exist, create new 
         //subobject with all the needed properties
         //NEED TO CHECK DATEPICKER TO CREATE ONE?
+        //factory.states = {};
         if(!factory.states.hasOwnProperty(date)){
             var temp = {};
             temp[id] = {};
@@ -494,15 +584,18 @@ angular.module('FamilySleep')
             temp[id]['mood'] = null;
             temp[id]['image'] = null;
             temp[id]['reporter'] = null;
+            factory.states[date] = {};
             factory.states[date] = temp;
         } else if(!factory.states[date].hasOwnProperty(id)){
             var temp = {};
+            var old_state = factory.states[date];
             temp[id] = {};
             temp[id]['state'] = false;
             temp[id]['mood'] = null;
             temp[id]['image'] = null;
             temp[id]['reporter'] = null;
-            factory.states[date] = temp;
+            factory.states[date][id] = {};
+            factory.states[date][id] = temp[id];
         }
     };
 
@@ -511,6 +604,8 @@ angular.module('FamilySleep')
         //pids = personafactory.getAllIDs -> returns array of ids
         var id;
         var temp = {};
+        //factory.states = {};
+        factory.states[date] = {};
         if(!factory.states.hasOwnProperty(date) || angular.equals(factory.states[date], {}) ) {
             for (var i = pids.length - 1; i >= 0; i--) {
                 id = pids[i];
@@ -532,22 +627,13 @@ angular.module('FamilySleep')
     };
 
 
+    
     //scheduling next PUT, not sure if this is what I want
     factory._scheduleNextPut = function (){
         $timeout.cancel(factory._nextRetrievePromise);
     };
 
 
-    /*TODO: THIS IS INCORRECT
-    */
-    /*
-    factory.clearAll = function(){
-        for (var prop in factory.states) {
-            if (obj.hasOwnProperty(prop)) {
-                delete obj[prop];
-            }
-        }   
-    }*/
 
 
     return factory;

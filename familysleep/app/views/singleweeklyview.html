@@ -9,7 +9,7 @@
 	        <p class="fdv-names">{{viewModel.familyInfo.name}}</p>
 	    </div>
 	    <div class="swv-target-hours">
-        	<p class="target-hours-text"><span class="data-label">Target hours: </span><br><span class="data-number">{{ viewModel.familyInfo.targetedHours }}</span></p>
+        	<p>Target hours: {{ viewModel.familyInfo.targetedHours }}</p>
         </div>
 			<!--<img ng-src="{{persona." alt="momcircle" id="sdv-profile-pic">
 			<p id="sdv-name">{{id}}</p>-->
@@ -34,12 +34,20 @@
 <!--<p>No Data</p>-->
 	<div class="swv-row row" ng-repeat="day in viewModel.data | toArray : false | orderBy:'-date'">
 		<!-- <p class="swv-date">{{day.date}}</p> -->
-		<div class="regular-row" ng-if="day.duration==-1" ng-controller="EmptybarchartCtrl"> <!--no data -->
+		<div ng-if="day.duration==-1" ng-controller="EmptybarchartCtrl"> <!--no data -->
 		<!--<p>{{day.duration}}</p>
 				-<p>{{data}}</p>-->
-				<p class="swv-date">{{day.date}}</p>
-				<canvas class="swv-empty-chart-placement chart chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="color" height="40" width="800"></canvas>	
-				<!-- <img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics"> -->
+			<div ng-switch on="$index">
+				<div ng-switch-when="0" class="first-empty-row">
+					<p class="swv-date">{{day.date}}</p>
+					<canvas class="swv-empty-chart-placement chart chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="color" height="40" width="800"></canvas>	
+					<!-- <img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics"> -->
+				</div>
+				<div ng-switch-default class="regular-row">
+						<p class="swv-date">{{day.date}}</p>
+						<canvas class="swv-empty-chart-placement chart chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="color" height="40" width="800"></canvas>	
+				</div>
+			</div>
 		</div>
 		<div ng-if="day.duration > -1">
 			<div ng-switch on="$index">

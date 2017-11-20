@@ -116,28 +116,28 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="fitbit">Fitbit ID</label>
 						<div class="col-md-5">
-							<input id="fitbit" name="fitbit" ng-model="member.fitbit" placeholder="" class="form-control input-md">
-							
+							<!-- <input id="fitbit" name="fitbit" ng-model="member.fitbit" placeholder="" class="form-control input-md"> -->
+							<select id="fitbit" name="fitbit" ng-model="member.fitbit" ng-options="x for x in fitbitDevices">
+							</select>
 						</div>
 					</div>
 				</form>
 
 				<label class="col-md-4 control-label" for="signup"></label>
 				<div class="col-md-5">
-					<button ng-click="signup.addNewMember()" id="addMember" name="addMember" class="signup-buttons btn btn-success btn-block">Add New Member!</button>
+					<button ng-click="signup.addNewMember()" id="addMember" name="addMember" class="signup-buttons btn btn-success btn-block">Submit and Add Another</button>
+				</div>
+
+				<label class="col-md-4 control-label" for="signup"></label>
+				<div class="col-md-5" id="last-button">
+					<button ng-click="signup.submit()" id="submit" name="submit" class="signup-buttons btn btn-success btn-block">Submit and Finish</button>
 				</div>
 
 				<label class="col-md-4 control-label" for="signup"></label>
 				<div class="col-md-5">
 					<button ng-click="signup.cancelFromMember()" id="addMember" name="addMember" class="signup-buttons btn btn-success btn-block">Cancel</button>
 				</div>
-
-				<label class="col-md-4 control-label" for="signup"></label>
-				<div class="col-md-5" id="last-button">
-					<button ng-click="signup.submit()" id="submit" name="submit" class="signup-buttons btn btn-success btn-block">Done!</button>
-				</div>
-
-			</div>	
+			</div>
 		</div>
 	</div>
 
