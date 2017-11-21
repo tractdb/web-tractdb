@@ -8,7 +8,7 @@
       <ul class="list-inline"> 
         <li ng-repeat="fam in $ctrl.checkFam">
           <div ng-class="fam.checked ? 'activeLogReporter' : 'inactiveReporter'">
-            <label class="btn btn-info btn-lg btn-block logModalReporter" ng-click="$event.preventDefault(); $ctrl.isOK();" ng-model="fam.checked" uib-btn-checkbox>{{ fam.name }}</label>
+            <label class="btn btn-info btn-xlarge btn-block logModalReporter" ng-click="$event.preventDefault(); $ctrl.isOK();" ng-model="fam.checked" uib-btn-checkbox>{{ fam.name }}</label>
           </div>
         </li>
       </ul>
@@ -37,7 +37,7 @@
 
 
 <div class="modal-footer log-modal-footer">
-        <button class="modal-btn btn btn-primary btn-lg modalOK" type="button" ng-disabled="!($ctrl.buttonState)" ng-click="$ctrl.ok()">OK</button>
+        <button class="modal-btn btn btn-primary btn-xlarge modalOK" type="button" ng-disabled="!($ctrl.buttonState)" ng-click="$ctrl.ok()">OK</button>
 
 <!-- 
   <h3>Would you like to answer this question today? Do you feel well rested?</h3>
@@ -54,5 +54,5 @@
   </div>
  -->
 <!-- </div> -->
-        <button class="btn btn-warning btn-lg" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+        <button class="btn btn-warning btn-xlarge" type="button" ng-click="$ctrl.cancel()">Cancel</button>
 </div>

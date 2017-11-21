@@ -8022,62 +8022,82 @@ button.modal-mood-reporter:focus, button.modal-mood-reporter:active, button.moda
 
 /* line 158, partials/_modalstyle.scss */
 .activeMoodReporter {
-  /*border: 3px solid #478de7;*/
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
-/* line 162, partials/_modalstyle.scss */
+/* line 164, partials/_modalstyle.scss */
 img.modal-mood-pics:focus {
   outline: 0;
 }
 
-/* line 166, partials/_modalstyle.scss */
+/* line 168, partials/_modalstyle.scss */
 .mood-item {
   margin-bottom: 20px;
   padding: 5px;
 }
 
-/* line 171, partials/_modalstyle.scss */
+/* line 173, partials/_modalstyle.scss */
 .activeMoodItem {
   border: 4px solid #478de7;
 }
 
 /*for log modal window*/
-/* line 176, partials/_modalstyle.scss */
+/* line 178, partials/_modalstyle.scss */
 .log-modal-header, .log-modal-body, .log-modal-footer {
   border-bottom: 1px solid black;
   background-color: white;
   color: black;
 }
 
-/* line 182, partials/_modalstyle.scss */
+/* line 184, partials/_modalstyle.scss */
+.inactiveReporter, .activeLogReporter {
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+/* line 190, partials/_modalstyle.scss */
 label.logModalReporter:focus, label.logModalReporter:active, label.logModalReporter:hover {
   outline: none !important;
 }
 
-/* line 186, partials/_modalstyle.scss */
+/* line 194, partials/_modalstyle.scss */
 .activeLogReporter label {
   background-color: #268986 !important;
   border-color: #268986 !important;
   outline: none !important;
 }
 
-/* line 192, partials/_modalstyle.scss */
+/* line 200, partials/_modalstyle.scss */
 .activeLogReporter label:hover, .activeLogReporter label:active, .activeLogReporter label:focus {
   background-color: #268986 !important;
   border-color: #268986 !important;
 }
 
-/* line 197, partials/_modalstyle.scss */
+/* line 205, partials/_modalstyle.scss */
 .inactiveReporter label {
   background-color: #34cfca !important;
   border-color: #34cfca !important;
   outline: none !important;
 }
 
-/* line 203, partials/_modalstyle.scss */
+/* line 211, partials/_modalstyle.scss */
 .inactiveReporter label:hover, .inactiveReporter label:active, .inactiveReporter label:focus {
   background-color: #34cfca !important;
   border-color: #34cfca !important;
+}
+
+/* line 216, partials/_modalstyle.scss */
+.btn-xlarge {
+  padding: 18px 28px;
+  font-size: 22px;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  margin-right: 10px;
 }
 
 /*
