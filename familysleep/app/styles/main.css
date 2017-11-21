@@ -8043,31 +8043,38 @@ img.modal-mood-pics:focus {
 
 /*for log modal window*/
 /* line 176, partials/_modalstyle.scss */
+.log-modal-header, .log-modal-body, .log-modal-footer {
+  border-bottom: 1px solid black;
+  background-color: white;
+  color: black;
+}
+
+/* line 182, partials/_modalstyle.scss */
 label.logModalReporter:focus, label.logModalReporter:active, label.logModalReporter:hover {
   outline: none !important;
 }
 
-/* line 180, partials/_modalstyle.scss */
+/* line 186, partials/_modalstyle.scss */
 .activeLogReporter label {
   background-color: #268986 !important;
   border-color: #268986 !important;
   outline: none !important;
 }
 
-/* line 186, partials/_modalstyle.scss */
+/* line 192, partials/_modalstyle.scss */
 .activeLogReporter label:hover, .activeLogReporter label:active, .activeLogReporter label:focus {
   background-color: #268986 !important;
   border-color: #268986 !important;
 }
 
-/* line 191, partials/_modalstyle.scss */
+/* line 197, partials/_modalstyle.scss */
 .inactiveReporter label {
   background-color: #34cfca !important;
   border-color: #34cfca !important;
   outline: none !important;
 }
 
-/* line 197, partials/_modalstyle.scss */
+/* line 203, partials/_modalstyle.scss */
 .inactiveReporter label:hover, .inactiveReporter label:active, .inactiveReporter label:focus {
   background-color: #34cfca !important;
   border-color: #34cfca !important;

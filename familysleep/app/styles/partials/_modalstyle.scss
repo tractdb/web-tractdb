@@ -173,6 +173,12 @@ img.modal-mood-pics:focus {
 }
 
 /*for log modal window*/
+.log-modal-header, .log-modal-body, .log-modal-footer {
+    border-bottom: 1px solid black;
+    background-color: white;
+    color: black;
+}
+
 label.logModalReporter:focus, label.logModalReporter:active, label.logModalReporter:hover {
     outline: none !important;
 }
