@@ -7505,20 +7505,21 @@ img.signup-avatars:focus {
   width: 478px;
   margin-left: -5px;
   margin-top: 15px;
+  font-weight: bold;
 }
 
-/* line 43, partials/_signup.scss */
+/* line 44, partials/_signup.scss */
 #last-button {
   margin-bottom: 50px;
 }
 
-/* line 47, partials/_signup.scss */
+/* line 48, partials/_signup.scss */
 .family-type-container {
   float: left;
   width: 550px;
 }
 
-/* line 52, partials/_signup.scss */
+/* line 53, partials/_signup.scss */
 .family-type {
   margin-top: 5px;
   margin-botton: 5px;
@@ -7632,7 +7633,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 
 /* line 102, partials/_familydailyview.scss */
 .single-view-button {
-  margin-left: 230px;
+  margin-left: 235px;
   margin-bottom: 50px;
   position: absolute;
   top: 5px;
@@ -7648,7 +7649,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   position: absolute;
   top: 5px;
   height: 50px;
-  width: 120px;
+  width: 125px;
   font-size: medium;
 }
 
@@ -7657,7 +7658,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   background-color: #d6c3db;
   border-color: #d6c3db;
   color: #555555;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
@@ -7666,15 +7667,15 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 .target-hours {
   position: absolute;
   top: 120px;
-  left: -140px;
-  margin-bottom: 20px;
-  font-size: medium;
-  width: 100%;
+  left: 30px;
+  /* margin-bottom: 20px; */
+  /* font-size: medium; */
+  width: 110px;
 }
 
 /* line 141, partials/_familydailyview.scss */
 .target-hours-text {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 /* line 145, partials/_familydailyview.scss */
@@ -7730,32 +7731,38 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 .hours-slept {
   font-size: medium;
   position: absolute;
-  top: 180px;
-  left: 40px;
-  text-align: center;
+  top: 190px;
+  left: 30px;
+  width: 110px;
 }
 
 /* line 195, partials/_familydailyview.scss */
-.data-label {
-  font-size: 15px;
+.hours-slept-text {
+  /*text-align: center;*/
 }
 
 /* line 199, partials/_familydailyview.scss */
-.data-number {
-  font-size: 19px;
-  font-weight: 500;
+.data-label {
+  font-size: 18px;
 }
 
-/* line 204, partials/_familydailyview.scss */
+/* line 203, partials/_familydailyview.scss */
+.data-number {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* line 209, partials/_familydailyview.scss */
 .mood-report {
   position: absolute;
   top: 230px;
-  font-size: medium;
+  font-size: 18px;
   width: 100%;
   margin-left: 30px;
 }
 
-/* line 212, partials/_familydailyview.scss */
+/* line 217, partials/_familydailyview.scss */
 .mood-report-text {
   text-align: center;
 }
@@ -8102,7 +8109,7 @@ MODAL WINDOW END
   width: 70px;
   margin: 0;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 /* line 34, partials/_familyweeklyview.scss */
@@ -8120,21 +8127,31 @@ MODAL WINDOW END
   width: 120px;
   margin-left: 7px;
   margin-right: 7px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   position: relative;
 }
 
 /* line 51, partials/_familyweeklyview.scss */
+.fwv-date-columns {
+  float: left;
+  width: 120px;
+  margin-left: 7px;
+  margin-right: 7px;
+  margin-bottom: 0px;
+  position: relative;
+}
+
+/* line 60, partials/_familyweeklyview.scss */
 .pic-column {
   height: 80px;
 }
 
-/* line 55, partials/_familyweeklyview.scss */
+/* line 64, partials/_familyweeklyview.scss */
 #blank-date {
   visibility: hidden;
 }
 
-/* line 59, partials/_familyweeklyview.scss */
+/* line 68, partials/_familyweeklyview.scss */
 .fwv-mood-pics {
   position: absolute;
   width: 52px;
@@ -8144,16 +8161,16 @@ MODAL WINDOW END
   margin-left: 14px;
 }
 
-/* line 68, partials/_familyweeklyview.scss */
+/* line 77, partials/_familyweeklyview.scss */
 .fwv-mood-text {
   text-align: center;
-  font-size: 14px;
+  font-size: 17px;
 }
 
-/* line 73, partials/_familyweeklyview.scss */
+/* line 82, partials/_familyweeklyview.scss */
 .fwv-date {
   text-align: center;
-  font-size: medium;
+  font-size: 18px;
 }
 
 /* line 1, partials/_datepicker.scss */
@@ -8187,7 +8204,7 @@ input[aria-expanded=false] {
 /* line 23, partials/_datepicker.scss */
 .md-datepicker-input {
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   margin-right: 20px;
   pointer-events: none;
 }
@@ -8219,14 +8236,20 @@ md-icon svg path {
   background-color: #D3DBE9;
   /*#6e85b6;*/
   opacity: 0.8;
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: bold;
   color: #555555;
   height: 45px;
   width: 50px;
+  margin-right: 5px;
 }
 
-/* line 62, partials/_datepicker.scss */
+/* line 63, partials/_datepicker.scss */
+button#yesterday {
+  margin-left: 0;
+}
+
+/* line 67, partials/_datepicker.scss */
 #yesterday img, #tomorrow img {
   height: 28px;
   width: 28px;
@@ -8235,7 +8258,7 @@ md-icon svg path {
 }
 
 /*change scale of popup calendar*/
-/* line 70, partials/_datepicker.scss */
+/* line 75, partials/_datepicker.scss */
 .md-datepicker-calendar-pane.md-pane-open {
   -webkit-transform: scale(1.5);
   transform: scale(1.5) !important;
@@ -8243,9 +8266,10 @@ md-icon svg path {
 }
 
 /*change dimension of input area in calendar so date shows through*/
-/* line 77, partials/_datepicker.scss */
+/* line 82, partials/_datepicker.scss */
 .md-datepicker-input-mask-opaque {
-  box-shadow: 0 0 0 999px white, inset 0 9px 0px 0px white, inset 13px 0 0 0px white, inset -35px 0 0 0px white;
+  box-shadow: 0 0 0 999px white, inset 0 9px 0px 0px white, inset 0 -3px 0 0 white, inset 13px 0 0 0px white, inset -60px 0 0 0px white;
+  /*right*/
   left: 0 !important;
   top: 0 !important;
 }
@@ -8612,7 +8636,7 @@ nav a {
   padding: 18px 30px;
   color: #fff !important;
   font-weight: bold;
-  font-size: 19px;
+  font-size: 20px;
   text-decoration: none !important;
   line-height: 1;
   background-color: transparent;
