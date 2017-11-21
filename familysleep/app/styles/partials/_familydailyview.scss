@@ -100,7 +100,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 }
 
 .single-view-button {
-  margin-left: 230px;
+  margin-left: 235px;
   margin-bottom: 50px;
   position: absolute;
   top: 5px;
@@ -115,7 +115,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   position: absolute;
   top: 5px;
   height: 50px;
-  width: 120px;
+  width: 125px;
   font-size: medium;
 
 }
@@ -124,7 +124,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   background-color: #d6c3db;
   border-color: #d6c3db;
   color: #555555;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
@@ -132,14 +132,14 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 .target-hours {
   position: absolute;
   top: 120px;
-  left: -140px;
-  margin-bottom: 20px;
-  font-size: medium;
-  width:100%;
+  left: 30px;
+  /* margin-bottom: 20px; */
+  /* font-size: medium; */
+  width: 110px;
 }
 
 .target-hours-text {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .mood-pics {
@@ -185,26 +185,31 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 }
 
 .hours-slept {
-  font-size: medium;
+  font-size: medium; */
   position: absolute;
-  top: 180px;
-  left: 40px;
-  text-align: center;
+  top: 190px;
+  left: 30px;
+  width: 110px;
+}
+
+.hours-slept-text {
+  /*text-align: center;*/
 }
 
 .data-label {
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .data-number {
-  font-size: 19px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .mood-report {
   position: absolute;
   top: 230px;
-  font-size: medium;
+  font-size: 18px;
   width: 100%;
   margin-left: 30px;
 }
