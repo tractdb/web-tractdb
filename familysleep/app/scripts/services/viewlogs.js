@@ -42,7 +42,7 @@ var module = angular.module(
     
 module.factory(
   'viewLogs', 
-  ['$timeout', '$uibModal', 'personaFactory', '$log', function ($timeout, $uibModal, personaFactory, $log) {
+  ['$timeout', '$uibModal', 'personaFactory', '$log', '$rootScope', 'recorderFactory',function ($timeout, $uibModal, personaFactory, $log, $rootScope, recorderFactory) {
     var factory = {};
 
     factory.logs = {};
@@ -50,6 +50,10 @@ module.factory(
 
     factory.logLastPage = function (currentTime) {
       if(factory.logSession.sessionTimeStamps[factory.logSession.pages.length-1] == currentTime) {
+        // sending audio data when user forget to stop recording.
+        if($rootScope.recordRecording || $rootScope.recordPausing) {
+          $rootScope.onStopRecord();
+        }   
         factory.logs[factory.logSession.startTime] = {
             'users' : factory.logSession.users,
             'timeStamp': {
@@ -57,7 +61,7 @@ module.factory(
                 'endTime': currentTime
             },
             'pages' : factory.logSession.pages
-        }   
+        }
         factory.logSession = null;
       }
     };
@@ -77,8 +81,13 @@ module.factory(
               save last click,
               save the whole thing to logs.
     */
-    factory.logPage = function (page, date, id=null) { 
+
+    // id=null
+
+    factory.logPage = function (page, date, id) { 
+      if (typeof(id)==='undefined') id = null;
       var currentTime = new Date();
+
       if (factory.logSession == null) {
         factory.logSession = {
             'pages': [],
@@ -98,7 +107,6 @@ module.factory(
     factory.popup = function() {
       factory.famMems = personaFactory.getAllNames();
       factory.famIDs = personaFactory.getAllIDs();
-
       var modalInstance = $uibModal.open({
         animation: true,
         ariaLabelledBy: 'modal-title',
@@ -118,6 +126,7 @@ module.factory(
       });
       modalInstance.result.then(function (selectedItems) {
         factory.logSession.users = selectedItems;
+        recorderFactory.users = selectedItems;       
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
@@ -127,7 +136,7 @@ module.factory(
 }]);
 
 
-angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibModalInstance, famMems, famID) {
+angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibModalInstance, $scope, famMems, famID) {
   var $ctrl = this;
   $ctrl.famMems = famMems;
   $ctrl.buttonState = false;
@@ -158,6 +167,9 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
       }
     }
     $uibModalInstance.close(selectedNames);
+    $scope.onRecord();
+    $scope.$parent.recordStoppedClear = false;
+    $scope.$parent.recordRecording = true;
   };
 
   $ctrl.cancel = function () {

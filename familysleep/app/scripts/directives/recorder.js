@@ -16,7 +16,7 @@ angular.module('FamilySleep')
 
       templateUrl: 'app/views/recorder.html',
       //Embed a custom controller in the directive
-      controller: function($scope, $window, $http) {
+      controller: function($scope, $window, $http, recorderFactory) {
         $scope.instruction = "Tap to record";
         $scope.url = "";
         $scope.recordStoppedClear = true;
@@ -83,6 +83,7 @@ angular.module('FamilySleep')
             var recordedBlob = $window.recordRTC.getBlob();
             $scope.recordedBlob = recordedBlob;
             //console.log($scope.url);
+            $scope.onSendRecord();
           });
         }
 
@@ -93,28 +94,18 @@ angular.module('FamilySleep')
         
         // sending the recording, not sure if it will get recorder back to clean slate
         $scope.onSendRecord = function() {
-          var recordedBlob = $scope.recordedBlob;
-          console.log(recordedBlob);
-          //recordRTC.getDataURL()
-          var formData = new FormData();
-          console.log(formData);
-          formData.append('test', recordedBlob);
-          $http.post('http://localhost:3000', formData, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-          })
-          .then(function(result) {
-            console.log("done")
-            $scope.recordStoppedClear = true;
-          })
-          //temp
           $scope.recordStoppedClear = true;
           $scope.recordRecording = false;
           $scope.recordPausing = false;
           $scope.recordStopped = false;
           $scope.recordReplay = false;
+          var recordedBlob = $scope.recordedBlob;
+          console.log(recordedBlob);
+          recorderFactory.audio = {'data': recordedBlob, 'timeStamp': new Date(), 'users': recorderFactory.users};
+          console.log(recorderFactory.audio);
+          recorderFactory.putData();
         }
       },
-      link: function ($scope, element, attrs) { } //DOM manipulation
+      link: function ($scope, element, attrs) { } 
     }
   });
