@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <div class="recorder-player" ng-show="recordReplay">
+<!--   <div class="recorder-player" ng-show="recordReplay">
     <audio src={{url}} controls></audio>
   </div>
 
@@ -55,10 +55,10 @@
     <div class="record-descrip">
       Replay
     </div>
-  </div>
+  </div> -->
 
   <!-- only show stop when record is recording or paused -->
-  <div class="record-button" ng-if="!recordStopped && !recordStoppedClear">
+  <div class="record-button" ng-if="!recordStopped && !recordStoppedClear"> 
     <md-button class="md-fab" ng-click="onStopRecord()" aria-label="pause-button">
       <img class="recorder-logo" src="app/images/recorder/stop.png">
     </md-button>
@@ -74,7 +74,7 @@
    </md-button> -->
 
    <!-- only show upload and delete when record is paused -->
-   <div class="record-button" ng-if="recordPausing || recordStopped">
+ <!--   <div class="record-button" ng-if="recordPausing || recordStopped">
      <md-button class="md-fab"  ng-click="onDelete()" aria-label="delete-button">
        <img class="recorder-logo" src="app/images/recorder/delete.png">
      </md-button>
@@ -90,7 +90,7 @@
      <div class="record-descrip">
        Send
      </div>
-   </div>
+   </div> -->
 <!--
     <button class="recorder-start" ng-click="onRecord()" type="button">
       <img id="recorder-logo" src="../images/sound_recorder.png">
