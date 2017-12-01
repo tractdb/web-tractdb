@@ -112,6 +112,8 @@ module.factory(
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
         templateUrl: 'app/views/templates/logmodalcontent.html',
+        backdrop: 'static',
+        keyboard: false,
         controller: 'LogModalInstanceCtrl',
         controllerAs: '$ctrl',
         windowClass:'app-modal-window',

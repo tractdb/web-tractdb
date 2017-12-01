@@ -22,8 +22,9 @@ input[aria-expanded=false] {
 
 .md-datepicker-input {
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   margin-right: 20px;
+  pointer-events: none;
 }
 
 md-icon {
@@ -51,11 +52,16 @@ md-icon {
 #yesterday, #today, #tomorrow {
 	background-color: #D3DBE9 ;/*#6e85b6;*/
   opacity: 0.8;
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: bold;
   color: #555555;
   height: 45px;
   width: 50px;
+  margin-right: 5px;
+}
+
+button#yesterday {
+  margin-left: 0;
 }
 
 #yesterday img, #tomorrow img {
@@ -74,7 +80,11 @@ md-icon {
 
 /*change dimension of input area in calendar so date shows through*/
 .md-datepicker-input-mask-opaque {
-  box-shadow: 0 0 0 999px white, inset 0 9px 0px 0px white, inset 13px 0 0 0px white, inset -35px 0 0 0px white;
+  box-shadow: 0 0 0 999px white, 
+              inset 0 9px 0px 0px white,  /*top*/
+              inset 0 -3px 0 0 white,     /*bottom*/
+              inset 13px 0 0 0px white,   /*left*/
+              inset -60px 0 0 0px white;  /*right*/
   left: 0 !important;
   top: 0 !important;
 }
