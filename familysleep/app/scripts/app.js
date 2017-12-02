@@ -17,7 +17,10 @@ angular
         'tractdb.config'
     ])
     .config(function ($routeProvider, $locationProvider) {
-        $locationProvider.html5Mode(true);
+        // Already set when we import tractdb.config
+        //
+        // $locationProvider.html5Mode(true);
+        //
 
         $routeProvider
             .when('/', {
