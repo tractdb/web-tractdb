@@ -17,8 +17,8 @@ angular
         'tractdb.config'
     ])
     .config(function ($routeProvider, $locationProvider) {
-        //can't get the removing hash to work
-        //$locationProvider.html5Mode(true); //escaping hashtags all over the place
+        $locationProvider.html5Mode(true);
+
         $routeProvider
             .when('/', {
                 templateUrl: 'app/views/familydailyview.html',
