@@ -203,7 +203,6 @@ module.factory(
             factory.logSession.sessionTimeStamps.push(currentTime);
             $timeout(factory.logLastPage, 3 * 10000, true, currentTime); //changed to 30 seconds wait before logging interaction
         }
-
         factory.popup = function() {
             factory.famMems = personaFactory.getAllNames();
             factory.famIDs = personaFactory.getAllIDs();
@@ -212,6 +211,8 @@ module.factory(
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
                 templateUrl: 'app/views/templates/logmodalcontent.html',
+                backdrop: 'static',
+                keyboard: false,
                 controller: 'LogModalInstanceCtrl',
                 controllerAs: '$ctrl',
                 windowClass:'app-modal-window',
@@ -225,16 +226,20 @@ module.factory(
                 }
             });
             modalInstance.result.then(function (selectedItems) {
-                /***** PROBLEM HERE factory.logSession in logLastPage
+                /***** BUG///PROBLEM HERE factory.logSession in logLastPage
                 gets set to null even if the popup have not been replied
                 NEED TO FIGURE OUT WHAT HAPPENS HERE****/
-                if(selectedItems == null){
-                    factory.logSession.users = null;
-                    //recorderFactory.users = null;
-                } else {
-                    factory.logSession.users = selectedItems;
-                //recorderFactory.users = selectedItems;       
-                }
+                 factory.logSession.users = selectedItems;
+                //recorderFactory.users = selectedItems;
+
+                  
+                // if(selectedItems == null){
+                //     factory.logSession.users = null;
+                //     //recorderFactory.users = null;
+                // } else {
+                //     factory.logSession.users = selectedItems;
+                // //recorderFactory.users = selectedItems;       
+                // }
                 
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
