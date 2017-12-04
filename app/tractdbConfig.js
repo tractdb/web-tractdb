@@ -12,5 +12,8 @@ module_tractdbConfig.config(['$httpProvider', function ($httpProvider) {
 }]);
 
 module_tractdbConfig.config(['$locationProvider', function($locationProvider) {
-	$locationProvider.html5Mode(true);
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: false
+    });
 }]);
