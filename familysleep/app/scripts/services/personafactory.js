@@ -259,7 +259,7 @@ module.factory(
             factory.getID = function(name){
                 var pid;
                 for(var fam in factory.personas){
-                    if (factory.personas[fam].name === name){
+                    if (factory.personas[fam].name == name){
                         pid = factory.personas[fam].pid;
                         return pid;
                     }

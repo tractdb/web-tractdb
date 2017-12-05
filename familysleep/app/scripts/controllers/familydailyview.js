@@ -238,6 +238,7 @@ module.controller(
                     //selfreportstate.initializeAll(pids);
                     viewModel.updateFamilyInfo();
                     $rootScope.$broadcast('familydailyview:updated');
+                    $rootScope.$broadcast('modalview:updated');
                 });
 
                 //should replace to viewModel

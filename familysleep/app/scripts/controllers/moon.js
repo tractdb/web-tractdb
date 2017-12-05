@@ -8,33 +8,60 @@
  * Controller of the FamilySleep
  */
 angular.module('FamilySleep')
-  .controller('MoonCtrl', ['$scope', '$rootScope', 'tractdbFactory', 'dateFactory', 'personaFactory',
-  	function ($scope, $rootScope, tractdbFactory, dateFactory, personaFactory) {
+  .controller('MoonCtrl', ['$scope', '$rootScope', 'tractdbFactory', 'dateFactory', 'personaFactory', 'selfReportState',
+  	function ($scope, $rootScope, tractdbFactory, dateFactory, personaFactory, selfReportState) {
 
 
     $scope.moonImage = 'app/images/moons/moon7a.png';
 
-    $rootScope.$on('familydailyview:updated', function() {
+    //familydailyview:updateMoon
+    //modalview:updateMoon
+    // $rootScope.$on('familydailyview:updated', function() {
+    //   updateMoon();
+    // });
+
+    $rootScope.$on('modalview:updated', function() {
       updateMoon();
     });
+
 
     var updateMoon = function() {
     	var totalSleep = 0;
 		var i = 0;
 		var tractdbData = tractdbFactory.tractdbData;
-		var duration, pid, date;
+		var duration, hours, pid, date;
 		var pids = personaFactory.getAllIDs();
+		var calendarDate = dateFactory.getDateString();
+		var today = dateFactory.getTodayString();
+		var states = selfReportState.getAllMoodsDay(pids, calendarDate);
 		if(tractdbData != null){
-			date = dateFactory.getDateString();
-			for (var i = pids.length - 1; i >= 0; i--) {
-				pid = pids[i];
-				duration = tractdbData[pid][date].duration;
-				if(duration == -1){
-					totalSleep+=0;
+			angular.forEach(states, function(value, key){
+				//if state is not null
+				//then add to totalSleep
+				duration = tractdbData[key][calendarDate].duration;
+				if(calendarDate == today){
+					if((states[key].state) && (duration !=-1)){
+						hours = duration / 1000 / 60 / 60;
+						totalSleep +=hours;
+					}
 				} else {
-					totalSleep +=duration;
+					hours = duration / 1000 / 60 / 60;
+					totalSleep +=hours;
 				}
-			}
+
+				
+				
+				//otherwise don't do anything.
+				// for (var i = pids.length - 1; i >= 0; i--) {
+				// 	pid = pids[i];
+				// 	duration = tractdbData[pid][date].duration;
+				// 	if(duration == -1){
+				// 		totalSleep+=0;
+				// 	} else {
+				// 		totalSleep +=duration;
+				// 	}
+				// }
+			});
 		} else {
 			totalSleep = 0;
 		}

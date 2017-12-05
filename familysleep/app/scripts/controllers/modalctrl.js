@@ -1,7 +1,7 @@
 'use strict';
 /*** TODO need to add mood selected to the sleep object **/
-angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibModal', '$log', '$document', 'tractdbFactory', 'personaFactory', 'dateFactory',
-        function(selfReportState, $uibModal, $log, $document, tractdbdata, personaFactory, dateFactory){
+angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibModal', '$log', '$document', 'tractdbFactory', 'personaFactory', 'dateFactory', '$rootScope',
+        function(selfReportState, $uibModal, $log, $document, tractdbdata, personaFactory, dateFactory, $rootScope){
         var templateDir = 'app/views/templates/';
         var $ctrl = this;
 
@@ -124,8 +124,9 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
             var date = dateFactory.getDateString();
             selfReportState.setMood($ctrl.famID, selectedItems.selected.name, selectedItems.selected.image, reporterID, date);
             selfReportState.putData();
-            console.log('personaFactory personas');
-            console.log(personaFactory.personas);
+            $rootScope.$broadcast('modalview:updated');
+            // console.log('personaFactory personas');
+            // console.log(personaFactory.personas);
             //$log.info(selectedItems.selected);
             //$log.info(selectedItems.selectedFam);
             //$log.info(selectedItems.selected.name);
