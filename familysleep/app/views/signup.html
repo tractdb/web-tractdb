@@ -115,10 +115,14 @@
 
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="fitbit">Fitbit ID</label>
-						<div class="col-md-5">
-							<!-- <input id="fitbit" name="fitbit" ng-model="member.fitbit" placeholder="" class="form-control input-md"> -->
-							<select id="fitbit" name="fitbit" ng-model="member.fitbit" ng-options="x for x in fitbitDevices">
-							</select>
+						<div class="family-type-container">
+							<div class="col-md-5 family-type" ng-repeat="device in fitbitDevices">
+								<!-- <input id="fitbit" name="fitbit" ng-model="member.fitbit" placeholder="" class="form-control input-md"> -->
+								<!-- <select id="fitbit" name="fitbit" ng-model="member.fitbit" ng-options="x for x in fitbitDevices">
+								</select> -->
+								<input type="radio" ng-model="member.fitbit" ng-value="device" name="device" id="{{device}}">
+								<label>{{device}}</label>
+							</div>	
 						</div>
 					</div>
 				</form>

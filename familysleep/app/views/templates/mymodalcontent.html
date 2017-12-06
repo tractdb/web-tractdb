@@ -8,7 +8,7 @@
       <ul class="list-inline"> 
         <li ng-repeat="fam in $ctrl.famMems">
           <div ng-class="{activeMoodReporter : $ctrl.activeReporterMenu === fam}">
-            <button class="btn btn-info btn-lg btn-block modal-mood-reporter" type="button" ng-click="$event.preventDefault(); $ctrl.selectedFam.item = fam; $ctrl.buttonState=$ctrl.buttonState+1; $ctrl.setActiveMoodReporter(fam);">{{ fam }}</button> 
+            <button class="btn btn-info btn-xlarge btn-block modal-mood-reporter" type="button" ng-click="$event.preventDefault(); $ctrl.selectedFam.item = fam; $ctrl.buttonState=$ctrl.buttonState+1; $ctrl.setActiveMoodReporter(fam);">{{ fam }}</button> 
           </div>
         </li>
       </ul>
@@ -27,6 +27,6 @@
    
 </div>
 <div class="modal-footer">
-        <button class="modal-btn btn btn-primary btn-lg modalOK" type="button" ng-disabled="!($ctrl.buttonState >=1 && $ctrl.imgState>=1)" ng-click="$ctrl.ok()">OK</button>
-        <button class="btn btn-warning btn-lg" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+        <button class="modal-btn btn btn-primary btn-xlarge modalOK" type="button" ng-disabled="!($ctrl.buttonState >=1 && $ctrl.imgState>=1)" ng-click="$ctrl.ok()">OK</button>
+        <button class="btn btn-warning btn-xlarge" type="button" ng-click="$ctrl.cancel()">Cancel</button>
 </div>
