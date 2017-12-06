@@ -53,10 +53,7 @@ module.factory(
 
         factory.logLastPage = function (currentTime) {
             if(factory.logSession.sessionTimeStamps[factory.logSession.pages.length-1] == currentTime) {
-                // sending audio data when user forget to stop recording.
-                // if($rootScope.recordRecording || $rootScope.recordPausing) {
-                //     $rootScope.onStopRecord();
-                // }   
+                  
                 factory.logs[factory.logSession.startTime] = {
                         'users' : factory.logSession.users,
                         'timeStamp': {
@@ -66,6 +63,11 @@ module.factory(
                         'pages' : factory.logSession.pages
                 }
                 factory.putData();
+                //sending audio data when user forget to stop recording.
+                if($rootScope.recordRecording || $rootScope.recordPausing) {
+                    $rootScope.onStopRecord();
+                } 
+
                 factory.logSession = null;
             }
         }
@@ -229,10 +231,10 @@ module.factory(
                 /***** BUG///PROBLEM HERE factory.logSession in logLastPage
                 gets set to null even if the popup have not been replied
                 NEED TO FIGURE OUT WHAT HAPPENS HERE****/
-                 factory.logSession.users = selectedItems;
-                //recorderFactory.users = selectedItems;
+                factory.logSession.users = selectedItems;
+                recorderFactory.users = selectedItems;
 
-                  
+
                 // if(selectedItems == null){
                 //     factory.logSession.users = null;
                 //     //recorderFactory.users = null;
@@ -281,9 +283,9 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
             }
         }
         $uibModalInstance.close(selectedNames);
-        // $scope.onRecord();
-        // $scope.$parent.recordStoppedClear = false;
-        // $scope.$parent.recordRecording = true;
+        $scope.onRecord();
+        $scope.$parent.recordStoppedClear = false;
+        $scope.$parent.recordRecording = true;
     };
 
     $ctrl.cancel = function () {

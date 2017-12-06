@@ -11,58 +11,47 @@ module.factory(
         function ($rootScope, $http, $timeout, BASEURL_PYRAMID) {
             var factory = {};
 
-            var doc_id = null;
-            var doc_rev = null;
-
+            
             factory.audio = {}; // audio: {'data': audio, 'timeStamp': new Date(), 'users': users};
             factory.users = [];
 
             /*
               setting the recorder data.
             */
+
             factory.putData = function() {
-                $http(
-                    {
-                      method: 'GET',
-                      url: BASEURL_PYRAMID + '/document/familysleep_audio_recording'
-                    }
-                ).then(function success(response){
-                    var old_audios = response.data.audios;
-                    // what happens if it doesn't exist??
-                    doc_id = response.data._id;
+
+                
+                var date_format = moment(factory.audio.timeStamp).format('YYYY_MM_DD_kk_mm');      
+                
+                var doc_id = 'audio_logs' + '_' + date_format;
+                var doc_rev;
+                
+                $http(  
+                {
+                    method: 'POST',
+                    url: BASEURL_PYRAMID + '/document/' + doc_id,
+                    data: {"users": factory.audio.users}
+                }).then(function success(response){
                     doc_rev = response.data._rev;
-                    var new_audios;
-                    if(old_audios == []) {
-                        new_audios = [factory.audio];
-                    } else {
-                        new_audios = old_audios.push(facctory.audio);
-                    }
-                    var new_doc = {
-                        "_id": doc_id,
-                        "_rev": doc_rev,
-                        "audios": new_audios
-                    };
-                    $http(
-                        {
-                            method: 'PUT',
-                            url: BASEURL_PYRAMID + '/document/familysleep_audio_recording',
-                            data: new_doc
-                        }
-                    ).then(function success(response){
-                        doc_id = response.data._id;
-                        doc_rev = response.data._rev;
-                        //console.log("rev of the PUT");
-                        //console.log(doc_rev);
-                    }).catch (function errorCallback(response){
+
+                    $http(  
+                    {
+                        method: 'POST',
+                        url: BASEURL_PYRAMID +'/document/' + doc_id + '/attachment/' + date_format,
+                        headers: {'Content-Type': factory.audio.data.type},
+                        params: {'rev': doc_rev},
+                        data: factory.audio.data
+                    }).then(function success(response){
+                        console.log('success at attaching audio log');
+                    }).catch(function errorCallback(response){
                         console.log("error in the PUT");
-                        console.log(response.code);
-                    }).finally(function (){
-                        
+                        console.log(response);
+                        console.log(response.status);
                     });
                 }).catch (function errorCallback(response){
-                    console.log("error in recorderFactory in GET");
-                    console.log("error" + response.code);
-                    console.log("error text" + response.statusText);
+                    console.log("error in the PUT");
+                    console.log(response.status);
                 });
             }
 
