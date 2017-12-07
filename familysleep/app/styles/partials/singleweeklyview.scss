@@ -23,7 +23,8 @@
 
 .swv-date {
 	margin-bottom: 0;
-  font-size: medium;
+  font-size: 18px;
+  margin-left: -10px;
 }
 
 .swv-date-first {
@@ -54,7 +55,7 @@
 #swv-legend li:nth-child(6), 
 #swv-legend li:nth-child(8) {
   	margin-right:10px; 
-    font-size: 12px;
+    font-size: medium;
 }
 
 #no-data-chart {

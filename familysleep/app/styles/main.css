@@ -8330,24 +8330,25 @@ button#yesterday {
 /* line 24, partials/singleweeklyview.scss */
 .swv-date {
   margin-bottom: 0;
-  font-size: medium;
+  font-size: 18px;
+  margin-left: -10px;
 }
 
-/* line 29, partials/singleweeklyview.scss */
+/* line 30, partials/singleweeklyview.scss */
 .swv-date-first {
   /* margin-top: -25px; */
   position: absolute;
   top: 300px;
 }
 
-/* line 35, partials/singleweeklyview.scss */
+/* line 36, partials/singleweeklyview.scss */
 #swv-legend {
   margin-bottom: 65px;
   margin-left: 400px;
   padding-top: 35px;
 }
 
-/* line 41, partials/singleweeklyview.scss */
+/* line 42, partials/singleweeklyview.scss */
 #swv-legend li {
   display: inline-block;
 }
@@ -8358,91 +8359,91 @@ button#yesterday {
     font-size: 12px;
 }​
 */
-/* line 52, partials/singleweeklyview.scss */
+/* line 53, partials/singleweeklyview.scss */
 #swv-legend li:nth-child(2),
 #swv-legend li:nth-child(4),
 #swv-legend li:nth-child(6),
 #swv-legend li:nth-child(8) {
   margin-right: 10px;
-  font-size: 12px;
+  font-size: medium;
 }
 
-/* line 60, partials/singleweeklyview.scss */
+/* line 61, partials/singleweeklyview.scss */
 #no-data-chart {
   height: 55px;
 }
 
 /* green */
-/* line 65, partials/singleweeklyview.scss */
+/* line 66, partials/singleweeklyview.scss */
 #swv-legend-sleep {
   background-color: #44d2d1;
 }
 
 /* purple */
-/* line 70, partials/singleweeklyview.scss */
+/* line 71, partials/singleweeklyview.scss */
 #swv-legend-movement {
   background-color: #551A8B;
 }
 
 /* pink */
-/* line 75, partials/singleweeklyview.scss */
+/* line 76, partials/singleweeklyview.scss */
 #swv-legend-restless {
   background-color: #FC3F73;
 }
 
-/* line 79, partials/singleweeklyview.scss */
+/* line 80, partials/singleweeklyview.scss */
 #swv-legend-no-data {
   background-color: #D6C3DB;
 }
 
-/* line 83, partials/singleweeklyview.scss */
+/* line 84, partials/singleweeklyview.scss */
 #swv-legend-sleep, #swv-legend-movement, #swv-legend-restless, #swv-legend-no-data {
   width: 40px;
   height: 15px;
   margin-bottom: -3px;
 }
 
-/* line 89, partials/singleweeklyview.scss */
+/* line 90, partials/singleweeklyview.scss */
 .swv-chart-placement {
   margin-left: 100px;
   margin-top: -40px;
 }
 
-/* line 94, partials/singleweeklyview.scss */
+/* line 95, partials/singleweeklyview.scss */
 .swv-empty-chart-placement {
   margin-left: 100px;
   margin-top: -30px;
   margin-bottom: 10px;
 }
 
-/* line 100, partials/singleweeklyview.scss */
+/* line 101, partials/singleweeklyview.scss */
 .swv-chart-placement-last {
   margin-left: 100px;
   margin-top: -30px;
 }
 
-/* line 105, partials/singleweeklyview.scss */
+/* line 106, partials/singleweeklyview.scss */
 .first-empty-row {
   height: 30px;
   margin-top: 25px;
 }
 
-/* line 110, partials/singleweeklyview.scss */
+/* line 111, partials/singleweeklyview.scss */
 .regular-row {
   height: 30px;
 }
 
-/* line 114, partials/singleweeklyview.scss */
+/* line 115, partials/singleweeklyview.scss */
 .first-row {
   height: 95px;
 }
 
-/* line 118, partials/singleweeklyview.scss */
+/* line 119, partials/singleweeklyview.scss */
 .last-row {
   height: 80px;
 }
 
-/* line 122, partials/singleweeklyview.scss */
+/* line 123, partials/singleweeklyview.scss */
 .swv-mood-pics {
   width: 35px;
   height: 35px;
@@ -8450,7 +8451,7 @@ button#yesterday {
   margin-left: 940px;
 }
 
-/* line 129, partials/singleweeklyview.scss */
+/* line 130, partials/singleweeklyview.scss */
 .swv-mood-pics-last {
   width: 35px;
   height: 35px;
@@ -8525,8 +8526,8 @@ p.sdv-names {
 #sdv-legend {
   /*margin-top: 20px;
   margin-left: 500px;*/
-  position: fixed;
-  top: 88%;
+  position: absolute;
+  top: 65%;
   left: 50%;
 }
 
@@ -8562,7 +8563,7 @@ p.sdv-names {
 .sdv-barchart-placement {
   width: 1100px;
   height: 350px;
-  position: fixed;
+  position: absolute;
   top: 55%;
 }
 
