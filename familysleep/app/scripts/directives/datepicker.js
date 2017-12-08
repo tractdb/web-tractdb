@@ -14,28 +14,43 @@ angular.module('FamilySleep')
       // link: function postLink(scope, element, attrs) {
       //   element.text('this is the datePicker directive');
       // },
-      controller: ['dateFactory', '$scope', '$route', 
-       function (dateFactory, $scope, $route) {
+      controller: ['dateFactory', '$scope', '$route', '$timeout',
+       function (dateFactory, $scope, $route, $timeout) {
+        var _nextRetrievePromise;
 		  	$scope.myDate = dateFactory.getDate().toDate();
 		  	console.log("at datepickerjs")
 		  	console.log($scope.myDate);
 		  	$scope.isOpen = false;
 		  	$scope.pickNewDate = function () {
-		  		dateFactory.updateDate($scope.myDate);
+		  		dateFactory.updateDate($scope.myDate, false);
 		  		console.log($route.current.controller);
 		  	};
         $scope.today = function () {
           $scope.myDate = new Date();
-          dateFactory.updateDate($scope.myDate);
+          dateFactory.updateDate($scope.myDate, false);
         };
         $scope.yesterday = function () {
           $scope.myDate = moment(dateFactory.getDate()).subtract(1, 'days').toDate();
-          dateFactory.updateDate($scope.myDate);
+          dateFactory.updateDate($scope.myDate, false);
         };
         $scope.tomorrow = function () {
           $scope.myDate = moment(dateFactory.getDate()).add(1, 'days').toDate();
-          dateFactory.updateDate($scope.myDate);
+          dateFactory.updateDate($scope.myDate, false);
         };
+
+        var _scheduleNextRetrieve = function() {
+          $timeout.cancel(_nextRetrievePromise);
+          console.log(moment("24:00:00", "hh:mm:ss").diff(moment(), 'milliseconds'));
+          _nextRetrievePromise = $timeout(refreshDate, moment("24:00:00", "hh:mm:ss").diff(moment(), 'milliseconds'));
+        }
+
+        var refreshDate = function() {
+          $scope.myDate = moment(dateFactory.getDate()).add(1, 'days').toDate();
+          dateFactory.updateDate($scope.myDate, true);
+          _scheduleNextRetrieve();
+        }
+
+        _scheduleNextRetrieve();
 		  }],
     };
   }]);

@@ -41,34 +41,35 @@ var module = angular.module(
 )
         
 module.factory(
-    'viewLogs', 
-    ['$timeout', '$uibModal', 'personaFactory', '$log', '$rootScope', 'recorderFactory', '$http', 'BASEURL_PYRAMID', function ($timeout, $uibModal, personaFactory, $log, $rootScope, recorderFactory, $http, BASEURL_PYRAMID) {
-        var factory = {};
 
-        factory.logs = {};
+  'viewLogs', 
+  ['$timeout', '$uibModal', 'personaFactory', '$log', '$rootScope', 'recorderFactory', 
+  function ($timeout, $uibModal, personaFactory, $log, $rootScope, recorderFactory) {
+    var factory = {};
+
+    factory.logs = {};
+    factory.logSession = null;
+
+    factory.logLastPage = function (currentTime) {
+      if(factory.logSession.sessionTimeStamps[factory.logSession.pages.length-1] == currentTime) {
+        // sending audio data when user forget to stop recording.
+        if($rootScope.recordRecording || $rootScope.recordPausing) {
+          $rootScope.onStopRecord();
+        }   
+        factory.logs[factory.logSession.startTime] = {
+            'users' : factory.logSession.users,
+            'timeStamp': {
+                'startTime': factory.logSession.startTime,
+                'endTime': currentTime
+            },
+            'pages' : factory.logSession.pages
+        }
         factory.logSession = null;
         factory.doc_id = null;
         factory.doc_rev = null;
         factory.counter = 1;
-
-        factory.logLastPage = function (currentTime) {
-            if(factory.logSession.sessionTimeStamps[factory.logSession.pages.length-1] == currentTime) {
-                // sending audio data when user forget to stop recording.
-                // if($rootScope.recordRecording || $rootScope.recordPausing) {
-                //     $rootScope.onStopRecord();
-                // }   
-                factory.logs[factory.logSession.startTime] = {
-                        'users' : factory.logSession.users,
-                        'timeStamp': {
-                                'startTime': factory.logSession.startTime,
-                                'endTime': currentTime
-                        },
-                        'pages' : factory.logSession.pages
-                }
-                factory.putData();
-                factory.logSession = null;
-            }
-        }
+    }
+    }
 
         // factory.putData = function(){
         //     var new_doc;
@@ -119,7 +120,6 @@ module.factory(
         // }
 
         factory.putData = function(){
-
             var new_doc = {
                 "_id" : "viewLogs" + factory.counter.toString(),
                 "viewLogs": factory.logs
@@ -203,6 +203,7 @@ module.factory(
             factory.logSession.sessionTimeStamps.push(currentTime);
             $timeout(factory.logLastPage, 3 * 10000, true, currentTime); //changed to 30 seconds wait before logging interaction
         }
+
         factory.popup = function() {
             factory.famMems = personaFactory.getAllNames();
             factory.famIDs = personaFactory.getAllIDs();
@@ -229,7 +230,22 @@ module.factory(
                 /***** BUG///PROBLEM HERE factory.logSession in logLastPage
                 gets set to null even if the popup have not been replied
                 NEED TO FIGURE OUT WHAT HAPPENS HERE****/
-                 factory.logSession.users = selectedItems;
+                /* peoblem about be fixed */
+                if (factory.logSession == null) {
+                    var currentTime = new Date();
+                    factory.logSession = {
+                            'pages': [],
+                            'sessionTimeStamps': [],
+                            'users' : [],
+                            'startTime': null,
+                            'endTime': null
+                    };
+                    factory.logSession.startTime = currentTime;  
+                    factory.logSession.sessionTimeStamps.push(currentTime);
+                    $timeout(factory.logLastPage, 3 * 10000, true, currentTime);
+                }
+                 //changed to 30 seconds wait before logging interaction
+                factory.logSession.users = selectedItems;
                 //recorderFactory.users = selectedItems;
 
                   
@@ -251,42 +267,45 @@ module.factory(
 
 
 angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibModalInstance, $scope, famMems, famID) {
-    var $ctrl = this;
-    $ctrl.famMems = famMems;
-    $ctrl.buttonState = false;
+  var $ctrl = this;
+  $ctrl.famMems = famMems;
+  $ctrl.buttonState = false;
+  $ctrl.record = false;
 
-    // for checkbox buttons in logmodal instance
-    $ctrl.checkFam = [];
-    for (var i = 0; i < $ctrl.famMems.length; i++) {
-        $ctrl.checkFam[i] = ({name: $ctrl.famMems[i], checked : false});
+  // for checkbox buttons in logmodal instance
+  $ctrl.checkFam = [];
+  for (var i = 0; i < $ctrl.famMems.length; i++) {
+    $ctrl.checkFam[i] = ({name: $ctrl.famMems[i], checked : false});
+  }
+
+  // checks that at least one button is clicked in logmodal to activate OK button
+  $ctrl.isOK = function () {
+    for (var i = 0; i < $ctrl.checkFam.length; i++) {
+      if ($ctrl.checkFam[i].checked === true) {
+        $ctrl.buttonState = true;
+        break;
+      } else {
+        $ctrl.buttonState = false;
+      }
     }
+  };
 
-    // checks that at least one button is clicked in logmodal to activate OK button
-    $ctrl.isOK = function () {
-        for (var i = 0; i < $ctrl.checkFam.length; i++) {
-            if ($ctrl.checkFam[i].checked === true) {
-                $ctrl.buttonState = true;
-                break;
-            } else {
-                $ctrl.buttonState = false;
-            }
-        }
-    };
+  $ctrl.ok = function () {
+    var selectedNames = [];
+     for (var i = 0; i < $ctrl.checkFam.length; i++) {
+      if ($ctrl.checkFam[i].checked === true) {
+        selectedNames.push($ctrl.checkFam[i].name)
+      }
+    }
+    $uibModalInstance.close(selectedNames);
+    if ($ctrl.record) {
+      $scope.onRecord();
+      $scope.$parent.recordStoppedClear = false;
+      $scope.$parent.recordRecording = true;
+    }
+  };
 
-    $ctrl.ok = function () {
-        var selectedNames = [];
-         for (var i = 0; i < $ctrl.checkFam.length; i++) {
-            if ($ctrl.checkFam[i].checked === true) {
-                selectedNames.push($ctrl.checkFam[i].name)
-            }
-        }
-        $uibModalInstance.close(selectedNames);
-        // $scope.onRecord();
-        // $scope.$parent.recordStoppedClear = false;
-        // $scope.$parent.recordRecording = true;
-    };
-
-    $ctrl.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
-    };
+  $ctrl.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 });
