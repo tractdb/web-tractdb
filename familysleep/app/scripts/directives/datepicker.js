@@ -4,6 +4,9 @@
  * @ngdoc directive
  * @name FamilySleep.directive:datePicker
  * @description
+   This datePicker directive is linked to template app/views/datepicker.html 
+   It lets user select date of the showing of the sleep data and will automatically at 12:00AM in the morning
+   regardless of the selected date
  * # datePicker
  */
 angular.module('FamilySleep')
@@ -16,7 +19,7 @@ angular.module('FamilySleep')
       // },
       controller: ['dateFactory', '$scope', '$route', '$timeout',
        function (dateFactory, $scope, $route, $timeout) {
-        var _nextRetrievePromise;
+        var _nextDateRefreshPromise;
 		  	$scope.myDate = dateFactory.getDate().toDate();
 		  	console.log("at datepickerjs")
 		  	console.log($scope.myDate);
@@ -38,19 +41,21 @@ angular.module('FamilySleep')
           dateFactory.updateDate($scope.myDate, false);
         };
 
-        var _scheduleNextRetrieve = function() {
-          $timeout.cancel(_nextRetrievePromise);
-          console.log(moment("24:00:00", "hh:mm:ss").diff(moment(), 'milliseconds'));
-          _nextRetrievePromise = $timeout(refreshDate, moment("24:00:00", "hh:mm:ss").diff(moment(), 'milliseconds'));
+        // scheudles the next date refresh by waiting for the time difference between the current time and the next day to call 
+        // refreshDate()
+        var _scheduleNextDateRefresh = function() {
+          $timeout.cancel(_nextDateRefreshPromise);
+          _nextDateRefreshPromise = $timeout(refreshDate, moment("24:00:00", "hh:mm:ss").diff(moment(), 'milliseconds'));
         }
 
         var refreshDate = function() {
-          $scope.myDate = moment(dateFactory.getDate()).add(1, 'days').toDate();
+          // getting the current time and adding 1 mintute to make sure that we advance to the next day
+          $scope.myDate = moment().add(1, 'minutes').toDate();
           dateFactory.updateDate($scope.myDate, true);
-          _scheduleNextRetrieve();
+          _scheduleNextDateRefresh();
         }
 
-        _scheduleNextRetrieve();
+        _scheduleNextDateRefresh();
 		  }],
     };
   }]);
