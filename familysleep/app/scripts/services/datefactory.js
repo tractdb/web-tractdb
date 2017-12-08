@@ -11,33 +11,34 @@
 
 angular.module('FamilySleep')
 
-  .factory('dateFactory', ['$rootScope', 'viewLogs', '$routeParams', '$route', function ($rootScope, viewLogs, $routeParams, $route) {
+  .factory('dateFactory', ['$rootScope', 'viewLogs', '$routeParams', '$route', '$timeout', function ($rootScope, viewLogs, $routeParams, $route, $timeout) {
     //I think we might want get/sets here
 
     // contains moment object
     var date = moment(); //I think this needs to be initialized in update date
     var date_week = [];
-    //var today
+    var _nextRetrievePromise;
 
-    var updateDate = function(newDate) {  
+    var updateDate = function(newDate, isNewDay) {  
       date = moment(newDate);
-      // console.log("printing up updateDate in dateFactory");
-      // console.log(date);
+
       /****hard coding date
       var tempDate = "2017-07-01";
       date = moment(tempDate).format('YYYY-MM-DD');*/
-      // updating week array
-      date_week = [];
 
+      date_week = [];
       var dayOfWeek = date.day();
       for (var i = 0; i < 7; i++) {
         var newDate = moment(date).subtract(i, 'days');
         date_week.push(newDate);  
       }
-      // console.log("set date_week");
-      // console.log(date_week);
-      // console.log('in dateFactory');
-      // console.log(date.format());
+      if(!isNewDay) {
+        logPage();  
+      }
+      $rootScope.$broadcast('date:updated');
+    };
+
+    var logPage = function() {
       console.log($route.current.controller);
       if($rootScope.active && $rootScope.active.indexOf('weekly') == -1) {
         viewLogs.logPage($rootScope.active, getDateString(), $routeParams.id);
@@ -46,10 +47,7 @@ angular.module('FamilySleep')
       } else if(!$rootScope.active && $route.current.controller != 'SignupCtrl') {
         viewLogs.logPage('family-daily-view', getDateString(), $routeParams.id);
       }
-      $rootScope.$broadcast('date:updated');
-    };
-
-    
+    }
 
     var getDate = function() {
       return date;
@@ -94,6 +92,7 @@ angular.module('FamilySleep')
       //var today = moment.format('YYYY-MM-DD');
       return today.format('YYYY-MM-DD');
     };
+
 
     //TODO: need to figure out where to initialize these things together
     updateDate(date);
