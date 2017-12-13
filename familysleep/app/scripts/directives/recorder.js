@@ -28,7 +28,10 @@ angular.module('FamilySleep')
           {audio:true, video:false},
           function(stream) {
             $window.recordRTC = RecordRTC(stream, {
-              recorderType: StereoAudioRecorder
+              //recorderType: StereoAudioRecorder
+              //more documantion on type of audio and bps here http://recordrtc.org/
+              mimeType: 'audio/webm',
+              bitsPerSecond: 64000
             });
           },
           function(err) {

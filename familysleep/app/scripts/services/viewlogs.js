@@ -41,83 +41,37 @@ var module = angular.module(
 )
         
 module.factory(
+    'viewLogs', 
+    ['$timeout', '$uibModal', 'personaFactory', '$log', '$rootScope', 'recorderFactory', '$http', 'BASEURL_PYRAMID',
+    function ($timeout, $uibModal, personaFactory, $log, $rootScope, recorderFactory, $http, BASEURL_PYRAMID) {
+        var factory = {};
 
-  'viewLogs', 
-  ['$timeout', '$uibModal', 'personaFactory', '$log', '$rootScope', 'recorderFactory', 
-  function ($timeout, $uibModal, personaFactory, $log, $rootScope, recorderFactory) {
-    var factory = {};
-
-    factory.logs = {};
-    factory.logSession = null;
-
-    factory.logLastPage = function (currentTime) {
-      if(factory.logSession.sessionTimeStamps[factory.logSession.pages.length-1] == currentTime) {
-        // sending audio data when user forget to stop recording.
-        if($rootScope.recordRecording || $rootScope.recordPausing) {
-          $rootScope.onStopRecord();
-        }   
-        factory.logs[factory.logSession.startTime] = {
-            'users' : factory.logSession.users,
-            'timeStamp': {
-                'startTime': factory.logSession.startTime,
-                'endTime': currentTime
-            },
-            'pages' : factory.logSession.pages
-        }
+        factory.logs = {};
         factory.logSession = null;
-        factory.doc_id = null;
+        factory.doc_id = 'viewLogs';
         factory.doc_rev = null;
         factory.counter = 1;
-    }
-    }
 
-        // factory.putData = function(){
-        //     var new_doc;
-        //     var date_format = moment(factory.logSession.startTime).format('YYYY_MM_DD_kk_mm');
-        //     console.log(factory.logSession.startTime.getFullYear());
-        //     //var url = BASEURL_PYRAMID + '/document/viewLogs/' + factory.logSession.startTime;
-        //     var url = BASEURL_PYRAMID + '/document/viewLogs/' + date_format;
-        //     // BASEURL_PYRAMID + '/document/viewLogs'
-        //     $http(
-        //         {
-        //             method: 'GET',
-        //             url: BASEURL_PYRAMID + '/document/viewLogs/' + date_format
-        //         }
-        //     ).then (
-        //         function success (response){
-        //             factory.doc_id = "viewLogs" + factory.counter.toString();
-        //             factory.counter++;
-        //             factory.doc_rev = response.data._rev;
-        //             new_doc = {
-        //                 "_id": factory.doc_id,
-        //                 "rev": factory.doc_rev,
-        //                 "viewLogs": factory.logs
-        //             };
-        //         },
-        //         function error(response){
-        //             new_doc = {
-        //                 "_id": "viewLogs1",
-        //                 "viewLogs": factory.logs
-        //             };
-        //             factory.counter++;
-        //         }
-        //     ).then(
-        //         function(){
-        //             return $http({
-        //                 method: 'PUT',
-        //                 url: BASEURL_PYRAMID + '/document/viewLogs/' + date_format,
-        //                 data: new_doc
-        //             })
-        //         }
-        //     ).then (function success(response){
-        //         factory.doc_id = response.data._id;
-        //         factory.doc_rev = response.data._rev;
-        //     }).catch (function error (response){
-        //         console.log("error in PUT");
-        //         console.log(response.status);
-        //         //if error schedule next put?
-        //     });
-        // }
+        factory.logLastPage = function (currentTime) {
+            if(factory.logSession.sessionTimeStamps[factory.logSession.pages.length-1] == currentTime) {
+                  
+                factory.logs[factory.logSession.startTime] = {
+                        'users' : factory.logSession.users,
+                        'timeStamp': {
+                                'startTime': factory.logSession.startTime,
+                                'endTime': currentTime
+                        },
+                        'pages' : factory.logSession.pages
+                }
+                factory.putData();
+                //sending audio data when user forget to stop recording.
+                if($rootScope.recordRecording || $rootScope.recordPausing) {
+                    $rootScope.onStopRecord();
+                } 
+
+                factory.logSession = null;
+            }
+        }
 
         factory.putData = function(){
             var new_doc = {
@@ -143,28 +97,6 @@ module.factory(
                 //if error schedule next put?
             });
         }
-
-        // factory.putNewData = function(){
-        //     var new_doc = {
-        //         "_id": "viewLogs",
-        //         "viewLogs": factory.logs
-        //     };
-        //     var url = BASEURL_PYRAMID + '/document/viewLogs/' + factory.logSession.startTime;
-        //     $http(
-        //         {
-        //             method: 'PUT',
-        //             url: url,
-        //             data: new_doc
-        //         }
-        //     ).then (function success(response){
-        //         // factory.doc_id = response.data._id;
-        //         // factory.doc_rev = response.data._rev;
-        //     }).catch (function error (response){
-        //         console.log("error in PUT");
-        //         console.log(response.status);
-        //         //if error schedule next put?
-        //     });
-        // }
 
         /*
             if logSession is null: (start session)
@@ -230,7 +162,7 @@ module.factory(
                 /***** BUG///PROBLEM HERE factory.logSession in logLastPage
                 gets set to null even if the popup have not been replied
                 NEED TO FIGURE OUT WHAT HAPPENS HERE****/
-                /* peoblem about be fixed */
+                        /* peoblem about be fixed */
                 if (factory.logSession == null) {
                     var currentTime = new Date();
                     factory.logSession = {
@@ -246,17 +178,7 @@ module.factory(
                 }
                  //changed to 30 seconds wait before logging interaction
                 factory.logSession.users = selectedItems;
-                //recorderFactory.users = selectedItems;
-
-                  
-                // if(selectedItems == null){
-                //     factory.logSession.users = null;
-                //     //recorderFactory.users = null;
-                // } else {
-                //     factory.logSession.users = selectedItems;
-                // //recorderFactory.users = selectedItems;       
-                // }
-                
+                recorderFactory.users = selectedItems;
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
@@ -289,6 +211,7 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
       }
     }
   };
+
 
   $ctrl.ok = function () {
     var selectedNames = [];
