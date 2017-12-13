@@ -1,5 +1,5 @@
 'use strict';
-/*** TODO need to add mood selected to the sleep object **/
+
 angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibModal', '$log', '$document', 'tractdbFactory', 'personaFactory', 'dateFactory', '$rootScope',
         function(selfReportState, $uibModal, $log, $document, tractdbdata, personaFactory, dateFactory, $rootScope){
         var templateDir = 'app/views/templates/';
@@ -139,11 +139,10 @@ angular.module('FamilySleep').controller('ModalCrtl', ['selfReportState', '$uibM
             $log.info('Modal dismissed at: ' + new Date());
         });
     };
-
-    //adding observations
-    //but creates an automatic popup based on timer
-    // selfReportState.observe($ctrl, $ctrl.open);
-    // personaFactory.observe($ctrl, $ctrl.open);
+  //adding observations
+  //but creates an automatic popup based on timer
+  // selfReportState.observe($ctrl, $ctrl.open);
+  // personaFactory.observe($ctrl, $ctrl.open);
 }]);
 
 // Please note that $uibModalInstance represents a modal window (instance) dependency.

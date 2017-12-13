@@ -42,12 +42,13 @@ var module = angular.module(
         
 module.factory(
     'viewLogs', 
-    ['$timeout', '$uibModal', 'personaFactory', '$log', '$rootScope', 'recorderFactory', '$http', 'BASEURL_PYRAMID', function ($timeout, $uibModal, personaFactory, $log, $rootScope, recorderFactory, $http, BASEURL_PYRAMID) {
+    ['$timeout', '$uibModal', 'personaFactory', '$log', '$rootScope', 'recorderFactory', '$http', 'BASEURL_PYRAMID',
+    function ($timeout, $uibModal, personaFactory, $log, $rootScope, recorderFactory, $http, BASEURL_PYRAMID) {
         var factory = {};
 
         factory.logs = {};
         factory.logSession = null;
-        factory.doc_id = null;
+        factory.doc_id = 'viewLogs';
         factory.doc_rev = null;
         factory.counter = 1;
 
@@ -72,56 +73,7 @@ module.factory(
             }
         }
 
-        // factory.putData = function(){
-        //     var new_doc;
-        //     var date_format = moment(factory.logSession.startTime).format('YYYY_MM_DD_kk_mm');
-        //     console.log(factory.logSession.startTime.getFullYear());
-        //     //var url = BASEURL_PYRAMID + '/document/viewLogs/' + factory.logSession.startTime;
-        //     var url = BASEURL_PYRAMID + '/document/viewLogs/' + date_format;
-        //     // BASEURL_PYRAMID + '/document/viewLogs'
-        //     $http(
-        //         {
-        //             method: 'GET',
-        //             url: BASEURL_PYRAMID + '/document/viewLogs/' + date_format
-        //         }
-        //     ).then (
-        //         function success (response){
-        //             factory.doc_id = "viewLogs" + factory.counter.toString();
-        //             factory.counter++;
-        //             factory.doc_rev = response.data._rev;
-        //             new_doc = {
-        //                 "_id": factory.doc_id,
-        //                 "rev": factory.doc_rev,
-        //                 "viewLogs": factory.logs
-        //             };
-        //         },
-        //         function error(response){
-        //             new_doc = {
-        //                 "_id": "viewLogs1",
-        //                 "viewLogs": factory.logs
-        //             };
-        //             factory.counter++;
-        //         }
-        //     ).then(
-        //         function(){
-        //             return $http({
-        //                 method: 'PUT',
-        //                 url: BASEURL_PYRAMID + '/document/viewLogs/' + date_format,
-        //                 data: new_doc
-        //             })
-        //         }
-        //     ).then (function success(response){
-        //         factory.doc_id = response.data._id;
-        //         factory.doc_rev = response.data._rev;
-        //     }).catch (function error (response){
-        //         console.log("error in PUT");
-        //         console.log(response.status);
-        //         //if error schedule next put?
-        //     });
-        // }
-
         factory.putData = function(){
-
             var new_doc = {
                 "_id" : "viewLogs" + factory.counter.toString(),
                 "viewLogs": factory.logs
@@ -145,28 +97,6 @@ module.factory(
                 //if error schedule next put?
             });
         }
-
-        // factory.putNewData = function(){
-        //     var new_doc = {
-        //         "_id": "viewLogs",
-        //         "viewLogs": factory.logs
-        //     };
-        //     var url = BASEURL_PYRAMID + '/document/viewLogs/' + factory.logSession.startTime;
-        //     $http(
-        //         {
-        //             method: 'PUT',
-        //             url: url,
-        //             data: new_doc
-        //         }
-        //     ).then (function success(response){
-        //         // factory.doc_id = response.data._id;
-        //         // factory.doc_rev = response.data._rev;
-        //     }).catch (function error (response){
-        //         console.log("error in PUT");
-        //         console.log(response.status);
-        //         //if error schedule next put?
-        //     });
-        // }
 
         /*
             if logSession is null: (start session)
@@ -205,6 +135,7 @@ module.factory(
             factory.logSession.sessionTimeStamps.push(currentTime);
             $timeout(factory.logLastPage, 3 * 10000, true, currentTime); //changed to 30 seconds wait before logging interaction
         }
+
         factory.popup = function() {
             factory.famMems = personaFactory.getAllNames();
             factory.famIDs = personaFactory.getAllIDs();
@@ -231,18 +162,23 @@ module.factory(
                 /***** BUG///PROBLEM HERE factory.logSession in logLastPage
                 gets set to null even if the popup have not been replied
                 NEED TO FIGURE OUT WHAT HAPPENS HERE****/
+                        /* peoblem about be fixed */
+                if (factory.logSession == null) {
+                    var currentTime = new Date();
+                    factory.logSession = {
+                            'pages': [],
+                            'sessionTimeStamps': [],
+                            'users' : [],
+                            'startTime': null,
+                            'endTime': null
+                    };
+                    factory.logSession.startTime = currentTime;  
+                    factory.logSession.sessionTimeStamps.push(currentTime);
+                    $timeout(factory.logLastPage, 3 * 10000, true, currentTime);
+                }
+                 //changed to 30 seconds wait before logging interaction
                 factory.logSession.users = selectedItems;
                 recorderFactory.users = selectedItems;
-
-
-                // if(selectedItems == null){
-                //     factory.logSession.users = null;
-                //     //recorderFactory.users = null;
-                // } else {
-                //     factory.logSession.users = selectedItems;
-                // //recorderFactory.users = selectedItems;       
-                // }
-                
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
@@ -253,42 +189,46 @@ module.factory(
 
 
 angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibModalInstance, $scope, famMems, famID) {
-    var $ctrl = this;
-    $ctrl.famMems = famMems;
-    $ctrl.buttonState = false;
+  var $ctrl = this;
+  $ctrl.famMems = famMems;
+  $ctrl.buttonState = false;
+  $ctrl.record = false;
 
-    // for checkbox buttons in logmodal instance
-    $ctrl.checkFam = [];
-    for (var i = 0; i < $ctrl.famMems.length; i++) {
-        $ctrl.checkFam[i] = ({name: $ctrl.famMems[i], checked : false});
+  // for checkbox buttons in logmodal instance
+  $ctrl.checkFam = [];
+  for (var i = 0; i < $ctrl.famMems.length; i++) {
+    $ctrl.checkFam[i] = ({name: $ctrl.famMems[i], checked : false});
+  }
+
+  // checks that at least one button is clicked in logmodal to activate OK button
+  $ctrl.isOK = function () {
+    for (var i = 0; i < $ctrl.checkFam.length; i++) {
+      if ($ctrl.checkFam[i].checked === true) {
+        $ctrl.buttonState = true;
+        break;
+      } else {
+        $ctrl.buttonState = false;
+      }
     }
+  };
 
-    // checks that at least one button is clicked in logmodal to activate OK button
-    $ctrl.isOK = function () {
-        for (var i = 0; i < $ctrl.checkFam.length; i++) {
-            if ($ctrl.checkFam[i].checked === true) {
-                $ctrl.buttonState = true;
-                break;
-            } else {
-                $ctrl.buttonState = false;
-            }
-        }
-    };
 
-    $ctrl.ok = function () {
-        var selectedNames = [];
-         for (var i = 0; i < $ctrl.checkFam.length; i++) {
-            if ($ctrl.checkFam[i].checked === true) {
-                selectedNames.push($ctrl.checkFam[i].name)
-            }
-        }
-        $uibModalInstance.close(selectedNames);
-        $scope.onRecord();
-        $scope.$parent.recordStoppedClear = false;
-        $scope.$parent.recordRecording = true;
-    };
+  $ctrl.ok = function () {
+    var selectedNames = [];
+     for (var i = 0; i < $ctrl.checkFam.length; i++) {
+      if ($ctrl.checkFam[i].checked === true) {
+        selectedNames.push($ctrl.checkFam[i].name)
+      }
+    }
+    $uibModalInstance.close(selectedNames);
+    if ($ctrl.record) {
+      $scope.onRecord();
+      $scope.$parent.recordStoppedClear = false;
+      $scope.$parent.recordRecording = true;
+    }
+  };
 
-    $ctrl.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
-    };
+  $ctrl.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 });
