@@ -8154,7 +8154,7 @@ MODAL WINDOW END
   width: 120px;
   margin-left: 7px;
   margin-right: 7px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -8164,7 +8164,7 @@ MODAL WINDOW END
   width: 120px;
   margin-left: 7px;
   margin-right: 7px;
-  margin-bottom: 0px;
+  margin-bottom: 15px;
   position: relative;
 }
 
@@ -8195,6 +8195,12 @@ MODAL WINDOW END
 }
 
 /* line 82, partials/_familyweeklyview.scss */
+.fwv-mood-text-small {
+  text-align: center;
+  font-size: 13px;
+}
+
+/* line 87, partials/_familyweeklyview.scss */
 .fwv-date {
   text-align: center;
   font-size: 18px;
