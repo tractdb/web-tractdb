@@ -14,8 +14,10 @@
       </ul>
     </div>  
 
- <!-- Working on this part -->
- <h3>Would you like to answer this question today? Do you feel well rested?</h3>
+ 
+ <!-- <h3>Would you like to answer this question today? Do you feel well rested?</h3> -->
+ <h3>{{$ctrl.prompt}}</h3>
+ <h3>Can we record the answer to this question?</h3>
   <div class="source">
     <ul class="list-inline"> 
       <li>
@@ -35,7 +37,7 @@
 
 
 <div class="modal-footer log-modal-footer">
-        <button class="modal-btn btn btn-primary btn-xlarge modalOK" type="button" ng-disabled="!($ctrl.buttonState)" ng-click="$ctrl.ok()">OK</button>
+        <button class="modal-btn btn btn-primary btn-xlarge modalOK" type="button" ng-disabled="!($ctrl.buttonState && $ctrl.recorderbuttonState)" ng-click="$ctrl.ok()">OK</button>
 
 <!-- 
   <h3>Would you like to answer this question today? Do you feel well rested?</h3>

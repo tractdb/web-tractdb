@@ -51,6 +51,52 @@ module.factory(
         factory.doc_id = 'viewLogs';
         factory.doc_rev = null;
         factory.counter = 1;
+        //could keep track of the ids that have been selected before
+
+        // factory.prompts = [
+        //     {
+        //         id: '1',
+        //         text: "What did you learn about your sleep habits from the system?"
+        //     },
+        //     {
+        //         id: '2',
+        //         text: "Look at another family member's sleep. What did you learn about their sleep?"
+        //     },
+        //     {
+        //         id: '3',
+        //         text: "Look at your sleep and mood for this week. How is your mood with respect to your sleep?"
+        //     },
+        //     {
+        //         id: '4',
+        //         text: "Two family members required.Look at family weekly sleep together, pick a day. Tell us what you learn from each other's sleep"
+        //     },
+        //     {
+        //         id: '5',
+        //         text: "Look at your sleep and mood for this week. How is your mood with respect to your sleep?"
+        //     },
+        //     {
+        //         id: '6',
+        //         text: "One parent and one child required. Look at today's sleep and mood. Talk to each other about your sleep and mood."
+        //     },
+        //     {
+        //         id: '7',
+        //         text: "Children Required. What have you learned about your sleep?"
+        //     },
+        //     {
+        //         id: '8',
+        //         text: "Children Required. What have you learned your family's sleep?"
+        //     },
+        //     {
+        //         id: '9',
+        //         text: "At one parent and one child required. Think about how you viewed your sleep and mood before using [system]. What have you learned about each other?"
+        //     },
+        //     {
+        //         id: '10',
+        //         text: "At one parent and one child required. What have you learned about each other since using [the system]?"
+        //     }
+        // ];
+
+        
 
         factory.logLastPage = function (currentTime) {
             if(factory.logSession.sessionTimeStamps[factory.logSession.pages.length-1] == currentTime) {
@@ -139,6 +185,7 @@ module.factory(
         factory.popup = function() {
             factory.famMems = personaFactory.getAllNames();
             factory.famIDs = personaFactory.getAllIDs();
+
             var modalInstance = $uibModal.open({
                 animation: true,
                 ariaLabelledBy: 'modal-title',
@@ -177,8 +224,10 @@ module.factory(
                     $timeout(factory.logLastPage, 3 * 10000, true, currentTime);
                 }
                  //changed to 30 seconds wait before logging interaction
-                factory.logSession.users = selectedItems;
-                recorderFactory.users = selectedItems;
+                factory.logSession.users = selectedItems.users;
+                recorderFactory.users = selectedItems.users;
+                recorderFactory.prompt = selectedItems.prompt;
+                recorderFactory.promptId = selectedItems.promptId;
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
@@ -189,46 +238,66 @@ module.factory(
 
 
 angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibModalInstance, $scope, famMems, famID) {
-  var $ctrl = this;
-  $ctrl.famMems = famMems;
-  $ctrl.buttonState = false;
-  $ctrl.record = false;
+    var $ctrl = this;
+    $ctrl.famMems = famMems;
+    $ctrl.buttonState = false;
+    $ctrl.record = false;
 
-  // for checkbox buttons in logmodal instance
-  $ctrl.checkFam = [];
-  for (var i = 0; i < $ctrl.famMems.length; i++) {
-    $ctrl.checkFam[i] = ({name: $ctrl.famMems[i], checked : false});
-  }
+    var prompts = [
+        "What did you learn about your sleep habits from the system?",
+        "Look at another family member's sleep. What did you learn about their sleep?",
+        "Look at your sleep and mood for this week. How is your mood with respect to your sleep?",
+        "Two family members required.Look at family weekly sleep together, pick a day. Tell us what you learn from each other's sleep",
+        "Look at your sleep and mood for this week. How is your mood with respect to your sleep?",
+        "One parent and one child required. Look at today's sleep and mood. Talk to each other about your sleep and mood.",
+        "Recommended child to participate. What have you learned about your sleep?",
+        "Recommended child to participate. What have you learned your family's sleep?",
+        "Recommended for one parent and one child. Think about how you viewed your sleep and mood before using DreamCatcher. What have you learned about each other?",
+        "Recommended for one parent and one child. What have you learned about each other since using DreamCatcher?"
+    ];
 
-  // checks that at least one button is clicked in logmodal to activate OK button
-  $ctrl.isOK = function () {
-    for (var i = 0; i < $ctrl.checkFam.length; i++) {
-      if ($ctrl.checkFam[i].checked === true) {
-        $ctrl.buttonState = true;
-        break;
-      } else {
-        $ctrl.buttonState = false;
-      }
+    var getRandomInteger = function(){
+        return Math.floor(Math.random() * prompts.length);
+    };
+
+    $ctrl.promptId = getRandomInteger();
+    $ctrl.prompt = prompts[$ctrl.promptId];
+    
+    // for checkbox buttons in logmodal instance
+    $ctrl.checkFam = [];
+    for (var i = 0; i < $ctrl.famMems.length; i++) {
+        $ctrl.checkFam[i] = ({name: $ctrl.famMems[i], checked : false});
     }
-  };
+
+    // checks that at least one button is clicked in logmodal to activate OK button
+    $ctrl.isOK = function () {
+        for (var i = 0; i < $ctrl.checkFam.length; i++) {
+            if ($ctrl.checkFam[i].checked === true) {
+                $ctrl.buttonState = true;
+                break;
+            } else {
+                $ctrl.buttonState = false;
+            }
+        }
+    };
 
 
-  $ctrl.ok = function () {
-    var selectedNames = [];
-     for (var i = 0; i < $ctrl.checkFam.length; i++) {
-      if ($ctrl.checkFam[i].checked === true) {
-        selectedNames.push($ctrl.checkFam[i].name)
-      }
-    }
-    $uibModalInstance.close(selectedNames);
-    if ($ctrl.record) {
-      $scope.onRecord();
-      $scope.$parent.recordStoppedClear = false;
-      $scope.$parent.recordRecording = true;
-    }
-  };
+    $ctrl.ok = function () {
+        var selectedNames = [];
+        for (var i = 0; i < $ctrl.checkFam.length; i++) {
+            if ($ctrl.checkFam[i].checked === true) {
+                selectedNames.push($ctrl.checkFam[i].name)
+            }
+        }
+        $uibModalInstance.close({users: selectedNames, promptId: $ctrl.promptId, prompt: $ctrl.prompt});
+        if ($ctrl.record) {
+            $scope.onRecord();
+            $scope.$parent.recordStoppedClear = false;
+            $scope.$parent.recordRecording = true;
+        }
+    };
 
-  $ctrl.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
+    $ctrl.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
 });
