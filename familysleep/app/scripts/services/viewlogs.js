@@ -42,8 +42,8 @@ var module = angular.module(
         
 module.factory(
     'viewLogs', 
-    ['$timeout', '$uibModal', 'personaFactory', '$log', '$rootScope', 'recorderFactory', '$http', 'BASEURL_PYRAMID',
-    function ($timeout, $uibModal, personaFactory, $log, $rootScope, recorderFactory, $http, BASEURL_PYRAMID) {
+    ['$timeout', '$uibModal', 'personaFactory', '$rootScope', 'recorderFactory', '$http', 'BASEURL_PYRAMID',
+    function ($timeout, $uibModal, personaFactory, $rootScope, recorderFactory, $http, BASEURL_PYRAMID) {
         var factory = {};
 
         factory.logs = {};
@@ -51,51 +51,6 @@ module.factory(
         factory.doc_id = 'viewLogs';
         factory.doc_rev = null;
         factory.counter = 1;
-        //could keep track of the ids that have been selected before
-
-        // factory.prompts = [
-        //     {
-        //         id: '1',
-        //         text: "What did you learn about your sleep habits from the system?"
-        //     },
-        //     {
-        //         id: '2',
-        //         text: "Look at another family member's sleep. What did you learn about their sleep?"
-        //     },
-        //     {
-        //         id: '3',
-        //         text: "Look at your sleep and mood for this week. How is your mood with respect to your sleep?"
-        //     },
-        //     {
-        //         id: '4',
-        //         text: "Two family members required.Look at family weekly sleep together, pick a day. Tell us what you learn from each other's sleep"
-        //     },
-        //     {
-        //         id: '5',
-        //         text: "Look at your sleep and mood for this week. How is your mood with respect to your sleep?"
-        //     },
-        //     {
-        //         id: '6',
-        //         text: "One parent and one child required. Look at today's sleep and mood. Talk to each other about your sleep and mood."
-        //     },
-        //     {
-        //         id: '7',
-        //         text: "Children Required. What have you learned about your sleep?"
-        //     },
-        //     {
-        //         id: '8',
-        //         text: "Children Required. What have you learned your family's sleep?"
-        //     },
-        //     {
-        //         id: '9',
-        //         text: "At one parent and one child required. Think about how you viewed your sleep and mood before using [system]. What have you learned about each other?"
-        //     },
-        //     {
-        //         id: '10',
-        //         text: "At one parent and one child required. What have you learned about each other since using [the system]?"
-        //     }
-        // ];
-
         
 
         factory.logLastPage = function (currentTime) {
@@ -103,9 +58,10 @@ module.factory(
                   
                 factory.logs[factory.logSession.startTime] = {
                         'users' : factory.logSession.users,
+                        'cancel': factory.logSession.cancel,
                         'timeStamp': {
-                                'startTime': factory.logSession.startTime,
-                                'endTime': currentTime
+                                'startTime': moment(factory.logSession.startTime).format('YYYY/MM/DD_kk:mm'),
+                                'endTime': moment(currentTime).format('YYYY/MM/DD_kk:mm')
                         },
                         'pages' : factory.logSession.pages
                 }
@@ -172,10 +128,11 @@ module.factory(
                         'sessionTimeStamps': [],
                         'users' : [],
                         'startTime': null,
-                        'endTime': null
+                        'endTime': null,
+                        'cancel': null
                 };
                 factory.logSession.startTime = currentTime;  
-                $timeout(factory.popup, 5 * 1000); 
+                $timeout(factory.popup, 5 * 1000); /*ask Clarissa about this*/
             }
             factory.logSession.pages.push({'page': page, 'id' : id, 'date': date});
             factory.logSession.sessionTimeStamps.push(currentTime);
@@ -217,7 +174,8 @@ module.factory(
                             'sessionTimeStamps': [],
                             'users' : [],
                             'startTime': null,
-                            'endTime': null
+                            'endTime': null,
+                            'cancel': null
                     };
                     factory.logSession.startTime = currentTime;  
                     factory.logSession.sessionTimeStamps.push(currentTime);
@@ -225,11 +183,28 @@ module.factory(
                 }
                  //changed to 30 seconds wait before logging interaction
                 factory.logSession.users = selectedItems.users;
+                factory.logSession.cancel = selectedItems.cancel;
                 recorderFactory.users = selectedItems.users;
                 recorderFactory.prompt = selectedItems.prompt;
                 recorderFactory.promptId = selectedItems.promptId;
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
+            }, function (selectedItems) {
+                //$log.info('Modal dismissed at: ' + new Date());
+                if (factory.logSession == null) {
+                    var currentTime = new Date();
+                    factory.logSession = {
+                            'pages': [],
+                            'sessionTimeStamps': [],
+                            'users' : [],
+                            'startTime': null,
+                            'endTime': null,
+                            'cancel': null
+                    };
+                    factory.logSession.startTime = currentTime;  
+                    factory.logSession.sessionTimeStamps.push(currentTime);
+                    $timeout(factory.logLastPage, 3 * 10000, true, currentTime);
+                }
+                factory.logSession.users = selectedItems.users;
+                factory.logSession.cancel = selectedItems.cancel;
             });
         }
 
@@ -244,16 +219,16 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
     $ctrl.record = false;
 
     var prompts = [
-        "What did you learn about your sleep habits from the system?",
-        "Look at another family member's sleep. What did you learn about their sleep?",
-        "Look at your sleep and mood for this week. How is your mood with respect to your sleep?",
-        "Two family members required.Look at family weekly sleep together, pick a day. Tell us what you learn from each other's sleep",
-        "Look at your sleep and mood for this week. How is your mood with respect to your sleep?",
-        "One parent and one child required. Look at today's sleep and mood. Talk to each other about your sleep and mood.",
-        "Recommended child to participate. What have you learned about your sleep?",
-        "Recommended child to participate. What have you learned your family's sleep?",
-        "Recommended for one parent and one child. Think about how you viewed your sleep and mood before using DreamCatcher. What have you learned about each other?",
-        "Recommended for one parent and one child. What have you learned about each other since using DreamCatcher?"
+        "<hr>What did you learn about your sleep habits from the system?",
+        "<hr>Look at another family member's sleep. What did you learn about their sleep?",
+        "<hr>Look at your sleep and mood for this week. How is your mood with respect to your sleep?",
+        "<hr><i>Recommended for two family members.</i> Look at family weekly sleep together, pick a day. Tell us what you learn from each other's sleep",
+        "<hr><i>Look at your sleep and mood for this week.</i> How is your mood with respect to your sleep?",
+        "<hr><i>Recommended fo one parent and one child.</i> Look at today's sleep and mood. Talk to each other about your sleep and mood.",
+        "<hr><i>Recommended child to participate.</i> What have you learned about your sleep?",
+        "<hr><i>Recommended child to participate.</i> What have you learned your family's sleep?",
+        "<hr><i>Recommended for one parent and one child.</i> Think about how you viewed your sleep and mood before using DreamCatcher. What have you learned about each other?",
+        "<hr><i>Recommended for one parent and one child.</i> What have you learned about each other since using DreamCatcher?"
     ];
 
     var getRandomInteger = function(){
@@ -289,15 +264,21 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
                 selectedNames.push($ctrl.checkFam[i].name)
             }
         }
-        $uibModalInstance.close({users: selectedNames, promptId: $ctrl.promptId, prompt: $ctrl.prompt});
+        $uibModalInstance.close({users: selectedNames, promptId: $ctrl.promptId, prompt: $ctrl.prompt, cancel: 'false'});
         if ($ctrl.record) {
-            $scope.onRecord();
+            $scope.onRecord($ctrl.prompt);
             $scope.$parent.recordStoppedClear = false;
             $scope.$parent.recordRecording = true;
         }
     };
 
     $ctrl.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
+        var selectedNames = [];
+        for (var i = 0; i < $ctrl.checkFam.length; i++) {
+            if ($ctrl.checkFam[i].checked === true) {
+                selectedNames.push($ctrl.checkFam[i].name)
+            }
+        }
+        $uibModalInstance.dismiss({users: selectedNames, promptId: $ctrl.promptId, prompt: $ctrl.prompt, cancel: 'true'});
     };
 });
