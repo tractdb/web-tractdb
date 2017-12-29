@@ -30,6 +30,7 @@ angular.module('FamilySleep')
             $window.recordRTC = RecordRTC(stream, {
               //recorderType: StereoAudioRecorder
               //more documantion on type of audio and bps here http://recordrtc.org/
+              disableLogs:true,
               mimeType: 'audio/webm',
               bitsPerSecond: 64000
             });
@@ -42,6 +43,14 @@ angular.module('FamilySleep')
         // start the recording
         $scope.onRecord = function() {
           $scope.recordStoppedClear = false;
+          $scope.prompt = prompt;
+          $scope.recordRecording = true;
+          $window.recordRTC.startRecording();
+        }
+
+        $scope.onRecord = function(prompt) {
+          $scope.recordStoppedClear = false;
+          $scope.prompt = prompt;
           $scope.recordRecording = true;
           $window.recordRTC.startRecording();
         }
@@ -81,6 +90,7 @@ angular.module('FamilySleep')
           $scope.recordStopped = true;
           $scope.recordRecording = false;
           $scope.recordPausing = false;
+          $scope.prompt = "";
           $window.recordRTC.stopRecording (function() {
             $scope.url = decodeURIComponent($window.recordRTC.toURL());
             var recordedBlob = $window.recordRTC.getBlob();

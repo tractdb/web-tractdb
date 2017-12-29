@@ -24,7 +24,8 @@ module.factory(
             factory.putData = function() {
 
                 
-                var date_format = moment(factory.audio.timeStamp).format('YYYY_MM_DD_kk_mm');      
+                var date_format = moment(factory.audio.timeStamp).format('YYYY_MM_DD_kk_mm');
+                var date_time =  moment(factory.audio.timeStamp).format('YYYY/MM/DD_kk:mm');
                 
                 var doc_id = 'audio_logs' + '_' + date_format;
                 var doc_rev;
@@ -32,7 +33,7 @@ module.factory(
                     "users": factory.audio.users,
                     "promptID": factory.promptId,
                     "prompt": factory.prompt,
-                    "timeStamp": factory.audio.timeStamp
+                    "timeStamp": date_time
                 }
                 $http(  
                 {
