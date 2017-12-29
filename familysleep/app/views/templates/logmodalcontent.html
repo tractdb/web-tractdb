@@ -1,9 +1,9 @@
 <div class="modal-header log-modal-header">
-  <h3 class="modal-title" id="modal-title">Log Report</h3>
+  <h3 class="modal-title" id="modal-title">Reflection Prompt</h3>
 </div>
 <!--<p>{{$ctrl.buttonState}}</p>-->
 <div class="modal-body log-modal-body" id="modal-body">
-  <h3>Who is viewing?</h3>
+  <h3>Who all is viewing?</h3>
   <div class="source">
       <ul class="list-inline"> 
         <li ng-repeat="fam in $ctrl.checkFam">
@@ -16,17 +16,19 @@
 
  
  <!-- <h3>Would you like to answer this question today? Do you feel well rested?</h3> -->
- <h3>{{$ctrl.prompt}}</h3>
- <h3>Can we record the answer to this question?</h3>
-  <div class="source">
+<h3>
+  <div ng-bind-html="$ctrl.prompt"></div>
+</h3>
+<h4><hr>To answer the prompt, click <b>Start Recording</b> when you are ready.</h4>
+  <!--<div class="source">
     <ul class="list-inline"> 
       <li>
-        <button class="btn btn-info btn-xlarge" type="button" ng-click="$ctrl.recorderbuttonState=$ctrl.recorderbuttonState+1; $ctrl.record=true">Yes</button>
+        <button class="btn btn-info btn-xlarge" type="button" ng-click="$ctrl.recorderbuttonState=$ctrl.recorderbuttonState+1; $ctrl.record=true">Start Recording</button>
         <button class="btn btn-info btn-xlarge" type="button" ng-click="$ctrl.recorderbuttonState=$ctrl.recorderbuttonState+1; $ctrl.record=false">No</button>
       </li>
     </ul>
-  </div>
-  <h4 ng-show="$ctrl.record">Recording will start automatically when you click OK</h4>
+  </div> -->
+  <!-- <h4 ng-show="$ctrl.record">Recording will start automatically when you click OK</h4> -->
 
 </div>
 <!--  
@@ -37,8 +39,9 @@
 
 
 <div class="modal-footer log-modal-footer">
-        <button class="modal-btn btn btn-primary btn-xlarge modalOK" type="button" ng-disabled="!($ctrl.buttonState && $ctrl.recorderbuttonState)" ng-click="$ctrl.ok()">OK</button>
+        <button class="btn btn-primary btn-xlarge modalOK" type="button" ng-disabled="!($ctrl.buttonState >=1)" ng-click="$ctrl.record=true; $ctrl.ok()">Start Recording</button>
 
+        <button class="btn btn-warning btn-xlarge" type="button" ng-click="$ctrl.record=false; $ctrl.cancel()">Cancel</button>
 <!-- 
   <h3>Would you like to answer this question today? Do you feel well rested?</h3>
   <div class="source">
@@ -54,5 +57,5 @@
   </div>
  -->
 <!-- </div> -->
-        <button class="btn btn-warning btn-xlarge" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+        
 </div>
