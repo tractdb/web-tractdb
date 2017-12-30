@@ -26,37 +26,39 @@
 --------------------------*/
 
 nav{
-	display:inline-block;
-	margin:10px 20px auto 45px;
-	background-color: transparent;
+	display: inline-block;
+	margin: 10px 20px auto 45px;
+	/*background-color: transparent;*/
 	/*box-shadow:0 1px 1px #ccc;*/
-	border-radius:2px;
+	/*border-radius:2px;*/
   /*border-color: #0000ff;
   border-style: solid;*/
+  border: 1px solid #778ec4;
 }
 
 nav a{
-	display:inline-block;
-	padding: 18px 30px;
-	color:#fff !important;
-	font-weight:bold;
-	font-size: 20px;
-	text-decoration:none !important;
-	line-height:1;
-	// text-transform: uppercase;
-	background-color:transparent;
-  border-style: solid;
-  border-color: #778ec4;/*#6e85b6;*/
-  margin-right: 20px;
-  padding: 15px;
+	display: inline-block;
+  color: #fff !important;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none !important;
+  line-height: 1;
+  /*border-style: solid;*/
+  /*border-color: #778ec4;*/
+  /* margin-right: 20px; */
+  padding: 17px;
+  background-color: #778ec4;
+  border-right: 1px solid #2b5ab1;
 }
 
 nav a:first-child{
-	border-radius:2px 0 0 2px;
+	/*border-radius:2px 0 0 2px;*/
+  border-left: 1px solid #2b5ab1;
 }
 
 nav a:last-child{
-	border-radius:0 2px 2px 0;
+	/*border-radius:0 2px 2px 0;*/
+  border-right-width: 0 !important;
 }
 
 nav.family-daily-view .family-daily-view,
@@ -64,8 +66,14 @@ nav.family-weekly-view .family-weekly-view,
 nav.Back .Back,
 nav.individual-daily-view .individual-daily-view,
 nav.individual-weekly-view .individual-weekly-view {
-	background-color: #778ec4;/*#6e85b6;*/
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	background-color: #2b5ab1;/*#778ec4;#6e85b6;*/
+  /*box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);*/
+}
+
+.fa-2x {
+  font-size: 1.5em !important;
+  margin-top: -10px;
+  margin-bottom: -10px;
 }
 
 // ----------------------------------------
