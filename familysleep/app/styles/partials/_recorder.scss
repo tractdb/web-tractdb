@@ -58,3 +58,54 @@
   border-radius: 50%;
   background-color: rgb(255,255,255);
 }
+
+.speech-bubble {
+  position: absolute;
+  background: #fff;
+  border: 2px solid #000;
+  /*top: 20px;*/
+  padding: 10px;
+  padding-bottom: 0;
+  font-size: 17px;
+  width: 450px;
+  right: 300px;
+  color: black;
+  z-index: 1000;
+}
+
+.family-daily-view .speech-bubble, .family-weekly-view .speech-bubble {
+  top: 20px;
+}
+
+.individual-weekly-view .speech-bubble, .individual-daily-view .speech-bubble {
+  top: 70px;
+}
+
+.speech-bubble:after, .speech-bubble:before {
+  right: 0;
+  top: 30%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.speech-bubble:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-left-color: #fff;
+  border-width: 10px;
+  margin-top: -10px;
+  border-right: 0;
+  margin-right: -10px;
+}
+.speech-bubble:before {
+  border-color: rgba(0, 0, 0, 0);
+  border-left-color: black;
+  border-width: 13px;
+  margin-top: -13px;
+  border-right: 0;
+  margin-right: -13px;
+}
+

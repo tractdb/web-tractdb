@@ -47,13 +47,13 @@ nav a{
   /*border-color: #778ec4;*/
   /* margin-right: 20px; */
   padding: 17px;
-  background-color: #778ec4;
-  border-right: 1px solid #2b5ab1;
+  background-color: #2b5ab1;
+  border-right: 1px solid #778ec4;
 }
 
 nav a:first-child{
 	/*border-radius:2px 0 0 2px;*/
-  border-left: 1px solid #2b5ab1;
+  border-left: 1px solid #778ec4;
 }
 
 nav a:last-child{
@@ -66,7 +66,7 @@ nav.family-weekly-view .family-weekly-view,
 nav.Back .Back,
 nav.individual-daily-view .individual-daily-view,
 nav.individual-weekly-view .individual-weekly-view {
-	background-color: #2b5ab1;/*#778ec4;#6e85b6;*/
+	background-color: #778ec4;/*#6e85b6;*/
   /*box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);*/
 }
 
