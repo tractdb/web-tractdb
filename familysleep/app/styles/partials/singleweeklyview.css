@@ -36,7 +36,7 @@
 .swv-date-first {
   /* margin-top: -25px; */
   position: absolute;
-  top: 300px;
+  top: 325px;
 }
 
 /* line 36, singleweeklyview.scss */
@@ -134,14 +134,15 @@
 /* line 115, singleweeklyview.scss */
 .first-row {
   height: 95px;
+  margin-bottom: -5px;
 }
 
-/* line 119, singleweeklyview.scss */
+/* line 120, singleweeklyview.scss */
 .last-row {
   height: 80px;
 }
 
-/* line 123, singleweeklyview.scss */
+/* line 124, singleweeklyview.scss */
 .swv-mood-pics {
   width: 35px;
   height: 35px;
@@ -149,7 +150,7 @@
   margin-left: 940px;
 }
 
-/* line 130, singleweeklyview.scss */
+/* line 131, singleweeklyview.scss */
 .swv-mood-pics-last {
   width: 35px;
   height: 35px;
