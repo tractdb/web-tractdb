@@ -7838,6 +7838,65 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   background-color: white;
 }
 
+/* line 62, partials/_recorder.scss */
+.speech-bubble {
+  position: absolute;
+  background: #fff;
+  border: 2px solid #000;
+  top: 20px;
+  padding: 10px;
+  padding-bottom: 0;
+  font-size: 17px;
+  /*width: 450px;*/
+  right: 290px;
+  color: black;
+  z-index: 1000;
+}
+
+/* line 76, partials/_recorder.scss */
+.recorder-bar.family-daily-view .speech-bubble,
+.recorder-bar.family-weekly-view .speech-bubble {
+  width: 450px;
+}
+
+/* line 81, partials/_recorder.scss */
+.recorder-bar.individual-weekly-view .speech-bubble,
+.recorder-bar.individual-daily-view .speech-bubble {
+  width: 290px;
+}
+
+/* line 86, partials/_recorder.scss */
+.speech-bubble:after, .speech-bubble:before {
+  right: 0;
+  top: 20px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* line 97, partials/_recorder.scss */
+.speech-bubble:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-left-color: #fff;
+  border-width: 10px;
+  margin-top: -10px;
+  border-right: 0;
+  margin-right: -10px;
+}
+
+/* line 105, partials/_recorder.scss */
+.speech-bubble:before {
+  border-color: transparent;
+  border-left-color: black;
+  border-width: 13px;
+  margin-top: -13px;
+  border-right: 0;
+  margin-right: -13px;
+}
+
 /*=======================================================================
 ** MODAL WINDOWS START
 =========================================================================
@@ -8344,7 +8403,7 @@ button#yesterday {
 .swv-date-first {
   /* margin-top: -25px; */
   position: absolute;
-  top: 300px;
+  top: 325px;
 }
 
 /* line 36, partials/singleweeklyview.scss */
@@ -8442,14 +8501,15 @@ button#yesterday {
 /* line 115, partials/singleweeklyview.scss */
 .first-row {
   height: 95px;
+  margin-bottom: -5px;
 }
 
-/* line 119, partials/singleweeklyview.scss */
+/* line 120, partials/singleweeklyview.scss */
 .last-row {
   height: 80px;
 }
 
-/* line 123, partials/singleweeklyview.scss */
+/* line 124, partials/singleweeklyview.scss */
 .swv-mood-pics {
   width: 35px;
   height: 35px;
@@ -8457,7 +8517,7 @@ button#yesterday {
   margin-left: 940px;
 }
 
-/* line 130, partials/singleweeklyview.scss */
+/* line 131, partials/singleweeklyview.scss */
 .swv-mood-pics-last {
   width: 35px;
   height: 35px;
@@ -8652,41 +8712,43 @@ p.sdv-names {
 nav {
   display: inline-block;
   margin: 10px 20px auto 45px;
-  background-color: transparent;
+  /*background-color: transparent;*/
   /*box-shadow:0 1px 1px #ccc;*/
-  border-radius: 2px;
+  /*border-radius:2px;*/
   /*border-color: #0000ff;
   border-style: solid;*/
+  border: 1px solid #778ec4;
 }
 
-/* line 38, main.scss */
+/* line 39, main.scss */
 nav a {
   display: inline-block;
-  padding: 18px 30px;
   color: #fff !important;
   font-weight: bold;
   font-size: 20px;
   text-decoration: none !important;
   line-height: 1;
-  background-color: transparent;
-  border-style: solid;
-  border-color: #778ec4;
-  /*#6e85b6;*/
-  margin-right: 20px;
-  padding: 15px;
+  /*border-style: solid;*/
+  /*border-color: #778ec4;*/
+  /* margin-right: 20px; */
+  padding: 17px;
+  background-color: #2b5ab1;
+  border-right: 1px solid #778ec4;
 }
 
 /* line 54, main.scss */
 nav a:first-child {
-  border-radius: 2px 0 0 2px;
+  /*border-radius:2px 0 0 2px;*/
+  border-left: 1px solid #778ec4;
 }
 
-/* line 58, main.scss */
+/* line 59, main.scss */
 nav a:last-child {
-  border-radius: 0 2px 2px 0;
+  /*border-radius:0 2px 2px 0;*/
+  border-right-width: 0 !important;
 }
 
-/* line 62, main.scss */
+/* line 64, main.scss */
 nav.family-daily-view .family-daily-view,
 nav.family-weekly-view .family-weekly-view,
 nav.Back .Back,
@@ -8694,10 +8756,17 @@ nav.individual-daily-view .individual-daily-view,
 nav.individual-weekly-view .individual-weekly-view {
   background-color: #778ec4;
   /*#6e85b6;*/
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  /*box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);*/
 }
 
 /* line 73, main.scss */
+.fa-2x {
+  font-size: 1.5em !important;
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
+/* line 81, main.scss */
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -8705,12 +8774,12 @@ nav.individual-weekly-view .individual-weekly-view {
   padding: 0.2em 0;
 }
 
-/* line 80, main.scss */
+/* line 88, main.scss */
 html {
   background-color: #5979c4;
 }
 
-/* line 84, main.scss */
+/* line 92, main.scss */
 body {
   padding: 0;
   margin: 0;
@@ -8721,14 +8790,14 @@ body {
   width: 100%;*/
 }
 
-/* line 94, main.scss */
+/* line 102, main.scss */
 html, body {
   height: 100px;
   margin: 0;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-/* line 100, main.scss */
+/* line 108, main.scss */
 .header,
 .recorder,
 .marketing,
@@ -8738,7 +8807,7 @@ html, body {
   color: white;
 }
 
-/* line 109, main.scss */
+/* line 117, main.scss */
 .about-us-link {
   text-align: center;
   color: white;
@@ -8746,7 +8815,7 @@ html, body {
   margin-top: 10px;
 }
 
-/* line 116, main.scss */
+/* line 124, main.scss */
 .recorder {
   /*width: 99%;*/
   float: right;
@@ -8758,12 +8827,12 @@ html, body {
 }
 
 /* Custom page header */
-/* line 127, main.scss */
+/* line 135, main.scss */
 .header {
   margin-bottom: 10px;
   /* Make the masthead heading the same height as the navigation */
 }
-/* line 132, main.scss */
+/* line 140, main.scss */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -8772,7 +8841,7 @@ html, body {
 }
 
 /* Custom page footer */
-/* line 141, main.scss */
+/* line 149, main.scss */
 .footer {
   /*padding-top: 10px;
   padding-bottom: 10px;
@@ -8786,12 +8855,12 @@ html, body {
   margin-top: -40px;
 }
 
-/* line 154, main.scss */
+/* line 162, main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
-/* line 158, main.scss */
+/* line 166, main.scss */
 body > .container {
   color: white;
   min-height: 85%;
@@ -8799,36 +8868,36 @@ body > .container {
 }
 
 /* Main marketing message and sign up button */
-/* line 165, main.scss */
+/* line 173, main.scss */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
-/* line 169, main.scss */
+/* line 177, main.scss */
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
 }
 
 /* Supporting marketing content */
-/* line 176, main.scss */
+/* line 184, main.scss */
 .marketing {
   margin: 40px 0;
 }
-/* line 179, main.scss */
+/* line 187, main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* line 186, main.scss */
+  /* line 194, main.scss */
   .container {
     width: 1250px;
   }
 
   /* Remove the padding we set earlier */
-  /* line 191, main.scss */
+  /* line 199, main.scss */
   .header,
   .marketing,
   .footer {
@@ -8837,13 +8906,13 @@ body > .container {
   }
 
   /* Space out the masthead */
-  /* line 198, main.scss */
+  /* line 206, main.scss */
   .header {
     margin-bottom: 20px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 202, main.scss */
+  /* line 210, main.scss */
   .jumbotron {
     border-bottom: 0;
   }
