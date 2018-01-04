@@ -222,13 +222,13 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
         "<hr>What did you learn about your sleep habits from the system?",
         "<hr>Look at another family member's sleep. What did you learn about their sleep?",
         "<hr>Look at your sleep and mood for this week. How is your mood with respect to your sleep?",
-        "<hr><i>Recommended for two family members.</i> Look at family weekly sleep together, pick a day. Tell us what you learn from each other's sleep",
-        "<hr><i>Look at your sleep and mood for this week.</i> How is your mood with respect to your sleep?",
-        "<hr><i>Recommended fo one parent and one child.</i> Look at today's sleep and mood. Talk to each other about your sleep and mood.",
-        "<hr><i>Recommended child to participate.</i> What have you learned about your sleep?",
-        "<hr><i>Recommended child to participate.</i> What have you learned your family's sleep?",
-        "<hr><i>Recommended for one parent and one child.</i> Think about how you viewed your sleep and mood before using DreamCatcher. What have you learned about each other?",
-        "<hr><i>Recommended for one parent and one child.</i> What have you learned about each other since using DreamCatcher?"
+        "<hr><i>Recommended for two family members.</i><hr> Look at family weekly sleep together, pick a day. Tell us what you learn from each other's sleep",
+        "<hr><i>Look at your sleep and mood for this week.</i><hr> How is your mood with respect to your sleep?",
+        "<hr><i>Recommended fo one parent and one child.</i><hr> Look at today's sleep and mood. Talk to each other about your sleep and mood.",
+        "<hr><i>Recommended child to participate.</i><hr> What have you learned about your sleep?",
+        "<hr><i>Recommended child to participate.</i><hr> What have you learned your family's sleep?",
+        "<hr><i>Recommended for one parent and one child.</i><hr> Think about how you viewed your sleep and mood before using DreamCatcher. What have you learned about each other?",
+        "<hr><i>Recommended for one parent and one child.</i><hr> What have you learned about each other since using DreamCatcher?"
     ];
 
     var getRandomInteger = function(){
@@ -280,5 +280,10 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
             }
         }
         $uibModalInstance.dismiss({users: selectedNames, promptId: $ctrl.promptId, prompt: $ctrl.prompt, cancel: 'true'});
+    };
+
+    $ctrl.askAnother = function(){
+        $ctrl.promptId = getRandomInteger();
+        $ctrl.prompt = prompts[$ctrl.promptId];
     };
 });
