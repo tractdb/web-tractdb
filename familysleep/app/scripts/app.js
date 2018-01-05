@@ -59,6 +59,11 @@ angular
                 templateUrl: 'app/views/fambarview.html',
                 controller: 'FambarviewCtrl'
             })
+            .when('/login', {
+              templateUrl: 'app/views/login.html',
+              controller: 'LoginCtrl',
+              controllerAs: 'login'
+            })
             .otherwise({ //I want to add an error page when we don't get to the right page
                 redirectTo: '/'
                 // I want to redirect to family dailyview
