@@ -76,12 +76,22 @@
 						</div>
 					</div>
 
-					<!-- Text input-->
+					<!-- Number input-->
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="age">Age</label>  
 						<div class="col-md-5">
-						<input id="age" name="age" ng-model="member.age" type="text" placeholder="10" class="form-control input-md">
+						<input id="age" name="age" ng-model="member.age" type="number" placeholder="8"  class="form-control input-md">
 						</div>
+						
+					</div>
+
+					<!-- Number input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="targetedHours">Targeted Sleep Hours</label>  
+						<div class="col-md-5">
+						<input id="targetedHours" name="targetedHours" ng-model="member.targetedHours" type="number" placeholder="The suggest hours to sleep for this age is: {{setTargetHours(member.age)}}" class="form-control input-md">
+						</div>
+						<div ng-show="member.age">The suggest hours to sleep for this age is: {{setTargetHours(member.age)}}</div>
 					</div>
 					<!-- Text input-->
 					<div class="form-group">
@@ -101,7 +111,7 @@
 
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="profilePic">Profile Picture</label>
-						<ul class="avatar-area list-inline"> <!--IMPROVE LIST STYLE IN CSS-->
+						<ul class="avatar-area list-inline"> 
 				      		<li ng-repeat="item in profilePicItems">
 				        		<div ng-class="{activePicItem : activeProfilePicMenu === item.name}">
 				          			<img class="signup-avatars" ng-src="{{item.path}}" alt="{{item.name}}" ng-click="$event.preventDefault(); member.profilePic = item.path; setActivePic(item.name);">
@@ -139,7 +149,7 @@
 
 				<label class="col-md-4 control-label" for="signup"></label>
 				<div class="col-md-5" id="last-button">
-					<button ng-click="signup.cancelFromMember()" id="addMember" name="addMember" class="signup-buttons btn btn-success btn-block">Cancel</button>
+					<button ng-click="signup.cancelFromMember()" id="cancelAddMember" name="cancelAddMember" class="signup-buttons btn btn-success btn-block">Cancel</button>
 				</div>
 			</div>
 		</div>
