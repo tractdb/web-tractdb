@@ -55,10 +55,6 @@ angular
                 controller: 'FamweeklyviewCtrl',
                 controllerAs: 'viewModel'
             })
-            .when('/fambarview', {
-                templateUrl: 'app/views/fambarview.html',
-                controller: 'FambarviewCtrl'
-            })
             .when('/login', {
               templateUrl: 'app/views/login.html',
               controller: 'LoginCtrl',

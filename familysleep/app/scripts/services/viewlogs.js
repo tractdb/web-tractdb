@@ -51,6 +51,7 @@ module.factory(
         factory.doc_id = 'viewLogs';
         factory.doc_rev = null;
         factory.counter = 1;
+        var waitTimeForLogging = 2 * 60000; //2 minutes wait to decise this is a new interaction session
         
 
         factory.logLastPage = function (currentTime) {
@@ -61,13 +62,15 @@ module.factory(
                         'cancel': factory.logSession.cancel,
                         'timeStamp': {
                                 'startTime': moment(factory.logSession.startTime).format('YYYY/MM/DD_kk:mm'),
-                                'endTime': moment(currentTime).format('YYYY/MM/DD_kk:mm')
+                                'currentTime': moment(currentTime).format('YYYY/MM/DD_kk:mm'), //this is the last time you interacted
+                                'endTime': moment().format('YYYY/MM/DD_kk:mm')
                         },
                         'pages' : factory.logSession.pages
                 }
                 factory.putData();
                 //sending audio data when user forget to stop recording.
                 if($rootScope.recordRecording || $rootScope.recordPausing) {
+                    //can add starttime to recorderFactory
                     $rootScope.onStopRecord();
                 } 
 
@@ -132,11 +135,11 @@ module.factory(
                         'cancel': null
                 };
                 factory.logSession.startTime = currentTime;  
-                $timeout(factory.popup, 5 * 1000); /*ask Clarissa about this*/
+                $timeout(factory.popup, 5 * 1000); 
             }
             factory.logSession.pages.push({'page': page, 'id' : id, 'date': date});
             factory.logSession.sessionTimeStamps.push(currentTime);
-            $timeout(factory.logLastPage, 3 * 10000, true, currentTime); //changed to 30 seconds wait before logging interaction
+            $timeout(factory.logLastPage, waitTimeForLogging, true, currentTime); 
         }
 
         factory.popup = function() {
@@ -179,7 +182,7 @@ module.factory(
                     };
                     factory.logSession.startTime = currentTime;  
                     factory.logSession.sessionTimeStamps.push(currentTime);
-                    $timeout(factory.logLastPage, 3 * 10000, true, currentTime);
+                    $timeout(factory.logLastPage, waitTimeForLogging, true, currentTime);
                 }
                  //changed to 30 seconds wait before logging interaction
                 factory.logSession.users = selectedItems.users;
