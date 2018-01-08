@@ -71,6 +71,8 @@ module.factory(
                 //sending audio data when user forget to stop recording.
                 if($rootScope.recordRecording || $rootScope.recordPausing) {
                     //can add starttime to recorderFactory
+                    //recorderFactory.startTime = moment(factory.logSession.startTime).format('YYYY/MM/DD_kk:mm');
+                    recorderFactory.startTime = factory.logSession.startTime;
                     $rootScope.onStopRecord();
                 } 
 
