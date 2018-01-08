@@ -114,7 +114,8 @@ angular.module('FamilySleep')
           $scope.recordReplay = false;
           var recordedBlob = $scope.recordedBlob;
           console.log(recordedBlob);
-          recorderFactory.audio = {'data': recordedBlob, 'timeStamp': new Date(), 'users': recorderFactory.users};
+          //recorderFactory.audio = {'data': recordedBlob, 'timeStamp': new Date(), 'users': recorderFactory.users};
+          recorderFactory.audio = {'data': recordedBlob, 'timeStamp': recorderFactory.startTime, 'users': recorderFactory.users};
           console.log(recorderFactory.audio);
           recorderFactory.putData();
         }

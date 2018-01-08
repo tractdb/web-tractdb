@@ -55,10 +55,6 @@ angular
                 controller: 'FamweeklyviewCtrl',
                 controllerAs: 'viewModel'
             })
-            .when('/fambarview', {
-                templateUrl: 'app/views/fambarview.html',
-                controller: 'FambarviewCtrl'
-            })
             .when('/login', {
               templateUrl: 'app/views/login.html',
               controller: 'LoginCtrl',
@@ -68,4 +64,49 @@ angular
                 redirectTo: '/'
                 // I want to redirect to family dailyview
             });
+    })
+    .run(function( $rootScope, $location, $window, authFactory){
+        $rootScope.$on('$routeChangeStart', function(event){
+            var auth;
+            auth = authFactory.isAuthenticated();
+
+            auth.then(function(response){
+                if(!authFactory.isLoggedIn()){
+                    console.log('DENY');
+                //event.preventDefault();
+                    if ( $location.path() === "/login" ) {
+                        //return;
+                    }
+                    else {
+                        $location.path('/login');
+                    }
+                } else {
+                    console.log('ALLOW');
+                    //event.preventDefault();
+                    //#!/familydailyview
+                    //$location.path('/familysleep/'); //need to try familysleep/, or /familysleep/
+                    //$window.location = $location.url('/familysleep/').url()
+                    //$location.path('/familydailyview');
+                }
+            });
+            //if(!authFactory.isLoggedIn()){
+            // if(!authFactory.isAuthenticated()){
+            //     console.log('DENY');
+            //     //event.preventDefault();
+            //     if ( $location.path() === "/login" ) {
+            //         //return;
+            //     }
+            //     else {
+            //         $location.path('/login');
+            //     }
+            // }
+            // else {
+            //     console.log('ALLOW');
+            //     //event.preventDefault();
+            //     //#!/familydailyview
+            //     //$location.path('/familysleep/'); //need to try familysleep/, or /familysleep/
+            //     //$window.location = $location.url('/familysleep/').url()
+            //     //$location.path('/familydailyview')
+            // }
+        });
     });

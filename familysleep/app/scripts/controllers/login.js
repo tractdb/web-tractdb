@@ -10,9 +10,9 @@
 angular.module('FamilySleep')
 	.controller('LoginCtrl', 
 	[
-		'$scope', '$http', '$location', '$window','BASEURL_PYRAMID', 
-		function ($scope, $http, $location, $window, BASEURL_PYRAMID) {
-
+		'$scope', '$http', '$location', '$window','BASEURL_PYRAMID', 'authFactory',
+		function ($scope, $http, $location, $window, BASEURL_PYRAMID, authFactory) {
+            $scope.authenticated;
 
             $scope.submitLoginForm = function () {
                 $http({
@@ -25,7 +25,12 @@ angular.module('FamilySleep')
                 }).then(
                     // successful response
                     function (response) { //taking them to family dailyview
-                        $window.location = $location.url('familysleep/').url()
+                        authFactory.setUser($scope.account);
+                        authFactory.setAuthenticated(true);
+                        //no semi-col
+                        //$window.location = $location.url('familysleep/').url()
+                        //$location.path('/familydailyview');
+                        $location.path('familysleep/');
                     },
                     // error response
                     function (response) {
