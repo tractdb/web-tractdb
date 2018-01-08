@@ -16,6 +16,7 @@ module.factory(
             factory.users = [];
             factory.prompt = {};
             factory.promptID = {};
+            factory.startTime = {};
 
             /*
               setting the recorder data.
@@ -24,8 +25,11 @@ module.factory(
             factory.putData = function() {
 
                 
-                var date_format = moment(factory.audio.timeStamp).format('YYYY_MM_DD_kk_mm');
-                var date_time =  moment(factory.audio.timeStamp).format('YYYY/MM/DD_kk:mm');
+                //var date_format = moment(factory.audio.timeStamp).format('YYYY_MM_DD_kk_mm');
+                var date_format = moment(factory.startTime).format('YYYY_MM_DD_kk_mm');
+
+                var date_time =  moment(factory.startTime).format('YYYY/MM/DD_kk:mm');
+                //var date_time = factory.startTime;
                 
                 var doc_id = 'audio_logs' + '_' + date_format;
                 var doc_rev;
