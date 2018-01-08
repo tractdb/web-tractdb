@@ -17,5 +17,9 @@
   });**/	
 
 angular.module('FamilySleep')
-.controller('AboutCtrl', function ($scope) {
-});
+.controller('AboutCtrl', ['$scope', '$location', function ($scope, $location) {
+	$scope.changeView = function(){
+		var view = '/familydailyview';
+		$location.path(view);
+	}
+}]);
