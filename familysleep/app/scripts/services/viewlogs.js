@@ -72,7 +72,14 @@ module.factory(
                 if($rootScope.recordRecording || $rootScope.recordPausing) {
                     //can add starttime to recorderFactory
                     //recorderFactory.startTime = moment(factory.logSession.startTime).format('YYYY/MM/DD_kk:mm');
-                    recorderFactory.startTime = factory.logSession.startTime;
+                    //recorderFactory.startTime = new Date();
+                    // if(factory.logSession.startTime){
+                    //     recorderFactory.startTime = factory.logSession.startTime;    
+                    // }
+                    // else {
+                    //     recorderFactory.startTime = new Date();
+                    // }
+                    
                     $rootScope.onStopRecord();
                 } 
 
@@ -85,7 +92,7 @@ module.factory(
                 "_id" : "viewLogs" + factory.counter.toString(),
                 "viewLogs": factory.logs
             };
-            var date_format = moment(factory.logSession.startTime).format('YYYY_MM_DD_kk_mm');
+            var date_format = moment(factory.logSession.startTime).format('YYYY_MM_DD_kk_mm_ss');
             
             // BASEURL_PYRAMID + '/document/viewLogs'
             $http(

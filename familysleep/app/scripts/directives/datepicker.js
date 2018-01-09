@@ -62,6 +62,6 @@ angular.module('FamilySleep')
   }])
   .config(function($mdDateLocaleProvider) {
     $mdDateLocaleProvider.formatDate = function(date) {
-    return moment(date).format('ddd, MMM D ');
+    return moment(date).format('ddd, MMM D');
   };
   });

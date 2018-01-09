@@ -17,7 +17,7 @@ angular.module('FamilySleep')
       templateUrl: 'app/views/recorder.html',
       //Embed a custom controller in the directive
       controller: function($scope, $window, $http, recorderFactory) {
-        $scope.instruction = "Tap to record";
+        $scope.instruction = "Record a Thought";
         $scope.url = "";
         $scope.recordStoppedClear = true;
         $scope.recordRecording = false;
@@ -114,8 +114,15 @@ angular.module('FamilySleep')
           $scope.recordReplay = false;
           var recordedBlob = $scope.recordedBlob;
           console.log(recordedBlob);
-          //recorderFactory.audio = {'data': recordedBlob, 'timeStamp': new Date(), 'users': recorderFactory.users};
-          recorderFactory.audio = {'data': recordedBlob, 'timeStamp': recorderFactory.startTime, 'users': recorderFactory.users};
+          
+          recorderFactory.audio = {'data': recordedBlob, 'endtimeStamp': new Date(), 'users': recorderFactory.users}; 
+          // if(recorderFactory.startTime){
+          //   recorderFactory.audio = {'data': recordedBlob, 'timeStamp': recorderFactory.startTime, 'users': recorderFactory.users};  
+          // } else {
+          //   recorderFactory.audio = {'data': recordedBlob, 'timeStamp': new Date(), 'users': recorderFactory.users}; 
+          // }
+          
+          
           console.log(recorderFactory.audio);
           recorderFactory.putData();
         }
