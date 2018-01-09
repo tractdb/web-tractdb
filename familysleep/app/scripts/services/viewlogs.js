@@ -199,6 +199,7 @@ module.factory(
                 recorderFactory.users = selectedItems.users;
                 recorderFactory.prompt = selectedItems.prompt;
                 recorderFactory.promptId = selectedItems.promptId;
+                
             }, function (selectedItems) {
                 //$log.info('Modal dismissed at: ' + new Date());
                 if (factory.logSession == null) {
