@@ -63,7 +63,7 @@
   position: absolute;
   background: #fff;
   border: 2px solid #000;
-  top: 20px;
+  top: 10px;
   padding: 10px;
   padding-bottom: 0;
   font-size: 17px;
@@ -85,7 +85,7 @@
 
 .speech-bubble:after, .speech-bubble:before {
   right: 0;
-  top: 10px;
+  top: 20px;
   border: solid transparent;
   content: " ";
   height: 0;
