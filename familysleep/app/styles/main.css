@@ -7525,6 +7525,12 @@ img.signup-avatars:focus {
   margin-bottom: 5px;
 }
 
+/* line 58, partials/_signup.scss */
+.signup-suggested-hours {
+  font-style: italic;
+  margin-left: 5px;
+}
+
 /*=======================================================================
 ** FAMILY VIEW CSS START
 =========================================================================
@@ -7843,12 +7849,12 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   position: absolute;
   background: #fff;
   border: 2px solid #000;
-  top: 20px;
+  top: 10px;
   padding: 10px;
   padding-bottom: 0;
   font-size: 17px;
   /*width: 450px;*/
-  right: 290px;
+  right: 280px;
   color: black;
   z-index: 1000;
 }
@@ -7862,7 +7868,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 /* line 81, partials/_recorder.scss */
 .recorder-bar.individual-weekly-view .speech-bubble,
 .recorder-bar.individual-daily-view .speech-bubble {
-  width: 290px;
+  width: 320px;
 }
 
 /* line 86, partials/_recorder.scss */
@@ -7895,6 +7901,12 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   margin-top: -13px;
   border-right: 0;
   margin-right: -13px;
+}
+
+/* line 114, partials/_recorder.scss */
+.recorder-bar hr {
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 /*=======================================================================
@@ -8157,6 +8169,12 @@ label.logModalReporter:focus, label.logModalReporter:active, label.logModalRepor
   -moz-border-radius: 8px;
   border-radius: 8px;
   margin-right: 10px;
+}
+
+/* line 226, partials/_modalstyle.scss */
+.another-question-prompt {
+  margin-left: 5px;
+  font-size: medium;
 }
 
 /*
@@ -8697,12 +8715,18 @@ p.sdv-names {
 #aboutus-contents {
   padding-left: 40px;
   padding-right: 40px;
-  padding-top: 130px;
+  padding-top: 120px;
 }
 
 /* line 27, partials/about.scss */
 #aboutus-contents a {
   text-decoration: underline;
+}
+
+/* line 31, partials/about.scss */
+#aboutus-contents ul {
+  columns: 2;
+  margin-bottom: 30px;
 }
 
 /*-------------------------
@@ -8792,7 +8816,7 @@ body {
 
 /* line 102, main.scss */
 html, body {
-  height: 100px;
+  height: 100%;
   margin: 0;
 }
 
@@ -8851,53 +8875,60 @@ html, body {
   /*position: absolute;
   width: 100%;
   bottom: 0%;*/
-  height: 40px;
-  margin-top: -40px;
 }
 
-/* line 162, main.scss */
+/* line 160, main.scss */
+.footer, .footer-space {
+  height: 40px;
+}
+
+/* line 164, main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
-/* line 166, main.scss */
+/* line 167, main.scss */
+.container.family-daily-view, .container.family-weekly-view,
+.container.individual-weekly-view, .container.individual-daily-view {
+  height: 580px;
+}
+
+/* line 172, main.scss */
 body > .container {
   color: white;
-  min-height: 85%;
-  padding-bottom: 40px;
 }
 
 /* Main marketing message and sign up button */
-/* line 173, main.scss */
+/* line 177, main.scss */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
-/* line 177, main.scss */
+/* line 181, main.scss */
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
 }
 
 /* Supporting marketing content */
-/* line 184, main.scss */
+/* line 188, main.scss */
 .marketing {
   margin: 40px 0;
 }
-/* line 187, main.scss */
+/* line 191, main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* line 194, main.scss */
+  /* line 198, main.scss */
   .container {
     width: 1250px;
   }
 
   /* Remove the padding we set earlier */
-  /* line 199, main.scss */
+  /* line 203, main.scss */
   .header,
   .marketing,
   .footer {
@@ -8906,13 +8937,13 @@ body > .container {
   }
 
   /* Space out the masthead */
-  /* line 206, main.scss */
+  /* line 210, main.scss */
   .header {
     margin-bottom: 20px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 210, main.scss */
+  /* line 214, main.scss */
   .jumbotron {
     border-bottom: 0;
   }
