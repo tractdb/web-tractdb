@@ -68,7 +68,7 @@
   padding-bottom: 0;
   font-size: 17px;
   /*width: 450px;*/
-  right: 290px;
+  right: 280px;
   color: black;
   z-index: 1000;
 }
@@ -80,12 +80,12 @@
 
 .recorder-bar.individual-weekly-view .speech-bubble, 
 .recorder-bar.individual-daily-view .speech-bubble {
-  width: 290px;
+  width: 320px;
 }
 
 .speech-bubble:after, .speech-bubble:before {
   right: 0;
-  top: 20px;
+  top: 10px;
   border: solid transparent;
   content: " ";
   height: 0;
@@ -109,5 +109,10 @@
   margin-top: -13px;
   border-right: 0;
   margin-right: -13px;
+}
+
+.recorder-bar hr {
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 

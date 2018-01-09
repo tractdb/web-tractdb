@@ -30,3 +30,9 @@
 #aboutus-contents a {
   text-decoration: underline;
 }
+
+/* line 31, about.scss */
+#aboutus-contents ul {
+  columns: 2;
+  margin-bottom: 30px;
+}

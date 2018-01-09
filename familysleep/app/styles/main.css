@@ -7525,6 +7525,12 @@ img.signup-avatars:focus {
   margin-bottom: 5px;
 }
 
+/* line 58, partials/_signup.scss */
+.signup-suggested-hours {
+  font-style: italic;
+  margin-left: 5px;
+}
+
 /*=======================================================================
 ** FAMILY VIEW CSS START
 =========================================================================
@@ -7848,7 +7854,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   padding-bottom: 0;
   font-size: 17px;
   /*width: 450px;*/
-  right: 290px;
+  right: 280px;
   color: black;
   z-index: 1000;
 }
@@ -7862,13 +7868,13 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 /* line 81, partials/_recorder.scss */
 .recorder-bar.individual-weekly-view .speech-bubble,
 .recorder-bar.individual-daily-view .speech-bubble {
-  width: 290px;
+  width: 320px;
 }
 
 /* line 86, partials/_recorder.scss */
 .speech-bubble:after, .speech-bubble:before {
   right: 0;
-  top: 20px;
+  top: 10px;
   border: solid transparent;
   content: " ";
   height: 0;
@@ -7895,6 +7901,12 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   margin-top: -13px;
   border-right: 0;
   margin-right: -13px;
+}
+
+/* line 114, partials/_recorder.scss */
+.recorder-bar hr {
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 /*=======================================================================
@@ -8157,6 +8169,12 @@ label.logModalReporter:focus, label.logModalReporter:active, label.logModalRepor
   -moz-border-radius: 8px;
   border-radius: 8px;
   margin-right: 10px;
+}
+
+/* line 226, partials/_modalstyle.scss */
+.another-question-prompt {
+  margin-left: 5px;
+  font-size: medium;
 }
 
 /*
@@ -8703,6 +8721,12 @@ p.sdv-names {
 /* line 27, partials/about.scss */
 #aboutus-contents a {
   text-decoration: underline;
+}
+
+/* line 31, partials/about.scss */
+#aboutus-contents ul {
+  columns: 2;
+  margin-bottom: 30px;
 }
 
 /*-------------------------

@@ -21,9 +21,14 @@
 #aboutus-contents {
   padding-left: 40px;
   padding-right: 40px;
-  padding-top: 130px;
+  padding-top: 120px;
 }
 
 #aboutus-contents a {
   text-decoration: underline;
+}
+
+#aboutus-contents ul {
+  columns: 2;
+  margin-bottom: 30px
 }

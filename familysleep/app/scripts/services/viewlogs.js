@@ -224,16 +224,16 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
     $ctrl.record = false;
 
     var prompts = [
-        "<hr>What did you learn about your sleep habits from the system?",
-        "<hr>Look at another family member's sleep. What did you learn about their sleep?",
-        "<hr>Look at your sleep and mood for this week. How is your mood with respect to your sleep?",
-        "<hr><i>Recommended for two family members.</i><hr> Look at family weekly sleep together, pick a day. Tell us what you learn from each other's sleep",
-        "<hr><i>Look at your sleep and mood for this week.</i><hr> How is your mood with respect to your sleep?",
-        "<hr><i>Recommended fo one parent and one child.</i><hr> Look at today's sleep and mood. Talk to each other about your sleep and mood.",
-        "<hr><i>Recommended child to participate.</i><hr> What have you learned about your sleep?",
-        "<hr><i>Recommended child to participate.</i><hr> What have you learned your family's sleep?",
-        "<hr><i>Recommended for one parent and one child.</i><hr> Think about how you viewed your sleep and mood before using DreamCatcher. What have you learned about each other?",
-        "<hr><i>Recommended for one parent and one child.</i><hr> What have you learned about each other since using DreamCatcher?"
+        "What did you learn about your sleep habits from the system?",
+        "Look at another family member's sleep. What did you learn about their sleep?",
+        "Look at your sleep and mood for this week. How is your mood with respect to your sleep?",
+        "<i>Recommended for two family members.</i><hr> Look at family weekly sleep together, pick a day. Tell us what you learn from each other's sleep",
+        "<i>Look at your sleep and mood for this week.</i><hr> How is your mood with respect to your sleep?",
+        "<i>Recommended fo one parent and one child.</i><hr> Look at today's sleep and mood. Talk to each other about your sleep and mood.",
+        "<i>Recommended child to participate.</i><hr> What have you learned about your sleep?",
+        "<i>Recommended child to participate.</i><hr> What have you learned your family's sleep?",
+        "<i>Recommended for one parent and one child.</i><hr> Think about how you viewed your sleep and mood before using DreamCatcher. What have you learned about each other?",
+        "<i>Recommended for one parent and one child.</i><hr> What have you learned about each other since using DreamCatcher?"
     ];
 
     var getRandomInteger = function(){
