@@ -21,6 +21,7 @@ angular.module('FamilySleep')
        function (dateFactory, $scope, $route, $timeout) {
         var _nextDateRefreshPromise;
 		  	$scope.myDate = dateFactory.getDate().toDate();
+    
 		  	console.log("at datepickerjs")
 		  	console.log($scope.myDate);
 		  	$scope.isOpen = false;
@@ -58,4 +59,9 @@ angular.module('FamilySleep')
         _scheduleNextDateRefresh();
 		  }],
     };
-  }]);
+  }])
+  .config(function($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.formatDate = function(date) {
+    return moment(date).format('ddd, MMM D');
+  };
+  });

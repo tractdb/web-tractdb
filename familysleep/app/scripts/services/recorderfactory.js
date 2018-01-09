@@ -12,7 +12,7 @@ module.factory(
             var factory = {};
 
             
-            factory.audio = {}; // audio: {'data': audio, 'timeStamp': new Date(), 'users': users};
+            factory.audio = {}; // audio: {'data': audio, 'endtimeStamp': new Date(), 'users': users};
             factory.users = [];
             factory.prompt = {};
             factory.promptID = {};
@@ -25,19 +25,20 @@ module.factory(
             factory.putData = function() {
 
                 
-                //var date_format = moment(factory.audio.timeStamp).format('YYYY_MM_DD_kk_mm');
-                var date_format = moment(factory.startTime).format('YYYY_MM_DD_kk_mm');
+                var date_format = moment(factory.audio.endtimeStamp).format('YYYY_MM_DD_kk_mm_ss');
 
-                var date_time =  moment(factory.startTime).format('YYYY/MM/DD_kk:mm');
+                //var date_format = moment(factory.startTime).format('YYYY_MM_DD_kk_mm');
+
+                var date_time =  moment(factory.audio.endtimeStamp).format('YYYY/MM/DD_kk:mm');
                 //var date_time = factory.startTime;
                 
                 var doc_id = 'audio_logs' + '_' + date_format;
                 var doc_rev;
                 var new_doc = {
-                    "users": factory.audio.users,
-                    "promptID": factory.promptId,
-                    "prompt": factory.prompt,
-                    "timeStamp": date_time
+                    "users": factory.audio.users || "",
+                    "promptID": factory.promptId || "",
+                    "prompt": factory.prompt || "",
+                    "endTimeStamp": date_time
                 }
                 $http(  
                 {

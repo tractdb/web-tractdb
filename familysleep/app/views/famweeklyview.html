@@ -3,7 +3,7 @@
     <!-- person row -->
     <div class="fwv-columns" id="blank-date">blank</div>
     <div ng-repeat="date in viewModel.dateWeekStr" class="fwv-date-columns">
-        <p class="fwv-date">{{date}}</p>
+        <p class="fwv-date">{{date | date: 'EEE, MMM d'}}</p>
     </div>
     <div ng-repeat="(pidCurrent, memberCurrent) in viewModel.familyInfo">
 	   <div class="fwv-person row">
