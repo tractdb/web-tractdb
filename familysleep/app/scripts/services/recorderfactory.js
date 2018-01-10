@@ -15,8 +15,9 @@ module.factory(
             factory.audio = {}; // audio: {'data': audio, 'endtimeStamp': new Date(), 'users': users};
             factory.users = [];
             factory.prompt = {};
-            factory.promptID = {};
+            factory.promptId = {};
             factory.startTime = {};
+            
 
             /*
               setting the recorder data.
@@ -36,7 +37,7 @@ module.factory(
                 var doc_rev;
                 var new_doc = {
                     "users": factory.audio.users || "",
-                    "promptID": factory.promptId || "",
+                    "promptId": factory.promptId || "",
                     "prompt": factory.prompt || "",
                     "endTimeStamp": date_time
                 }
@@ -58,6 +59,12 @@ module.factory(
                         data: factory.audio.data
                     }).then(function success(response){
                         console.log('success at attaching audio log');
+                        factory.audio = {}; // audio: {'data': audio, 'endtimeStamp': new Date(), 'users': users};
+                        factory.users = [];
+                        factory.prompt = {};
+                        factory.promptId = {};
+                        factory.startTime = {};
+                        factory.source = {};
                     }).catch(function errorCallback(response){
                         console.log("error in the PUT");
                         console.log(response);
