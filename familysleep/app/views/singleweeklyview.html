@@ -39,7 +39,7 @@
 				-<p>{{data}}</p>-->
 			<div ng-switch on="$index">
 				<div ng-switch-when="0" class="first-empty-row">
-					<p class="swv-date">{{day.date | date: 'EEE, MMM d'}}}</p>
+					<p class="swv-date">{{day.date | date: 'EEE, MMM d'}}</p>
 					<canvas class="swv-empty-chart-placement chart chart-horizontal-bar" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="color" height="40" width="800"></canvas>	
 					<!-- <img ng-src={{viewModel.state[day.date].image}} class="swv-mood-pics"> -->
 				</div>
