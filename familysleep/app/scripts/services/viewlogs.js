@@ -200,7 +200,7 @@ module.factory(
                 recorderFactory.prompt = selectedItems.prompt;
                 recorderFactory.promptId = selectedItems.promptId;
                 
-            }, function (selectedItems) {
+            }, function (selectedItems) { //canceled popup but still logging interaction
                 //$log.info('Modal dismissed at: ' + new Date());
                 if (factory.logSession == null) {
                     var currentTime = new Date();
