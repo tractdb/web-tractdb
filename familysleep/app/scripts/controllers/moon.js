@@ -72,7 +72,7 @@ angular.module('FamilySleep')
 		// });
 		
 		var avgSleep = totalSleep/(pids.length);
-		var percentage = avgSleep/24; // would be their total targetsleephours divided by i
+		var percentage = avgSleep/6; // would be their total targetsleephours divided by i
 
 		// if(percentage < (1/6)) {
 		// 	$scope.moonImage = 'app/images/moons/moon7a.png';
@@ -84,17 +84,17 @@ angular.module('FamilySleep')
 		// 	$scope.moonImage = 'app/images/moons/moon2.png';
 		// }
 		//console.log(percentage);
-		if(avgSleep < (1/7)) {
+		if(percentage < (1/7)) {
 			$scope.moonImage = 'app/images/moons/moon7a.png';
-		} else if (avgSleep < (2/7)) { 
+		} else if (percentage < (2/7)) { 
 			$scope.moonImage = 'app/images/moons/moon6.png';
-		} else if (avgSleep < (3/7)) {
+		} else if (percentage < (3/7)) {
 			$scope.moonImage = 'app/images/moons/moon5.png';
-		} else if (avgSleep < (4/7)) {
+		} else if (percentage < (4/7)) {
 			$scope.moonImage = 'app/images/moons/moon4.png';
-		} else if (avgSleep < (5/7)) {
+		} else if (percentage < (5/7)) {
 			$scope.moonImage = 'app/images/moons/moon3.png';
-		} else if (avgSleep < (5/7)){
+		} else if (percentage < (5/7)){
 			$scope.moonImage = 'app/images/moons/moon2.png';
 		} else {
 			$scope.moonImage = 'app/images/moons/moon1.png';
