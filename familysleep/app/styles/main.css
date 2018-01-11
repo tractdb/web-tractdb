@@ -7505,23 +7505,30 @@ img.signup-avatars:focus {
   width: 478px;
   margin-left: -5px;
   margin-top: 15px;
+  font-weight: bold;
 }
 
-/* line 43, partials/_signup.scss */
+/* line 44, partials/_signup.scss */
 #last-button {
   margin-bottom: 50px;
 }
 
-/* line 47, partials/_signup.scss */
+/* line 48, partials/_signup.scss */
 .family-type-container {
   float: left;
   width: 550px;
 }
 
-/* line 52, partials/_signup.scss */
+/* line 53, partials/_signup.scss */
 .family-type {
   margin-top: 5px;
-  margin-botton: 5px;
+  margin-bottom: 5px;
+}
+
+/* line 58, partials/_signup.scss */
+.signup-suggested-hours {
+  font-style: italic;
+  margin-left: 5px;
 }
 
 /*=======================================================================
@@ -7632,7 +7639,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 
 /* line 102, partials/_familydailyview.scss */
 .single-view-button {
-  margin-left: 230px;
+  margin-left: 235px;
   margin-bottom: 50px;
   position: absolute;
   top: 5px;
@@ -7648,7 +7655,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   position: absolute;
   top: 5px;
   height: 50px;
-  width: 120px;
+  width: 125px;
   font-size: medium;
 }
 
@@ -7657,7 +7664,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   background-color: #d6c3db;
   border-color: #d6c3db;
   color: #555555;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
@@ -7666,15 +7673,15 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 .target-hours {
   position: absolute;
   top: 120px;
-  left: -140px;
-  margin-bottom: 20px;
-  font-size: medium;
-  width: 100%;
+  left: 30px;
+  /* margin-bottom: 20px; */
+  /* font-size: medium; */
+  width: 110px;
 }
 
 /* line 141, partials/_familydailyview.scss */
 .target-hours-text {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 /* line 145, partials/_familydailyview.scss */
@@ -7730,32 +7737,38 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 .hours-slept {
   font-size: medium;
   position: absolute;
-  top: 180px;
-  left: 40px;
-  text-align: center;
+  top: 190px;
+  left: 30px;
+  width: 110px;
 }
 
 /* line 195, partials/_familydailyview.scss */
-.data-label {
-  font-size: 15px;
+.hours-slept-text {
+  /*text-align: center;*/
 }
 
 /* line 199, partials/_familydailyview.scss */
-.data-number {
-  font-size: 19px;
-  font-weight: 500;
+.data-label {
+  font-size: 18px;
 }
 
-/* line 204, partials/_familydailyview.scss */
+/* line 203, partials/_familydailyview.scss */
+.data-number {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* line 209, partials/_familydailyview.scss */
 .mood-report {
   position: absolute;
   top: 230px;
-  font-size: medium;
+  font-size: 18px;
   width: 100%;
   margin-left: 30px;
 }
 
-/* line 212, partials/_familydailyview.scss */
+/* line 217, partials/_familydailyview.scss */
 .mood-report-text {
   text-align: center;
 }
@@ -7829,6 +7842,71 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   height: 4rem;
   border-radius: 50%;
   background-color: white;
+}
+
+/* line 62, partials/_recorder.scss */
+.speech-bubble {
+  position: absolute;
+  background: #fff;
+  border: 2px solid #000;
+  top: 10px;
+  padding: 10px;
+  padding-bottom: 0;
+  font-size: 17px;
+  /*width: 450px;*/
+  right: 280px;
+  color: black;
+  z-index: 1000;
+}
+
+/* line 76, partials/_recorder.scss */
+.recorder-bar.family-daily-view .speech-bubble,
+.recorder-bar.family-weekly-view .speech-bubble {
+  width: 450px;
+}
+
+/* line 81, partials/_recorder.scss */
+.recorder-bar.individual-weekly-view .speech-bubble,
+.recorder-bar.individual-daily-view .speech-bubble {
+  width: 320px;
+}
+
+/* line 86, partials/_recorder.scss */
+.speech-bubble:after, .speech-bubble:before {
+  right: 0;
+  top: 20px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* line 97, partials/_recorder.scss */
+.speech-bubble:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-left-color: #fff;
+  border-width: 10px;
+  margin-top: -10px;
+  border-right: 0;
+  margin-right: -10px;
+}
+
+/* line 105, partials/_recorder.scss */
+.speech-bubble:before {
+  border-color: transparent;
+  border-left-color: black;
+  border-width: 13px;
+  margin-top: -13px;
+  border-right: 0;
+  margin-right: -13px;
+}
+
+/* line 114, partials/_recorder.scss */
+.recorder-bar hr {
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 /*=======================================================================
@@ -8015,55 +8093,88 @@ button.modal-mood-reporter:focus, button.modal-mood-reporter:active, button.moda
 
 /* line 158, partials/_modalstyle.scss */
 .activeMoodReporter {
-  /*border: 3px solid #478de7;*/
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
-/* line 162, partials/_modalstyle.scss */
+/* line 164, partials/_modalstyle.scss */
 img.modal-mood-pics:focus {
   outline: 0;
 }
 
-/* line 166, partials/_modalstyle.scss */
+/* line 168, partials/_modalstyle.scss */
 .mood-item {
   margin-bottom: 20px;
   padding: 5px;
 }
 
-/* line 171, partials/_modalstyle.scss */
+/* line 173, partials/_modalstyle.scss */
 .activeMoodItem {
   border: 4px solid #478de7;
 }
 
 /*for log modal window*/
-/* line 176, partials/_modalstyle.scss */
+/* line 178, partials/_modalstyle.scss */
+.log-modal-header, .log-modal-body, .log-modal-footer {
+  border-bottom: 1px solid black;
+  background-color: white;
+  color: black;
+}
+
+/* line 184, partials/_modalstyle.scss */
+.inactiveReporter, .activeLogReporter {
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+/* line 190, partials/_modalstyle.scss */
 label.logModalReporter:focus, label.logModalReporter:active, label.logModalReporter:hover {
   outline: none !important;
 }
 
-/* line 180, partials/_modalstyle.scss */
+/* line 194, partials/_modalstyle.scss */
 .activeLogReporter label {
   background-color: #268986 !important;
   border-color: #268986 !important;
   outline: none !important;
 }
 
-/* line 186, partials/_modalstyle.scss */
+/* line 200, partials/_modalstyle.scss */
 .activeLogReporter label:hover, .activeLogReporter label:active, .activeLogReporter label:focus {
   background-color: #268986 !important;
   border-color: #268986 !important;
 }
 
-/* line 191, partials/_modalstyle.scss */
+/* line 205, partials/_modalstyle.scss */
 .inactiveReporter label {
   background-color: #34cfca !important;
   border-color: #34cfca !important;
   outline: none !important;
 }
 
-/* line 197, partials/_modalstyle.scss */
+/* line 211, partials/_modalstyle.scss */
 .inactiveReporter label:hover, .inactiveReporter label:active, .inactiveReporter label:focus {
   background-color: #34cfca !important;
   border-color: #34cfca !important;
+}
+
+/* line 216, partials/_modalstyle.scss */
+.btn-xlarge {
+  padding: 18px 28px;
+  font-size: 22px;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+/* line 226, partials/_modalstyle.scss */
+.another-question-prompt {
+  margin-left: 5px;
+  font-size: medium;
 }
 
 /*
@@ -8102,7 +8213,7 @@ MODAL WINDOW END
   width: 70px;
   margin: 0;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 /* line 34, partials/_familyweeklyview.scss */
@@ -8125,16 +8236,26 @@ MODAL WINDOW END
 }
 
 /* line 51, partials/_familyweeklyview.scss */
+.fwv-date-columns {
+  float: left;
+  width: 120px;
+  margin-left: 7px;
+  margin-right: 7px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* line 60, partials/_familyweeklyview.scss */
 .pic-column {
   height: 80px;
 }
 
-/* line 55, partials/_familyweeklyview.scss */
+/* line 64, partials/_familyweeklyview.scss */
 #blank-date {
   visibility: hidden;
 }
 
-/* line 59, partials/_familyweeklyview.scss */
+/* line 68, partials/_familyweeklyview.scss */
 .fwv-mood-pics {
   position: absolute;
   width: 52px;
@@ -8144,16 +8265,22 @@ MODAL WINDOW END
   margin-left: 14px;
 }
 
-/* line 68, partials/_familyweeklyview.scss */
+/* line 77, partials/_familyweeklyview.scss */
 .fwv-mood-text {
   text-align: center;
-  font-size: 14px;
+  font-size: 17px;
 }
 
-/* line 73, partials/_familyweeklyview.scss */
+/* line 82, partials/_familyweeklyview.scss */
+.fwv-mood-text-small {
+  text-align: center;
+  font-size: 13px;
+}
+
+/* line 87, partials/_familyweeklyview.scss */
 .fwv-date {
   text-align: center;
-  font-size: medium;
+  font-size: 18px;
 }
 
 /* line 1, partials/_datepicker.scss */
@@ -8187,45 +8314,52 @@ input[aria-expanded=false] {
 /* line 23, partials/_datepicker.scss */
 .md-datepicker-input {
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   margin-right: 20px;
+  pointer-events: none;
 }
 
-/* line 31, partials/_datepicker.scss */
+/* line 32, partials/_datepicker.scss */
 md-icon svg path {
   fill: #555555;
 }
 
-/* line 37, partials/_datepicker.scss */
+/* line 38, partials/_datepicker.scss */
 .md-datepicker-triangle-button .md-datepicker-expand-triangle {
   border-top-color: #555555;
 }
 
-/* line 41, partials/_datepicker.scss */
+/* line 42, partials/_datepicker.scss */
 #datepicker-placement {
   margin-top: 10px;
   margin-left: 45px;
 }
 
-/* line 46, partials/_datepicker.scss */
+/* line 47, partials/_datepicker.scss */
 ._md-datepicker-has-triangle-icon {
   padding-right: 18px;
   margin-right: 0px;
 }
 
-/* line 51, partials/_datepicker.scss */
+/* line 52, partials/_datepicker.scss */
 #yesterday, #today, #tomorrow {
   background-color: #D3DBE9;
   /*#6e85b6;*/
   opacity: 0.8;
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: bold;
   color: #555555;
   height: 45px;
   width: 50px;
+  margin-right: 5px;
 }
 
-/* line 61, partials/_datepicker.scss */
+/* line 63, partials/_datepicker.scss */
+button#yesterday {
+  margin-left: 0;
+}
+
+/* line 67, partials/_datepicker.scss */
 #yesterday img, #tomorrow img {
   height: 28px;
   width: 28px;
@@ -8234,7 +8368,7 @@ md-icon svg path {
 }
 
 /*change scale of popup calendar*/
-/* line 69, partials/_datepicker.scss */
+/* line 75, partials/_datepicker.scss */
 .md-datepicker-calendar-pane.md-pane-open {
   -webkit-transform: scale(1.5);
   transform: scale(1.5) !important;
@@ -8242,9 +8376,10 @@ md-icon svg path {
 }
 
 /*change dimension of input area in calendar so date shows through*/
-/* line 76, partials/_datepicker.scss */
+/* line 82, partials/_datepicker.scss */
 .md-datepicker-input-mask-opaque {
-  box-shadow: 0 0 0 999px white, inset 0 9px 0px 0px white, inset 13px 0 0 0px white, inset -35px 0 0 0px white;
+  box-shadow: 0 0 0 999px white, inset 0 9px 0px 0px white, inset 0 -3px 0 0 white, inset 13px 0 0 0px white, inset -60px 0 0 0px white;
+  /*right*/
   left: 0 !important;
   top: 0 !important;
 }
@@ -8265,7 +8400,7 @@ md-icon svg path {
   top: 30px;
   left: 130px;
   margin-bottom: 20px;
-  font-size: 19px;
+  font-size: 20px;
   width: 100%;
 }
 
@@ -8278,24 +8413,25 @@ md-icon svg path {
 /* line 24, partials/singleweeklyview.scss */
 .swv-date {
   margin-bottom: 0;
-  font-size: medium;
+  font-size: 18px;
+  margin-left: -10px;
 }
 
-/* line 29, partials/singleweeklyview.scss */
+/* line 30, partials/singleweeklyview.scss */
 .swv-date-first {
   /* margin-top: -25px; */
   position: absolute;
-  top: 300px;
+  top: 325px;
 }
 
-/* line 35, partials/singleweeklyview.scss */
+/* line 36, partials/singleweeklyview.scss */
 #swv-legend {
-  margin-bottom: 65px;
+  margin-bottom: 90px;
   margin-left: 400px;
   padding-top: 35px;
 }
 
-/* line 41, partials/singleweeklyview.scss */
+/* line 42, partials/singleweeklyview.scss */
 #swv-legend li {
   display: inline-block;
 }
@@ -8306,91 +8442,92 @@ md-icon svg path {
     font-size: 12px;
 }​
 */
-/* line 52, partials/singleweeklyview.scss */
+/* line 53, partials/singleweeklyview.scss */
 #swv-legend li:nth-child(2),
 #swv-legend li:nth-child(4),
 #swv-legend li:nth-child(6),
 #swv-legend li:nth-child(8) {
-  margin-right: 10px;
-  font-size: 12px;
+  margin-right: 25px;
+  font-size: medium;
 }
 
-/* line 60, partials/singleweeklyview.scss */
+/* line 61, partials/singleweeklyview.scss */
 #no-data-chart {
   height: 55px;
 }
 
 /* green */
-/* line 65, partials/singleweeklyview.scss */
+/* line 66, partials/singleweeklyview.scss */
 #swv-legend-sleep {
   background-color: #44d2d1;
 }
 
 /* purple */
-/* line 70, partials/singleweeklyview.scss */
+/* line 71, partials/singleweeklyview.scss */
 #swv-legend-movement {
   background-color: #551A8B;
 }
 
 /* pink */
-/* line 75, partials/singleweeklyview.scss */
+/* line 76, partials/singleweeklyview.scss */
 #swv-legend-restless {
   background-color: #FC3F73;
 }
 
-/* line 79, partials/singleweeklyview.scss */
+/* line 80, partials/singleweeklyview.scss */
 #swv-legend-no-data {
   background-color: #D6C3DB;
 }
 
-/* line 83, partials/singleweeklyview.scss */
+/* line 84, partials/singleweeklyview.scss */
 #swv-legend-sleep, #swv-legend-movement, #swv-legend-restless, #swv-legend-no-data {
   width: 40px;
   height: 15px;
   margin-bottom: -3px;
 }
 
-/* line 89, partials/singleweeklyview.scss */
+/* line 90, partials/singleweeklyview.scss */
 .swv-chart-placement {
   margin-left: 100px;
   margin-top: -40px;
 }
 
-/* line 94, partials/singleweeklyview.scss */
+/* line 95, partials/singleweeklyview.scss */
 .swv-empty-chart-placement {
   margin-left: 100px;
   margin-top: -30px;
   margin-bottom: 10px;
 }
 
-/* line 100, partials/singleweeklyview.scss */
+/* line 101, partials/singleweeklyview.scss */
 .swv-chart-placement-last {
   margin-left: 100px;
   margin-top: -30px;
 }
 
-/* line 105, partials/singleweeklyview.scss */
+/* line 106, partials/singleweeklyview.scss */
 .first-empty-row {
   height: 30px;
   margin-top: 25px;
 }
 
-/* line 110, partials/singleweeklyview.scss */
+/* line 111, partials/singleweeklyview.scss */
 .regular-row {
   height: 30px;
 }
 
-/* line 114, partials/singleweeklyview.scss */
+/* line 115, partials/singleweeklyview.scss */
 .first-row {
   height: 95px;
+  margin-bottom: -5px;
 }
 
-/* line 118, partials/singleweeklyview.scss */
+/* line 120, partials/singleweeklyview.scss */
 .last-row {
   height: 80px;
 }
 
-/* line 122, partials/singleweeklyview.scss */
+/* line 124, partials/singleweeklyview.scss */
 .swv-mood-pics {
   width: 35px;
   height: 35px;
@@ -8398,7 +8535,7 @@ md-icon svg path {
   margin-left: 940px;
 }
 
-/* line 129, partials/singleweeklyview.scss */
+/* line 131, partials/singleweeklyview.scss */
 .swv-mood-pics-last {
   width: 35px;
   height: 35px;
@@ -8434,11 +8571,13 @@ p.sdv-names {
 
 /* line 24, partials/singledailyview.scss */
 .sdv-names {
-  font-size: 19px !important;
-  margin-top: 70px;
+  text-align: center;
+  width: 70px;
+  font-size: 20px !important;
+  margin-top: 75px;
 }
 
-/* line 29, partials/singledailyview.scss */
+/* line 31, partials/singledailyview.scss */
 .sdv-mood-pics {
   position: absolute;
   width: 100px;
@@ -8448,7 +8587,7 @@ p.sdv-names {
   z-index: 1;
 }
 
-/* line 38, partials/singledailyview.scss */
+/* line 40, partials/singledailyview.scss */
 .sdv-mood-report {
   position: absolute;
   top: 155px;
@@ -8456,43 +8595,36 @@ p.sdv-names {
   margin-left: -25px;
 }
 
-/* line 45, partials/singledailyview.scss */
+/* line 47, partials/singledailyview.scss */
 .sdv-mood-report-text {
   text-align: center;
-  font-size: medium !important;
+  font-size: 18px !important;
 }
 
-/* line 50, partials/singledailyview.scss */
-#sdv-name {
-  text-align: center;
-  width: 70px;
-  margin: 0;
-}
-
-/* line 56, partials/singledailyview.scss */
+/* line 52, partials/singledailyview.scss */
 #sdv-legend {
   /*margin-top: 20px;
   margin-left: 500px;*/
-  position: fixed;
-  top: 88%;
-  left: 50%;
+  position: absolute;
+  top: 65%;
+  left: 45%;
 }
 
-/* line 64, partials/singledailyview.scss */
+/* line 60, partials/singledailyview.scss */
 #sdv-legend li {
   display: inline-block;
 }
 
-/* line 68, partials/singledailyview.scss */
+/* line 64, partials/singledailyview.scss */
 #sdv-legend li:nth-child(2),
 #sdv-legend li:nth-child(4),
 #sdv-legend li:nth-child(6),
 #sdv-legend li:nth-child(8) {
-  margin-right: 10px;
+  margin-right: 25px;
   font-size: medium;
 }
 
-/* line 76, partials/singledailyview.scss */
+/* line 72, partials/singledailyview.scss */
 .sdv-chart-placement {
   height: 150px;
   position: absolute;
@@ -8501,35 +8633,35 @@ p.sdv-names {
   top: 20px;
 }
 
-/* line 84, partials/singledailyview.scss */
+/* line 80, partials/singledailyview.scss */
 .sdv-bar-chart canvas {
   width: 1100px !important;
 }
 
-/* line 88, partials/singledailyview.scss */
+/* line 84, partials/singledailyview.scss */
 .sdv-barchart-placement {
   width: 1100px;
   height: 350px;
-  position: fixed;
+  position: absolute;
   top: 55%;
 }
 
-/* line 95, partials/singledailyview.scss */
+/* line 91, partials/singledailyview.scss */
 .sdv-bar-chart {
   margin-top: 20px;
 }
 
-/* line 99, partials/singledailyview.scss */
+/* line 95, partials/singledailyview.scss */
 .sdv-empty-chart {
   margin-top: -10px;
 }
 
-/* line 103, partials/singledailyview.scss */
+/* line 99, partials/singledailyview.scss */
 .sdv-mood-text {
   text-align: center;
 }
 
-/* line 107, partials/singledailyview.scss */
+/* line 103, partials/singledailyview.scss */
 .sdv-sleep-data {
   margin-left: 500px;
   list-style-type: none;
@@ -8540,21 +8672,21 @@ p.sdv-names {
   margin-bottom: 40px;
 }
 
-/* line 117, partials/singledailyview.scss */
+/* line 113, partials/singledailyview.scss */
 .sdv-sleep-data li {
   text-align: center;
 }
 
 /* numbers */
-/* line 122, partials/singledailyview.scss */
+/* line 118, partials/singledailyview.scss */
 .sdv-sleep-data li:nth-child(odd) {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
 }
 
-/* line 127, partials/singledailyview.scss */
+/* line 123, partials/singledailyview.scss */
 .sdv-sleep-data li:nth-child(even) {
-  font-size: 12px;
+  font-size: medium;
   margin-bottom: 30px;
 }
 
@@ -8583,12 +8715,18 @@ p.sdv-names {
 #aboutus-contents {
   padding-left: 40px;
   padding-right: 40px;
-  padding-top: 130px;
+  padding-top: 120px;
 }
 
 /* line 27, partials/about.scss */
 #aboutus-contents a {
   text-decoration: underline;
+}
+
+/* line 31, partials/about.scss */
+#aboutus-contents ul {
+  columns: 2;
+  margin-bottom: 30px;
 }
 
 /*-------------------------
@@ -8598,41 +8736,43 @@ p.sdv-names {
 nav {
   display: inline-block;
   margin: 10px 20px auto 45px;
-  background-color: transparent;
+  /*background-color: transparent;*/
   /*box-shadow:0 1px 1px #ccc;*/
-  border-radius: 2px;
+  /*border-radius:2px;*/
   /*border-color: #0000ff;
   border-style: solid;*/
+  border: 1px solid #778ec4;
 }
 
-/* line 38, main.scss */
+/* line 39, main.scss */
 nav a {
   display: inline-block;
-  padding: 18px 30px;
   color: #fff !important;
   font-weight: bold;
-  font-size: 19px;
+  font-size: 20px;
   text-decoration: none !important;
   line-height: 1;
-  background-color: transparent;
-  border-style: solid;
-  border-color: #778ec4;
-  /*#6e85b6;*/
-  margin-right: 20px;
-  padding: 15px;
+  /*border-style: solid;*/
+  /*border-color: #778ec4;*/
+  /* margin-right: 20px; */
+  padding: 17px;
+  background-color: #2b5ab1;
+  border-right: 1px solid #778ec4;
 }
 
 /* line 54, main.scss */
 nav a:first-child {
-  border-radius: 2px 0 0 2px;
+  /*border-radius:2px 0 0 2px;*/
+  border-left: 1px solid #778ec4;
 }
 
-/* line 58, main.scss */
+/* line 59, main.scss */
 nav a:last-child {
-  border-radius: 0 2px 2px 0;
+  /*border-radius:0 2px 2px 0;*/
+  border-right-width: 0 !important;
 }
 
-/* line 62, main.scss */
+/* line 64, main.scss */
 nav.family-daily-view .family-daily-view,
 nav.family-weekly-view .family-weekly-view,
 nav.Back .Back,
@@ -8640,10 +8780,17 @@ nav.individual-daily-view .individual-daily-view,
 nav.individual-weekly-view .individual-weekly-view {
   background-color: #778ec4;
   /*#6e85b6;*/
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  /*box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);*/
 }
 
 /* line 73, main.scss */
+.fa-2x {
+  font-size: 1.5em !important;
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
+/* line 81, main.scss */
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -8651,12 +8798,12 @@ nav.individual-weekly-view .individual-weekly-view {
   padding: 0.2em 0;
 }
 
-/* line 80, main.scss */
+/* line 88, main.scss */
 html {
   background-color: #5979c4;
 }
 
-/* line 84, main.scss */
+/* line 92, main.scss */
 body {
   padding: 0;
   margin: 0;
@@ -8667,14 +8814,14 @@ body {
   width: 100%;*/
 }
 
-/* line 94, main.scss */
+/* line 102, main.scss */
 html, body {
-  height: 100px;
+  height: 100%;
   margin: 0;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-/* line 100, main.scss */
+/* line 108, main.scss */
 .header,
 .recorder,
 .marketing,
@@ -8684,7 +8831,7 @@ html, body {
   color: white;
 }
 
-/* line 109, main.scss */
+/* line 117, main.scss */
 .about-us-link {
   text-align: center;
   color: white;
@@ -8692,7 +8839,7 @@ html, body {
   margin-top: 10px;
 }
 
-/* line 116, main.scss */
+/* line 124, main.scss */
 .recorder {
   /*width: 99%;*/
   float: right;
@@ -8704,12 +8851,12 @@ html, body {
 }
 
 /* Custom page header */
-/* line 127, main.scss */
+/* line 135, main.scss */
 .header {
   margin-bottom: 10px;
   /* Make the masthead heading the same height as the navigation */
 }
-/* line 132, main.scss */
+/* line 140, main.scss */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -8718,7 +8865,7 @@ html, body {
 }
 
 /* Custom page footer */
-/* line 141, main.scss */
+/* line 149, main.scss */
 .footer {
   /*padding-top: 10px;
   padding-bottom: 10px;
@@ -8728,53 +8875,60 @@ html, body {
   /*position: absolute;
   width: 100%;
   bottom: 0%;*/
-  height: 40px;
-  margin-top: -40px;
 }
 
-/* line 154, main.scss */
+/* line 160, main.scss */
+.footer, .footer-space {
+  height: 40px;
+}
+
+/* line 164, main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
-/* line 158, main.scss */
+/* line 167, main.scss */
+.container.family-daily-view, .container.family-weekly-view,
+.container.individual-weekly-view, .container.individual-daily-view {
+  height: 580px;
+}
+
+/* line 172, main.scss */
 body > .container {
   color: white;
-  min-height: 85%;
-  padding-bottom: 40px;
 }
 
 /* Main marketing message and sign up button */
-/* line 165, main.scss */
+/* line 177, main.scss */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
-/* line 169, main.scss */
+/* line 181, main.scss */
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
 }
 
 /* Supporting marketing content */
-/* line 176, main.scss */
+/* line 188, main.scss */
 .marketing {
   margin: 40px 0;
 }
-/* line 179, main.scss */
+/* line 191, main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* line 186, main.scss */
+  /* line 198, main.scss */
   .container {
     width: 1250px;
   }
 
   /* Remove the padding we set earlier */
-  /* line 191, main.scss */
+  /* line 203, main.scss */
   .header,
   .marketing,
   .footer {
@@ -8783,13 +8937,13 @@ body > .container {
   }
 
   /* Space out the masthead */
-  /* line 198, main.scss */
+  /* line 210, main.scss */
   .header {
     margin-bottom: 20px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 202, main.scss */
+  /* line 214, main.scss */
   .jumbotron {
     border-bottom: 0;
   }

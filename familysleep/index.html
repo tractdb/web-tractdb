@@ -2,10 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>DreamCatcher</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <!-- Base -->
+    <base href="/familysleep/" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="icon" type="image/png" sizes="16x16" href="app/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="app/images/android-icon-192x192.png">
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
@@ -15,8 +19,6 @@
     <link rel="stylesheet" href="app/styles/main.css">
     <!-- endbuild -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Angular's base -->
-    <base href="/familysleep/" />
   </head>
   <body ng-app="FamilySleep">
     <!--[if lte IE 8]>
@@ -28,8 +30,10 @@
 
       <nav class="{{active}}" >
         <!-- When a link in the menu is clicked, we set the active variable -->
-
-          <a ng-repeat="n in menu" href='{{n.url}}' class='{{n.tag}}' ng-click="updateActive(n.tag)" >{{n.title}}</a>
+        <a ng-repeat="n in menu" href='{{n.url}}' class='{{n.tag}}' ng-click="updateActive(n.tag)">
+            <i ng-show="n.tag==='family-daily-view'" class="fa fa-home fa-2x" aria-hidden="true"></i>
+            &nbsp;{{n.title}}
+        </a>
       </nav>
       <div class="recorder">
         <recorder></recorder>
@@ -38,8 +42,9 @@
       <date-picker></date-picker>
     </div>
 
-    <div class="container">
+    <div class="container {{active}}">
     <div ng-view=""></div>
+    <div class="footer-space"></div>
     </div>
     
 
@@ -96,7 +101,7 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="app/scripts/app.js"></script>
-        <script src="app/scripts/controllers/main.js"></script>
+        
         <script src="app/scripts/controllers/about.js"></script>
         <script src="app/scripts/controllers/signup.js"></script>
         <script src="app/scripts/controllers/familydailyview.js"></script>
@@ -114,7 +119,9 @@
         <script src="app/scripts/directives/datepicker.js"></script>
         <script src="app/scripts/services/personafactory.js"></script>
         <script src="app/scripts/controllers/moon.js"></script>
-        
+        <script src="app/scripts/services/recorderfactory.js"></script>
+        <script src="app/scripts/controllers/login.js"></script>
+        <script src="app/scripts/services/authfactory.js"></script>
         
         <!-- endbuild -->
 </body>

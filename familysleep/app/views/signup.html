@@ -76,11 +76,21 @@
 						</div>
 					</div>
 
-					<!-- Text input-->
+					<!-- Number input-->
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="age">Age</label>  
 						<div class="col-md-5">
-						<input id="age" name="age" ng-model="member.age" type="text" placeholder="10" class="form-control input-md">
+						<input id="age" name="age" ng-model="member.age" type="number" placeholder="8"  class="form-control input-md">
+						</div>
+						
+					</div>
+
+					<!-- Number input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="targetedHours">Targeted Sleep Hours</label>  
+						<div class="col-md-5">
+							<input id="targetedHours" name="targetedHours" ng-model="member.targetedHours" type="number" placeholder="The suggested hours to sleep for this age is: {{setTargetHours(member.age)}}" class="form-control input-md">
+							<div ng-show="member.age" class="signup-suggested-hours">*The suggested hours to sleep for this age is: {{setTargetHours(member.age)}}</div>
 						</div>
 					</div>
 					<!-- Text input-->
@@ -101,7 +111,7 @@
 
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="profilePic">Profile Picture</label>
-						<ul class="avatar-area list-inline"> <!--IMPROVE LIST STYLE IN CSS-->
+						<ul class="avatar-area list-inline"> 
 				      		<li ng-repeat="item in profilePicItems">
 				        		<div ng-class="{activePicItem : activeProfilePicMenu === item.name}">
 				          			<img class="signup-avatars" ng-src="{{item.path}}" alt="{{item.name}}" ng-click="$event.preventDefault(); member.profilePic = item.path; setActivePic(item.name);">
@@ -115,10 +125,14 @@
 
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="fitbit">Fitbit ID</label>
-						<div class="col-md-5">
-							<!-- <input id="fitbit" name="fitbit" ng-model="member.fitbit" placeholder="" class="form-control input-md"> -->
-							<select id="fitbit" name="fitbit" ng-model="member.fitbit" ng-options="x for x in fitbitDevices">
-							</select>
+						<div class="family-type-container">
+							<div class="col-md-5 family-type" ng-repeat="device in fitbitDevices">
+								<!-- <input id="fitbit" name="fitbit" ng-model="member.fitbit" placeholder="" class="form-control input-md"> -->
+								<!-- <select id="fitbit" name="fitbit" ng-model="member.fitbit" ng-options="x for x in fitbitDevices">
+								</select> -->
+								<input type="radio" ng-model="member.fitbit" ng-value="device" name="device" id="{{device}}">
+								<label>{{device}}</label>
+							</div>	
 						</div>
 					</div>
 				</form>
@@ -129,13 +143,13 @@
 				</div>
 
 				<label class="col-md-4 control-label" for="signup"></label>
-				<div class="col-md-5" id="last-button">
+				<div class="col-md-5">
 					<button ng-click="signup.submit()" id="submit" name="submit" class="signup-buttons btn btn-success btn-block">Submit and Finish</button>
 				</div>
 
 				<label class="col-md-4 control-label" for="signup"></label>
-				<div class="col-md-5">
-					<button ng-click="signup.cancelFromMember()" id="addMember" name="addMember" class="signup-buttons btn btn-success btn-block">Cancel</button>
+				<div class="col-md-5" id="last-button">
+					<button ng-click="signup.cancelFromMember()" id="cancelAddMember" name="cancelAddMember" class="signup-buttons btn btn-success btn-block">Cancel</button>
 				</div>
 			</div>
 		</div>

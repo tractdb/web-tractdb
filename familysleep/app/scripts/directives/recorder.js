@@ -16,19 +16,23 @@ angular.module('FamilySleep')
 
       templateUrl: 'app/views/recorder.html',
       //Embed a custom controller in the directive
-      controller: function($scope, $window, $http) {
-        $scope.instruction = "Tap to record";
+      controller: function($scope, $window, $http, recorderFactory) {
+        $scope.instruction = "Record a Thought";
         $scope.url = "";
         $scope.recordStoppedClear = true;
         $scope.recordRecording = false;
-        $scope.recordPausing = false;
+        // $scope.recordPausing = false;
         $scope.recordStopped = false;
-        $scope.recordReplay = false;
+        // $scope.recordReplay = false;
         navigator.getUserMedia(
           {audio:true, video:false},
           function(stream) {
             $window.recordRTC = RecordRTC(stream, {
-              recorderType: StereoAudioRecorder
+              //recorderType: StereoAudioRecorder
+              //more documantion on type of audio and bps here http://recordrtc.org/
+              disableLogs:true,
+              mimeType: 'audio/webm',
+              bitsPerSecond: 64000
             });
           },
           function(err) {
@@ -39,82 +43,90 @@ angular.module('FamilySleep')
         // start the recording
         $scope.onRecord = function() {
           $scope.recordStoppedClear = false;
+          $scope.prompt = prompt;
           $scope.recordRecording = true;
           $window.recordRTC.startRecording();
         }
 
-        // pause the recording
-        $scope.onPause = function(audioUrl) {
-          $window.recordRTC.pauseRecording();
-          $scope.recordPausing = true;
-          $scope.recordRecording = false;
+        $scope.onRecord = function(prompt) {
+          $scope.recordStoppedClear = false;
+          $scope.prompt = prompt;
+          $scope.recordRecording = true;
+          $window.recordRTC.startRecording();
         }
+
+        // // pause the recording
+        // $scope.onPause = function(audioUrl) {
+        //   $window.recordRTC.pauseRecording();
+        //   $scope.recordPausing = true;
+        //   $scope.recordRecording = false;
+        // }
 
         //resume the paused recording
-        $scope.onResume = function() {
-          $window.recordRTC.resumeRecording();
-          $scope.recordPausing = false;
-          $scope.recordRecording = true;
-        }
+        // $scope.onResume = function() {
+        //   $window.recordRTC.resumeRecording();
+        //   $scope.recordPausing = false;
+        //   $scope.recordRecording = true;
+        // }
 
-        $scope.onReplay = function() {
-          console.log("replaying");
-          console.log($window.recordRTC.toURL());
-          $scope.url = decodeURIComponent($window.recordRTC.toURL());
-        }
+        // $scope.onReplay = function() {
+        //   console.log("replaying");
+        //   console.log($window.recordRTC.toURL());
+        //   $scope.url = decodeURIComponent($window.recordRTC.toURL());
+        // }
 
 
-        $scope.onDelete = function() {
-          $scope.recordStoppedClear = true;
-          $scope.recordRecording = false;
-          $scope.recordPausing = false;
-          $scope.recordStopped = false;
-          $scope.recordReplay = false;
-          //recorder.reset();
-        }
+        // $scope.onDelete = function() {
+        //   $scope.recordStoppedClear = true;
+        //   $scope.recordRecording = false;
+        //   $scope.recordPausing = false;
+        //   $scope.recordStopped = false;
+        //   $scope.recordReplay = false;
+        //   //recorder.reset();
+        // }
 
         //stop the recording
         $scope.onStopRecord =  function() {
           $scope.recordStopped = true;
           $scope.recordRecording = false;
           $scope.recordPausing = false;
+          $scope.prompt = "";
           $window.recordRTC.stopRecording (function() {
             $scope.url = decodeURIComponent($window.recordRTC.toURL());
             var recordedBlob = $window.recordRTC.getBlob();
             $scope.recordedBlob = recordedBlob;
             //console.log($scope.url);
+            $scope.onSendRecord();
           });
         }
 
-        $scope.onReplayRecord =  function() {
-          $scope.recordReplay = true;
-          $scope.url = $window.recordRTC.toURL();
-        }
+        // $scope.onReplayRecord =  function() {
+        //   $scope.recordReplay = true;
+        //   $scope.url = $window.recordRTC.toURL();
+        // }
         
         // sending the recording, not sure if it will get recorder back to clean slate
         $scope.onSendRecord = function() {
-          var recordedBlob = $scope.recordedBlob;
-          console.log(recordedBlob);
-          //recordRTC.getDataURL()
-          var formData = new FormData();
-          console.log(formData);
-          formData.append('test', recordedBlob);
-          $http.post('http://localhost:3000', formData, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-          })
-          .then(function(result) {
-            console.log("done")
-            $scope.recordStoppedClear = true;
-          })
-          //temp
           $scope.recordStoppedClear = true;
           $scope.recordRecording = false;
           $scope.recordPausing = false;
           $scope.recordStopped = false;
           $scope.recordReplay = false;
+          var recordedBlob = $scope.recordedBlob;
+          console.log(recordedBlob);
+          
+          recorderFactory.audio = {'data': recordedBlob, 'endtimeStamp': new Date(), 'users': recorderFactory.users}; 
+          // if(recorderFactory.startTime){
+          //   recorderFactory.audio = {'data': recordedBlob, 'timeStamp': recorderFactory.startTime, 'users': recorderFactory.users};  
+          // } else {
+          //   recorderFactory.audio = {'data': recordedBlob, 'timeStamp': new Date(), 'users': recorderFactory.users}; 
+          // }
+          
+          
+          console.log(recorderFactory.audio);
+          recorderFactory.putData();
         }
       },
-      link: function ($scope, element, attrs) { } //DOM manipulation
+      link: function ($scope, element, attrs) { } 
     }
   });

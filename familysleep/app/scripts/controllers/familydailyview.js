@@ -52,8 +52,8 @@ var module = angular.module(
 module.controller(
     'FamilyDailyViewCtrl',
     
-        ['$scope', '$rootScope', 'tractdbFactory', 'dateFactory', 'selfReportState', 'personaFactory', '$location', 'viewLogs',
-            function ($scope, $rootScope, tractdbFactory, dateFactory, selfReportState, personaFactory, $location, viewLogs) {
+        ['$scope', '$rootScope', 'tractdbFactory', 'dateFactory', 'selfReportState', 'personaFactory', '$location', 'viewLogs', 'authFactory',
+            function ($scope, $rootScope, tractdbFactory, dateFactory, selfReportState, personaFactory, $location, viewLogs, authFactory) {
                 var viewModel = this;
 
                 viewModel.familyInfo = null;
@@ -238,7 +238,19 @@ module.controller(
                     //selfreportstate.initializeAll(pids);
                     viewModel.updateFamilyInfo();
                     $rootScope.$broadcast('familydailyview:updated');
+                    $rootScope.$broadcast('modalview:updated');
                 });
+
+                $scope.$watch(authFactory.isLoggedIn, function (value, oldValue) {
+                    if(!value && oldValue) {
+                        console.log("Disconnect");
+                        $location.path('/login');
+                    }
+                    if(value) {
+                        console.log("Connected");
+                        //Do something when the user is connected
+                    }
+                }, true);
 
                 //should replace to viewModel
                 $scope.changeToSingleDailyView = function(id){

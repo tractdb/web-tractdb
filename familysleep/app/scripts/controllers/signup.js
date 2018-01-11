@@ -11,7 +11,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 				signup,
 				members;
 		var member = {};
-		var singleSelfReportMood = {};
+		//var singleSelfReportMood = {};
 		var count = 1;
 
 		// Here we're creating a scope for our Signup page.
@@ -64,6 +64,7 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			{name:'p20',
 			path:'app/images/avatars/m5.png'}
 		];
+		$scope.suggestedSleep;
 
 		$scope.famTypes = ["Father", "Mother", "Daughter", "Son", "Grandfather", "GrandMother", ""];
 
@@ -99,29 +100,47 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			$location.path(view);
 		}
 
-		function setTargetHours(a){
+		// signup.setTargetHours = function (age){
+		// 	//we got targeted hours from the following webpage:
+		// 	//https://sleepfoundation.org/press-release/national-sleep-foundation-recommends-new-sleep-times
+		// 	//var age = parseInt(a, 10);
+		// 	if(age >= 6 || age <= 13){
+		// 		return "9 to 11";
+		// 	} else if (age >= 14 || age <=17){
+		// 		return "8 to 10";
+		// 	} else if (age >= 18 || age <= 64){
+		// 		return 8;
+		// 	} else if (age >= 65){
+		// 		return 8;
+		// 	} else {
+		// 		return 8;
+		// 	}
+		// }
+
+		$scope.setTargetHours = function (age){
 			//we got targeted hours from the following webpage:
 			//https://sleepfoundation.org/press-release/national-sleep-foundation-recommends-new-sleep-times
-			var age = parseInt(a, 10);
-			if(age >= 6 || age <= 13){
-				return 10;
-			} else if (age >= 14 || age <=17){
-				return 9;
-			} else if (age >= 18 || age <= 64){
-				return 8;
+			//var age = parseInt(a, 10);
+			if(age >= 6 && age <= 13){
+
+				return "9 to 11";
+			} else if (age >= 14 && age <=17){
+				return "8 to 10";
+			} else if (age >= 18 && age <= 64){
+				return "7 to 9";
 			} else if (age >= 65){
-				return 8;
+				return "7 to 9";
 			} else {
-				return 8;
+				return "8";
 			}
 		}
-
 		signup.addNewMember = function() {
 			if (
 				!member.name ||
 				!member.type ||
 				!member.profilePic ||
 				!member.age ||
+				!member.targetedHours ||
 				!member.fitbit
 			) {
 				alert('Please fill out all form fields.');
@@ -133,8 +152,8 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 				//console.log(member);
 
 				//adding new family members to the personas in personaFactory
-				var targethours = setTargetHours(member.age);
-				member.targetedHours = targethours;
+				
+				//member.targetedHours = targethours;
 				var newMember = angular.copy(member);
 				members.push(newMember);
 				console.log('in addNewMember printing personas');
@@ -163,7 +182,8 @@ angular.module('FamilySleep') // make sure this is set to whatever it is in your
 			member.profilePic = "";
 			member.fitbit = "";
 			member.pid = "";
-			member.age = "";
+			member.age = 0;
+			member.targetedHours = 0;
 		}
 
 		signup.addFamily = function() {

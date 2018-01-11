@@ -2,8 +2,8 @@
 
     <!-- person row -->
     <div class="fwv-columns" id="blank-date">blank</div>
-    <div ng-repeat="date in viewModel.dateWeekStr" class="fwv-columns">
-        <p class="fwv-date">{{date}}</p>
+    <div ng-repeat="date in viewModel.dateWeekStr" class="fwv-date-columns">
+        <p class="fwv-date">{{date | date: 'EEE, MMM d'}}</p>
     </div>
     <div ng-repeat="(pidCurrent, memberCurrent) in viewModel.familyInfo">
 	   <div class="fwv-person row">
@@ -25,9 +25,23 @@
                       <p>No data</p>
                     </div> -->
                     <!-- <img ng-src="app/images/faces/happy.png" class="fwv-mood-pics"> -->
+                    
+                    <!-- <div ng-show="viewModel.states[day.date][pidCurrent].state">
+                      <img ng-src="{{viewModel.states[day.date][pidCurrent].image}}" class="fwv-mood-pics">
+                      <p class="fwv-mood-text">{{viewModel.states[day.date][pidCurrent].mood}}</p>
+                    </div>
+                    <div ng-hide="!viewModel.states[day.date][pidCurrent].state">
+                    </div> -->
                     <div ng-show="viewModel.states[day.date][pidCurrent].state">
                       <img ng-src="{{viewModel.states[day.date][pidCurrent].image}}" class="fwv-mood-pics">
-                      <p class="fwv-mood-text">{{viewModel.states[day.date][pidCurrent].mood | uppercase }}</p>
+                      <div ng-switch="viewModel.states[day.date][pidCurrent].mood">
+                        <div ng-switch-when="Had a nightmare">
+                          <p class="fwv-mood-text-small">{{viewModel.states[day.date][pidCurrent].mood | uppercase }}</p>
+                        </div>
+                        <div ng-switch-default>
+                          <p class="fwv-mood-text">{{viewModel.states[day.date][pidCurrent].mood | uppercase }}</p>
+                        </div>
+                      </div>
                     </div>
                     <div ng-hide="!viewModel.states[day.date][pidCurrent].state">
                     </div>

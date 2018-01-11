@@ -156,7 +156,9 @@ button.modal-mood-reporter:focus, button.modal-mood-reporter:active, button.moda
 }
 
 .activeMoodReporter {
-    /*border: 3px solid #478de7;*/
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 img.modal-mood-pics:focus {
@@ -173,6 +175,18 @@ img.modal-mood-pics:focus {
 }
 
 /*for log modal window*/
+.log-modal-header, .log-modal-body, .log-modal-footer {
+    border-bottom: 1px solid black;
+    background-color: white;
+    color: black;
+}
+
+.inactiveReporter, .activeLogReporter {
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
 label.logModalReporter:focus, label.logModalReporter:active, label.logModalReporter:hover {
     outline: none !important;
 }
@@ -198,6 +212,22 @@ label.logModalReporter:focus, label.logModalReporter:active, label.logModalRepor
     background-color: #34cfca !important;
     border-color: #34cfca !important;
 }
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 22px; 
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    margin-right: 10px;
+}
+
+.another-question-prompt {
+    margin-left: 5px;
+    font-size: medium;
+}
+
 /*
 MODAL WINDOW END
 */

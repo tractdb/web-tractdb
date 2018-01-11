@@ -128,7 +128,7 @@ module.factory(
                     factory._notify();
                 }).catch (function errorCallback(response){
                     console.log("error in the PUT");
-                    console.log(response.code);
+                    console.log(response.status);
                 }).finally(function (){
                     factory._scheduleNextRetrieve();
                 });

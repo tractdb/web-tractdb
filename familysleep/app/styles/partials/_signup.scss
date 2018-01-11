@@ -38,6 +38,7 @@ img.signup-avatars:focus {
 	width: 478px;
     margin-left: -5px;
     margin-top: 15px;
+    font-weight: bold;
 }
 
 #last-button {
@@ -51,5 +52,10 @@ img.signup-avatars:focus {
 
 .family-type {
     margin-top: 5px;
-    margin-botton: 5px;
+    margin-bottom: 5px;
+}
+
+.signup-suggested-hours {
+    font-style: italic;
+    margin-left: 5px;
 }

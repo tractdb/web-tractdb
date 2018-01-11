@@ -28,7 +28,7 @@
   width: 70px;
   margin: 0;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .fwv-profile-pics {
@@ -45,6 +45,15 @@
   margin-left: 7px;
   margin-right: 7px;
   margin-bottom: 20px;
+  position: relative;
+}
+
+.fwv-date-columns {
+  float: left; 
+  width: 120px;
+  margin-left: 7px;
+  margin-right: 7px;
+  margin-bottom: 15px;
   position: relative;
 }
 
@@ -67,10 +76,15 @@
 
 .fwv-mood-text {
   text-align: center;
-  font-size: 14px;
+  font-size: 17px;
+}
+
+.fwv-mood-text-small {
+  text-align: center;
+  font-size: 13px;
 }
 
 .fwv-date {
   text-align: center;
-  font-size: medium;
+  font-size: 18px;
 }

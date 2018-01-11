@@ -90,7 +90,7 @@ module.factory(
                         console.log(response.code);
                         console.log(response.statusText);
                     }).finally(function () {
-                        //factory._scheduleNextRetrieve();
+                        factory._scheduleNextRetrieve();
                     });
                 }
             };

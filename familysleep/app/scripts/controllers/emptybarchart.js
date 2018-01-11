@@ -26,6 +26,7 @@ angular.module('FamilySleep')
         }]
       },
       responsive:false,
+      animation: false,
       maintainAspectRatio: false,
       hover: { //to turn off hover
             mode: null

@@ -58,3 +58,61 @@
   border-radius: 50%;
   background-color: rgb(255,255,255);
 }
+
+.speech-bubble {
+  position: absolute;
+  background: #fff;
+  border: 2px solid #000;
+  top: 10px;
+  padding: 10px;
+  padding-bottom: 0;
+  font-size: 17px;
+  /*width: 450px;*/
+  right: 280px;
+  color: black;
+  z-index: 1000;
+}
+
+.recorder-bar.family-daily-view .speech-bubble, 
+.recorder-bar.family-weekly-view .speech-bubble {
+  width: 450px;
+}
+
+.recorder-bar.individual-weekly-view .speech-bubble, 
+.recorder-bar.individual-daily-view .speech-bubble {
+  width: 320px;
+}
+
+.speech-bubble:after, .speech-bubble:before {
+  right: 0;
+  top: 20px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.speech-bubble:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-left-color: #fff;
+  border-width: 10px;
+  margin-top: -10px;
+  border-right: 0;
+  margin-right: -10px;
+}
+.speech-bubble:before {
+  border-color: rgba(0, 0, 0, 0);
+  border-left-color: black;
+  border-width: 13px;
+  margin-top: -13px;
+  border-right: 0;
+  margin-right: -13px;
+}
+
+.recorder-bar hr {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+

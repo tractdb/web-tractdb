@@ -1,3 +1,4 @@
+import datetime
 import os
 import sys
 import tractdb.client
@@ -59,9 +60,14 @@ if __name__ == '__main__':
         client.delete_document(doc=doc)
 
     # Create the documents we expect
+    datetime_now = datetime.datetime.now()
+    datetime_start = datetime_now - datetime.timedelta(days=30)
+    datetime_end = datetime_now + datetime.timedelta(days=90)
+    date_start = datetime_start.strftime('%Y-%m-%d')
+    date_end = datetime_end.strftime('%Y-%m-%d')
     for doc_id, doc in tests.data.test_familysleepdata.TestFamilySleepData(
-        date_start='2017-09-01',
-        date_end='2017-11-01'
+        date_start=date_start,
+        date_end=date_end
     ).TEST_DATA:
         print('C: {}'.format(doc_id))
 
