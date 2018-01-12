@@ -228,6 +228,22 @@ label.logModalReporter:focus, label.logModalReporter:active, label.logModalRepor
     font-size: medium;
 }
 
+.ask-another-button {
+    background-color: #C02CBC !important;
+    border-color: #C02CBC !important;
+    margin-bottom: 20px;
+    width: 388px;
+}
+
+button.ask-another-button:focus, button.ask-another-button:active, button.ask-another-button:hover {
+   outline: none !important;
+}
+
+button.ask-another-button:hover {
+    background-color: #9A2B97 !important;
+    border-color: #9A2B97 !important;
+}
+
 /*
 MODAL WINDOW END
 */
