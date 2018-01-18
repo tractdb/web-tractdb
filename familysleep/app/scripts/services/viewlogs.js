@@ -51,7 +51,7 @@ module.factory(
         factory.doc_id = 'viewLogs';
         factory.doc_rev = null;
         factory.counter = 0;
-        var waitTimeForLogging = 2 * 60000; //2 minutes wait to decise this is a new interaction session
+        var waitTimeForLogging = 2 * 60000; //2 minutes wait to decide this is a new interaction session
         
 
         factory.logLastPage = function (currentTime) {
@@ -248,16 +248,22 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
     var promptCounter = promptCounter;
 
     var prompts = [
-        "What did you learn about your sleep habits from the system?",
+        "What are you learning abour your sleep habits?",
+        "In what ways do you think you can improve your sleep?",
         "Look at another family member's sleep. What did you learn about their sleep?",
+        "Look at your <b>Weekly Sleep</b> page. How is your mood with respect to your sleep?",
+        "<i>Recommended to have at least two family members responding together.</i><hr>Look at the <b>Family Weekly</b> page. What you are learning from each other's sleep.",
         "Look at your sleep and mood for this week. How is your mood with respect to your sleep?",
-        "<i>Recommended for two family members.</i><hr> Look at family weekly sleep together, pick a day. Tell us what you learn from each other's sleep",
-        "<i>Look at your sleep and mood for this week.</i><hr> How is your mood with respect to your sleep?",
-        "<i>Recommended fo one parent and one child.</i><hr> Look at today's sleep and mood. Talk to each other about your sleep and mood.",
-        "<i>Recommended child to participate.</i><hr> What have you learned about your sleep?",
-        "<i>Recommended child to participate.</i><hr> What have you learned your family's sleep?",
-        "<i>Recommended for one parent and one child.</i><hr> Think about how you viewed your sleep and mood before using DreamCatcher. What have you learned about each other?",
-        "<i>Recommended for one parent and one child.</i><hr> What have you learned about each other since using DreamCatcher?"
+        "<i>Recommended to have at least two family members responding together.</i><hr> What are you learning about how your family sleeps?",
+        "<i>Recommended for parents.</i><hr> What are learning about your children's mood and sleep?",
+        "<i>Recommended to have at least one child and one parent.</i><hr> Look at <b>Family Daily</b> page. Talk to each other about your sleep and mood.",
+        "<i>Recommended for parents.</i><hr> How are you using the information DreamCatcher is presenting?",
+        "DreamCatcher shows sleep and mood information of all family members. How does viewing all family members' sleep useful?",
+        "<i>Recommended child to participate.</i><hr> What are you learning about your sleep?",
+        "<i>Recommended child to participate.</i><hr> What are you learning about your parents' sleep?",
+        "What has been surprising about your sleep",
+        "<i>Recommended for one parent and one child.</i><hr> What have you learned about each other since using DreamCatcher?",
+        "<i>Recommended for one parent and one child.</i><hr> How are you using the information from DreamCatcher"
     ];
 
     var getRandomInteger = function(){
