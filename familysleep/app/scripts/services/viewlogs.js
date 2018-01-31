@@ -271,7 +271,10 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
         "<i>Recommended for children to participate.</i><hr> How many hours are your parents sleeping?",
         "What has been surprising about your sleep?",
         "<i>Recommended for one parent and one child.</i><hr> Are each of you going to sleep at a consistent time? If not, what can you do to improve your bedtime?",
-        "<i>Recommended for one parent and one child.</i><hr> Are each of you waking up at a consistent time? If not, what can you do to improve your bedtime?"
+        "<i>Recommended for one parent and one child.</i><hr> Are each of you waking up at a consistent time? If not, what can you do to improve your bedtime?",
+        "<i>Recommended for parents.</i><hr>What is useful about viewing your children's and your sleep in one place?",
+        "<i>Recommended for parents.</i><hr> How do you feel about viewing each other's sleep in one place?",
+        "<i>Recommended for children.</i><hr> How do you feel about sharing your sleep with your family?"
     ];
 
     var getRandomInteger = function(){
