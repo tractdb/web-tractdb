@@ -1,7 +1,7 @@
 <div class="familydailyview-container">
     <!--need 1x2 | 1  for moon| 1x2-->
     <div ng-show="viewModel.Data">
-        <div ng-repeat="(pidCurrent, memberCurrent) in viewModel.familyInfo">
+        <div ng-repeat="(pidCurrent, memberCurrent) in viewModel.familyInfo | toArray | orderBy : 'name'">
             <div ng-if="$even" class="fdv-even-column col-xs-4">
             <!--even object -->
                 <div>

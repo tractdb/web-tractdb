@@ -6,7 +6,7 @@
   <h3>Who all is viewing?</h3>
   <div class="source">
       <ul class="list-inline"> 
-        <li ng-repeat="fam in $ctrl.checkFam">
+        <li ng-repeat="fam in $ctrl.checkFam | toArray | orderBy : 'name'">
           <div ng-class="fam.checked ? 'activeLogReporter' : 'inactiveReporter'">
             <label class="btn btn-info btn-xlarge btn-block logModalReporter" ng-click="$event.preventDefault(); $ctrl.isOK();" ng-model="fam.checked" uib-btn-checkbox>{{ fam.name }}</label>
           </div>
