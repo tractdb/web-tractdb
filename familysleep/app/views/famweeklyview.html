@@ -5,7 +5,7 @@
     <div ng-repeat="date in viewModel.dateWeekStr" class="fwv-date-columns">
         <p class="fwv-date">{{date | date: 'EEE, MMM d'}}</p>
     </div>
-    <div ng-repeat="(pidCurrent, memberCurrent) in viewModel.familyInfo">
+    <div ng-repeat="(pidCurrent, memberCurrent) in viewModel.familyInfo | toArray | orderBy : 'name'">
 	   <div class="fwv-person row">
         <!-- week col for particular person -->
         <div class="fwv-columns pic-column">

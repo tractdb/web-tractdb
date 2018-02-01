@@ -6,7 +6,7 @@
   <h3>Who is reporting Mood for {{$ctrl.famName}}?</h3>
    <div class="source">
       <ul class="list-inline"> 
-        <li ng-repeat="fam in $ctrl.famMems">
+        <li ng-repeat="fam in $ctrl.famMems | orderBy">
           <div ng-class="{activeMoodReporter : $ctrl.activeReporterMenu === fam}">
             <button class="btn btn-info btn-xlarge btn-block modal-mood-reporter" type="button" ng-click="$event.preventDefault(); $ctrl.selectedFam.item = fam; $ctrl.buttonState=$ctrl.buttonState+1; $ctrl.setActiveMoodReporter(fam);">{{ fam }}</button> 
           </div>
@@ -15,7 +15,7 @@
     </div>
   <ul class="list-inline"> 
     <h3>Tell us how {{$ctrl.famName}} feels</h3>
-      <li ng-repeat="item in $ctrl.items">
+      <li ng-repeat="item in $ctrl.items | orderBy">
         <div class="mood-item" ng-class="{activeMoodItem : $ctrl.activeModalMoodPicMenu === item.name}">
           <img ng-src="{{item.image}}" alt="{{item.name}}" ng-click="$event.preventDefault(); $ctrl.selected.item = item; $ctrl.imgState=$ctrl.imgState+1; $ctrl.setActiveMoodPic(item.name);" class="modal-mood-pics">
           <div class="mood-name">
