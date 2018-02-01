@@ -4933,7 +4933,7 @@ tbody.collapse.in {
 }
 /* line 16, ../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_breadcrumbs.scss */
 .breadcrumb > li + li:before {
-  content: "/ ";
+  content: "/ ";
   padding: 0 5px;
   color: #ccc;
 }
@@ -7804,7 +7804,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 /* line 24, partials/_recorder.scss */
 .recorder-bar {
   display: inline-block;
-  width: 200px;
+  width: 180px;
   height: auto;
   float: left;
   margin-top: 20px;
@@ -7854,7 +7854,7 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
   padding-bottom: 0;
   font-size: 17px;
   /*width: 450px;*/
-  right: 280px;
+  right: 260px;
   color: black;
   z-index: 1000;
 }
@@ -7862,13 +7862,13 @@ button.how-sleep-button:focus, button.how-sleep-button:active, button.how-sleep-
 /* line 76, partials/_recorder.scss */
 .recorder-bar.family-daily-view .speech-bubble,
 .recorder-bar.family-weekly-view .speech-bubble {
-  width: 450px;
+  width: 400px;
 }
 
 /* line 81, partials/_recorder.scss */
 .recorder-bar.individual-weekly-view .speech-bubble,
 .recorder-bar.individual-daily-view .speech-bubble {
-  width: 320px;
+  width: 270px;
 }
 
 /* line 86, partials/_recorder.scss */
@@ -8177,6 +8177,25 @@ label.logModalReporter:focus, label.logModalReporter:active, label.logModalRepor
   font-size: medium;
 }
 
+/* line 231, partials/_modalstyle.scss */
+.ask-another-button {
+  background-color: #C02CBC !important;
+  border-color: #C02CBC !important;
+  margin-bottom: 20px;
+  width: 388px;
+}
+
+/* line 238, partials/_modalstyle.scss */
+button.ask-another-button:focus, button.ask-another-button:active, button.ask-another-button:hover {
+  outline: none !important;
+}
+
+/* line 242, partials/_modalstyle.scss */
+button.ask-another-button:hover {
+  background-color: #9A2B97 !important;
+  border-color: #9A2B97 !important;
+}
+
 /*
 MODAL WINDOW END
 */
@@ -8317,31 +8336,32 @@ input[aria-expanded=false] {
   font-size: 20px;
   margin-right: 20px;
   pointer-events: none;
+  width: 150px !important;
 }
 
-/* line 32, partials/_datepicker.scss */
+/* line 33, partials/_datepicker.scss */
 md-icon svg path {
   fill: #555555;
 }
 
-/* line 38, partials/_datepicker.scss */
+/* line 39, partials/_datepicker.scss */
 .md-datepicker-triangle-button .md-datepicker-expand-triangle {
   border-top-color: #555555;
 }
 
-/* line 42, partials/_datepicker.scss */
+/* line 43, partials/_datepicker.scss */
 #datepicker-placement {
   margin-top: 10px;
   margin-left: 45px;
 }
 
-/* line 47, partials/_datepicker.scss */
+/* line 48, partials/_datepicker.scss */
 ._md-datepicker-has-triangle-icon {
   padding-right: 18px;
   margin-right: 0px;
 }
 
-/* line 52, partials/_datepicker.scss */
+/* line 53, partials/_datepicker.scss */
 #yesterday, #today, #tomorrow {
   background-color: #D3DBE9;
   /*#6e85b6;*/
@@ -8354,12 +8374,12 @@ md-icon svg path {
   margin-right: 5px;
 }
 
-/* line 63, partials/_datepicker.scss */
+/* line 64, partials/_datepicker.scss */
 button#yesterday {
   margin-left: 0;
 }
 
-/* line 67, partials/_datepicker.scss */
+/* line 68, partials/_datepicker.scss */
 #yesterday img, #tomorrow img {
   height: 28px;
   width: 28px;
@@ -8368,7 +8388,7 @@ button#yesterday {
 }
 
 /*change scale of popup calendar*/
-/* line 75, partials/_datepicker.scss */
+/* line 76, partials/_datepicker.scss */
 .md-datepicker-calendar-pane.md-pane-open {
   -webkit-transform: scale(1.5);
   transform: scale(1.5) !important;
@@ -8376,7 +8396,7 @@ button#yesterday {
 }
 
 /*change dimension of input area in calendar so date shows through*/
-/* line 82, partials/_datepicker.scss */
+/* line 83, partials/_datepicker.scss */
 .md-datepicker-input-mask-opaque {
   box-shadow: 0 0 0 999px white, inset 0 9px 0px 0px white, inset 0 -3px 0 0 white, inset 13px 0 0 0px white, inset -60px 0 0 0px white;
   /*right*/
@@ -8426,9 +8446,9 @@ button#yesterday {
 
 /* line 36, partials/singleweeklyview.scss */
 #swv-legend {
-  margin-bottom: 90px;
+  margin-bottom: 60px;
   margin-left: 400px;
-  padding-top: 35px;
+  padding-top: 65px;
 }
 
 /* line 42, partials/singleweeklyview.scss */
@@ -8700,8 +8720,8 @@ p.sdv-names {
   background-repeat: no-repeat;
   background-size: contain;
   color: black;
-  width: 500px;
-  height: 500px;
+  width: 550px;
+  height: 550px;
   display: block;
   margin: auto;
 }
@@ -8726,11 +8746,11 @@ p.sdv-names {
 /* line 31, partials/about.scss */
 #aboutus-contents ul {
   columns: 2;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 /*-------------------------
-	The menu
+  The menu
 --------------------------*/
 /* line 28, main.scss */
 nav {

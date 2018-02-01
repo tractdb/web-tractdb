@@ -1,14 +1,14 @@
 .date-picker {
-	display: inline-block;
+  display: inline-block;
 }
 
 /* changes color of date: black when in calendar view, white otherwise */
 input[aria-expanded=true] {
-	color: black;
+  color: black;
 }
 
 input[aria-expanded=false] {
-	color: white;
+  color: white;
 }
 
 .md-button {
@@ -25,6 +25,7 @@ input[aria-expanded=false] {
   font-size: 20px;
   margin-right: 20px;
   pointer-events: none;
+  width: 150px !important;
 }
 
 md-icon {
@@ -50,7 +51,7 @@ md-icon {
 }
 
 #yesterday, #today, #tomorrow {
-	background-color: #D3DBE9 ;/*#6e85b6;*/
+  background-color: #D3DBE9 ;/*#6e85b6;*/
   opacity: 0.8;
   font-size: 18px;
   font-weight: bold;
@@ -88,4 +89,3 @@ button#yesterday {
   left: 0 !important;
   top: 0 !important;
 }
-
