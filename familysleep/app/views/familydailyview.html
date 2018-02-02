@@ -1,7 +1,7 @@
 <div class="familydailyview-container">
     <!--need 1x2 | 1  for moon| 1x2-->
     <div ng-show="viewModel.Data">
-        <div ng-repeat="(pidCurrent, memberCurrent) in viewModel.familyInfo | toArray | orderBy : 'name'">
+        <div ng-repeat="memberCurrent in viewModel.familyInfo | toArray | orderBy : 'name'">
             <div ng-if="$even" class="fdv-even-column col-xs-4">
             <!--even object -->
                 <div>
@@ -13,40 +13,40 @@
                 </div>
 
                 <div>
-                    <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary weekly-view-button"> Weekly View</button>
+                    <button ng-click="changeToSingleWeeklyView(memberCurrent.pid)" class="btn btn-primary weekly-view-button"> Weekly View</button>
 
                 </div>
                 <div ng-controller="ModalCrtl as $ctrl">
                     <div ng-if= "viewModel.today == viewModel.calendarDate" >
-                        <div ng-if=viewModel.states[pidCurrent].state>
-                        <!-- <div ng-if=$ctrl.states[pidCurrent].state> -->
+                        <div ng-if=viewModel.states[memberCurrent.pid].state>
+                        <!-- <div ng-if=$ctrl.states[memberCurrent.pid].state> -->
                             <div>
-                                <!--<a ng-href="./views/sdview/{{pidCurrent}}" class="btn btn-primary"> Single Daily View</a>-->
-                                <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
+                                <!--<a ng-href="./views/sdview/{{memberCurrent.pid}}" class="btn btn-primary"> Single Daily View</a>-->
+                                <button ng-click="changeToSingleDailyView(memberCurrent.pid)" class="btn btn-primary single-view-button"> Daily View</button>
                                 <!--want an ng-if here to show only after daily sleep and self-report is available -->
                             </div>
                             <div class="chart-placement">
                                 <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="memberCurrent.labels" chart-colors="memberCurrent.colors" chart-options="memberCurrent.options">
                                 </canvas>
                             </div>
-                            <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
-                            <!-- <img ng-src={{$ctrl.states[pidCurrent].image}} class="mood-pics"> -->
+                            <img ng-src={{viewModel.states[memberCurrent.pid].image}} class="mood-pics">
+                            <!-- <img ng-src={{$ctrl.states[memberCurrent.pid].image}} class="mood-pics"> -->
                             <div class="hours-slept">
                                 <p class="hours-slept-text"><div class="data-label">Hours slept: </div><div class="data-number">{{memberCurrent.hours | number:1}}</div></p>
                             </div>
-                            <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->
+                            <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[memberCurrent.pid].mood | uppercase}}</p> -->
                             <div class="mood-report">
-                                <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                                <p class="mood-report-text">{{viewModel.states[memberCurrent.pid].mood | uppercase}}</p>
                             </div>
                         </div>
-                        <!-- <div ng-if=!$ctrl.states[pidCurrent].state> -->
-                        <div ng-if=!viewModel.states[pidCurrent].state>
+                        <!-- <div ng-if=!$ctrl.states[memberCurrent.pid].state> -->
+                        <div ng-if=!viewModel.states[memberCurrent.pid].state>
                             <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
                                 <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color" chart-options="options">
                                 </canvas>
                             </div>
                             <!--inserts code for the modal popup window-->
-                            <button type="button" class="how-sleep-button btn btn-default" ng-click="$ctrl.open(pidCurrent)">
+                            <button type="button" class="how-sleep-button btn btn-default" ng-click="$ctrl.open(memberCurrent.pid)">
                                 How did you sleep?
                             </button>
                         </div>
@@ -54,7 +54,7 @@
                     <div ng-if= "viewModel.today != viewModel.calendarDate" >
                         <div>
                         
-                            <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button">Daily View</button>
+                            <button ng-click="changeToSingleDailyView(memberCurrent.pid)" class="btn btn-primary single-view-button">Daily View</button>
                         </div>
 
                         <div class="chart-placement">
@@ -62,17 +62,17 @@
                             </canvas>
                         </div>
                        
-                        <div ng-if=viewModel.states[pidCurrent].state>
-                            <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
-                            <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->
+                        <div ng-if=viewModel.states[memberCurrent.pid].state>
+                            <img ng-src={{viewModel.states[memberCurrent.pid].image}} class="mood-pics">
+                            <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[memberCurrent.pid].mood | uppercase}}</p> -->
                             <div class="hours-slept">
                                 <p class="hours-slept-text"><div class="data-label">Hours slept: </div><div class="data-number">{{memberCurrent.hours | number:1}}</div></p>
                             </div>
                             <div class="mood-report">
-                                <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                                <p class="mood-report-text">{{viewModel.states[memberCurrent.pid].mood | uppercase}}</p>
                             </div>
                         </div>
-                        <div ng-if=!viewModel.states[pidCurrent].state>
+                        <div ng-if=!viewModel.states[memberCurrent.pid].state>
                             <div class="mood-report">
                                 <p class="mood-report-text">No mood reported for this date</p>
                             </div>
@@ -92,60 +92,60 @@
                 </div>
 
                 <div>
-                    <button ng-click="changeToSingleWeeklyView(pidCurrent)" class="btn btn-primary weekly-view-button"> Weekly View</button>
+                    <button ng-click="changeToSingleWeeklyView(memberCurrent.pid)" class="btn btn-primary weekly-view-button"> Weekly View</button>
                 </div>
                 <div ng-controller="ModalCrtl as $ctrl">
                     <div ng-if= "viewModel.today == viewModel.calendarDate" >
-                        <div ng-if=viewModel.states[pidCurrent].state>
+                        <div ng-if=viewModel.states[memberCurrent.pid].state>
                             <div>
                                 
-                                <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
+                                <button ng-click="changeToSingleDailyView(memberCurrent.pid)" class="btn btn-primary single-view-button"> Daily View</button>
                                 <!--want an ng-if here to show only after daily sleep and self-report is available -->
                             </div>
                             <div class="chart-placement">
                                 <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="memberCurrent.labels" chart-colors="memberCurrent.colors" chart-options="memberCurrent.options">
                                 </canvas>
                             </div>
-                            <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
+                            <img ng-src={{viewModel.states[memberCurrent.pid].image}} class="mood-pics">
                             <div class="hours-slept">
                                 <p class="hours-slept-text"><div class="data-label">Hours slept: </div><div class="data-number">{{memberCurrent.hours | number:1}}</div></p>
                             </div>                            
                             <div class="mood-report">
-                                <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                                <p class="mood-report-text">{{viewModel.states[memberCurrent.pid].mood | uppercase}}</p>
                             </div>
                         </div>
-                        <div ng-if=!viewModel.states[pidCurrent].state>
+                        <div ng-if=!viewModel.states[memberCurrent.pid].state>
                             <div ng-controller="PiechartcontrollerCtrl" class="chart-placement">
                                 <canvas id="pie" class="chart chart-pie" chart-data="data" chart-colors="color"
                                         chart-options="options">
                                 </canvas>
                             </div>
                             <!--inserts code for the modal popup window-->
-                            <button type="button" class="how-sleep-button btn btn-default" ng-click="$ctrl.open(pidCurrent)">
+                            <button type="button" class="how-sleep-button btn btn-default" ng-click="$ctrl.open(memberCurrent.pid)">
                                 How did you sleep?
                             </button>
                         </div>
                     </div>
                     <div ng-if= "viewModel.today != viewModel.calendarDate" >
                         <div> 
-                            <button ng-click="changeToSingleDailyView(pidCurrent)" class="btn btn-primary single-view-button"> Daily View</button>
+                            <button ng-click="changeToSingleDailyView(memberCurrent.pid)" class="btn btn-primary single-view-button"> Daily View</button>
                         </div>
                         <div class="chart-placement">
                             <canvas id="doughnut" class="chart-doughnut" chart-data="memberCurrent.sleep" chart-labels="memberCurrent.labels" chart-colors="memberCurrent.colors" chart-options="memberCurrent.options">
                             </canvas>
                         </div>
 
-                        <div ng-if=viewModel.states[pidCurrent].state>
-                            <img ng-src={{viewModel.states[pidCurrent].image}} class="mood-pics">
-                            <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[pidCurrent].mood | uppercase}}</p> -->
+                        <div ng-if=viewModel.states[memberCurrent.pid].state>
+                            <img ng-src={{viewModel.states[memberCurrent.pid].image}} class="mood-pics">
+                            <!-- <p class="mood-report">Mood reported to be {{$ctrl.states[memberCurrent.pid].mood | uppercase}}</p> -->
                             <div class="hours-slept">
                                 <p class="hours-slept-text"><div class="data-label">Hours slept: </div><div class="data-number">{{memberCurrent.hours | number:1}}</div></p>
                             </div>
                             <div class="mood-report">
-                                <p class="mood-report-text">{{viewModel.states[pidCurrent].mood | uppercase}}</p>
+                                <p class="mood-report-text">{{viewModel.states[memberCurrent.pid].mood | uppercase}}</p>
                             </div>
                         </div>
-                        <div ng-if=!viewModel.states[pidCurrent].state>
+                        <div ng-if=!viewModel.states[memberCurrent.pid].state>
                             <div class="mood-report">
                             <p class="mood-report-text">No mood reported for this date</p>
                             </div>
