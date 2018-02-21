@@ -103,7 +103,7 @@ module.factory(
                 }
             ).then (function success (response){
                 //factory.doc_id = "viewLogs" + factory.counter.toString();
-                if(factory.counter >= 4){
+                if(factory.counter >= 2){
                     factory.counter = 0;
                 } else {
                     factory.counter++;    
@@ -255,26 +255,38 @@ angular.module('FamilySleep').controller('LogModalInstanceCtrl', function ($uibM
         "<i>Recommended to have at least two family members responding together.</i><hr>Go to the <b>Family Weekly View</b> page. Are there connections between each other's sleep and mood?",
         "Go to your <b>Individal Weekly View</b>. How is your mood with respect to your sleep?",
         "<i>Recommended to have at least two family members responding together.</i><hr> What are you learning about how your family sleeps?",
-        "<i>Recommended for parents.</i><hr> Go to your child's <b>Individial Weekly View</b>. Are they going to sleep at a consistent time?",
+        "<i>Recommended for parents.</i><hr> Go to your child's <b>Individial Weekly View</b>. What information is surprising you? What is expected?",
         "<i>Recommended for parents.</i><hr> How are you using the information you see?",
         "What are your reactions to viewing every family member's sleep in one place?",
         "<i>Recommended to have at least one child and one parent.</i><hr> Go to <b>Family Weekly View</b>. Talk to each other about what is good about your sleep.",
         "<i>Recommended for parents.</i><hr> How are you using the information DreamCatcher is presenting?",
         "Go to your <b>Individual Weekly View</b>. Are you satisfied or dissastified with how you are sleeping?",
-        "What is something that surprised you so far?",
+        "What has surprised you so far?",
         "<i>Recommended for parents.</i><hr> How are you using the information presented?",
-        "Go to your <b>Individual Weekly View</b>. Looking at the sleep bars, reflect your bedtime routine and the time you go to sleep.",
+        "Go to your <b>Individual Weekly View</b>. Looking at the sleep bars. Are you going to sleep at a consistent time? What can you change about your bed time routine?",
         "<i>Recommended to have at least two family members responding together.</i><hr> Go to <b>Family Weekly View</b>. Is there a day where the family slept poorly (e.g., where the circles are NOT full)? If so, what happened?",
         "<i>Recommended to have at least two family members responding together.</i><hr> Go to <b>Family Weekly View</b>. Is there a day where the family sleep well (e.g., where the circles ARE mostly full). If so, what worked?",
         "Go to <b>Family Daily View</b>. Pick a day where there is information. What are your thoughts on viewing the family in one place?",
-        "<i>Recommended for children to participate.</i><hr> How many hours you are sleeping?",
-        "<i>Recommended for children to participate.</i><hr> How many hours are your parents sleeping?",
+        "<i>Recommended for children to participate.</i><hr> How many hours you are sleeping? What surprised you?",
+        "<i>Recommended for children to participate.</i><hr> How many hours are your parents sleeping? What surprised you?",
         "What has been surprising about your sleep?",
+        "What has been surprising about your children's sleep?",
         "<i>Recommended for one parent and one child.</i><hr> Are each of you going to sleep at a consistent time? If not, what can you do to improve your bedtime?",
         "<i>Recommended for one parent and one child.</i><hr> Are each of you waking up at a consistent time? If not, what can you do to improve your bedtime?",
         "<i>Recommended for parents.</i><hr>What is useful about viewing your children's and your sleep in one place?",
         "<i>Recommended for parents.</i><hr> How do you feel about viewing each other's sleep in one place?",
-        "<i>Recommended for children.</i><hr> How do you feel about sharing your sleep with your family?"
+        "<i>Recommended for parents.</i><hr> What trends are you seeing about each other's sleep?",
+        "<i>Recommended for parents.</i><hr> What are you learning about your children's sleep?",
+        "<i>Recommended for parents.</i><hr> What are you learning about your spouse's sleep?",
+        "<i>Recommended for parents.</i><hr> What conclusions are you making about your own sleep?",
+        "<i>Recommended for parents.</i><hr> What conclusions are you making about your children's sleep?",
+        "<i>Recommended for one parent and one child.</i><hr> Identify and share sleep improvements with your children",
+        "<i>Recommended for children.</i><hr> How do you feel about sharing your sleep with your family?",
+        "<i>Recommended for child or parent.</i><hr> Look at your sleep tell us what you see. Where do you need help?",
+        "Is there a day where most of the family reached their sleep goal? If so, reflect on what led to a good night sleep for the family.",
+        "Is there a day where most of the family did not reach their sleep goal? If so, reflect on what you would like to do different.",
+        "<i>Recommended for at least two family members to answer together.</i><hr> What are you learning about each other's sleep?",
+        "<i>Recommended for children.</i><hr>. What are days that you are proud about your sleep?",
     ];
 
     var getRandomInteger = function(){
