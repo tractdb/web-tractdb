@@ -73,6 +73,9 @@
                             </div>
                         </div>
                         <div ng-if=!viewModel.states[memberCurrent.pid].state>
+                            <div class="hours-slept">
+                                <p class="hours-slept-text"><div class="data-label">Hours slept: </div><div class="data-number">{{memberCurrent.hours | number:1}}</div></p>
+                            </div>
                             <div class="mood-report">
                                 <p class="mood-report-text">No mood reported for this date</p>
                             </div>
@@ -146,6 +149,9 @@
                             </div>
                         </div>
                         <div ng-if=!viewModel.states[memberCurrent.pid].state>
+                            <div class="hours-slept">
+                                <p class="hours-slept-text"><div class="data-label">Hours slept: </div><div class="data-number">{{memberCurrent.hours | number:1}}</div></p>
+                            </div>
                             <div class="mood-report">
                             <p class="mood-report-text">No mood reported for this date</p>
                             </div>
